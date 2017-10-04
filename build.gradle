@@ -24,14 +24,6 @@ allprojects {
         updateSinceUntilBuild = false
 
         sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"
-
-        def publishPassword = "$System.env.publishPassword"
-
-        publishPlugin {
-            username publishUsername
-            password publishPassword
-            channels publishChannels
-        }
     }
 
     apply plugin: 'kotlin'
@@ -50,7 +42,6 @@ allprojects {
         }
     }
 
-
     repositories {
         mavenCentral()
     }
@@ -58,6 +49,13 @@ allprojects {
     dependencies {
         compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
         compile "org.jetbrains.kotlin:kotlin-runtime:$kotlinVersion"
+    }
+
+    publishPlugin {
+        def publishPassword = "$System.env.publishPassword"
+        username publishUsername
+        password publishPassword
+        channels publishChannels
     }
 }
 
