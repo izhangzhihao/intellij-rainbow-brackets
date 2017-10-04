@@ -8,6 +8,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>1.1:</p>
+      <ul>
+        <li>Support IntelliJ IDEA based IDEs version 14 and above</li>
+      </ul>
       <p>1.0:</p>
       <ul>
         <li>Initial release</li>
@@ -16,7 +20,7 @@
     </change-notes>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-    <idea-version since-build="172"/>
+    <idea-version since-build="139"/>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
          on how to target different products -->
