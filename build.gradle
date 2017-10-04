@@ -71,12 +71,4 @@ idea {
     }
 }
 
-task publishToIntellijRegistry() {
-    if (file("./publish.gradle").exists()) {
-        publishPlugin.execute()
-    } else {
-        buildPlugin.execute()
-    }
-}
-
 version = version
