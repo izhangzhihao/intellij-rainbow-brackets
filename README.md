@@ -1,4 +1,4 @@
-# [Rainbow Brackets](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) [![Build Status](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets.svg?branch=master)](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets)
+# Rainbow Brackets [![Build Status](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets.svg?branch=master)](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets) [![Rainbow Brackets Release](https://img.shields.io/badge/Rainbow%20Brackets-1.0-green.svg)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) 
 
 ## Compatible with: 
 
