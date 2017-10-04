@@ -1,0 +1,59 @@
+<idea-plugin version="2">
+    <id>izhangzhihao.rainbow.brackets</id>
+    <name>Rainbow Brackets</name>
+    <vendor email="izhangzhihao@hotmail.com" url="https://github.com/izhangzhihao">izhangzhihao</vendor>
+
+    <description><![CDATA[
+      <strong>Rainbow Brackets for IntelliJ IDEA-based IDEs</strong>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      <p>1.0:</p>
+      <ul>
+        <li>Initial release</li>
+      </ul>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="172"/>
+
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <annotator language="Clojure" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="JAVA" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="kotlin" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="Python" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="Haskell" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="Agda" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="RUST" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="JavaScript"
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="Erlang" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="Scala" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="go" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="Groovy" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="ruby" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="Elixir" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="ObjectiveC"
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="PHP" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+    </extensions>
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+
+</idea-plugin>
