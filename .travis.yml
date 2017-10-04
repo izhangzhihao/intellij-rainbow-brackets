@@ -10,7 +10,7 @@ before_install:
 script:
 - java -version
 - ./gradlew -version
-- ./gradlew buildPlugin --console=plain
+- ./gradlew publish --console=plain
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

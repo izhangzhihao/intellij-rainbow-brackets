@@ -24,6 +24,14 @@ allprojects {
         updateSinceUntilBuild = false
 
         sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"
+
+        def publishPassword = "$System.env.publishPassword"
+
+        publishPlugin {
+            username publishUsername
+            password publishPassword
+            channels publishChannels
+        }
     }
 
     apply plugin: 'java'
@@ -58,6 +66,14 @@ idea {
     project {
         jdkName = javaVersion
         languageLevel = javaVersion
+    }
+}
+
+task publish() {
+    if (file("./publish.gradle").exists()) {
+        publishPlugin.execute()
+    } else {
+        buildPlugin.execute()
     }
 }
 
