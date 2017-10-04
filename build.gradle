@@ -42,6 +42,8 @@ allprojects {
 
     tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
 
+    jar.archiveName = 'intellij-rainbow-brackets.jar'
+
     test {
         testLogging {
             events "passed", "skipped", "failed"
@@ -69,7 +71,7 @@ idea {
     }
 }
 
-task publish() {
+task publishToIntellijRegistry() {
     if (file("./publish.gradle").exists()) {
         publishPlugin.execute()
     } else {

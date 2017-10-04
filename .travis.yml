@@ -1,5 +1,4 @@
 language: java
-sudo: required
 
 jdk:
   - oraclejdk8
@@ -8,9 +7,7 @@ before_install:
 - chmod +x gradlew
 
 script:
-- java -version
-- ./gradlew -version
-- ./gradlew publish --console=plain
+- ./gradlew publishToIntellijRegistry --info --console=plain
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
