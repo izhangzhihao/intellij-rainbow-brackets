@@ -12,6 +12,10 @@ IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, D
 
 ![](./screenshots/with-material-theme-ui.png)
 
+* with scala
+
+![](./screenshots/with-scala.png)
+
 * and more...
 
 ## Install 
