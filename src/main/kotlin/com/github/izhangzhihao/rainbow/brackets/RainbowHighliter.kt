@@ -21,15 +21,13 @@ class RainbowHighliter : Annotator {
     )
 
     private fun getAttributesColor(selector: Int, bracket: String): Color {
+        val roundBracketsColor = RainbowColors.roundBracketsColor[selector % RainbowColors.roundBracketsColor.size]
         return when (bracket) {
-            "(" -> RainbowColors.roundBracketsColor[selector % RainbowColors.roundBracketsColor.size]
-            ")" -> RainbowColors.roundBracketsColor[selector % RainbowColors.roundBracketsColor.size]
-            "{" -> RainbowColors.squigglyBracketsColor[selector % RainbowColors.squigglyBracketsColor.size]
-            "}" -> RainbowColors.squigglyBracketsColor[selector % RainbowColors.squigglyBracketsColor.size]
-            "[" -> RainbowColors.squareBracketsColor[selector % RainbowColors.squareBracketsColor.size]
-            "]" -> RainbowColors.squareBracketsColor[selector % RainbowColors.squareBracketsColor.size]
+            "(", ")" -> roundBracketsColor
+            "{", "}" -> RainbowColors.squigglyBracketsColor[selector % RainbowColors.squigglyBracketsColor.size]
+            "[", "]" -> RainbowColors.squareBracketsColor[selector % RainbowColors.squareBracketsColor.size]
             else -> {
-                RainbowColors.roundBracketsColor[selector % RainbowColors.roundBracketsColor.size]
+                roundBracketsColor
             }
         }
     }
