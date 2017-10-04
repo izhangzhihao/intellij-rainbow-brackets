@@ -16,6 +16,10 @@ IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, D
 
 ![](./screenshots/with-scala.png)
 
+* with kotlin
+
+![](./screenshots/with-kotlin.png)
+
 * and more...
 
 ## Install 
