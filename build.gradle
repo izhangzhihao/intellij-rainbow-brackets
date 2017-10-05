@@ -30,8 +30,8 @@ allprojects {
 
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
-
-    tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
+    
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
 
     jar.archiveName = "intellij-rainbow-brackets.jar"
 
