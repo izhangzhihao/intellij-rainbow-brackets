@@ -8,6 +8,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>2.0:</p>
+      <ul>
+        <li>Rainbowify brackets more fast ! </li>
+      </ul>
       <p>1.1:</p>
       <ul>
         <li>Support IntelliJ IDEA based IDEs version 14 and above</li>
