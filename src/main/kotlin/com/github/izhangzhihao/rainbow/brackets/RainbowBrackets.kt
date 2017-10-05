@@ -10,18 +10,10 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import java.awt.Color
 import java.awt.Font
-import java.util.regex.Pattern
 
 
 class RainbowBrackets : Annotator {
     private val bracketsList = arrayOf("(", ")", "{", "}", "[", "]")
-
-    private val haskellMultiLineCommentPattern = Pattern.compile(
-            "\\{-.*?-\\}"
-    )
-    private val normalMultiLineCommentPattern = Pattern.compile(
-            "/\\*.*?\\*/"
-    )
 
     private fun getAttributesColor(level: Int, bracket: String): Color {
         return when (bracket) {
@@ -79,28 +71,10 @@ class RainbowBrackets : Annotator {
 
     private val isString = { element: PsiElement -> visitParent(element, { e -> isString(e.text) }) }
 
-    private val isMultiLineComment = { element: PsiElement, pattern: Pattern ->
-        val matcher = pattern.matcher(element.containingFile.text.replace("\n", " "))
-        var isInMultiLineComment = false
-        while (matcher.find()) {
-            isInMultiLineComment = matcher.start() <= element.textOffset && element.textOffset <= matcher.end()
-            if (isInMultiLineComment) break
-        }
-        isInMultiLineComment
-    }
-
-    private val isHaskellMultiLineComment = { element: PsiElement -> isMultiLineComment(element, haskellMultiLineCommentPattern) }
-
-    private val isNormalMultiLineComment = { element: PsiElement -> isMultiLineComment(element, normalMultiLineCommentPattern) }
-
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        val languageID = element.language.id
         if (element is LeafPsiElement
                 && bracketsList.contains(element.text)
-                && languageID != "Clojure"
-                && !isString(element)
-                && !isHaskellMultiLineComment(element)
-                && !isNormalMultiLineComment(element)) {
+                && !isString(element)) {
             val level = getBracketLevel(element)
             val attrs = getBracketAttributes(level, element.text)
             holder.createInfoAnnotation(element as PsiElement, null).enforcedTextAttributes = attrs
