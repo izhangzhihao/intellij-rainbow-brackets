@@ -1,5 +1,8 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.github.izhangzhihao.rainbow.brackets.RainbowColors.roundBracketsColor
+import com.github.izhangzhihao.rainbow.brackets.RainbowColors.squareBracketsColor
+import com.github.izhangzhihao.rainbow.brackets.RainbowColors.squigglyBracketsColor
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.openapi.editor.markup.TextAttributes
@@ -10,27 +13,27 @@ import java.awt.Font
 import java.util.regex.Pattern
 
 
-class RainbowHighliter : Annotator {
+class RainbowBrackets : Annotator {
     private val bracketsList = arrayOf("(", ")", "{", "}", "[", "]")
 
-    private val haskellMultilineCommentPattern = Pattern.compile(
+    private val haskellMultiLineCommentPattern = Pattern.compile(
             "\\{-.*?-\\}"
     )
-    private val normalMultilineCommentPattern = Pattern.compile(
+    private val normalMultiLineCommentPattern = Pattern.compile(
             "/\\*.*?\\*/"
     )
 
-    private fun getAttributesColor(selector: Int, bracket: String): Color {
-        val roundBracketsColor = RainbowColors.roundBracketsColor[selector % RainbowColors.roundBracketsColor.size]
+    private fun getAttributesColor(level: Int, bracket: String): Color {
         return when (bracket) {
-            "(", ")" -> roundBracketsColor
-            "{", "}" -> RainbowColors.squigglyBracketsColor[selector % RainbowColors.squigglyBracketsColor.size]
-            "[", "]" -> RainbowColors.squareBracketsColor[selector % RainbowColors.squareBracketsColor.size]
-            else -> {
-                roundBracketsColor
-            }
+            "(", ")" -> dynamicallySelectColor(level, roundBracketsColor)
+            "{", "}" -> dynamicallySelectColor(level, squigglyBracketsColor)
+            "[", "]" -> dynamicallySelectColor(level, squareBracketsColor)
+            else -> dynamicallySelectColor(level, roundBracketsColor)
         }
     }
+
+    private fun dynamicallySelectColor(level: Int, colors: Array<Color>) =
+            colors[level % colors.size]
 
     private fun getBracketAttributes(level: Int, bracket: String): TextAttributes {
         val rainbowColor = getAttributesColor(level, bracket)
@@ -76,7 +79,7 @@ class RainbowHighliter : Annotator {
 
     private val isString = { element: PsiElement -> visitParent(element, { e -> isString(e.text) }) }
 
-    private val isMultilineComment = { element: PsiElement, pattern: Pattern ->
+    private val isMultiLineComment = { element: PsiElement, pattern: Pattern ->
         val matcher = pattern.matcher(element.containingFile.text.replace("\n", " "))
         var isInMultiLineComment = false
         while (matcher.find()) {
@@ -86,9 +89,9 @@ class RainbowHighliter : Annotator {
         isInMultiLineComment
     }
 
-    private val isHaskellMultilineComment = { element: PsiElement -> isMultilineComment(element, haskellMultilineCommentPattern) }
+    private val isHaskellMultiLineComment = { element: PsiElement -> isMultiLineComment(element, haskellMultiLineCommentPattern) }
 
-    private val isNormalMultilineComment = { element: PsiElement -> isMultilineComment(element, normalMultilineCommentPattern) }
+    private val isNormalMultiLineComment = { element: PsiElement -> isMultiLineComment(element, normalMultiLineCommentPattern) }
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         val languageID = element.language.id
@@ -96,8 +99,8 @@ class RainbowHighliter : Annotator {
                 && bracketsList.contains(element.text)
                 && languageID != "Clojure"
                 && !isString(element)
-                && !isHaskellMultilineComment(element)
-                && !isNormalMultilineComment(element)) {
+                && !isHaskellMultiLineComment(element)
+                && !isNormalMultiLineComment(element)) {
             val level = getBracketLevel(element)
             val attrs = getBracketAttributes(level, element.text)
             holder.createInfoAnnotation(element as PsiElement, null).enforcedTextAttributes = attrs

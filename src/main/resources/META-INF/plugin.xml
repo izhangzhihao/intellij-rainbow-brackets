@@ -28,24 +28,24 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <annotator language="Clojure" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="JAVA" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="kotlin" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Python" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Haskell" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Agda" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="RUST" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="Clojure" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="JAVA" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="kotlin" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Python" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Haskell" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Agda" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="RUST" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="JavaScript"
-                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Erlang" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Scala" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="go" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Groovy" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="ruby" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Elixir" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Erlang" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Scala" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="go" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Groovy" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="ruby" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Elixir" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="ObjectiveC"
-                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="PHP" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="PHP" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
     </extensions>
 
     <application-components>

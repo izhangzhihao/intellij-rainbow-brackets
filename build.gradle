@@ -35,13 +35,6 @@ allprojects {
 
     jar.archiveName = "intellij-rainbow-brackets.jar"
 
-    test {
-        testLogging {
-            events "passed", "skipped", "failed"
-            exceptionFormat = "full"
-        }
-    }
-
     repositories {
         mavenCentral()
     }
