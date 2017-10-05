@@ -8,18 +8,23 @@ import com.intellij.lang.annotation.Annotator
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
+import com.intellij.util.containers.stream
 import java.awt.Color
 import java.awt.Font
 
 
 class RainbowBrackets : Annotator {
-    private val bracketsList = arrayOf("(", ")", "{", "}", "[", "]")
+    private val roundBrackets = arrayOf("(", ")")
+    private val squigglyBrackets = arrayOf("{", "}")
+    private val squareBrackets = arrayOf("[", "]")
+
+    private val brackets = roundBrackets + squareBrackets + squigglyBrackets
 
     private fun getAttributesColor(level: Int, bracket: String): Color {
         return when (bracket) {
-            "(", ")" -> dynamicallySelectColor(level, roundBracketsColor)
-            "{", "}" -> dynamicallySelectColor(level, squigglyBracketsColor)
-            "[", "]" -> dynamicallySelectColor(level, squareBracketsColor)
+            in roundBrackets -> dynamicallySelectColor(level, roundBracketsColor)
+            in squigglyBrackets -> dynamicallySelectColor(level, squigglyBracketsColor)
+            in squareBrackets -> dynamicallySelectColor(level, squareBracketsColor)
             else -> dynamicallySelectColor(level, roundBracketsColor)
         }
     }
@@ -33,24 +38,9 @@ class RainbowBrackets : Annotator {
     }
 
     private fun containsBrackets(text: String): Boolean {
-        return text.contains("(")
-                || text.contains(")")
-                || text.contains("{")
-                || text.contains("}")
-                || text.contains("[")
-                || text.contains("]")
-    }
-
-    private fun visitParent(element: PsiElement, pred: (PsiElement) -> Boolean): Boolean {
-        var result = false
-        var eachParent: PsiElement? = element
-        while (eachParent != null) {
-            if (pred(eachParent)) {
-                result = true
-            }
-            eachParent = eachParent.parent
-        }
-        return result
+        return brackets
+                .stream()
+                .anyMatch { text.contains(it) }
     }
 
     private fun getBracketLevel(psiElement: PsiElement): Int {
@@ -65,16 +55,9 @@ class RainbowBrackets : Annotator {
         return level
     }
 
-    private fun isString(t: String): Boolean {
-        return t.startsWith("\"") && t.endsWith("\"") || t.startsWith("\'") && t.endsWith("\'")
-    }
-
-    private val isString = { element: PsiElement -> visitParent(element, { e -> isString(e.text) }) }
-
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (element is LeafPsiElement
-                && bracketsList.contains(element.text)
-                && !isString(element)) {
+                && brackets.contains(element.text)) {
             val level = getBracketLevel(element)
             val attrs = getBracketAttributes(level, element.text)
             holder.createInfoAnnotation(element as PsiElement, null).enforcedTextAttributes = attrs
