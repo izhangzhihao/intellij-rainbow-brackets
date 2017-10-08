@@ -29,7 +29,7 @@ class RainbowBrackets : Annotator {
         }
     }
 
-    private fun dynamicallySelectColor(level: Int, colors: Array<Color>) =
+    private fun dynamicallySelectColor(level: Int, colors: Array<Color>): Color =
             colors[level % colors.size]
 
     private fun getBracketAttributes(level: Int, bracket: String): TextAttributes {
