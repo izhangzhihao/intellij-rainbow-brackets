@@ -18,8 +18,6 @@ class RainbowBrackets : Annotator {
     private val squigglyBrackets = arrayOf("{", "}")
     private val squareBrackets = arrayOf("[", "]")
 
-    private val brackets = roundBrackets + squareBrackets + squigglyBrackets
-
     private fun getAttributesColor(level: Int, bracket: String): Color {
         return when (bracket) {
             in roundBrackets -> dynamicallySelectColor(level, roundBracketsColor)
@@ -37,17 +35,26 @@ class RainbowBrackets : Annotator {
         return TextAttributes(rainbowColor, null, null, null, Font.PLAIN)
     }
 
-    private fun containsBrackets(text: String): Boolean {
+    private fun containsBrackets(text: String, brackets: Array<String>): Boolean {
         return brackets
                 .stream()
                 .anyMatch { text.contains(it) }
     }
 
-    private fun getBracketLevel(psiElement: PsiElement): Int {
-        var level = -1
+    private fun getBracketLevel(element: LeafPsiElement): Int {
+        return when {
+            element.text in roundBrackets -> getBracketLevel(element, roundBrackets)
+            element.text in squigglyBrackets -> getBracketLevel(element, squigglyBrackets)
+            element.text in squareBrackets -> getBracketLevel(element, squareBrackets)
+            else -> 0
+        }
+    }
+
+    private fun getBracketLevel(psiElement: PsiElement, brackets: Array<String>): Int {
+        var level = 0
         var eachParent: PsiElement? = psiElement
         while (eachParent != null) {
-            if (containsBrackets(eachParent.text)) {
+            if (containsBrackets(eachParent.text, brackets)) {
                 level++
             }
             eachParent = eachParent.parent
@@ -56,11 +63,12 @@ class RainbowBrackets : Annotator {
     }
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (element is LeafPsiElement
-                && brackets.contains(element.text)) {
+        if (element is LeafPsiElement) {
             val level = getBracketLevel(element)
-            val attrs = getBracketAttributes(level, element.text)
-            holder.createInfoAnnotation(element as PsiElement, null).enforcedTextAttributes = attrs
+            if (level > 0) {
+                val attrs = getBracketAttributes(level, element.text)
+                holder.createInfoAnnotation(element as PsiElement, null).enforcedTextAttributes = attrs
+            }
         }
     }
 }
