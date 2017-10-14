@@ -26,4 +26,6 @@ object RainbowColors {
             Color(205, 220, 57),
             Color(255, 152, 99)
     )
+
+    val angleBracketsColor = roundBracketsColor
 }

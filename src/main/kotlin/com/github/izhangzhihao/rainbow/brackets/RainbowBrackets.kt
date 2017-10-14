@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.github.izhangzhihao.rainbow.brackets.RainbowColors.angleBracketsColor
 import com.github.izhangzhihao.rainbow.brackets.RainbowColors.roundBracketsColor
 import com.github.izhangzhihao.rainbow.brackets.RainbowColors.squareBracketsColor
 import com.github.izhangzhihao.rainbow.brackets.RainbowColors.squigglyBracketsColor
@@ -17,12 +18,14 @@ class RainbowBrackets : Annotator {
     private val roundBrackets = arrayOf("(", ")")
     private val squigglyBrackets = arrayOf("{", "}")
     private val squareBrackets = arrayOf("[", "]")
+    private val angleBrackets = arrayOf("<", ">", "</")
 
     private fun getAttributesColor(level: Int, bracket: String): Color {
         return when (bracket) {
             in roundBrackets -> dynamicallySelectColor(level, roundBracketsColor)
             in squigglyBrackets -> dynamicallySelectColor(level, squigglyBracketsColor)
             in squareBrackets -> dynamicallySelectColor(level, squareBracketsColor)
+            in angleBrackets -> dynamicallySelectColor(level, angleBracketsColor)
             else -> dynamicallySelectColor(level, roundBracketsColor)
         }
     }
@@ -46,6 +49,7 @@ class RainbowBrackets : Annotator {
             element.text in roundBrackets -> getBracketLevel(element, roundBrackets)
             element.text in squigglyBrackets -> getBracketLevel(element, squigglyBrackets)
             element.text in squareBrackets -> getBracketLevel(element, squareBrackets)
+            element.text in angleBrackets -> getBracketLevel(element, angleBrackets)
             else -> 0
         }
     }

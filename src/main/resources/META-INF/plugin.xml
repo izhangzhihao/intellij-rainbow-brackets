@@ -9,9 +9,14 @@
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-scala.png" alt="with-scala"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-kotlin.png" alt="with-kotlin"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-material-theme-ui.png" alt="with-material-theme-ui.png"/></p>
+        <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-HTML.png" alt="with-HTML.png"/></p>
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>2.3:</p>
+      <ul>
+        <li>Add support for HTML/XML</li>
+      </ul>
       <p>2.2:</p>
       <ul>
         <li>Add support for C#</li>
@@ -63,6 +68,8 @@
                    implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="PHP" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="C#" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="HTML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="XML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
     </extensions>
 
     <application-components>
