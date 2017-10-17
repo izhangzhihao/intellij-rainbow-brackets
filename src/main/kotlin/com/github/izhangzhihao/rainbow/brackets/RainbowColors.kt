@@ -8,7 +8,6 @@ object RainbowColors {
             Color(230, 180, 34),
             Color(0, 169, 96),
             Color(252, 116, 130),
-            Color(76, 175, 80),
             Color(156, 39, 176),
             Color(33, 150, 243),
             Color(255, 59, 59)
