@@ -9,10 +9,8 @@ import com.intellij.lang.annotation.Annotator
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
-import com.intellij.util.containers.stream
 import java.awt.Color
 import java.awt.Font
-
 
 class RainbowBrackets : Annotator {
     private val roundBrackets = arrayOf("(", ")")
@@ -39,9 +37,7 @@ class RainbowBrackets : Annotator {
     }
 
     private fun containsBrackets(text: String, brackets: Array<String>): Boolean {
-        return brackets
-                .stream()
-                .anyMatch { text.contains(it) }
+        return brackets.any { text.contains(it) }
     }
 
     private fun getBracketLevel(element: LeafPsiElement): Int {
