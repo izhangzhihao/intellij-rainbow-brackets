@@ -1,4 +1,4 @@
-# Rainbow Brackets [![Build Status](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets.svg?branch=master)](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets) [![Rainbow Brackets Release](https://img.shields.io/badge/Rainbow%20Brackets-1.1-green.svg)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) 
+# Rainbow Brackets [![Build Status](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets.svg?branch=master)](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1c72f2de07a5452da479565883d3ab74)](https://www.codacy.com/app/izhangzhihao/intellij-rainbow-brackets?utm_source=github.com&utm_medium=referral&utm_content=izhangzhihao/intellij-rainbow-brackets&utm_campaign=badger) [![Rainbow Brackets Release](https://img.shields.io/badge/Rainbow%20Brackets-2.3-green.svg)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) 
 
 ## Compatible with: 
 
@@ -19,6 +19,10 @@ IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, D
 * with kotlin
 
 ![](./screenshots/with-kotlin.png)
+
+* with HTML/XML
+
+![](./screenshots/with-HTML.png)
 
 * and more...
 

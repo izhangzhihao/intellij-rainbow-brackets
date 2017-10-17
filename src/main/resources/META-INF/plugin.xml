@@ -4,10 +4,31 @@
     <vendor email="izhangzhihao@hotmail.com" url="https://github.com/izhangzhihao">izhangzhihao</vendor>
 
     <description><![CDATA[
-      <strong>Rainbow Brackets for IntelliJ IDEA-based IDEs</strong>
+        <strong>Rainbow Brackets for IntelliJ IDEA-based IDEs</strong>
+        <p>This plugin is also compatible with material-theme-jetbrains-eap</p>
+        <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-scala.png" alt="with-scala"/></p>
+        <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-kotlin.png" alt="with-kotlin"/></p>
+        <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-material-theme-ui.png" alt="with-material-theme-ui.png"/></p>
+        <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-HTML.png" alt="with-HTML.png"/></p>
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>2.3:</p>
+      <ul>
+        <li>Add support for HTML/XML</li>
+      </ul>
+      <p>2.2:</p>
+      <ul>
+        <li>Add support for C#</li>
+      </ul>
+      <p>2.1:</p>
+      <ul>
+        <li>New identifiable colors</li>
+      </ul>
+      <p>2.0:</p>
+      <ul>
+        <li>Rainbowify brackets more faster ! </li>
+      </ul>
       <p>1.1:</p>
       <ul>
         <li>Support IntelliJ IDEA based IDEs version 14 and above</li>
@@ -28,24 +49,27 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <annotator language="Clojure" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="JAVA" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="kotlin" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Python" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Haskell" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Agda" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="RUST" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+        <annotator language="Clojure" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="JAVA" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="kotlin" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Python" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Haskell" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Agda" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="RUST" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="JavaScript"
-                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Erlang" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Scala" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="go" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Groovy" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="ruby" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="Elixir" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Erlang" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Scala" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="go" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Groovy" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="ruby" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Elixir" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="ObjectiveC"
-                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
-        <annotator language="PHP" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowHighliter"/>
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="PHP" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="C#" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="HTML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="XML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
     </extensions>
 
     <application-components>
