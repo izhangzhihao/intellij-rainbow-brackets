@@ -16,7 +16,7 @@ class RainbowBrackets : Annotator {
     private val roundBrackets = arrayOf("(", ")")
     private val squigglyBrackets = arrayOf("{", "}")
     private val squareBrackets = arrayOf("[", "]")
-    private val angleBrackets = arrayOf("<", ">", "</")
+    private val angleBrackets = arrayOf("<", ">", "</", "/>")
 
     private fun getAttributesColor(level: Int, bracket: String): Color {
         return when (bracket) {
