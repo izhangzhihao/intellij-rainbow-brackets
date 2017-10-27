@@ -7,7 +7,7 @@ before_install:
 - chmod +x gradlew
 
 script:
-- ./gradlew buildPlugin --console=plain
+- ./gradlew publishPlugin --console=plain
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

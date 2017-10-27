@@ -13,6 +13,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>2.3.3:</p>
+      <ul>
+        <li>EAP version for Rider 2017.3 (C# support)</li>
+      </ul>
       <p>2.3:</p>
       <ul>
         <li>Add support for HTML/XML</li>
@@ -41,11 +45,12 @@
     </change-notes>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-    <idea-version since-build="172"/>
+    <idea-version since-build="173"/>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
          on how to target different products -->
     <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.rider</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
