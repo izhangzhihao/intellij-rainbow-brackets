@@ -13,6 +13,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>2.4:</p>
+      <ul>
+        <li>Add support for SQL</li>
+      </ul>
       <p>2.3:</p>
       <ul>
         <li>Add support for HTML/XML</li>
