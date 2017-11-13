@@ -13,6 +13,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>2.4:</p>
+      <ul>
+        <li>Add support for SQL</li>
+      </ul>
       <p>2.3:</p>
       <ul>
         <li>Add support for HTML/XML</li>
@@ -70,6 +74,7 @@
         <annotator language="C#" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="HTML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="XML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="SQL" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
     </extensions>
 
     <application-components>
