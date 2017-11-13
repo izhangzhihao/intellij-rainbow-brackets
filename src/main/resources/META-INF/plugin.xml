@@ -13,6 +13,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>2.3.4:</p>
+      <ul>
+        <li>Add support for Rider 2017.3 (C# support). NOTE: this plugin ONLY work properly with Rider-2017.3 and above. For more information see here: https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/6</li>
+      </ul>
       <p>2.3.3:</p>
       <ul>
         <li>EAP version for Rider 2017.3 (C# support)</li>
