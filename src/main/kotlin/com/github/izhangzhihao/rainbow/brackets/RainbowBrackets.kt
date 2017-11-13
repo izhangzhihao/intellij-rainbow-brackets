@@ -31,25 +31,13 @@ class RainbowBrackets : Annotator {
         private val squareBrackets = arrayOf("[", "]")
         private val angleBrackets = arrayOf("<", ">", "</", "/>")
 
-        private fun dynamicallySelectColor(level: Int, colors: Array<Color>): Color =
+        private fun dynamicallySelectColor(level: Int, colors: Array<Color>) =
                 colors[level % colors.size]
 
-        private fun containsBrackets(text: String, brackets: Array<String>): Boolean =
+        private fun containsBrackets(text: String, brackets: Array<String>) =
                 brackets.any { text.contains(it) }
 
-        private fun getBracketLevel(psiElement: PsiElement, brackets: Array<String>): Int {
-            var level = 0
-            var eachParent: PsiElement? = psiElement
-            while (eachParent != null) {
-                if (Companion.containsBrackets(eachParent.text, brackets)) {
-                    level++
-                }
-                eachParent = eachParent.parent
-            }
-            return level
-        }
-
-        private fun getAttributesColor(level: Int, bracket: String): Color =
+        private fun getAttributesColor(level: Int, bracket: String) =
                 when (bracket) {
                     in roundBrackets -> dynamicallySelectColor(level, roundBracketsColor)
                     in squigglyBrackets -> dynamicallySelectColor(level, squigglyBracketsColor)
@@ -58,12 +46,10 @@ class RainbowBrackets : Annotator {
                     else -> dynamicallySelectColor(level, roundBracketsColor)
                 }
 
-        private fun getBracketAttributes(level: Int, bracket: String): TextAttributes {
-            val rainbowColor = getAttributesColor(level, bracket)
-            return TextAttributes(rainbowColor, null, null, null, Font.PLAIN)
-        }
+        private fun getBracketAttributes(level: Int, bracket: String) =
+                TextAttributes(getAttributesColor(level, bracket), null, null, null, Font.PLAIN)
 
-        private fun getBracketLevel(element: LeafPsiElement): Int =
+        private fun getBracketLevel(element: LeafPsiElement) =
                 when {
                     element.text in roundBrackets -> getBracketLevel(element, roundBrackets)
                     element.text in squigglyBrackets -> getBracketLevel(element, squigglyBrackets)
@@ -71,5 +57,17 @@ class RainbowBrackets : Annotator {
                     element.text in angleBrackets -> getBracketLevel(element, angleBrackets)
                     else -> 0
                 }
+
+        private fun getBracketLevel(psiElement: PsiElement, brackets: Array<String>): Int {
+            var level = 0
+            var eachParent: PsiElement? = psiElement
+            while (eachParent != null) {
+                if (containsBrackets(eachParent.text, brackets)) {
+                    level++
+                }
+                eachParent = eachParent.parent
+            }
+            return level
+        }
     }
 }
