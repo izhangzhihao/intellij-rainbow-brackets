@@ -59,7 +59,7 @@
         <annotator language="Python" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="Haskell" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="Agda" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
-        <annotator language="RUST" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Rust" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="JavaScript"
                    implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="Erlang" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
