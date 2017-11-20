@@ -3,11 +3,8 @@ language: java
 jdk:
   - oraclejdk8
 
-before_install:
-- chmod +x gradlew
-
 script:
-- ./gradlew publishPlugin --console=plain
+- ./gradlew clean publishPlugin --console=plain
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

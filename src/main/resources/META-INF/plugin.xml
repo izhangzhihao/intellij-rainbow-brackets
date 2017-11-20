@@ -13,6 +13,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>2.5:</p>
+      <ul>
+        <li>Fix Rust support, thanks for https://github.com/fst3a </li>
+      </ul>
       <p>2.4:</p>
       <ul>
         <li>Add support for SQL</li>
