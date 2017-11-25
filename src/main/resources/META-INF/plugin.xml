@@ -4,8 +4,13 @@
     <vendor email="izhangzhihao@hotmail.com" url="https://github.com/izhangzhihao">izhangzhihao</vendor>
 
     <description><![CDATA[
-        <strong>Rainbow Brackets for IntelliJ IDEA-based IDEs</strong>
+        <strong>Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA-based IDEs</strong>
+        <br/>
+        <p>Supported languages:</p>
+        <p>Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, C#, HTML, XML, SQL ...</p>
+        <br/>
         <p>This plugin is also compatible with material-theme-jetbrains-eap</p>
+        <br/>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-scala.png" alt="with-scala"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-kotlin.png" alt="with-kotlin"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-material-theme-ui.png" alt="with-material-theme-ui.png"/></p>
