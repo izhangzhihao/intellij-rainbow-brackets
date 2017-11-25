@@ -2,11 +2,15 @@
 
 ## Rainbow Brackets is a plugin for intelliJ based IDEs.
 
-## Compatible with: 
+## Compatible with
 
 IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, DataGrip, Rider, MPS, Android Studio
 
-## This plugin is also compatible with [material-theme-jetbrains-eap](https://github.com/mallowigi/material-theme-jetbrains-eap).
+## Supported languages
+
+Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, C#, HTML, XML, SQL ...
+
+## This plugin is also compatible with [material-theme-jetbrains-eap](https://github.com/mallowigi/material-theme-jetbrains-eap)
 
 ## Screenshots
 
@@ -28,13 +32,13 @@ IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, D
 
 * and more...
 
-## Install 
+## Install
 
 https://plugins.jetbrains.com/plugin/10080-rainbow-brackets
 
 ## Contribute
 
-* `gradle runIdea`
+* `gradle runIde`
 * `gradle buildPlugin`
 
 ## Acknowledgements
