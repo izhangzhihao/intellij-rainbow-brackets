@@ -4,8 +4,13 @@
     <vendor email="izhangzhihao@hotmail.com" url="https://github.com/izhangzhihao">izhangzhihao</vendor>
 
     <description><![CDATA[
-        <strong>Rainbow Brackets for IntelliJ IDEA-based IDEs</strong>
+        <strong>Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA-based IDEs</strong>
+        <br/>
+        <p>Supported languages:</p>
+        <p>Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, C#, HTML, XML, SQL, Apex language ...</p>
+        <br/>
         <p>This plugin is also compatible with material-theme-jetbrains-eap</p>
+        <br/>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-scala.png" alt="with-scala"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-kotlin.png" alt="with-kotlin"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-material-theme-ui.png" alt="with-material-theme-ui.png"/></p>
@@ -13,6 +18,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>2.6:</p>
+      <ul>
+        <li>Add support for salesforce apex language, thanks for https://github.com/onisuly </li>
+      </ul>
       <p>2.5:</p>
       <ul>
         <li>Fix Rust support, thanks for https://github.com/fst3a </li>
@@ -79,6 +88,9 @@
         <annotator language="HTML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="XML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="SQL" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Apex" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="SalesForce.Apex"
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
     </extensions>
 
     <application-components>
