@@ -80,6 +80,9 @@
         <annotator language="HTML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="XML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="SQL" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="Apex" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+        <annotator language="SalesForce.Apex"
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
     </extensions>
 
     <application-components>
