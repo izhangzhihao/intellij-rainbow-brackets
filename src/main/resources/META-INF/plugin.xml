@@ -7,7 +7,7 @@
         <strong>Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA-based IDEs</strong>
         <br/>
         <p>Supported languages:</p>
-        <p>Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, C#, HTML, XML, SQL ...</p>
+        <p>Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, C#, HTML, XML, SQL, Apex language ...</p>
         <br/>
         <p>This plugin is also compatible with material-theme-jetbrains-eap</p>
         <br/>
@@ -18,6 +18,14 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>2.6:</p>
+      <ul>
+        <li>Add support for salesforce apex language, thanks for https://github.com/onisuly </li>
+      </ul>
+      <p>2.5:</p>
+      <ul>
+        <li>Fix Rust support, thanks for https://github.com/fst3a </li>
+      </ul>
       <p>2.4:</p>
       <ul>
         <li>Add support for SQL</li>
