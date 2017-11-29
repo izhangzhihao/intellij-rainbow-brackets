@@ -16,7 +16,7 @@ import java.awt.Font
 class RainbowBrackets : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (settings.isRainbowEnabled && element is LeafPsiElement && isHTMLEnabled(element)) {
+        if (settings.isRainbowEnabled && element is LeafPsiElement) {
             val level = getBracketLevel(element)
             if (level > 0) {
                 val attrs = Companion.getBracketAttributes(level, element.text)
@@ -71,14 +71,6 @@ class RainbowBrackets : Annotator {
                 eachParent = eachParent.parent
             }
             return level
-        }
-
-        private fun isHTMLEnabled(element: LeafPsiElement): Boolean {
-            return if (element.language.id == "HTML" || element.language.id == "XML") {
-                settings.isRainbowHTMLEnabled
-            } else {
-                true
-            }
         }
     }
 }
