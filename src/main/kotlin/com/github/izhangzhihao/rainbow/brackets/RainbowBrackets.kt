@@ -4,6 +4,7 @@ import com.github.izhangzhihao.rainbow.brackets.RainbowColors.angleBracketsColor
 import com.github.izhangzhihao.rainbow.brackets.RainbowColors.roundBracketsColor
 import com.github.izhangzhihao.rainbow.brackets.RainbowColors.squareBracketsColor
 import com.github.izhangzhihao.rainbow.brackets.RainbowColors.squigglyBracketsColor
+import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.openapi.editor.markup.TextAttributes
@@ -15,7 +16,7 @@ import java.awt.Font
 class RainbowBrackets : Annotator {
 
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-        if (element is LeafPsiElement) {
+        if (settings.isRainbowEnabled && element is LeafPsiElement && isHTMLEnabled(element)) {
             val level = getBracketLevel(element)
             if (level > 0) {
                 val attrs = Companion.getBracketAttributes(level, element.text)
@@ -25,6 +26,8 @@ class RainbowBrackets : Annotator {
     }
 
     companion object {
+
+        private val settings = RainbowSettings.Companion.instance
 
         private val roundBrackets = arrayOf("(", ")")
         private val squigglyBrackets = arrayOf("{", "}")
@@ -68,6 +71,14 @@ class RainbowBrackets : Annotator {
                 eachParent = eachParent.parent
             }
             return level
+        }
+
+        private fun isHTMLEnabled(element: LeafPsiElement): Boolean {
+            return if (element.language.id == "HTML" || element.language.id == "XML") {
+                settings.isRainbowHTMLEnabled
+            } else {
+                true
+            }
         }
     }
 }

@@ -91,6 +91,10 @@
         <annotator language="Apex" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="SalesForce.Apex"
                    implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
+
+        <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
+        <applicationService serviceInterface="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"
+                            serviceImplementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"/>
     </extensions>
 
     <application-components>
