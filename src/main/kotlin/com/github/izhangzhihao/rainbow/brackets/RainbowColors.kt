@@ -21,8 +21,8 @@ object RainbowColors {
 
     val squigglyBracketsColor = arrayOf(
             Color(25, 118, 210),
-            Color(150, 80, 150),
             Color(205, 220, 57),
+            Color(150, 80, 150),
             Color(255, 152, 99)
     )
 
