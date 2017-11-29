@@ -16,12 +16,12 @@
         <properties/>
         <border type="etched" title="Settings"/>
         <children>
-          <component id="2d399" class="javax.swing.JCheckBox" binding="rainbowHTML">
+          <component id="2d399" class="javax.swing.JCheckBox" binding="enableRainbow">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Enable rainbow brackets for HTML/XML"/>
+              <text value="Enable rainbow brackets for all supported languages"/>
             </properties>
           </component>
           <hspacer id="49e34">
@@ -29,12 +29,12 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <component id="dbb19" class="javax.swing.JCheckBox" binding="enableRainbow">
+          <component id="dbb19" class="javax.swing.JCheckBox" binding="rainbowHTML">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Enable rainbow brackets for all supported languages"/>
+              <text value="Enable rainbow brackets for HTML/XML"/>
             </properties>
           </component>
         </children>
