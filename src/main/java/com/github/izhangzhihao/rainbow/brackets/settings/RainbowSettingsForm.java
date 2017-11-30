@@ -9,43 +9,75 @@ public class RainbowSettingsForm {
     private JPanel panel;
     private JPanel appearancePanel;
     private JCheckBox enableRainbow;
-    private JCheckBox rainbowHTML;
+    private JCheckBox enableRainbowHTML;
     private JCheckBox enableRainbowBracketsForAnyLanguages;
+    private JCheckBox enableRainbowRoundBrackets;
+    private JCheckBox enableRainbowSquigglyBrackets;
+    private JCheckBox enableRainbowSquareBrackets;
+    private JCheckBox enableRainbowAngleBrackets;
 
     private final RainbowSettings settings;
 
     public RainbowSettingsForm() {
-        rainbowHTML.setSelected(true);
-        enableRainbow.setSelected(true);
-        enableRainbowBracketsForAnyLanguages.setSelected(false);
         settings = RainbowSettings.Companion.getInstance();
+        enableRainbowHTML.setSelected(settings.isRainbowHTMLEnabled());
+        enableRainbow.setSelected(settings.isRainbowEnabled());
+        enableRainbowBracketsForAnyLanguages.setSelected(settings.isEnableRainbowBracketsForAnyLanguages());
+        enableRainbowRoundBrackets.setSelected(settings.isEnableRainbowRoundBrackets());
+        enableRainbowSquigglyBrackets.setSelected(settings.isEnableRainbowSquigglyBrackets());
+        enableRainbowSquareBrackets.setSelected(settings.isEnableRainbowSquareBrackets());
+        enableRainbowAngleBrackets.setSelected(settings.isEnableRainbowAngleBrackets());
     }
 
     public JComponent getComponent() {
         return panel;
     }
 
-    public boolean isRainbowHTML() {
-        return rainbowHTML.isSelected();
+    public boolean isRainbowHTMLEnabled() {
+        return enableRainbowHTML.isSelected();
     }
 
     public boolean isRainbowEnabled() {
         return enableRainbow.isSelected();
     }
 
-    public boolean getEnableRainbowBracketsForAnyLanguages() {
+    public boolean isRainbowBracketsForAnyLanguagesEnabled() {
         return enableRainbowBracketsForAnyLanguages.isSelected();
     }
 
+    public boolean isRainbowRoundBracketsEnabled() {
+        return enableRainbowRoundBrackets.isSelected();
+    }
+
+    public boolean isRainbowSquigglyBracketsEnabled() {
+        return enableRainbowSquigglyBrackets.isSelected();
+    }
+
+    public boolean isRainbowSquareBracketsEnabled() {
+        return enableRainbowSquareBrackets.isSelected();
+    }
+
+    public boolean isRainbowAngleBracketsEnabled() {
+        return enableRainbowAngleBrackets.isSelected();
+    }
+
     public boolean isModified() {
-        return rainbowHTML.isSelected() != settings.isRainbowEnabled()
-                || enableRainbow.isSelected() != settings.isRainbowHTMLEnabled()
-                || enableRainbowBracketsForAnyLanguages.isSelected() != settings.isEnableRainbowBracketsForAnyLanguages();
+        return isRainbowHTMLEnabled() != settings.isRainbowEnabled()
+                || isRainbowEnabled() != settings.isRainbowHTMLEnabled()
+                || isRainbowBracketsForAnyLanguagesEnabled() != settings.isEnableRainbowBracketsForAnyLanguages()
+                || isRainbowAngleBracketsEnabled() != settings.isEnableRainbowAngleBrackets()
+                || isRainbowRoundBracketsEnabled() != settings.isEnableRainbowRoundBrackets()
+                || isRainbowSquigglyBracketsEnabled() != settings.isEnableRainbowSquigglyBrackets()
+                || isRainbowSquareBracketsEnabled() != settings.isEnableRainbowSquareBrackets();
     }
 
     public void reset() {
         enableRainbow.setSelected(settings.isRainbowEnabled());
-        rainbowHTML.setSelected(settings.isRainbowHTMLEnabled());
+        enableRainbowHTML.setSelected(settings.isRainbowHTMLEnabled());
         enableRainbowBracketsForAnyLanguages.setSelected(settings.isEnableRainbowBracketsForAnyLanguages());
+        enableRainbowRoundBrackets.setSelected(settings.isEnableRainbowRoundBrackets());
+        enableRainbowAngleBrackets.setSelected(settings.isEnableRainbowAngleBrackets());
+        enableRainbowSquigglyBrackets.setSelected(settings.isEnableRainbowSquigglyBrackets());
+        enableRainbowSquareBrackets.setSelected(settings.isEnableRainbowSquareBrackets());
     }
 }

@@ -53,13 +53,11 @@ class RainbowBrackets : Annotator {
                 TextAttributes(getAttributesColor(level, bracket), null, null, null, Font.PLAIN)
 
         private fun getBracketLevel(element: LeafPsiElement) =
-                when {
-                    element.text in roundBrackets -> getBracketLevel(element, roundBrackets)
-                    element.text in squigglyBrackets -> getBracketLevel(element, squigglyBrackets)
-                    element.text in squareBrackets -> getBracketLevel(element, squareBrackets)
-                    element.text in angleBrackets -> getBracketLevel(element, angleBrackets)
-                    else -> 0
-                }
+                if (settings.isEnableRainbowRoundBrackets && element.text in roundBrackets) getBracketLevel(element, roundBrackets)
+                else if (settings.isEnableRainbowSquigglyBrackets && element.text in squigglyBrackets) getBracketLevel(element, squigglyBrackets)
+                else if (settings.isEnableRainbowSquareBrackets && element.text in squareBrackets) getBracketLevel(element, squareBrackets)
+                else if (settings.isEnableRainbowAngleBrackets && element.text in angleBrackets) getBracketLevel(element, angleBrackets)
+                else 0
 
         private fun getBracketLevel(psiElement: PsiElement, brackets: Array<String>): Int {
             var level = 0

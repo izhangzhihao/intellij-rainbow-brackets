@@ -19,6 +19,10 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var isRainbowEnabled = true
     var isRainbowHTMLEnabled = true
     var isEnableRainbowBracketsForAnyLanguages = false
+    var isEnableRainbowRoundBrackets = true
+    var isEnableRainbowSquigglyBrackets = true
+    var isEnableRainbowSquareBrackets = true
+    var isEnableRainbowAngleBrackets = true
 
     @Nullable
     override fun getState() = this
@@ -37,15 +41,13 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
         val instance: RainbowSettings
             get() = getService(RainbowSettings::class.java)
 
-        private val rainbowBrackets = RainbowBrackets()
-
         private fun registerAnnotatorForAnyLanguages() {
-            Language.getRegisteredLanguages().forEach { lang -> LanguageAnnotators.INSTANCE.addExplicitExtension(lang, rainbowBrackets) }
+            Language.getRegisteredLanguages().forEach { lang -> LanguageAnnotators.INSTANCE.addExplicitExtension(lang, RainbowBrackets()) }
         }
 
         private fun disableHTMLSupport() {
-            LanguageAnnotators.INSTANCE.removeExplicitExtension(Language.findLanguageByID("XML")!!, rainbowBrackets)
-            LanguageAnnotators.INSTANCE.removeExplicitExtension(Language.findLanguageByID("HTML")!!, rainbowBrackets)
+            LanguageAnnotators.INSTANCE.removeExplicitExtension(Language.findLanguageByID("XML")!!, RainbowBrackets())
+            LanguageAnnotators.INSTANCE.removeExplicitExtension(Language.findLanguageByID("HTML")!!, RainbowBrackets())
         }
     }
 }

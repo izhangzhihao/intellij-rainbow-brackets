@@ -21,8 +21,12 @@ class RainbowConfigurable : Configurable {
     override fun apply() {
         val settings = RainbowSettings.Companion.instance
         settings.isRainbowEnabled = settingsForm?.isRainbowEnabled ?: true
-        settings.isRainbowHTMLEnabled = settingsForm?.isRainbowHTML ?: true
-        settings.isEnableRainbowBracketsForAnyLanguages = settingsForm?.enableRainbowBracketsForAnyLanguages ?: false
+        settings.isRainbowHTMLEnabled = settingsForm?.isRainbowHTMLEnabled ?: true
+        settings.isEnableRainbowBracketsForAnyLanguages = settingsForm?.isRainbowBracketsForAnyLanguagesEnabled ?: false
+        settings.isEnableRainbowRoundBrackets = settingsForm?.isRainbowRoundBracketsEnabled ?: true
+        settings.isEnableRainbowAngleBrackets = settingsForm?.isRainbowAngleBracketsEnabled ?: true
+        settings.isEnableRainbowSquigglyBrackets = settingsForm?.isRainbowSquigglyBracketsEnabled ?: true
+        settings.isEnableRainbowSquareBrackets = settingsForm?.isRainbowSquareBracketsEnabled ?: true
     }
 
     override fun reset() {
