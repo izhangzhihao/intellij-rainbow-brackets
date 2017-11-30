@@ -17,7 +17,6 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
      * default value
      */
     var isRainbowEnabled = true
-    var isRainbowHTMLEnabled = true
     var isEnableRainbowBracketsForAnyLanguages = false
     var isEnableRainbowRoundBrackets = true
     var isEnableRainbowSquigglyBrackets = true
@@ -32,9 +31,6 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
         if (state.isEnableRainbowBracketsForAnyLanguages) {
             registerAnnotatorForAnyLanguages()
         }
-        if (state.isRainbowHTMLEnabled) {
-            enableHTMLSupport()
-        }
     }
 
     companion object {
@@ -43,11 +39,6 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
 
         private fun registerAnnotatorForAnyLanguages() {
             Language.getRegisteredLanguages().forEach { lang -> LanguageAnnotators.INSTANCE.addExplicitExtension(lang, RainbowBrackets()) }
-        }
-
-        private fun enableHTMLSupport() {
-            LanguageAnnotators.INSTANCE.addExplicitExtension(Language.findLanguageByID("XML")!!, RainbowBrackets())
-            LanguageAnnotators.INSTANCE.addExplicitExtension(Language.findLanguageByID("HTML")!!, RainbowBrackets())
         }
     }
 }
