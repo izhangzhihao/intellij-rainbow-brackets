@@ -27,7 +27,7 @@ class RainbowBrackets : Annotator {
 
     companion object {
 
-        private val settings = RainbowSettings.Companion.instance
+        private val settings = RainbowSettings.instance
 
         private val roundBrackets = arrayOf("(", ")")
         private val squigglyBrackets = arrayOf("{", "}")

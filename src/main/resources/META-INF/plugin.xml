@@ -22,7 +22,7 @@
       <ul>
         <li>Add new setting page to control what/how to colorify:</li>
         <li>1. Add option to Enable/disable rainbow</li>
-        <li>2. Add option to Enable rainbow for any unsupport languages</li>
+        <li>2. Add option to Enable rainbow for any unsupported languages</li>
         <li>3. Add option to Enable/disable rainbow for HTML/XML</li>
         <li>4. Add option to Enable/disable rainbow for round brackets</li>
         <li>5. Add option to Enable/disable rainbow for squiggly brackets</li>

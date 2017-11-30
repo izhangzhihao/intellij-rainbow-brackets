@@ -19,7 +19,7 @@ class RainbowConfigurable : Configurable {
 
     @Throws(ConfigurationException::class)
     override fun apply() {
-        val settings = RainbowSettings.Companion.instance
+        val settings = RainbowSettings.instance
         settings.isRainbowEnabled = settingsForm?.isRainbowEnabled ?: true
         settings.isRainbowHTMLEnabled = settingsForm?.isRainbowHTMLEnabled ?: true
         settings.isEnableRainbowBracketsForAnyLanguages = settingsForm?.isRainbowBracketsForAnyLanguagesEnabled ?: false
