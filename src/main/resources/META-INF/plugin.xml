@@ -18,6 +18,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>3.0-RC2:</p>
+      <ul>
+        <li>Remove option for enable/disable rainbow for HTML/XML</li>
+      </ul>
       <p>3.0-RC1:</p>
       <ul>
         <li>Add new setting page to control what/how to colorify:</li>
