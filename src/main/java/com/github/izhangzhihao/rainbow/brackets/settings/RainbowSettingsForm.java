@@ -2,9 +2,6 @@ package com.github.izhangzhihao.rainbow.brackets.settings;
 
 import javax.swing.*;
 
-/**
- * @author izhangzhihao
- */
 public class RainbowSettingsForm {
     private JPanel panel;
     private JPanel appearancePanel;
