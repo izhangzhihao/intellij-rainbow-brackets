@@ -28,13 +28,13 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     override fun getState() = this
 
     override fun loadState(state: RainbowSettings) {
+        copyBean(state, this)
         if (state.isEnableRainbowBracketsForAnyLanguages) {
             registerAnnotatorForAnyLanguages()
         }
-        if (!state.isRainbowHTMLEnabled) {
-            disableHTMLSupport()
+        if (state.isRainbowHTMLEnabled) {
+            enableHTMLSupport()
         }
-        copyBean(state, this)
     }
 
     companion object {
@@ -45,9 +45,9 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
             Language.getRegisteredLanguages().forEach { lang -> LanguageAnnotators.INSTANCE.addExplicitExtension(lang, RainbowBrackets()) }
         }
 
-        private fun disableHTMLSupport() {
-            LanguageAnnotators.INSTANCE.removeExplicitExtension(Language.findLanguageByID("XML")!!, RainbowBrackets())
-            LanguageAnnotators.INSTANCE.removeExplicitExtension(Language.findLanguageByID("HTML")!!, RainbowBrackets())
+        private fun enableHTMLSupport() {
+            LanguageAnnotators.INSTANCE.addExplicitExtension(Language.findLanguageByID("XML")!!, RainbowBrackets())
+            LanguageAnnotators.INSTANCE.addExplicitExtension(Language.findLanguageByID("HTML")!!, RainbowBrackets())
         }
     }
 }
