@@ -6,7 +6,6 @@ public class RainbowSettingsForm {
     private JPanel panel;
     private JPanel appearancePanel;
     private JCheckBox enableRainbow;
-    private JCheckBox enableRainbowBracketsForAnyLanguages;
     private JCheckBox enableRainbowRoundBrackets;
     private JCheckBox enableRainbowSquigglyBrackets;
     private JCheckBox enableRainbowSquareBrackets;
@@ -17,7 +16,6 @@ public class RainbowSettingsForm {
     public RainbowSettingsForm() {
         settings = RainbowSettings.Companion.getInstance();
         enableRainbow.setSelected(settings.isRainbowEnabled());
-        enableRainbowBracketsForAnyLanguages.setSelected(settings.isEnableRainbowBracketsForAnyLanguages());
         enableRainbowRoundBrackets.setSelected(settings.isEnableRainbowRoundBrackets());
         enableRainbowSquigglyBrackets.setSelected(settings.isEnableRainbowSquigglyBrackets());
         enableRainbowSquareBrackets.setSelected(settings.isEnableRainbowSquareBrackets());
@@ -30,10 +28,6 @@ public class RainbowSettingsForm {
 
     public boolean isRainbowEnabled() {
         return enableRainbow.isSelected();
-    }
-
-    public boolean isRainbowBracketsForAnyLanguagesEnabled() {
-        return enableRainbowBracketsForAnyLanguages.isSelected();
     }
 
     public boolean isRainbowRoundBracketsEnabled() {
@@ -53,7 +47,7 @@ public class RainbowSettingsForm {
     }
 
     public boolean isModified() {
-        return isRainbowBracketsForAnyLanguagesEnabled() != settings.isEnableRainbowBracketsForAnyLanguages()
+        return isRainbowEnabled() != settings.isRainbowEnabled()
                 || isRainbowAngleBracketsEnabled() != settings.isEnableRainbowAngleBrackets()
                 || isRainbowRoundBracketsEnabled() != settings.isEnableRainbowRoundBrackets()
                 || isRainbowSquigglyBracketsEnabled() != settings.isEnableRainbowSquigglyBrackets()
@@ -62,7 +56,6 @@ public class RainbowSettingsForm {
 
     public void reset() {
         enableRainbow.setSelected(settings.isRainbowEnabled());
-        enableRainbowBracketsForAnyLanguages.setSelected(settings.isEnableRainbowBracketsForAnyLanguages());
         enableRainbowRoundBrackets.setSelected(settings.isEnableRainbowRoundBrackets());
         enableRainbowAngleBrackets.setSelected(settings.isEnableRainbowAngleBrackets());
         enableRainbowSquigglyBrackets.setSelected(settings.isEnableRainbowSquigglyBrackets());

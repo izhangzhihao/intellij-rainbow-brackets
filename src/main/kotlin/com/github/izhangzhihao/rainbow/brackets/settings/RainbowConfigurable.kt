@@ -21,7 +21,6 @@ class RainbowConfigurable : Configurable {
     override fun apply() {
         val settings = RainbowSettings.instance
         settings.isRainbowEnabled = settingsForm?.isRainbowEnabled ?: true
-        settings.isEnableRainbowBracketsForAnyLanguages = settingsForm?.isRainbowBracketsForAnyLanguagesEnabled ?: false
         settings.isEnableRainbowRoundBrackets = settingsForm?.isRainbowRoundBracketsEnabled ?: true
         settings.isEnableRainbowAngleBrackets = settingsForm?.isRainbowAngleBracketsEnabled ?: true
         settings.isEnableRainbowSquigglyBrackets = settingsForm?.isRainbowSquigglyBracketsEnabled ?: true

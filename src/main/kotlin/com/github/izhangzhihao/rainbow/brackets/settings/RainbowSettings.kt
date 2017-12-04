@@ -1,8 +1,5 @@
 package com.github.izhangzhihao.rainbow.brackets.settings
 
-import com.github.izhangzhihao.rainbow.brackets.RainbowBrackets
-import com.intellij.lang.Language
-import com.intellij.lang.LanguageAnnotators
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.ServiceManager.getService
 import com.intellij.openapi.components.State
@@ -17,7 +14,6 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
      * default value
      */
     var isRainbowEnabled = true
-    var isEnableRainbowBracketsForAnyLanguages = false
     var isEnableRainbowRoundBrackets = true
     var isEnableRainbowSquigglyBrackets = true
     var isEnableRainbowSquareBrackets = true
@@ -28,17 +24,10 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
 
     override fun loadState(state: RainbowSettings) {
         copyBean(state, this)
-        if (state.isEnableRainbowBracketsForAnyLanguages) {
-            registerAnnotatorForAnyLanguages()
-        }
     }
 
     companion object {
         val instance: RainbowSettings
             get() = getService(RainbowSettings::class.java)
-
-        private fun registerAnnotatorForAnyLanguages() {
-            Language.getRegisteredLanguages().forEach { lang -> LanguageAnnotators.INSTANCE.addExplicitExtension(lang, RainbowBrackets()) }
-        }
     }
 }
