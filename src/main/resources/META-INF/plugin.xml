@@ -18,6 +18,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>3.0-RC5:</p>
+      <ul>
+        <li>Adjust colors for default light theme. Thanks to https://github.com/YiiGuxing</li>
+      </ul>
       <p>3.0-RC4:</p>
       <ul>
         <li>Add specific implement for java/kotlin/scala</li>
