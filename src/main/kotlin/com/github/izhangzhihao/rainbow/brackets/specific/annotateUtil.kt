@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets.specific
 
+import com.github.izhangzhihao.rainbow.brackets.RainbowUtils.dynamicallySelectColor
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
@@ -9,9 +10,6 @@ import com.intellij.psi.tree.IElementType
 import java.awt.Color
 import java.awt.Font
 
-/**
- * Take from https://github.com/ArtsiomCh/NestedBracketsColorer
- */
 fun annotateUtil(element: PsiElement, holder: AnnotationHolder,
                  LEFT: IElementType, RIGHT: IElementType, color: Array<Color>) {
 
@@ -42,14 +40,14 @@ fun annotateUtil(element: PsiElement, holder: AnnotationHolder,
         return level
     }
 
-    fun getColor(level: Int) = color[(level - 1) % color.size]
+    fun getColor(level: Int) = dynamicallySelectColor(level,color)
 
     if (element is LeafPsiElement) {
         val level = when (element.elementType) {
             LEFT, RIGHT -> getBracketLevel(element)
             else -> 0
         }
-        if (level > 1) {
+        if (level > 0) {
             holder.createInfoAnnotation(element as PsiElement, null).enforcedTextAttributes =
                     TextAttributes(getColor(level), null, null, null, Font.PLAIN)
         }

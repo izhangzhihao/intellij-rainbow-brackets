@@ -40,8 +40,7 @@ allprojects {
     }
 
     dependencies {
-        compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
-        compileOnly "org.jetbrains.kotlin:kotlin-runtime:$kotlinVersion"
+        compile "org.jetbrains.kotlin:kotlin-runtime:$kotlinVersion"
         compileOnly "org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion"
     }
 

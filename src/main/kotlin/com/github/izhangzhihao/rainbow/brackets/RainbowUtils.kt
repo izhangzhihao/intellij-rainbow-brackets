@@ -16,7 +16,7 @@ object RainbowUtils {
     private val squareBrackets = arrayOf("[", "]")
     private val angleBrackets = arrayOf("<", ">", "</", "/>")
 
-    private fun dynamicallySelectColor(level: Int, colors: Array<Color>) =
+    fun dynamicallySelectColor(level: Int, colors: Array<Color>) =
             colors[level % colors.size]
 
     private fun containsBrackets(text: String, brackets: Array<String>) =

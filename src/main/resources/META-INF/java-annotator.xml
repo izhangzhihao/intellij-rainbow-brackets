@@ -1,0 +1,5 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+        <annotator language="JAVA" implementationClass="com.github.izhangzhihao.rainbow.brackets.specific.RainbowJava"/>
+    </extensions>
+</idea-plugin>

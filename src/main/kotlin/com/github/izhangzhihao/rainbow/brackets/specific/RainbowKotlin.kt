@@ -19,7 +19,7 @@ import org.jetbrains.kotlin.lexer.KtTokens.*
  * LPAR (
  * RPAR )
  */
-class RainbowKotiln : Annotator {
+class RainbowKotlin : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (settings.isRainbowEnabled) {
             if (settings.isEnableRainbowRoundBrackets) {
