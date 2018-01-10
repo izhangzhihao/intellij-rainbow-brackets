@@ -83,6 +83,9 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <annotator language="Scala"
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.specific.RainbowScala"/>
+
         <annotator language="Clojure" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="Python" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="Haskell" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
@@ -91,7 +94,6 @@
         <annotator language="JavaScript"
                    implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="Erlang" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
-        <annotator language="Scala" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="go" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="Groovy" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="ruby" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
