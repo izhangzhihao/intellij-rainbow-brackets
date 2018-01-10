@@ -18,6 +18,12 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>3.0-RC4:</p>
+      <ul>
+        <li>Add specific implement for java/kotlin/scala</li>
+        <li>So now in java/kotlin/scala same level brackets should have same color.</li>
+        <li>Fix: #19:Kotlin expression inside string bug</li>
+      </ul>
       <p>3.0-RC2:</p>
       <ul>
         <li>Remove option for enable/disable rainbow for HTML/XML</li>
