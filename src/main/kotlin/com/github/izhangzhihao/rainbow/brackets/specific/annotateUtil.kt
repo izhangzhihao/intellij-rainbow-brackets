@@ -11,16 +11,16 @@ import java.awt.Color
 import java.awt.Font
 
 fun annotateUtil(element: PsiElement, holder: AnnotationHolder,
-                 LEFT: IElementType, RIGHT: IElementType, color: Array<Color>) {
+                 LEFT: String, RIGHT: String, color: Array<Color>) {
 
     fun getBracketLevel(element: LeafPsiElement): Int {
-        var level = if (element.elementType == RIGHT) 1 else 0
+        var level = if (element.elementType.toString() == RIGHT) 1 else 0
 
         tailrec fun iterateParents(currentNode: PsiElement) {
 
             tailrec fun iterateChildren(currentChild: PsiElement) {
                 if (currentChild is LeafPsiElement) {
-                    when (currentChild.elementType) {
+                    when (currentChild.elementType.toString()) {
                         LEFT -> level++
                         RIGHT -> level--
                     }
@@ -40,16 +40,21 @@ fun annotateUtil(element: PsiElement, holder: AnnotationHolder,
         return level
     }
 
-    fun getColor(level: Int) = dynamicallySelectColor(level,color)
+    fun getColor(level: Int, color: Array<Color>) = dynamicallySelectColor(level, color)
 
     if (element is LeafPsiElement) {
-        val level = when (element.elementType) {
+        val level = when (element.elementType.toString()) {
             LEFT, RIGHT -> getBracketLevel(element)
             else -> 0
         }
         if (level > 0) {
             holder.createInfoAnnotation(element as PsiElement, null).enforcedTextAttributes =
-                    TextAttributes(getColor(level), null, null, null, Font.PLAIN)
+                    TextAttributes(getColor(level, color), null, null, null, Font.PLAIN)
         }
     }
+}
+
+fun annotateUtil(element: PsiElement, holder: AnnotationHolder,
+                 LEFT: IElementType, RIGHT: IElementType, color: Array<Color>) {
+    annotateUtil(element, holder, LEFT.toString(), RIGHT.toString(), color)
 }
