@@ -78,12 +78,12 @@
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
          on how to target different products -->
     <depends>com.intellij.modules.lang</depends>
+    <depends optional="true">com.intellij.modules.java</depends>
+    <depends optional="true">org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <annotator language="Clojure" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
-        <annotator language="JAVA" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
-        <annotator language="kotlin" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="Python" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="Haskell" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="Agda" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
