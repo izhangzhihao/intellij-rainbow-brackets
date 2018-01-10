@@ -11,18 +11,18 @@ object RainbowUtils {
 
     val settings = RainbowSettings.instance
 
-    val roundBrackets = arrayOf("(", ")")
-    val squigglyBrackets = arrayOf("{", "}")
-    val squareBrackets = arrayOf("[", "]")
-    val angleBrackets = arrayOf("<", ">", "</", "/>")
+    private val roundBrackets = arrayOf("(", ")")
+    private val squigglyBrackets = arrayOf("{", "}")
+    private val squareBrackets = arrayOf("[", "]")
+    private val angleBrackets = arrayOf("<", ">", "</", "/>")
 
-    fun dynamicallySelectColor(level: Int, colors: Array<Color>) =
+    private fun dynamicallySelectColor(level: Int, colors: Array<Color>) =
             colors[level % colors.size]
 
-    fun containsBrackets(text: String, brackets: Array<String>) =
+    private fun containsBrackets(text: String, brackets: Array<String>) =
             brackets.any { text.contains(it) }
 
-    fun getAttributesColor(level: Int, bracket: String) =
+    private fun getAttributesColor(level: Int, bracket: String) =
             when (bracket) {
                 in roundBrackets -> dynamicallySelectColor(level, RainbowColors.roundBracketsColor)
                 in squigglyBrackets -> dynamicallySelectColor(level, RainbowColors.squigglyBracketsColor)
