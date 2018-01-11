@@ -11,8 +11,6 @@ IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, D
 
 Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, C#, HTML, XML, SQL, Apex language ...
 
-## This plugin is also compatible with [material-theme-jetbrains-eap](https://github.com/mallowigi/material-theme-jetbrains-eap)
-
 ## Screenshots
 
 * with material-theme-jetbrains-eap
