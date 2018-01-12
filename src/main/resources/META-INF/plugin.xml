@@ -18,6 +18,20 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>3.0</p>
+      <ul>
+        <li>Version 3.0 has been released, with all RC features & bug fix</li>
+        <li>Fix #23 Inconsistent colors</li>
+        <li>Fix #21 Wrong bracket colorization based on spaces</li>
+        <li>Fix #19 Kotlin expression inside string bug</li>
+        <li>Fix #12 Symbol less ">" is considered as a bracket even without leading "<"</li>
+        <li>Fix #11 Same level brackets should have same color</li>
+        <li>And much more!</li>
+        <li>Add specific implement for java/kotlin/scala/javascript</li>
+        <li>Add example to help people add specific implementation for specific language! </li>
+        <li>Check out README.md on github https://github.com/izhangzhihao/intellij-rainbow-brackets</li>
+      </ul>
+      <br/>
       <p>3.0-RC5:</p>
       <ul>
         <li>Adjust colors for default light theme. Thanks to https://github.com/YiiGuxing</li>
