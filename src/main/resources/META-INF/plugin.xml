@@ -104,6 +104,7 @@
     <depends>com.intellij.modules.lang</depends>
     <depends optional="true" config-file="java-annotator.xml">com.intellij.modules.java</depends>
     <depends optional="true" config-file="kotlin-annotator.xml">org.jetbrains.kotlin</depends>
+    <depends optional="true" config-file="php-annotator.xml">org.jetbrains.php</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
@@ -123,7 +124,6 @@
         <annotator language="Elixir" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="ObjectiveC"
                    implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
-        <annotator language="PHP" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="C#" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="HTML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>
         <annotator language="XML" implementationClass="com.github.izhangzhihao.rainbow.brackets.RainbowBrackets"/>

@@ -62,7 +62,7 @@ object RainbowUtils {
         return level
     }
 
-    private val specLangList = arrayOf("JAVA", "kotlin", "Scala", "JavaScript")
+    private val specLangList = arrayOf("JAVA", "kotlin", "Scala", "JavaScript", "PHP")
 
     fun registerAnnotatorForAllLanguages() {
         Language.getRegisteredLanguages()

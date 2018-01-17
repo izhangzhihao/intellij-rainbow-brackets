@@ -1,0 +1,5 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+        <annotator language="PHP" implementationClass="com.github.izhangzhihao.rainbow.brackets.specific.RainbowPHP"/>
+    </extensions>
+</idea-plugin>
