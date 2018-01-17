@@ -18,6 +18,11 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>3.1</p>
+      <ul>
+        <li>Add specific implement for PHP language</li>
+      </ul>
+      <br/>
       <p>3.0</p>
       <ul>
         <li>Version 3.0 has been released, with all RC features & bug fix</li>
