@@ -42,6 +42,7 @@ allprojects {
     dependencies {
         compile "org.jetbrains.kotlin:kotlin-runtime:$kotlinVersion"
         compileOnly "org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion"
+        //compile fileTree(dir: 'lib', include: ['*.jar'])
     }
 
     publishPlugin {
