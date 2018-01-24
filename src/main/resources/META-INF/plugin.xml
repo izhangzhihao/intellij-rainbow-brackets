@@ -107,7 +107,7 @@
     <depends>com.intellij.modules.lang</depends>
     <depends optional="true" config-file="java-annotator.xml">com.intellij.modules.java</depends>
     <depends optional="true" config-file="kotlin-annotator.xml">org.jetbrains.kotlin</depends>
-    <depends optional="true" config-file="php-annotator.xml">org.jetbrains.php</depends>
+    <depends optional="true" config-file="php-annotator.xml">com.jetbrains.php</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
