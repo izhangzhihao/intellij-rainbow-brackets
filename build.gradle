@@ -1,6 +1,9 @@
 buildscript {
     repositories {
-        mavenCentral()
+        mavenLocal()
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
     }
 
     dependencies {
@@ -10,6 +13,13 @@ buildscript {
 
 plugins {
     id "org.jetbrains.intellij" version "0.2.17"
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url "http://maven.aliyun.com/nexus/content/groups/public/"
+    }
 }
 
 allprojects {
@@ -30,7 +40,7 @@ allprojects {
 
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
-    
+
     [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
 
     jar.archiveName = "intellij-rainbow-brackets.jar"
