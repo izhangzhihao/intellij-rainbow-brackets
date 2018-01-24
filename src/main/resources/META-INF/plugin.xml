@@ -1,4 +1,4 @@
-<idea-plugin version="2">
+<idea-plugin>
     <id>izhangzhihao.rainbow.brackets</id>
     <name>Rainbow Brackets</name>
     <vendor email="izhangzhihao@hotmail.com" url="https://github.com/izhangzhihao">izhangzhihao</vendor>
