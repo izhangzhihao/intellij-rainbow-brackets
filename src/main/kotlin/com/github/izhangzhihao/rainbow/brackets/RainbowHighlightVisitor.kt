@@ -18,8 +18,7 @@ import java.awt.Font
  */
 abstract class RainbowHighlightVisitor : HighlightVisitor {
 
-    private var _holder: HighlightInfoHolder? = null
-    protected val holder: HighlightInfoHolder? get() = _holder
+    private var highlightInfoHolder: HighlightInfoHolder? = null
 
     private var isCalled = false
 
@@ -28,7 +27,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 
     final override fun analyze(file: PsiFile, updateWholeFile: Boolean, holder: HighlightInfoHolder, action: Runnable)
             : Boolean {
-        _holder = holder
+        highlightInfoHolder = holder
         onBeforeAnalyze(file, updateWholeFile)
         try {
             action.run()
@@ -43,7 +42,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 
     protected open fun onAfterAnalyze() {
         isCalled = true
-        _holder = null
+        highlightInfoHolder = null
     }
 
     private inline fun call(block: () -> Unit) {
@@ -52,11 +51,15 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
         check(isCalled) { "Overriding method must invoke super." }
     }
 
+    protected fun PsiElement.addHighlightInfo(level: Int) {
+        highlightInfoHolder?.add(getInfo(this, level))
+    }
+
     companion object {
         private val RAINBOW_ELEMENT: HighlightInfoType = HighlightInfoType
                 .HighlightInfoTypeImpl(HighlightSeverity.INFORMATION, DefaultLanguageHighlighterColors.CONSTANT)
 
-        fun getInfo(element: PsiElement, level: Int): HighlightInfo? = HighlightInfo
+        private fun getInfo(element: PsiElement, level: Int): HighlightInfo? = HighlightInfo
                 .newHighlightInfo(RAINBOW_ELEMENT)
                 .textAttributes(TextAttributes(RainbowUtils.dynamicallySelectColor(level, RainbowColors.roundBracketsColor), null, null, null, Font.PLAIN))
                 .range(element)
