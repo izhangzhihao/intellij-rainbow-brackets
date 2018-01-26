@@ -6,9 +6,8 @@
 
 package com.github.izhangzhihao.rainbow.brackets
 
-import com.intellij.lang.BracePair
-import com.intellij.lang.Language
-import com.intellij.lang.LanguageBraceMatching
+import com.intellij.codeInsight.highlighting.BraceMatchingUtil
+import com.intellij.lang.*
 
 object BracePairs {
 
@@ -16,12 +15,19 @@ object BracePairs {
 
     fun init() {
         bracePairs = Language.getRegisteredLanguages()
-                .map {
-                    it to LanguageBraceMatching
-                            .INSTANCE
-                            .forLanguage(it)
-                            ?.pairs
-                            ?.toList()
+                .map { language ->
+                    if (language is CompositeLanguage) {
+                        return@map language to null
+                    }
+
+                    var pairs = LanguageBraceMatching.INSTANCE.forLanguage(language)?.pairs
+                    if (pairs == null || pairs.isEmpty()) {
+                        pairs = language.associatedFileType
+                                ?.let { BraceMatchingUtil.getBraceMatcher(it, language) as? PairedBraceMatcher }
+                                ?.pairs
+                    }
+
+                    language to pairs?.toList()
                 }
                 .toMap()
     }

@@ -5,10 +5,7 @@ import com.intellij.lang.BracePair
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.psi.xml.XmlElement
-import com.intellij.psi.xml.XmlFile
 import com.intellij.util.containers.Stack
-import com.intellij.util.containers.isNullOrEmpty
 
 /**
  * DefaultRainbowVisitor
@@ -17,37 +14,20 @@ import com.intellij.util.containers.isNullOrEmpty
  */
 class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
-    private var bracePairs: List<BracePair>? = null
-
     private val stackMap: MutableMap<BracePair, Stack<PsiElement>> = mutableMapOf()
 
-    private var checkLanguage: Boolean = false
-
-    override fun suitableForFile(file: PsiFile): Boolean = file is XmlFile ||
-            !file.language.bracePairs.isNullOrEmpty() ||
-            file.viewProvider.allFiles.any { !it.language.bracePairs.isNullOrEmpty() }
+    override fun suitableForFile(file: PsiFile): Boolean = true
 
     override fun clone(): HighlightVisitor = DefaultRainbowVisitor()
 
-    override fun onBeforeAnalyze(file: PsiFile, updateWholeFile: Boolean) {
-        checkLanguage = file is XmlFile
-        bracePairs = file.language.bracePairs
-    }
-
     override fun onAfterAnalyze() {
         super.onAfterAnalyze()
-        bracePairs = null
-        checkLanguage = false
         stackMap.clear()
     }
 
     override fun visit(element: PsiElement) {
-        if (element is XmlElement) {
-            return
-        }
-
         val type = element.node?.elementType ?: return
-        val pairs = bracePairs ?: element.language.takeIf { checkLanguage }?.bracePairs ?: return
+        val pairs = element.language.bracePairs ?: return
         val pair = pairs.find { it.leftBraceType == type || it.rightBraceType == type } ?: return
 
         if (pair.leftBraceType == type) {
