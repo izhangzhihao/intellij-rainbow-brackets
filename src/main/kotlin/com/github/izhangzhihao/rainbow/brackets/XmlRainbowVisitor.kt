@@ -3,7 +3,10 @@ package com.github.izhangzhihao.rainbow.brackets
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
-import com.intellij.psi.xml.*
+import com.intellij.psi.xml.XmlFile
+import com.intellij.psi.xml.XmlTag
+import com.intellij.psi.xml.XmlToken
+import com.intellij.psi.xml.XmlTokenType
 
 /**
  * XmlRainbowVisitor
@@ -13,7 +16,7 @@ import com.intellij.psi.xml.*
 class XmlRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun suitableForFile(file: PsiFile)
-            : Boolean = true
+            : Boolean = file is XmlFile || file.viewProvider.allFiles.any { it is XmlFile }
 
     override fun clone(): HighlightVisitor = XmlRainbowVisitor()
 
