@@ -16,7 +16,9 @@ import com.intellij.psi.xml.XmlTokenType
 class XmlRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun suitableForFile(file: PsiFile)
-            : Boolean = file is XmlFile || file.viewProvider.allFiles.any { it is XmlFile }
+            : Boolean = super.suitableForFile(file) &&
+            RainbowHighlighter.isEnableRainbowAngleBrackets &&
+            (file is XmlFile || file.viewProvider.allFiles.any { it is XmlFile })
 
     override fun clone(): HighlightVisitor = XmlRainbowVisitor()
 
@@ -31,19 +33,19 @@ class XmlRainbowVisitor : RainbowHighlightVisitor() {
                 XmlTokenType.XML_DOCTYPE_END,
                 XmlTokenType.XML_PI_START,
                 XmlTokenType.XML_PI_END -> {
-                    addHighlightInfo(0)
+                    setHighlightInfo(0)
                 }
 
                 XmlTokenType.XML_START_TAG_START,
                 XmlTokenType.XML_END_TAG_START,
                 XmlTokenType.XML_TAG_END,
                 XmlTokenType.XML_EMPTY_ELEMENT_END -> {
-                    level?.let { addHighlightInfo(it) }
+                    level?.let { setHighlightInfo(it) }
                 }
 
                 XmlTokenType.XML_CDATA_START,
                 XmlTokenType.XML_CDATA_END -> {
-                    level?.let { addHighlightInfo(it + 1) }
+                    level?.let { setHighlightInfo(it + 1) }
                 }
             }
         }

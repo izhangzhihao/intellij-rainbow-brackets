@@ -1,15 +1,9 @@
 package com.github.izhangzhihao.rainbow.brackets
 
-import com.intellij.codeInsight.daemon.impl.HighlightInfo
-import com.intellij.codeInsight.daemon.impl.HighlightInfoType
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder
-import com.intellij.lang.annotation.HighlightSeverity
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
-import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
-import java.awt.Font
 
 /**
  * RainbowHighlightVisitor
@@ -21,6 +15,8 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     private var highlightInfoHolder: HighlightInfoHolder? = null
 
     private var isCalled = false
+
+    override fun suitableForFile(file: PsiFile): Boolean = RainbowHighlighter.isRainbowEnabled
 
     @Suppress("OverridingDeprecatedMember")
     final override fun order(): Int = 1
@@ -51,18 +47,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
         check(isCalled) { "Overriding method must invoke super." }
     }
 
-    protected fun PsiElement.addHighlightInfo(level: Int) {
-        highlightInfoHolder?.add(getInfo(this, level))
-    }
-
-    companion object {
-        private val RAINBOW_ELEMENT: HighlightInfoType = HighlightInfoType
-                .HighlightInfoTypeImpl(HighlightSeverity.INFORMATION, DefaultLanguageHighlighterColors.CONSTANT)
-
-        private fun getInfo(element: PsiElement, level: Int): HighlightInfo? = HighlightInfo
-                .newHighlightInfo(RAINBOW_ELEMENT)
-                .textAttributes(TextAttributes(RainbowUtils.dynamicallySelectColor(level, RainbowColors.roundBracketsColor), null, null, null, Font.PLAIN))
-                .range(element)
-                .create()
+    protected fun PsiElement.setHighlightInfo(level: Int) {
+        highlightInfoHolder?.add(RainbowHighlighter.getHighlightInfo(this, level))
     }
 }

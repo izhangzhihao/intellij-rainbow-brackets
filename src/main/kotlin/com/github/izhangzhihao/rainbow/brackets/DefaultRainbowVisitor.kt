@@ -16,8 +16,6 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
     private val stackMap: MutableMap<BracePair, Stack<PsiElement>> = mutableMapOf()
 
-    override fun suitableForFile(file: PsiFile): Boolean = true
-
     override fun clone(): HighlightVisitor = DefaultRainbowVisitor()
 
     override fun onAfterAnalyze() {
@@ -46,8 +44,8 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
                     ?.let { stack ->
                         val headerParent = stack.first().parent
                         element.level(headerParent)?.let {
-                            stack.pop().addHighlightInfo(it)
-                            element.addHighlightInfo(it)
+                            stack.pop().setHighlightInfo(it)
+                            element.setHighlightInfo(it)
                         }
                     }
         }
