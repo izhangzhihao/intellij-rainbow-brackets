@@ -2,10 +2,11 @@ package com.github.izhangzhihao.rainbow.brackets
 
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.lang.BracePair
+import com.intellij.openapi.util.Key
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
-import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.util.containers.Stack
+import com.intellij.psi.impl.source.tree.LeafPsiElement
+import com.intellij.psi.tree.IElementType
 
 /**
  * DefaultRainbowVisitor
@@ -14,56 +15,60 @@ import com.intellij.util.containers.Stack
  */
 class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
-    private val stackMap: MutableMap<BracePair, Stack<PsiElement>> = mutableMapOf()
+    private val levelCacheKeyMap: MutableMap<BracePair, Key<Int?>> = mutableMapOf()
+
+    private val BracePair.levelCacheKey: Key<Int?>
+        get() = levelCacheKeyMap[this] ?: Key.create<Int?>("$leftBraceType:$rightBraceType:$isStructural").also {
+            levelCacheKeyMap[this] = it
+        }
 
     override fun clone(): HighlightVisitor = DefaultRainbowVisitor()
 
-    override fun onAfterAnalyze() {
-        super.onAfterAnalyze()
-        stackMap.clear()
-    }
-
     override fun visit(element: PsiElement) {
-        val type = element.node?.elementType ?: return
+        val type = (element as? LeafPsiElement)?.elementType ?: return
         val pairs = element.language.bracePairs ?: return
         val pair = pairs.find { it.leftBraceType == type || it.rightBraceType == type } ?: return
 
-        if (pair.leftBraceType == type) {
-            val stack = stackMap[pair] ?: Stack<PsiElement>().also { stackMap[pair] = it }
-            if (stack.isNotEmpty()) {
-                val headerParent = stack.first().parent
-                if (PsiTreeUtil.findFirstParent(element, true) { it == headerParent } == null) {
-                    stack.clear()
+        with(element) {
+            val level = pair.levelCacheKey[parent] ?: getBracketLevel(type, pair).also {
+                if (it >= 0) {
+                    pair.levelCacheKey[parent] = it
                 }
             }
-
-            stack.push(element)
-        } else {
-            stackMap[pair]
-                    ?.takeIf { it.isNotEmpty() }
-                    ?.let { stack ->
-                        val headerParent = stack.first().parent
-                        element.level(headerParent)?.let {
-                            stack.pop().setHighlightInfo(it)
-                            element.setHighlightInfo(it)
-                        }
-                    }
+            if (level >= 0) {
+                setHighlightInfo(level)
+            }
         }
     }
 
     companion object {
-        private tailrec fun iterateParents(element: PsiElement?, parent: PsiElement, count: Int = 0): Int? {
-            if (element == parent) {
-                return count
+        // TODO 优化：消除局部方法
+        // FIXME 应该不着色未配对成功的括号
+        private fun LeafPsiElement.getBracketLevel(type: IElementType, pair: BracePair): Int {
+            var level = if (type == pair.rightBraceType) 1 else 0
+
+            tailrec fun iterateParents(currentNode: PsiElement) {
+
+                tailrec fun iterateChildren(currentChild: PsiElement) {
+                    if (currentChild is LeafPsiElement) {
+                        when (currentChild.elementType) {
+                            pair.leftBraceType -> level++
+                            pair.rightBraceType -> level--
+                        }
+                    }
+                    if ((currentChild != currentNode) && (currentChild != currentNode.parent.lastChild)) {
+                        iterateChildren(currentChild.nextSibling)
+                    }
+                }
+
+                if (currentNode.parent !is PsiFile) {
+                    iterateChildren(currentNode.parent.firstChild)
+                    iterateParents(currentNode.parent)
+                }
             }
 
-            if (element == null || element is PsiFile) {
-                return null
-            }
-
-            return iterateParents(element.parent, parent, count + 1)
+            iterateParents(this)
+            return level - 1
         }
-
-        private fun PsiElement.level(parent: PsiElement): Int? = iterateParents(this.parent, parent)
     }
 }
