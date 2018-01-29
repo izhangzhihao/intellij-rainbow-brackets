@@ -2,7 +2,6 @@ package com.github.izhangzhihao.rainbow.brackets
 
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.lang.BracePair
-import com.intellij.openapi.util.Key
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.impl.source.tree.LeafPsiElement
@@ -15,13 +14,6 @@ import com.intellij.psi.tree.IElementType
  */
 class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
-    private val levelCacheKeyMap: MutableMap<BracePair, Key<Int?>> = mutableMapOf()
-
-    private val BracePair.levelCacheKey: Key<Int?>
-        get() = levelCacheKeyMap[this] ?: Key.create<Int?>("$leftBraceType:$rightBraceType:$isStructural").also {
-            levelCacheKeyMap[this] = it
-        }
-
     override fun clone(): HighlightVisitor = DefaultRainbowVisitor()
 
     override fun visit(element: PsiElement) {
@@ -29,46 +21,90 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
         val pairs = element.language.bracePairs ?: return
         val pair = pairs.find { it.leftBraceType == type || it.rightBraceType == type } ?: return
 
-        with(element) {
-            val level = pair.levelCacheKey[parent] ?: getBracketLevel(type, pair).also {
-                if (it >= 0) {
-                    pair.levelCacheKey[parent] = it
-                }
-            }
-            if (level >= 0) {
-                setHighlightInfo(level)
-            }
+        val level = element.getBracketLevel(pair)
+        if (level >= 0) {
+            element.setHighlightInfo(level)
         }
     }
 
     companion object {
-        // TODO 优化：消除局部方法
-        // FIXME 应该不着色未配对成功的括号
-        private fun LeafPsiElement.getBracketLevel(type: IElementType, pair: BracePair): Int {
-            var level = if (type == pair.rightBraceType) 1 else 0
+        private fun LeafPsiElement.getBracketLevel(pair: BracePair)
+                : Int = if (isValidBracket(pair)) iterateBracketParents(parent, pair, -1) else -1
 
-            tailrec fun iterateParents(currentNode: PsiElement) {
+        private tailrec fun iterateBracketParents(element: PsiElement?, pair: BracePair, count: Int): Int {
+            if (element == null || element is PsiFile) {
+                return count
+            }
 
-                tailrec fun iterateChildren(currentChild: PsiElement) {
-                    if (currentChild is LeafPsiElement) {
-                        when (currentChild.elementType) {
-                            pair.leftBraceType -> level++
-                            pair.rightBraceType -> level--
-                        }
-                    }
-                    if ((currentChild != currentNode) && (currentChild != currentNode.parent.lastChild)) {
-                        iterateChildren(currentChild.nextSibling)
-                    }
+            var nextCount = count
+            if (element.haveBrackets(pair)) {
+                nextCount++
+            }
+
+            return iterateBracketParents(element.parent, pair, nextCount)
+        }
+
+        private fun PsiElement.haveBrackets(pair: BracePair): Boolean {
+            if (this is LeafPsiElement) {
+                return false
+            }
+
+            val leftBraceType = pair.leftBraceType
+            val rightBraceType = pair.rightBraceType
+            var findLeftBracket = false
+            var findRightBracket = false
+            var left: PsiElement? = firstChild
+            var right: PsiElement? = lastChild
+            while (left != right && (!findLeftBracket || !findRightBracket)) {
+                val needBreak = left == null || left.nextSibling == right
+
+                if (left is LeafPsiElement && left.elementType == leftBraceType) {
+                    findLeftBracket = true
+                } else {
+                    left = left?.nextSibling
+                }
+                if (right is LeafPsiElement && right.elementType == rightBraceType) {
+                    findRightBracket = true
+                } else {
+                    right = right?.prevSibling
                 }
 
-                if (currentNode.parent !is PsiFile) {
-                    iterateChildren(currentNode.parent.firstChild)
-                    iterateParents(currentNode.parent)
+                if (needBreak) {
+                    break
                 }
             }
 
-            iterateParents(this)
-            return level - 1
+            return findLeftBracket && findRightBracket
+        }
+
+        private fun LeafPsiElement.isValidBracket(pair: BracePair): Boolean {
+            val pairType = when (elementType) {
+                pair.leftBraceType -> pair.rightBraceType
+                pair.rightBraceType -> pair.leftBraceType
+                else -> return false
+            }
+
+            return if (pairType == pair.leftBraceType) {
+                checkBracePair(this, parent.firstChild, pairType, PsiElement::getNextSibling)
+            } else {
+                checkBracePair(this, parent.lastChild, pairType, PsiElement::getPrevSibling)
+            }
+        }
+
+        private inline fun checkBracePair(brace: PsiElement,
+                                          start: PsiElement,
+                                          type: IElementType,
+                                          next: PsiElement.() -> PsiElement?): Boolean {
+            var element: PsiElement? = start
+            while (element != null && element != brace) {
+                if (element is LeafPsiElement && element.elementType == type) {
+                    return true
+                }
+
+                element = element.next()
+            }
+
+            return false
         }
     }
 }
