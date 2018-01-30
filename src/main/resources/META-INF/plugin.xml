@@ -108,6 +108,13 @@
          on how to target different products -->
     <depends>com.intellij.modules.lang</depends>
 
+    <extensionPoints>
+        <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint">
+            <with attribute="implementationClass"
+                  implements="com.github.izhangzhihao.rainbow.brackets.PairedBraceProvider"/>
+        </extensionPoint>
+    </extensionPoints>
+
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.DefaultRainbowVisitor"/>

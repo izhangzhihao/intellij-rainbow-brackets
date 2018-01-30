@@ -9,9 +9,21 @@ package com.github.izhangzhihao.rainbow.brackets
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.lang.*
 
+/**
+ * PairedBraceProvider
+ *
+ * Created by Yii.Guxing on 2018/1/30
+ */
+interface PairedBraceProvider {
+    val pairs: List<BracePair>
+}
+
 object BracePairs {
 
     private lateinit var bracePairs: Map<Language, List<BracePair>?>
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    val providers = LanguageExtension<PairedBraceProvider>("izhangzhihao.rainbow.brackets.pairedBraceProvider")
 
     fun init() {
         bracePairs = Language.getRegisteredLanguages()
@@ -27,7 +39,15 @@ object BracePairs {
                                 ?.pairs
                     }
 
-                    language to pairs?.toList()
+                    val pairsList = providers.forLanguage(language)?.pairs?.let {
+                        if (pairs != null && pairs.isNotEmpty()) {
+                            it.toMutableSet().apply { addAll(pairs) }.toList()
+                        } else {
+                            it
+                        }
+                    } ?: pairs?.toList()
+
+                    language to pairsList
                 }
                 .toMap()
     }
