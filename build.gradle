@@ -22,48 +22,26 @@ repositories {
     }
 }
 
-allprojects {
+apply plugin: "idea"
+apply plugin: 'kotlin'
+apply plugin: 'org.jetbrains.intellij'
 
-    apply plugin: "org.jetbrains.intellij"
+intellij {
+    pluginName name
 
-    intellij {
-        pluginName name
+    version ideaVersion
+    downloadSources Boolean.valueOf(downloadIdeaSources)
+    updateSinceUntilBuild = false
 
-        version ideaVersion
-        downloadSources Boolean.valueOf(downloadIdeaSources)
-        updateSinceUntilBuild = false
-
-        sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"
-    }
-
-    apply plugin: "kotlin"
-
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
-
-    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
-
-    jar.archiveName = "intellij-rainbow-brackets.jar"
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        compile "org.jetbrains.kotlin:kotlin-runtime:$kotlinVersion"
-        compileOnly "org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion"
-        //compile fileTree(dir: 'lib', include: ['*.jar'])
-    }
-
-    publishPlugin {
-        def publishPassword = "$System.env.publishPassword"
-        username publishUsername
-        password publishPassword
-        channels publishChannels
-    }
+    sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"
 }
 
-apply plugin: "idea"
+publishPlugin {
+    def publishPassword = "$System.env.publishPassword"
+    username publishUsername
+    password publishPassword
+    channels publishChannels
+}
 
 idea {
     project {
@@ -72,4 +50,21 @@ idea {
     }
 }
 
+dependencies {
+    compileOnly("org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion")
+    //compile fileTree(dir: 'lib', include: ['*.jar'])
+}
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
 version = version
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+jar.archiveName = "intellij-rainbow-brackets.jar"
+
+[compileKotlin, compileTestKotlin]*.kotlinOptions {
+    languageVersion = kotlinLanguageVersion
+    apiVersion = kotlinTargetVersion
+    jvmTarget = javaVersion
+}
