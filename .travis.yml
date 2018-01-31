@@ -4,14 +4,21 @@ jdk:
   - oraclejdk8
 
 before_install:
-- chmod +x gradlew
+  - chmod +x gradlew
 
 script:
-- ./gradlew publishPlugin --console=plain
+  - ./gradlew buildPlugin --console=plain
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+deploy:
+  provider: script
+  script: ./gradlew clean publishPlugin --console=plain
+  on:
+    tags: true
+    all_branches: true
 
 cache:
   directories:
