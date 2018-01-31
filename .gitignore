@@ -1,1 +1,5 @@
-.sandbox
+.idea/
+.sandbox/
+.gradle/
+build/
+*.iml
