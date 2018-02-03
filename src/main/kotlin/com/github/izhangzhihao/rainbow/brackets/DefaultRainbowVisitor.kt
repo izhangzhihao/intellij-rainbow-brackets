@@ -19,8 +19,13 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
     override fun visit(element: PsiElement) {
         val type = (element as? LeafPsiElement)?.elementType ?: return
         val pairs = element.language.bracePairs ?: return
-        val pair = pairs.find { it.leftBraceType == type || it.rightBraceType == type } ?: return
 
+        val matching = pairs.filter { it.leftBraceType == type || it.rightBraceType == type }
+        if (matching.isEmpty()) {
+            return
+        }
+
+        val pair = matching.find { element.isValidBracket(it) } ?: return
         val level = element.getBracketLevel(pair)
         if (level >= 0) {
             element.setHighlightInfo(level)
@@ -28,8 +33,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
     }
 
     companion object {
-        private fun LeafPsiElement.getBracketLevel(pair: BracePair)
-                : Int = if (isValidBracket(pair)) iterateBracketParents(parent, pair, -1) else -1
+        private fun LeafPsiElement.getBracketLevel(pair: BracePair): Int = iterateBracketParents(parent, pair, -1)
 
         private tailrec fun iterateBracketParents(element: PsiElement?, pair: BracePair, count: Int): Int {
             if (element == null || element is PsiFile) {
