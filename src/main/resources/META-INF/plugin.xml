@@ -16,6 +16,16 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.0-RC0</p>
+      <ul>
+        <li>This is the first RC release on 5.x series!</li>
+        <li><b>Thanks for https://github.com/YiiGuxing, which helps move this plugin from `Annotator` to `HighlightVisitor`!</b></li>
+        <li>Check more info at https://github.com/izhangzhihao/intellij-rainbow-brackets/pull/25</li>
+        <li>This RC release has really good compatibility with previous release(3.x series).</li>
+        <li>From 5.x series we didn't need specific implementations like java/scala/kotlin specific implementations in 3.x series any more!</li>
+        <li>And with much more features not documented in release notes.</li>
+      </ul>
+      <br/>
       <p>3.1</p>
       <ul>
         <li>Add specific implement for PHP language</li>
