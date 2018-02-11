@@ -23,8 +23,8 @@ repositories {
 }
 
 apply plugin: "idea"
-apply plugin: 'kotlin'
-apply plugin: 'org.jetbrains.intellij'
+apply plugin: "kotlin"
+apply plugin: "org.jetbrains.intellij"
 
 intellij {
     pluginName name
@@ -52,14 +52,14 @@ idea {
 
 dependencies {
     compileOnly("org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion")
-    //compile fileTree(dir: 'lib', include: ['*.jar'])
+    testCompile("io.kotlintest:kotlintest:2.0.7")
 }
 
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
 
 version = version
-[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+[compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
 
 jar.archiveName = "intellij-rainbow-brackets.jar"
 
