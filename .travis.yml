@@ -7,7 +7,7 @@ before_install:
   - chmod +x gradlew
 
 script:
-  - ./gradlew buildPlugin --console=plain
+  - ./gradlew test buildPlugin --console=plain
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -15,7 +15,7 @@ before_cache:
 
 deploy:
   provider: script
-  script: ./gradlew clean publishPlugin --console=plain
+  script: ./gradlew clean test publishPlugin --console=plain
   on:
     tags: true
     all_branches: true
