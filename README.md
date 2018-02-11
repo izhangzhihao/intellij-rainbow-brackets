@@ -1,7 +1,7 @@
 # Rainbow Brackets
 [![Build Status](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets.svg?branch=master)](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1c72f2de07a5452da479565883d3ab74)](https://www.codacy.com/app/izhangzhihao/intellij-rainbow-brackets?utm_source=github.com&utm_medium=referral&utm_content=izhangzhihao/intellij-rainbow-brackets&utm_campaign=badger) [![Rainbow Brackets Release](https://img.shields.io/github/release/izhangzhihao/intellij-rainbow-brackets.svg)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) [![Plugin downloads](https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) [![Plugin version](https://img.shields.io/jetbrains/plugin/v/10080-rainbow-brackets.svg)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues)
 
-## Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA-based IDEs
+## Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA based IDEs
 
 ## Compatible with
 
@@ -13,7 +13,7 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 ## Screenshots
 
-* with material-theme-jetbrains-eap
+* with material-theme-jetbrains
 
 ![](./screenshots/with-material-theme-ui.png)
 
@@ -29,7 +29,7 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 ![](./screenshots/with-HTML.png)
 
-* and more...
+* and much more...
 
 ## Install
 
@@ -37,6 +37,7 @@ https://plugins.jetbrains.com/plugin/10080-rainbow-brackets
 
 ## Contribute
 
+* `gradle test`
 * `gradle runIde`
 * `gradle buildPlugin`
 
