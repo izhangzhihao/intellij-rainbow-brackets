@@ -1,5 +1,7 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getHighlightInfo
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isRainbowEnabled
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder
 import com.intellij.psi.PsiElement
@@ -16,7 +18,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 
     private var isCalled = false
 
-    override fun suitableForFile(file: PsiFile): Boolean = RainbowHighlighter.isRainbowEnabled
+    override fun suitableForFile(file: PsiFile): Boolean = isRainbowEnabled
 
     @Suppress("OverridingDeprecatedMember")
     final override fun order(): Int = 1
@@ -48,6 +50,6 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     }
 
     protected fun PsiElement.setHighlightInfo(level: Int) {
-        highlightInfoHolder?.add(RainbowHighlighter.getHighlightInfo(this, level))
+        highlightInfoHolder?.add(getHighlightInfo(this, level))
     }
 }

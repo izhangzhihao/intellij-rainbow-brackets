@@ -13,7 +13,7 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 ## Screenshots
 
-* with material-theme-jetbrains
+* with java
 
 ![](./screenshots/with-material-theme-ui.png)
 
@@ -33,7 +33,13 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 ## Install
 
-https://plugins.jetbrains.com/plugin/10080-rainbow-brackets
+1. Inside your IDE, select `Preferences` -> `Plugins` -> `Browse Repositories...`.
+
+2. Search for `Rainbow Brackets`.
+
+3. Click the green `Install Plugin` button.
+
+4. Click `Close` and `OK`, then Re-launch your IDE.
 
 ## Contribute
 
@@ -43,4 +49,4 @@ https://plugins.jetbrains.com/plugin/10080-rainbow-brackets
 
 ## Acknowledgements
 
-Intellij-rainbow-brackets is heavily inspired by [intellij-rainbow](https://github.com/zjhmale/intellij-rainbow) and [Rainbow Brackets for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets)
+Intellij-rainbow-brackets is heavily inspired by [Rainbow Brackets for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets)
