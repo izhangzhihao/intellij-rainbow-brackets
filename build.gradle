@@ -59,15 +59,13 @@ dependencies {
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
 
-version = version
-[compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
-
 jar.archiveName = "intellij-rainbow-brackets.jar"
 
 [compileKotlin, compileTestKotlin]*.kotlinOptions {
     languageVersion = kotlinLanguageVersion
     apiVersion = kotlinTargetVersion
     jvmTarget = javaVersion
+    freeCompilerArgs = ["-Xskip-runtime-version-check"]
 }
 
 jacocoTestReport {
