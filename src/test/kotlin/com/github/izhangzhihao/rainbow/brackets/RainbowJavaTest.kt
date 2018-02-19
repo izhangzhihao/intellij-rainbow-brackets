@@ -8,7 +8,7 @@ class RainbowJavaTest : LightCodeInsightFixtureTestCase() {
     fun testRainbowForJava() {
         val code =
                 """
-public class Test {
+public class Test<T> {
     public Boolean test() {
         return "true".equals("false") || "false".equals("true".concat("false".length() + "*"));
     }
@@ -23,6 +23,8 @@ public class Test {
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
+                                angleLevel(0),
+                                angleLevel(0),
                                 squigglyLevel(0),
                                 roundLevel(0),
                                 roundLevel(0),

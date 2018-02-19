@@ -9,6 +9,8 @@ class RainbowXMLTest : LightCodeInsightFixtureTestCase() {
     fun testRainbowForXML() {
         val code =
                 """
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE note SYSTEM>
 <idea-plugin>
     <name>Rainbow Brackets</name>
     <description>
@@ -27,6 +29,12 @@ class RainbowXMLTest : LightCodeInsightFixtureTestCase() {
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
+                                angleLevel(0),
+                                angleLevel(0),
+
+                                angleLevel(0),
+                                angleLevel(0),
+
                                 angleLevel(0),
                                 angleLevel(0),
 
