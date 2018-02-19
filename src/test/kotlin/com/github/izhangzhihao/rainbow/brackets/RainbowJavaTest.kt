@@ -1,7 +1,5 @@
 package com.github.izhangzhihao.rainbow.brackets
 
-import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.defaultRoundBracketsColors
-import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.defaultSquigglyBracketsColors
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
@@ -25,20 +23,20 @@ public class Test {
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
-                                defaultSquigglyBracketsColors[0].rgb,
-                                defaultRoundBracketsColors[0].rgb,
-                                defaultRoundBracketsColors[0].rgb,
-                                defaultSquigglyBracketsColors[1].rgb,
-                                defaultRoundBracketsColors[0].rgb,
-                                defaultRoundBracketsColors[0].rgb,
-                                defaultRoundBracketsColors[0].rgb,
-                                defaultRoundBracketsColors[1].rgb,
-                                defaultRoundBracketsColors[2].rgb,
-                                defaultRoundBracketsColors[2].rgb,
-                                defaultRoundBracketsColors[1].rgb,
-                                defaultRoundBracketsColors[0].rgb,
-                                defaultSquigglyBracketsColors[1].rgb,
-                                defaultSquigglyBracketsColors[0].rgb
+                                squigglyLevel(0),
+                                roundLevel(0),
+                                roundLevel(0),
+                                squigglyLevel(1),
+                                roundLevel(0),
+                                roundLevel(0),
+                                roundLevel(0),
+                                roundLevel(1),
+                                roundLevel(2),
+                                roundLevel(2),
+                                roundLevel(1),
+                                roundLevel(0),
+                                squigglyLevel(1),
+                                squigglyLevel(0)
                         )
                 )
     }

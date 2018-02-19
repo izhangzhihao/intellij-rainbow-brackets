@@ -38,7 +38,7 @@ object RainbowHighlighter {
             JBColor(0xA526AA, 0x965096),
             JBColor(0xFF6D27, 0xFF9863)
     )
-    private val defaultAngleBracketsColor: Array<Color> = defaultRoundBracketsColors
+    val defaultAngleBracketsColor: Array<Color> = defaultRoundBracketsColors
 
     private val settings = RainbowSettings.instance
 
