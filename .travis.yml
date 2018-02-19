@@ -6,19 +6,25 @@ jdk:
 before_install:
   - chmod +x gradlew
 
+install:
+  - echo "Override default Travis install step to avoid unnecessary './gradlew assemble'."
+
 script:
-  - ./gradlew test buildPlugin --console=plain
+  - ./gradlew check buildPlugin --console=plain
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  provider: script
+  script: ./gradlew clean check publishPlugin --console=plain
+  on:
+    tags: true
+    all_branches: true
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-
-deploy:
-  provider: script
-  script: ./gradlew clean test publishPlugin --console=plain
-  on:
-    tags: true
-    all_branches: true
 
 cache:
   directories:

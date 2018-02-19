@@ -25,6 +25,7 @@ repositories {
 apply plugin: "idea"
 apply plugin: "kotlin"
 apply plugin: "org.jetbrains.intellij"
+apply plugin: "jacoco"
 
 intellij {
     pluginName name
@@ -68,3 +69,13 @@ jar.archiveName = "intellij-rainbow-brackets.jar"
     apiVersion = kotlinTargetVersion
     jvmTarget = javaVersion
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled true
+    }
+}
+
+check.dependsOn jacocoTestReport
