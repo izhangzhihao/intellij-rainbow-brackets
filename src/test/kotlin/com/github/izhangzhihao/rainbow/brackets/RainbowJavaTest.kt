@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.intellij.ide.highlighter.JavaFileType
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
@@ -14,7 +15,7 @@ public class Test<T> {
     }
 }
                 """.trimIndent()
-        myFixture.configureByText("dummy.java", code)
+        myFixture.configureByText(JavaFileType.INSTANCE, code)
         PsiDocumentManager.getInstance(project).commitAllDocuments()
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())

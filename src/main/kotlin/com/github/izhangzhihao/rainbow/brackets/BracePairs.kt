@@ -9,11 +9,6 @@ package com.github.izhangzhihao.rainbow.brackets
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.lang.*
 
-/**
- * PairedBraceProvider
- *
- * Created by Yii.Guxing on 2018/1/30
- */
 interface PairedBraceProvider {
     val pairs: List<BracePair>
 }
