@@ -95,10 +95,10 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             }
         }
 
-        private inline fun checkBracePair(brace: PsiElement,
-                                          start: PsiElement,
-                                          type: IElementType,
-                                          next: PsiElement.() -> PsiElement?): Boolean {
+        private fun checkBracePair(brace: PsiElement,
+                                   start: PsiElement,
+                                   type: IElementType,
+                                   next: PsiElement.() -> PsiElement?): Boolean {
             var element: PsiElement? = start
             while (element != null && element != brace) {
                 if (element is LeafPsiElement && element.elementType == type) {
