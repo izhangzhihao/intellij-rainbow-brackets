@@ -16,6 +16,11 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.0-RC1</p>
+      <ul>
+        <li>Fix #27 Settings no longer works</li>
+      </ul>
+      <br/>
       <p>5.0-RC0</p>
       <ul>
         <li>This is the first RC release on 5.x series!</li>
