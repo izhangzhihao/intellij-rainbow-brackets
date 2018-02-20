@@ -18,19 +18,23 @@ object BracePairs {
     @Suppress("MemberVisibilityCanBePrivate")
     val providers = LanguageExtension<PairedBraceProvider>("izhangzhihao.rainbow.brackets.pairedBraceProvider")
 
-    private val bracePairs: Lazy<Map<Language, List<BracePair>?>> = lazy {
+    private val bracePairs by lazy {
         Language.getRegisteredLanguages()
                 .map { language ->
                     if (language is CompositeLanguage) {
                         return@map language to null
                     }
 
-                    var pairs = LanguageBraceMatching.INSTANCE.forLanguage(language)?.pairs
-                    if (pairs == null || pairs.isEmpty()) {
-                        pairs = language.associatedFileType
-                                ?.let { BraceMatchingUtil.getBraceMatcher(it, language) as? PairedBraceMatcher }
-                                ?.pairs
-                    }
+                    val pairs =
+                            LanguageBraceMatching.INSTANCE.forLanguage(language)?.pairs.let {
+                                if (it == null || it.isEmpty()) {
+                                    language.associatedFileType
+                                            ?.let { BraceMatchingUtil.getBraceMatcher(it, language) as? PairedBraceMatcher }
+                                            ?.pairs
+                                } else {
+                                    it
+                                }
+                            }
 
                     val pairsList = providers.forLanguage(language)?.pairs?.let {
                         if (pairs != null && pairs.isNotEmpty()) {
@@ -45,7 +49,7 @@ object BracePairs {
                 .toMap()
     }
 
-    fun getBracePairs(language: Language) = bracePairs.value[language]
+    fun getBracePairs(language: Language) = bracePairs[language]
 
 }
 
