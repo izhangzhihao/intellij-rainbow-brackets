@@ -4,6 +4,5 @@ import com.intellij.openapi.components.ApplicationComponent
 
 class RainbowComponent : ApplicationComponent {
     override fun initComponent() {
-        BracePairs.init()
     }
 }

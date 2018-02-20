@@ -15,13 +15,11 @@ interface PairedBraceProvider {
 
 object BracePairs {
 
-    private lateinit var bracePairs: Map<Language, List<BracePair>?>
-
     @Suppress("MemberVisibilityCanBePrivate")
     val providers = LanguageExtension<PairedBraceProvider>("izhangzhihao.rainbow.brackets.pairedBraceProvider")
 
-    fun init() {
-        bracePairs = Language.getRegisteredLanguages()
+    private val bracePairs: Lazy<Map<Language, List<BracePair>?>> = lazy {
+        Language.getRegisteredLanguages()
                 .map { language ->
                     if (language is CompositeLanguage) {
                         return@map language to null
@@ -47,7 +45,7 @@ object BracePairs {
                 .toMap()
     }
 
-    fun getBracePairs(language: Language) = bracePairs[language]
+    fun getBracePairs(language: Language) = bracePairs.value[language]
 
 }
 
