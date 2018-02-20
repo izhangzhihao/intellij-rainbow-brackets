@@ -136,9 +136,6 @@
 
     <application-components>
         <!-- Add your application components here -->
-        <component>
-            <implementation-class>com.github.izhangzhihao.rainbow.brackets.RainbowComponent</implementation-class>
-        </component>
     </application-components>
 
     <project-components>
