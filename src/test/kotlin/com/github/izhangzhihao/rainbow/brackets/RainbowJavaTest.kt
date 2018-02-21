@@ -20,7 +20,7 @@ public class Test<T> {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor.rgb }
+                .map { it.forcedTextAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(

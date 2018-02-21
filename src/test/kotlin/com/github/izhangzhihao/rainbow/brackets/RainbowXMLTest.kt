@@ -25,7 +25,7 @@ class RainbowXMLTest : LightCodeInsightFixtureTestCase() {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting
-                .map { it.forcedTextAttributes.foregroundColor.rgb }
+                .map { it.forcedTextAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(

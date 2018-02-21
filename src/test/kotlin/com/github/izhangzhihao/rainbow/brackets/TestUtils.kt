@@ -12,8 +12,8 @@ val brackets = roundBrackets + squareBrackets + squigglyBrackets + angleBrackets
 
 fun CharSequence.toChar() = elementAt(0)
 
-fun roundLevel(level: Int) = defaultRoundBracketsColors[level].rgb
+fun roundLevel(level: Int) = defaultRoundBracketsColors[level]
 
-fun squigglyLevel(level: Int) = defaultSquigglyBracketsColors[level].rgb
+fun squigglyLevel(level: Int) = defaultSquigglyBracketsColors[level]
 
-fun angleLevel(level: Int) = defaultAngleBracketsColor[level].rgb
+fun angleLevel(level: Int) = defaultAngleBracketsColor[level]
