@@ -20,24 +20,24 @@ object RainbowHighlighter {
 
     val defaultRoundBracketsColors: Array<Color> = arrayOf(
             JBColor(0xE66A01, 0xE6B422),
-            JBColor(0x109321, 0x00A960),
-            JBColor(0xFF3E5D, 0xFC7482),
-            JBColor(0x9C27B0, 0x9C27B0),
-            JBColor(0x006BE7, 0x2196F3)
+            JBColor(0x1B5E20, 0x43A047),
+            JBColor(0x006BE7, 0x2196F3),
+            JBColor(0x283593, 0x3F51B5),
+            JBColor(0x004D40, 0x00897B)
     )
 
     val defaultSquareBracketsColors: Array<Color> = arrayOf(
             JBColor(0x0B9087, 0x33CCFF),
-            JBColor(0x6444E6, 0x8080FF),
-            JBColor(0x00599B, 0x0073A8)
+            JBColor(0x827717, 0xD4E157),
+            JBColor(0x6444E6, 0x8080FF)
     )
 
     val defaultSquigglyBracketsColors: Array<Color> = arrayOf(
             JBColor(0x0057D2, 0x1976D2),
-            JBColor(0x509629, 0xCDDC39),
-            JBColor(0xA526AA, 0x965096),
+            JBColor(0x558B2F, 0x8BC34A),
             JBColor(0xFF6D27, 0xFF9863)
     )
+
     val defaultAngleBracketsColor: Array<Color> = defaultRoundBracketsColors
 
     private val settings = RainbowSettings.instance
