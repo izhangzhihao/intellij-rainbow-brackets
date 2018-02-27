@@ -64,11 +64,11 @@ object RainbowHighlighter {
         }
 
         val color = when {
-            isEnableRainbowRoundBrackets && element.isRoundBracket -> defaultRoundBracketsColors
-            isEnableRainbowSquareBrackets && element.isSquareBracket -> defaultSquareBracketsColors
-            isEnableRainbowSquigglyBrackets && element.isSquigglyBracket -> defaultSquigglyBracketsColors
-            isEnableRainbowAngleBrackets && element.isAngleBracket -> defaultAngleBracketsColor
-            isEnableRainbowRoundBrackets -> defaultRoundBracketsColors
+            element.isRoundBracket -> if (isEnableRainbowRoundBrackets) defaultRoundBracketsColors else return null
+            element.isSquareBracket -> if (isEnableRainbowSquareBrackets) defaultSquareBracketsColors else return null
+            element.isSquigglyBracket -> if (isEnableRainbowSquigglyBrackets) defaultSquigglyBracketsColors else return null
+            element.isAngleBracket -> if (isEnableRainbowAngleBrackets) defaultAngleBracketsColor else return null
+            isRainbowEnabled -> defaultRoundBracketsColors
             else -> return null
         }.getColor(level)
 
