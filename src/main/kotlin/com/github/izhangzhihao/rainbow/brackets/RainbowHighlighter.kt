@@ -68,8 +68,7 @@ object RainbowHighlighter {
             element.isSquareBracket -> if (isEnableRainbowSquareBrackets) defaultSquareBracketsColors else return null
             element.isSquigglyBracket -> if (isEnableRainbowSquigglyBrackets) defaultSquigglyBracketsColors else return null
             element.isAngleBracket -> if (isEnableRainbowAngleBrackets) defaultAngleBracketsColor else return null
-            isRainbowEnabled -> defaultRoundBracketsColors
-            else -> return null
+            else -> defaultRoundBracketsColors
         }.getColor(level)
 
         return TextAttributes(color, null, null, null, Font.PLAIN)
