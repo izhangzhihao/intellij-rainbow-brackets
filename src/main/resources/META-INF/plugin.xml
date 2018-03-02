@@ -16,6 +16,12 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.0-RC3</p>
+      <ul>
+        <li>#32 Add version info in setting page</li>
+        <li>#31 Fix 'Enablement of round brackets enables all but angle brackets'</li>
+      </ul>
+      <br/>
       <p>5.0-RC2</p>
       <ul>
         <li>#30 Adjust color: remove red, purple from color palettes, add some material design color to color palettes.</li>
