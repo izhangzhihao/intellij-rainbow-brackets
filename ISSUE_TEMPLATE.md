@@ -1,3 +1,5 @@
+**You should `Star` this repo before you create a issue, thanks for your support 😁**
+
 Your issue may already be reported!
 Please search on the [issue track](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues) before creating one.
 
