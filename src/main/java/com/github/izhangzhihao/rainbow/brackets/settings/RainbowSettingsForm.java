@@ -10,6 +10,7 @@ public class RainbowSettingsForm {
     private JCheckBox enableRainbowSquigglyBrackets;
     private JCheckBox enableRainbowSquareBrackets;
     private JCheckBox enableRainbowAngleBrackets;
+    private JCheckBox doNOTRainbowifyBracketsWithoutContent;
 
     private final RainbowSettings settings;
 
@@ -20,6 +21,7 @@ public class RainbowSettingsForm {
         enableRainbowSquigglyBrackets.setSelected(settings.isEnableRainbowSquigglyBrackets());
         enableRainbowSquareBrackets.setSelected(settings.isEnableRainbowSquareBrackets());
         enableRainbowAngleBrackets.setSelected(settings.isEnableRainbowAngleBrackets());
+        doNOTRainbowifyBracketsWithoutContent.setSelected(settings.isDoNOTRainbowifyBracketsWithoutContent());
     }
 
     public JComponent getComponent() {
@@ -46,12 +48,17 @@ public class RainbowSettingsForm {
         return enableRainbowAngleBrackets.isSelected();
     }
 
+    public boolean isDoNOTRainbowifyBracketsWithoutContent() {
+        return doNOTRainbowifyBracketsWithoutContent.isSelected();
+    }
+
     public boolean isModified() {
         return isRainbowEnabled() != settings.isRainbowEnabled()
                 || isRainbowAngleBracketsEnabled() != settings.isEnableRainbowAngleBrackets()
                 || isRainbowRoundBracketsEnabled() != settings.isEnableRainbowRoundBrackets()
                 || isRainbowSquigglyBracketsEnabled() != settings.isEnableRainbowSquigglyBrackets()
-                || isRainbowSquareBracketsEnabled() != settings.isEnableRainbowSquareBrackets();
+                || isRainbowSquareBracketsEnabled() != settings.isEnableRainbowSquareBrackets()
+                || isDoNOTRainbowifyBracketsWithoutContent() != settings.isDoNOTRainbowifyBracketsWithoutContent();
     }
 
     public void reset() {
@@ -60,5 +67,6 @@ public class RainbowSettingsForm {
         enableRainbowAngleBrackets.setSelected(settings.isEnableRainbowAngleBrackets());
         enableRainbowSquigglyBrackets.setSelected(settings.isEnableRainbowSquigglyBrackets());
         enableRainbowSquareBrackets.setSelected(settings.isEnableRainbowSquareBrackets());
+        doNOTRainbowifyBracketsWithoutContent.setSelected(settings.isDoNOTRainbowifyBracketsWithoutContent());
     }
 }

@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isDoNOTRainbowifyBracketsWithoutContent
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.lang.BracePair
 import com.intellij.psi.PsiElement
@@ -20,7 +21,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
         val type = (element as? LeafPsiElement)?.elementType ?: return
         val pairs = element.language.bracePairs ?: return
 
-        val matching = pairs.filter { it.leftBraceType == type || it.rightBraceType == type }
+        val matching = filterPairs(pairs, type, element)
         if (matching.isEmpty()) {
             return
         }
@@ -29,6 +30,17 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
         val level = element.getBracketLevel(pair)
         if (level >= 0) {
             element.setHighlightInfo(level)
+        }
+    }
+
+    private fun filterPairs(pairs: List<BracePair>, type: IElementType, element: LeafPsiElement): List<BracePair> {
+        val filterBraceType = pairs.filter { it.leftBraceType == type || it.rightBraceType == type }
+        return if (!isDoNOTRainbowifyBracketsWithoutContent) {
+            filterBraceType
+        } else {
+            filterBraceType
+                    .filterNot { it.leftBraceType == type && element.nextSibling.elementType() == it.rightBraceType }
+                    .filterNot { it.rightBraceType == type && element.prevSibling.elementType() == it.leftBraceType }
         }
     }
 
@@ -79,6 +91,10 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             }
 
             return findLeftBracket && findRightBracket
+        }
+
+        private fun PsiElement.elementType(): IElementType? {
+            return (this as? LeafPsiElement)?.elementType
         }
 
         private fun LeafPsiElement.isValidBracket(pair: BracePair): Boolean {

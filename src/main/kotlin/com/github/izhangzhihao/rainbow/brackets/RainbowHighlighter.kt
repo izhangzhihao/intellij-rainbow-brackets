@@ -47,6 +47,7 @@ object RainbowHighlighter {
     val isEnableRainbowSquigglyBrackets get() = settings.isEnableRainbowSquigglyBrackets
     val isEnableRainbowSquareBrackets get() = settings.isEnableRainbowSquareBrackets
     val isEnableRainbowAngleBrackets get() = settings.isEnableRainbowAngleBrackets
+    val isDoNOTRainbowifyBracketsWithoutContent get() = settings.isDoNOTRainbowifyBracketsWithoutContent
 
     private val rainbowElement: HighlightInfoType = HighlightInfoType
             .HighlightInfoTypeImpl(HighlightSeverity.INFORMATION, DefaultLanguageHighlighterColors.CONSTANT)

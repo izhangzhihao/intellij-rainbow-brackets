@@ -18,6 +18,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var isEnableRainbowSquigglyBrackets = true
     var isEnableRainbowSquareBrackets = true
     var isEnableRainbowAngleBrackets = true
+    var isDoNOTRainbowifyBracketsWithoutContent = false
 
     @Nullable
     override fun getState() = this
