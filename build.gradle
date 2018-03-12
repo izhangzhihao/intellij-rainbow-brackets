@@ -35,6 +35,7 @@ intellij {
     updateSinceUntilBuild = false
 
     sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"
+    plugins 'org.jetbrains.kotlin:1.2.21-release-IJ2017.2-1', 'org.intellij.scala:2017.2.7', 'JavaScriptLanguage', 'css'
 }
 
 publishPlugin {
@@ -53,6 +54,7 @@ idea {
 
 dependencies {
     compileOnly("org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion")
+    testCompile("org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion")
     testCompile("io.kotlintest:kotlintest:2.0.7")
 }
 

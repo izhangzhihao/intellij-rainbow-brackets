@@ -52,7 +52,7 @@ object RainbowHighlighter {
     private val rainbowElement: HighlightInfoType = HighlightInfoType
             .HighlightInfoTypeImpl(HighlightSeverity.INFORMATION, DefaultLanguageHighlighterColors.CONSTANT)
 
-    private fun Array<Color>.getColor(level: Int) = this[level % size]
+    fun Array<Color>.getColor(level: Int) = this[level % size]
 
     private val PsiElement.isRoundBracket get() = roundBrackets.any { textContains(it) }
     private val PsiElement.isSquareBracket get() = squareBrackets.any { textContains(it) }
