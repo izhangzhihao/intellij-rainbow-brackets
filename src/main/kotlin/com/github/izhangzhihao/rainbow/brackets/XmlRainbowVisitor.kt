@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isEnableRainbowAngleBrackets
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
@@ -17,7 +18,7 @@ class XmlRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun suitableForFile(file: PsiFile)
             : Boolean = super.suitableForFile(file) &&
-            RainbowHighlighter.isEnableRainbowAngleBrackets &&
+            isEnableRainbowAngleBrackets &&
             (file is XmlFile || file.viewProvider.allFiles.any { it is XmlFile })
 
     override fun clone(): HighlightVisitor = XmlRainbowVisitor()

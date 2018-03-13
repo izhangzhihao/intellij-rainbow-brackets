@@ -6,7 +6,7 @@ import org.jetbrains.annotations.Nls
 import javax.swing.JComponent
 
 class RainbowConfigurable : Configurable {
-    private var settingsForm: RainbowSettingsForm? = null
+    var settingsForm: RainbowSettingsForm? = null
 
     override fun createComponent(): JComponent? {
         settingsForm = settingsForm ?: RainbowSettingsForm()
