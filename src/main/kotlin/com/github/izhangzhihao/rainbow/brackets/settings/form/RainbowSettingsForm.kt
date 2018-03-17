@@ -18,23 +18,23 @@ class RainbowSettingsForm {
     val component: JComponent?
         get() = panel
 
-    val isRainbowEnabled: Boolean
-        get() = enableRainbow!!.isSelected
+    val isRainbowEnabled: Boolean?
+        get() = enableRainbow?.isSelected
 
-    val isRainbowRoundBracketsEnabled: Boolean
-        get() = enableRainbowRoundBrackets!!.isSelected
+    val isRainbowRoundBracketsEnabled: Boolean?
+        get() = enableRainbowRoundBrackets?.isSelected
 
-    val isRainbowSquigglyBracketsEnabled: Boolean
-        get() = enableRainbowSquigglyBrackets!!.isSelected
+    val isRainbowSquigglyBracketsEnabled: Boolean?
+        get() = enableRainbowSquigglyBrackets?.isSelected
 
-    val isRainbowSquareBracketsEnabled: Boolean
-        get() = enableRainbowSquareBrackets!!.isSelected
+    val isRainbowSquareBracketsEnabled: Boolean?
+        get() = enableRainbowSquareBrackets?.isSelected
 
-    val isRainbowAngleBracketsEnabled: Boolean
-        get() = enableRainbowAngleBrackets!!.isSelected
+    val isRainbowAngleBracketsEnabled: Boolean?
+        get() = enableRainbowAngleBrackets?.isSelected
 
-    val isDoNOTRainbowifyBracketsWithoutContent: Boolean
-        get() = doNOTRainbowifyBracketsWithoutContent!!.isSelected
+    val isDoNOTRainbowifyBracketsWithoutContent: Boolean?
+        get() = doNOTRainbowifyBracketsWithoutContent?.isSelected
 
     val isModified: Boolean
         get() = (isRainbowEnabled != settings.isRainbowEnabled
@@ -45,20 +45,15 @@ class RainbowSettingsForm {
                 || isDoNOTRainbowifyBracketsWithoutContent != settings.isDoNOTRainbowifyBracketsWithoutContent)
 
     init {
-        enableRainbow!!.isSelected = settings.isRainbowEnabled
-        enableRainbowRoundBrackets!!.isSelected = settings.isEnableRainbowRoundBrackets
-        enableRainbowSquigglyBrackets!!.isSelected = settings.isEnableRainbowSquigglyBrackets
-        enableRainbowSquareBrackets!!.isSelected = settings.isEnableRainbowSquareBrackets
-        enableRainbowAngleBrackets!!.isSelected = settings.isEnableRainbowAngleBrackets
-        doNOTRainbowifyBracketsWithoutContent!!.isSelected = settings.isDoNOTRainbowifyBracketsWithoutContent
+        loadSettings()
     }
 
-    fun reset() {
-        enableRainbow!!.isSelected = settings.isRainbowEnabled
-        enableRainbowRoundBrackets!!.isSelected = settings.isEnableRainbowRoundBrackets
-        enableRainbowAngleBrackets!!.isSelected = settings.isEnableRainbowAngleBrackets
-        enableRainbowSquigglyBrackets!!.isSelected = settings.isEnableRainbowSquigglyBrackets
-        enableRainbowSquareBrackets!!.isSelected = settings.isEnableRainbowSquareBrackets
-        doNOTRainbowifyBracketsWithoutContent!!.isSelected = settings.isDoNOTRainbowifyBracketsWithoutContent
+    fun loadSettings() {
+        enableRainbow?.isSelected = settings.isRainbowEnabled
+        enableRainbowRoundBrackets?.isSelected = settings.isEnableRainbowRoundBrackets
+        enableRainbowAngleBrackets?.isSelected = settings.isEnableRainbowAngleBrackets
+        enableRainbowSquigglyBrackets?.isSelected = settings.isEnableRainbowSquigglyBrackets
+        enableRainbowSquareBrackets?.isSelected = settings.isEnableRainbowSquareBrackets
+        doNOTRainbowifyBracketsWithoutContent?.isSelected = settings.isDoNOTRainbowifyBracketsWithoutContent
     }
 }

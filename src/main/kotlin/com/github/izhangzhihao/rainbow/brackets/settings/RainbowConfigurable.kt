@@ -30,7 +30,7 @@ class RainbowConfigurable : Configurable {
     }
 
     override fun reset() {
-        settingsForm?.reset()
+        settingsForm?.loadSettings()
     }
 
     override fun disposeUIResources() {
