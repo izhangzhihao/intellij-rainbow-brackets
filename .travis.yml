@@ -3,21 +3,18 @@ language: java
 jdk:
   - oraclejdk8
 
-before_install:
-  - chmod +x gradlew
-
 install:
   - echo "Override default Travis install step to avoid unnecessary './gradlew assemble'."
 
 script:
-  - ./gradlew check buildPlugin --console=plain
+  - ./gradlew check buildPlugin
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 deploy:
   provider: script
-  script: ./gradlew clean check publishPlugin --console=plain
+  script: ./gradlew clean check publishPlugin
   on:
     tags: true
     all_branches: true
