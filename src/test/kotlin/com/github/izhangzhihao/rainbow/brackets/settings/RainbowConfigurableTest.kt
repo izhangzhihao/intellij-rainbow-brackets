@@ -24,12 +24,12 @@ class RainbowConfigurableTest : LightCodeInsightFixtureTestCase() {
         rainbowConfigurable.createComponent()
         rainbowConfigurable.settingsForm.shouldNotBe(null)
 
-        rainbowConfigurable.settingsForm!!.isRainbowEnabled shouldBe true
-        rainbowConfigurable.settingsForm!!.isRainbowAngleBracketsEnabled shouldBe true
-        rainbowConfigurable.settingsForm!!.isRainbowRoundBracketsEnabled shouldBe true
-        rainbowConfigurable.settingsForm!!.isRainbowSquareBracketsEnabled shouldBe true
-        rainbowConfigurable.settingsForm!!.isRainbowSquigglyBracketsEnabled shouldBe true
-        rainbowConfigurable.settingsForm!!.isDoNOTRainbowifyBracketsWithoutContent shouldBe false
+        rainbowConfigurable.settingsForm!!.isRainbowEnabled() shouldBe true
+        rainbowConfigurable.settingsForm!!.isRainbowAngleBracketsEnabled() shouldBe true
+        rainbowConfigurable.settingsForm!!.isRainbowRoundBracketsEnabled() shouldBe true
+        rainbowConfigurable.settingsForm!!.isRainbowSquareBracketsEnabled() shouldBe true
+        rainbowConfigurable.settingsForm!!.isRainbowSquigglyBracketsEnabled() shouldBe true
+        rainbowConfigurable.settingsForm!!.isDoNOTRainbowifyBracketsWithoutContent() shouldBe false
 
         rainbowConfigurable.disposeUIResources()
         rainbowConfigurable.settingsForm.shouldBe(null)
@@ -49,12 +49,12 @@ class RainbowConfigurableTest : LightCodeInsightFixtureTestCase() {
         rainbowConfigurable.createComponent()
         rainbowConfigurable.apply()
 
-        rainbowConfigurable.settingsForm!!.isRainbowEnabled shouldBe false
-        rainbowConfigurable.settingsForm!!.isRainbowAngleBracketsEnabled shouldBe false
-        rainbowConfigurable.settingsForm!!.isRainbowRoundBracketsEnabled shouldBe false
-        rainbowConfigurable.settingsForm!!.isRainbowSquareBracketsEnabled shouldBe false
-        rainbowConfigurable.settingsForm!!.isRainbowSquigglyBracketsEnabled shouldBe false
-        rainbowConfigurable.settingsForm!!.isDoNOTRainbowifyBracketsWithoutContent shouldBe true
+        rainbowConfigurable.settingsForm!!.isRainbowEnabled() shouldBe false
+        rainbowConfigurable.settingsForm!!.isRainbowAngleBracketsEnabled() shouldBe false
+        rainbowConfigurable.settingsForm!!.isRainbowRoundBracketsEnabled() shouldBe false
+        rainbowConfigurable.settingsForm!!.isRainbowSquareBracketsEnabled() shouldBe false
+        rainbowConfigurable.settingsForm!!.isRainbowSquigglyBracketsEnabled() shouldBe false
+        rainbowConfigurable.settingsForm!!.isDoNOTRainbowifyBracketsWithoutContent() shouldBe true
 
         rainbowConfigurable.disposeUIResources()
         rainbowConfigurable.settingsForm.shouldBe(null)

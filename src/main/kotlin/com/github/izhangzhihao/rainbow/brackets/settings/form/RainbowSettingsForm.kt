@@ -15,34 +15,27 @@ class RainbowSettingsForm {
 
     private val settings: RainbowSettings = RainbowSettings.instance
 
-    val component: JComponent?
-        get() = panel
+    fun component(): JComponent? = panel
 
-    val isRainbowEnabled: Boolean?
-        get() = enableRainbow?.isSelected
+    fun isRainbowEnabled() = enableRainbow?.isSelected
 
-    val isRainbowRoundBracketsEnabled: Boolean?
-        get() = enableRainbowRoundBrackets?.isSelected
+    fun isRainbowRoundBracketsEnabled() = enableRainbowRoundBrackets?.isSelected
 
-    val isRainbowSquigglyBracketsEnabled: Boolean?
-        get() = enableRainbowSquigglyBrackets?.isSelected
+    fun isRainbowSquigglyBracketsEnabled() = enableRainbowSquigglyBrackets?.isSelected
 
-    val isRainbowSquareBracketsEnabled: Boolean?
-        get() = enableRainbowSquareBrackets?.isSelected
+    fun isRainbowSquareBracketsEnabled() = enableRainbowSquareBrackets?.isSelected
 
-    val isRainbowAngleBracketsEnabled: Boolean?
-        get() = enableRainbowAngleBrackets?.isSelected
+    fun isRainbowAngleBracketsEnabled() = enableRainbowAngleBrackets?.isSelected
 
-    val isDoNOTRainbowifyBracketsWithoutContent: Boolean?
-        get() = doNOTRainbowifyBracketsWithoutContent?.isSelected
+    fun isDoNOTRainbowifyBracketsWithoutContent() = doNOTRainbowifyBracketsWithoutContent?.isSelected
 
     val isModified: Boolean
-        get() = (isRainbowEnabled != settings.isRainbowEnabled
-                || isRainbowAngleBracketsEnabled != settings.isEnableRainbowAngleBrackets
-                || isRainbowRoundBracketsEnabled != settings.isEnableRainbowRoundBrackets
-                || isRainbowSquigglyBracketsEnabled != settings.isEnableRainbowSquigglyBrackets
-                || isRainbowSquareBracketsEnabled != settings.isEnableRainbowSquareBrackets
-                || isDoNOTRainbowifyBracketsWithoutContent != settings.isDoNOTRainbowifyBracketsWithoutContent)
+        get() = (isRainbowEnabled() != settings.isRainbowEnabled
+                || isRainbowAngleBracketsEnabled() != settings.isEnableRainbowAngleBrackets
+                || isRainbowRoundBracketsEnabled() != settings.isEnableRainbowRoundBrackets
+                || isRainbowSquigglyBracketsEnabled() != settings.isEnableRainbowSquigglyBrackets
+                || isRainbowSquareBracketsEnabled() != settings.isEnableRainbowSquareBrackets
+                || isDoNOTRainbowifyBracketsWithoutContent() != settings.isDoNOTRainbowifyBracketsWithoutContent)
 
     init {
         loadSettings()

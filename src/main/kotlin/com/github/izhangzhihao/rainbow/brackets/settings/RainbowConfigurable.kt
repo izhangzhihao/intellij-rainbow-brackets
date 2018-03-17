@@ -11,7 +11,7 @@ class RainbowConfigurable : Configurable {
 
     override fun createComponent(): JComponent? {
         settingsForm = settingsForm ?: RainbowSettingsForm()
-        return settingsForm?.component
+        return settingsForm?.component()
     }
 
     override fun isModified(): Boolean {
@@ -21,12 +21,12 @@ class RainbowConfigurable : Configurable {
     @Throws(ConfigurationException::class)
     override fun apply() {
         val settings = RainbowSettings.instance
-        settings.isRainbowEnabled = settingsForm?.isRainbowEnabled ?: true
-        settings.isEnableRainbowRoundBrackets = settingsForm?.isRainbowRoundBracketsEnabled ?: true
-        settings.isEnableRainbowAngleBrackets = settingsForm?.isRainbowAngleBracketsEnabled ?: true
-        settings.isEnableRainbowSquigglyBrackets = settingsForm?.isRainbowSquigglyBracketsEnabled ?: true
-        settings.isEnableRainbowSquareBrackets = settingsForm?.isRainbowSquareBracketsEnabled ?: true
-        settings.isDoNOTRainbowifyBracketsWithoutContent = settingsForm?.isDoNOTRainbowifyBracketsWithoutContent ?: false
+        settings.isRainbowEnabled = settingsForm?.isRainbowEnabled() ?: true
+        settings.isEnableRainbowRoundBrackets = settingsForm?.isRainbowRoundBracketsEnabled() ?: true
+        settings.isEnableRainbowAngleBrackets = settingsForm?.isRainbowAngleBracketsEnabled() ?: true
+        settings.isEnableRainbowSquigglyBrackets = settingsForm?.isRainbowSquigglyBracketsEnabled() ?: true
+        settings.isEnableRainbowSquareBrackets = settingsForm?.isRainbowSquareBracketsEnabled() ?: true
+        settings.isDoNOTRainbowifyBracketsWithoutContent = settingsForm?.isDoNOTRainbowifyBracketsWithoutContent() ?: false
     }
 
     override fun reset() {
