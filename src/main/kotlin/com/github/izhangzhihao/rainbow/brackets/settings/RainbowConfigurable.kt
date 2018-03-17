@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets.settings
 
+import com.github.izhangzhihao.rainbow.brackets.settings.form.RainbowSettingsForm
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.options.ConfigurationException
 import org.jetbrains.annotations.Nls
