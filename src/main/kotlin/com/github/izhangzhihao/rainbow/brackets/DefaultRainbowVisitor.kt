@@ -39,8 +39,8 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             filterBraceType
         } else {
             filterBraceType
-                    .filterNot { it.leftBraceType == type && element.nextSibling.elementType() == it.rightBraceType }
-                    .filterNot { it.rightBraceType == type && element.prevSibling.elementType() == it.leftBraceType }
+                    .filterNot { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
+                    .filterNot { it.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
         }
     }
 
