@@ -16,6 +16,15 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.0-RC4</p>
+      <ul>
+        <li>#10 #2 Add setting to disable rainbow-ify brackets without content</li>
+        <li>Show update notification after plugin updated</li>
+        <li>Add a lot of tests</li>
+        <li>Convert all java code to kotlin</li>
+        <li>NOTE: this version are build against with IU-2017.2.7, but verified by IC-2017.2</li>
+      </ul>
+      <br/>
       <p>5.0-RC3</p>
       <ul>
         <li>#32 Add version info in setting page</li>
