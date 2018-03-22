@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.intellij.lang.ecmascript6.JSXHarmonyFileType
 import com.intellij.lang.javascript.JavaScriptFileType
 import com.intellij.lang.javascript.TypeScriptFileType
 import com.intellij.psi.PsiDocumentManager
@@ -152,4 +153,34 @@ const s = `<ololo>`
                 )
     }
 
+    fun testIssue38() {
+        val code = """
+const element = ( <div> <h1>Hello, world!</h1> </div> );
+                            """.trimIndent()
+
+        myFixture.configureByText(JSXHarmonyFileType.INSTANCE, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+        doHighlighting.filter { brackets.contains(it.text.toChar()) }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .filterNot { it == null }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                roundLevel(0),
+
+                                angleLevel(0),
+                                angleLevel(0),
+                                angleLevel(1),
+                                angleLevel(1),
+                                angleLevel(1),
+                                angleLevel(1),
+                                angleLevel(0),
+                                angleLevel(0),
+
+                                roundLevel(0)
+                        )
+                )
+    }
 }

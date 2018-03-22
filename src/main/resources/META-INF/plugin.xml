@@ -153,6 +153,7 @@
         <!-- Add your extensions here -->
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.DefaultRainbowVisitor"/>
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.XmlRainbowVisitor"/>
+        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.ReactRainbowVisitor"/>
 
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
         <applicationService serviceInterface="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"

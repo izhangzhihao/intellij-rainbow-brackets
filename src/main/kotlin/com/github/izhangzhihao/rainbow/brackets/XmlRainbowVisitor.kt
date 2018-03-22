@@ -14,7 +14,7 @@ import com.intellij.psi.xml.XmlTokenType
  *
  * Created by Yii.Guxing on 2018/01/24
  */
-class XmlRainbowVisitor : RainbowHighlightVisitor() {
+open class XmlRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun suitableForFile(file: PsiFile)
             : Boolean = super.suitableForFile(file) &&
