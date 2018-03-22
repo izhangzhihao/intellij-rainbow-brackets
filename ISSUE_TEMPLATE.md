@@ -1,7 +1,9 @@
-**You should `Star` this repo before you create a issue, thanks for your support 😁**
+**You should `star` this repo before creating a issue, thanks for your support 😁**
 
 Your issue may already be reported!
 Please search on the [issue track](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues) before creating one.
+
+## Your programming language
 
 ## Expected Behavior
 * If you're describing a bug, tell us what should happen
@@ -15,7 +17,7 @@ Please search on the [issue track](https://github.com/izhangzhihao/intellij-rain
 Not obligatory, but suggest a fix/reason for the bug, or ideas how to implement the addition or change
 
 ## Code snippet for reproduce (for bugs)
-Provide code snippet
+Please provide code snippet
 
 ## Your Environment
 
