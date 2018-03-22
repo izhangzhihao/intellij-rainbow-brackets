@@ -141,6 +141,7 @@
          on how to target different products -->
     <depends>com.intellij.modules.lang</depends>
     <depends optional="true" config-file="kotlin-brackets.xml">org.jetbrains.kotlin</depends>
+    <depends optional="true" config-file="JSX.xml">JavaScript</depends>
 
     <extensionPoints>
         <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint">
@@ -153,7 +154,6 @@
         <!-- Add your extensions here -->
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.DefaultRainbowVisitor"/>
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.XmlRainbowVisitor"/>
-        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.ReactRainbowVisitor"/>
 
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
         <applicationService serviceInterface="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"
