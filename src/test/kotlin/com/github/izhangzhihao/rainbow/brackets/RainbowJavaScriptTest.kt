@@ -183,4 +183,35 @@ const element = ( <div> <h1>Hello, world!</h1> </div> );
                         )
                 )
     }
+
+    fun testIssue39() {
+        val code = """
+const html = '<div><div><div>Hello</div></div></div>'
+                            """.trimIndent()
+
+        myFixture.configureByText(JSXHarmonyFileType.INSTANCE, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+        doHighlighting.filter { brackets.contains(it.text.toChar()) }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .filterNot { it == null }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                angleLevel(0),
+                                angleLevel(0),
+                                angleLevel(1),
+                                angleLevel(1),
+                                angleLevel(2),
+                                angleLevel(2),
+                                angleLevel(2),
+                                angleLevel(2),
+                                angleLevel(1),
+                                angleLevel(1),
+                                angleLevel(0),
+                                angleLevel(0)
+                        )
+                )
+    }
 }
