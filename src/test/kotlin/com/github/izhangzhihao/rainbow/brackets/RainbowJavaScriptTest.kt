@@ -189,7 +189,7 @@ const element = ( <div> <h1>Hello, world!</h1> </div> );
 const html = '<div><div><div>Hello</div></div></div>'
                             """.trimIndent()
 
-        myFixture.configureByText(JSXHarmonyFileType.INSTANCE, code)
+        myFixture.configureByText(JavaScriptFileType.INSTANCE, code)
         PsiDocumentManager.getInstance(project).commitAllDocuments()
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
