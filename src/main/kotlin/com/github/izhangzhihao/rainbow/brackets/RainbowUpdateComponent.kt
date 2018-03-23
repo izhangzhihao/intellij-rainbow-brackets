@@ -17,19 +17,20 @@ class RainbowUpdateComponent(project: Project) : AbstractProjectComponent(projec
     }
 
     companion object {
+        private val version = RainbowSettings.instance.version
         private var channel = "izhangzhihao.rainbow.brackets"
-        private const val updateContent = """
+        private val updateContent = """
     <br/>
     Thank you for downloading <b>Rainbow Brackets</b>!<br>
     If you find my plugin helpful, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets">Please give me a star on github</a></b><br/>
-    If you find any issue, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues">Please feel free to raise a issue</a></b><br/>
-    See <b><a href="http://plugins.jetbrains.com/plugin/10080-rainbow-brackets">Changelog</a></b> for more details.
+    If you find any issue, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues">Feel free to raise a issue</a></b><br/>
+    See <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases/tag/$version">Changelog</a></b> for more details.
     """
 
         private fun showUpdate(project: Project) {
             show(
                     project,
-                    "Rainbow Brackets updated to ${RainbowSettings.instance.version}",
+                    "Rainbow Brackets updated to $version",
                     Companion.updateContent,
                     Companion.channel + "_UPDATE",
                     NotificationType.INFORMATION,
