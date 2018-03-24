@@ -29,17 +29,13 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 ![](./screenshots/with-HTML.png)
 
-* and much more...
+* looking forward to your screenshots...
 
 ## Install
 
-1. Inside your IDE, select `Preferences` -> `Plugins` -> `Browse Repositories...`.
+For Windows - <kbd>File</kbd> > <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>Browse repositories...</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd> > <kbd>Restart IntelliJ IDEA</kbd>
 
-2. Search for `Rainbow Brackets`.
-
-3. Click the green `Install Plugin` button.
-
-4. Click `Close` and `OK`, then Re-launch your IDE.
+For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Browse repositories...</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd>  > <kbd>Restart IntelliJ IDEA</kbd>
 
 ## Contribute
 
