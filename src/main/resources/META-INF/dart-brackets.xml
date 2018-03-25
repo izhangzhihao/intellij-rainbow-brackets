@@ -1,6 +1,6 @@
 <idea-plugin>
     <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets">
         <pairedBraceProvider language="Dart"
-                             implementationClass="com.github.izhangzhihao.rainbow.brackets.DartAngleBracketProvider"/>
+                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.DartAngleBracketProvider"/>
     </extensions>
 </idea-plugin>

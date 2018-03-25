@@ -1,4 +1,4 @@
-package com.github.izhangzhihao.rainbow.brackets
+package com.github.izhangzhihao.rainbow.brackets.provider
 
 import com.intellij.lang.BracePair
 import com.jetbrains.lang.dart.DartTokenTypes.GT

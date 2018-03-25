@@ -6,7 +6,7 @@ import com.jetbrains.lang.dart.DartFileType
 import io.kotlintest.matchers.shouldBe
 
 class RainbowDartTest : LightCodeInsightFixtureTestCase() {
-    fun testRainbowForXML() {
+    fun testRainbowForDart() {
         val code =
                 """
 void fn(List<int> a) => print(a);

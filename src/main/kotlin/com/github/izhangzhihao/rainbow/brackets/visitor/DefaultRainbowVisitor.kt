@@ -1,6 +1,7 @@
-package com.github.izhangzhihao.rainbow.brackets
+package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isDoNOTRainbowifyBracketsWithoutContent
+import com.github.izhangzhihao.rainbow.brackets.bracePairs
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.lang.BracePair
 import com.intellij.psi.PsiElement

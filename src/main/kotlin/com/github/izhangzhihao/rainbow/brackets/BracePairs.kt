@@ -3,15 +3,11 @@
  *
  * Created by Yii.Guxing on 2018/01/25
  */
-
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.github.izhangzhihao.rainbow.brackets.provider.PairedBraceProvider
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.lang.*
-
-interface PairedBraceProvider {
-    val pairs: List<BracePair>
-}
 
 object BracePairs {
 

@@ -1,5 +1,5 @@
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij">
-        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.ReactJSXRainbowVisitor"/>
+        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.ReactJSXRainbowVisitor"/>
     </extensions>
 </idea-plugin>

@@ -1,4 +1,4 @@
-package com.github.izhangzhihao.rainbow.brackets
+package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isEnableRainbowAngleBrackets
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor

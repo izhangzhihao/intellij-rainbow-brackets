@@ -1,4 +1,4 @@
-package com.github.izhangzhihao.rainbow.brackets
+package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.lang.javascript.DialectDetector

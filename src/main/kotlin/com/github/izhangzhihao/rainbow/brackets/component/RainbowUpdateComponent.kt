@@ -1,6 +1,7 @@
-package com.github.izhangzhihao.rainbow.brackets
+package com.github.izhangzhihao.rainbow.brackets.component
 
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
+import com.github.izhangzhihao.rainbow.brackets.show
 import com.intellij.notification.*
 import com.intellij.openapi.components.AbstractProjectComponent
 import com.intellij.openapi.project.Project
@@ -11,7 +12,7 @@ class RainbowUpdateComponent(project: Project) : AbstractProjectComponent(projec
 
     override fun projectOpened() {
         if (applicationComponent.updated) {
-            Companion.showUpdate(myProject)
+            showUpdate(myProject)
             applicationComponent.updated = false
         }
     }
@@ -31,8 +32,8 @@ class RainbowUpdateComponent(project: Project) : AbstractProjectComponent(projec
             show(
                     project,
                     "Rainbow Brackets updated to $version",
-                    Companion.updateContent,
-                    Companion.channel + "_UPDATE",
+                    updateContent,
+                    channel + "_UPDATE",
                     NotificationType.INFORMATION,
                     NotificationListener.URL_OPENING_LISTENER
             )

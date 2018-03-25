@@ -1,6 +1,6 @@
 <idea-plugin>
     <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets">
         <pairedBraceProvider language="kotlin"
-                             implementationClass="com.github.izhangzhihao.rainbow.brackets.KotlinAngleBracketProvider"/>
+                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.KotlinAngleBracketProvider"/>
     </extensions>
 </idea-plugin>

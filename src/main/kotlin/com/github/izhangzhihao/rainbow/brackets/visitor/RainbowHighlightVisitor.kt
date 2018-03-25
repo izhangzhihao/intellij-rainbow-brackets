@@ -1,4 +1,4 @@
-package com.github.izhangzhihao.rainbow.brackets
+package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getHighlightInfo
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isRainbowEnabled
