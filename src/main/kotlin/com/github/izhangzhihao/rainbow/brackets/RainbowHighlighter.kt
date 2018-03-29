@@ -18,17 +18,13 @@ object RainbowHighlighter {
     val squigglyBrackets: CharArray = charArrayOf('{', '}')
     val angleBrackets: CharArray = charArrayOf('<', '>')
 
-    val roundBracketsColors: Array<Color>
-        get() = jBColor(settings.lightRoundBracketsColors, settings.darkRoundBracketsColors)
+    val roundBracketsColors: Array<Color> by lazy { jBColor(settings.lightRoundBracketsColors, settings.darkRoundBracketsColors) }
 
-    val squareBracketsColors: Array<Color>
-        get() = jBColor(settings.lightSquareBracketsColors, settings.darkSquareBracketsColors)
+    val squareBracketsColors: Array<Color> by lazy { jBColor(settings.lightSquareBracketsColors, settings.darkSquareBracketsColors) }
 
-    val squigglyBracketsColors: Array<Color>
-        get() = jBColor(settings.lightSquigglyBracketsColors, settings.darkSquigglyBracketsColors)
+    val squigglyBracketsColors: Array<Color> by lazy { jBColor(settings.lightSquigglyBracketsColors, settings.darkSquigglyBracketsColors) }
 
-    val angleBracketsColor: Array<Color>
-        get() = jBColor(settings.lightAngleBracketsColor, settings.darkAngleBracketsColor)
+    val angleBracketsColor: Array<Color> by lazy { jBColor(settings.lightAngleBracketsColor, settings.darkAngleBracketsColor) }
 
     private val settings = RainbowSettings.instance
 

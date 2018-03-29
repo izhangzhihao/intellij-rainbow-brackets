@@ -41,7 +41,7 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ## Config brackets colors
 
-If you want to config the color, add this to your config file(APP_CONFIG/rainbow_brackets.xml), In my env(MAC os) is /Users/izhangzhihao/Library/Preferences/IntelliJIdea2018.1/options/rainbow_brackets.xml:
+If you want to config the color, edit your config file and restart your IDE(APP_CONFIG/rainbow_brackets.xml), In my env(MAC os) is /Users/izhangzhihao/Library/Preferences/IntelliJIdea2018.1/options/rainbow_brackets.xml:
 
 ```xml
 <option name="lightRoundBracketsColors">
