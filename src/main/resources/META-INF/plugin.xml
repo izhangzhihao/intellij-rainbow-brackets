@@ -16,6 +16,28 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.0</p>
+      <ul>
+        <li>Finally, intellij-rainbow-brackets released version 5.0 with all RC features & bug fix</li>
+        <li><b>Thanks for https://github.com/YiiGuxing, which helps move this plugin from `Annotator` to `HighlightVisitor`!</b></li>
+        <li>Check more info at <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/pull/25">here</a></li>
+        <li>From 5.x series we didn't need specific implementations like java/scala/kotlin specific implementations in 3.x series any more!</li>
+        <br/>
+        <li>#13 Add test for dart support & add `DartAngleBracketProvider` for support dart angle brackets</li>
+        <li>Add test for #39</li>
+        <li>#38 Add support for JSX (React)</li>
+        <li>Fix #27 Settings no longer works</li>
+        <li>#30 Adjust color: remove red, purple from color palettes, add some material design color to color palettes.</li>
+        <li>#32 Add version info in setting page</li>
+        <li>#31 Fix 'Enablement of round brackets enables all but angle brackets'</li>
+        <li>#10 #2 Add setting to disable rainbow-ify brackets without content</li>
+        <li>Show update notification after plugin updated</li>
+        <li>Add a lot of tests</li>
+        <li>Convert all java code to kotlin</li>
+        <br/>
+        <li>And with much more features not documented in release notes.</li>
+        <li>NOTE: this version are build against with IU-2017.2.7, but verified by IC-2017.2</li>
+      </ul>
       <p>5.0-RC4</p>
       <ul>
         <li>#10 #2 Add setting to disable rainbow-ify brackets without content</li>
