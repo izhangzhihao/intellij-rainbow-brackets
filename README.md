@@ -39,6 +39,71 @@ For Windows - <kbd>File</kbd> > <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>
 
 For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Browse repositories...</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd>  > <kbd>Restart IntelliJ IDEA</kbd>
 
+## To config the colors
+
+If you want to config the color, add this to your config file(APP_CONFIG/rainbow_brackets.xml), In my env(MAC os) is /Users/izhangzhihao/Library/Preferences/IntelliJIdea2018.1/options/rainbow_brackets.xml:
+
+```xml
+<option name="lightRoundBracketsColors">
+      <array>
+        <option value="0xE6B422" />
+        <option value="0x43A047" />
+        <option value="0x2196F3" />
+        <option value="0x3F51B5" />
+        <option value="0x00897B" />
+      </array>
+</option>
+```
+
+**NOTE: The lightXXX and the darkXXX should be the same size!**
+
+The default color:
+
+```kotlin
+    var lightRoundBracketsColors = arrayOf(
+            "0xE66A01",
+            "0x1B5E20",
+            "0x006BE7",
+            "0x283593",
+            "0x004D40"
+    )
+
+    var darkRoundBracketsColors = arrayOf(
+            "0xE6B422",
+            "0x43A047",
+            "0x2196F3",
+            "0x3F51B5",
+            "0x00897B"
+    )
+
+    var lightSquareBracketsColors = arrayOf(
+            "0x0B9087",
+            "0x827717",
+            "0x6444E6"
+    )
+
+    var darkSquareBracketsColors = arrayOf(
+            "0x33CCFF",
+            "0xD4E157",
+            "0x8080FF"
+    )
+
+    var lightSquigglyBracketsColors = arrayOf(
+            "0x0057D2",
+            "0x558B2F",
+            "0xFF6D27"
+    )
+
+    var darkSquigglyBracketsColors = arrayOf(
+            "0x1976D2",
+            "0x8BC34A",
+            "0xFF9863"
+    )
+
+    var lightAngleBracketsColor = lightRoundBracketsColors
+    var darkAngleBracketsColor = darkRoundBracketsColors
+```
+
 ## Contribute
 
 * `gradle test`
