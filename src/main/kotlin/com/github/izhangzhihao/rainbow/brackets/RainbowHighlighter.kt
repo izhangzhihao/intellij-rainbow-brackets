@@ -18,16 +18,16 @@ object RainbowHighlighter {
     val squigglyBrackets: CharArray = charArrayOf('{', '}')
     val angleBrackets: CharArray = charArrayOf('<', '>')
 
-    val defaultRoundBracketsColors: Array<Color>
+    val roundBracketsColors: Array<Color>
         get() = jBColor(settings.lightRoundBracketsColors, settings.darkRoundBracketsColors)
 
-    val defaultSquareBracketsColors: Array<Color>
+    val squareBracketsColors: Array<Color>
         get() = jBColor(settings.lightSquareBracketsColors, settings.darkSquareBracketsColors)
 
-    val defaultSquigglyBracketsColors: Array<Color>
+    val squigglyBracketsColors: Array<Color>
         get() = jBColor(settings.lightSquigglyBracketsColors, settings.darkSquigglyBracketsColors)
 
-    val defaultAngleBracketsColor: Array<Color>
+    val angleBracketsColor: Array<Color>
         get() = jBColor(settings.lightAngleBracketsColor, settings.darkAngleBracketsColor)
 
     private val settings = RainbowSettings.instance
@@ -55,11 +55,11 @@ object RainbowHighlighter {
         }
 
         val color = when {
-            element.isRoundBracket -> if (isEnableRainbowRoundBrackets) defaultRoundBracketsColors else return null
-            element.isSquareBracket -> if (isEnableRainbowSquareBrackets) defaultSquareBracketsColors else return null
-            element.isSquigglyBracket -> if (isEnableRainbowSquigglyBrackets) defaultSquigglyBracketsColors else return null
-            element.isAngleBracket -> if (isEnableRainbowAngleBrackets) defaultAngleBracketsColor else return null
-            else -> defaultRoundBracketsColors
+            element.isRoundBracket -> if (isEnableRainbowRoundBrackets) roundBracketsColors else return null
+            element.isSquareBracket -> if (isEnableRainbowSquareBrackets) squareBracketsColors else return null
+            element.isSquigglyBracket -> if (isEnableRainbowSquigglyBrackets) squigglyBracketsColors else return null
+            element.isAngleBracket -> if (isEnableRainbowAngleBrackets) angleBracketsColor else return null
+            else -> roundBracketsColors
         }.getColor(level)
 
         return TextAttributes(color, null, null, null, Font.PLAIN)
@@ -75,6 +75,6 @@ object RainbowHighlighter {
                         .create()
             }
 
-    private fun jBColor(light: Array<Int>, dark: Array<Int>): Array<Color> =
-            light.zip(dark).map { JBColor(it.first, it.second) }.toTypedArray()
+    private fun jBColor(light: Array<String>, dark: Array<String>): Array<Color> =
+            light.zip(dark).map { JBColor(Integer.decode(it.first), Integer.decode(it.second)) }.toTypedArray()
 }
