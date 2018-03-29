@@ -24,6 +24,7 @@
         <li>From 5.x series we didn't need specific implementations like java/scala/kotlin specific implementations in 3.x series any more!</li>
         <br/>
         <li>#13 Add test for dart support & add `DartAngleBracketProvider` for support dart angle brackets</li>
+        <li>#18 where to customize brackets color? See the config guide in <a https://github.com/izhangzhihao/intellij-rainbow-brackets#Config-brackets-colors>here</a></li>
         <li>Add test for #39</li>
         <li>#38 Add support for JSX (React)</li>
         <li>Fix #27 Settings no longer works</li>
