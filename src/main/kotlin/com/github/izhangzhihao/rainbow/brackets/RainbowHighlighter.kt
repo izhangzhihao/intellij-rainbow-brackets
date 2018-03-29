@@ -18,27 +18,17 @@ object RainbowHighlighter {
     val squigglyBrackets: CharArray = charArrayOf('{', '}')
     val angleBrackets: CharArray = charArrayOf('<', '>')
 
-    val defaultRoundBracketsColors: Array<Color> = arrayOf(
-            JBColor(0xE66A01, 0xE6B422),
-            JBColor(0x1B5E20, 0x43A047),
-            JBColor(0x006BE7, 0x2196F3),
-            JBColor(0x283593, 0x3F51B5),
-            JBColor(0x004D40, 0x00897B)
-    )
+    val defaultRoundBracketsColors: Array<Color>
+        get() = jBColor(settings.lightRoundBracketsColors, settings.darkRoundBracketsColors)
 
-    val defaultSquareBracketsColors: Array<Color> = arrayOf(
-            JBColor(0x0B9087, 0x33CCFF),
-            JBColor(0x827717, 0xD4E157),
-            JBColor(0x6444E6, 0x8080FF)
-    )
+    val defaultSquareBracketsColors: Array<Color>
+        get() = jBColor(settings.lightSquareBracketsColors, settings.darkSquareBracketsColors)
 
-    val defaultSquigglyBracketsColors: Array<Color> = arrayOf(
-            JBColor(0x0057D2, 0x1976D2),
-            JBColor(0x558B2F, 0x8BC34A),
-            JBColor(0xFF6D27, 0xFF9863)
-    )
+    val defaultSquigglyBracketsColors: Array<Color>
+        get() = jBColor(settings.lightSquigglyBracketsColors, settings.darkSquigglyBracketsColors)
 
-    val defaultAngleBracketsColor: Array<Color> = defaultRoundBracketsColors
+    val defaultAngleBracketsColor: Array<Color>
+        get() = jBColor(settings.lightAngleBracketsColor, settings.darkAngleBracketsColor)
 
     private val settings = RainbowSettings.instance
 
@@ -84,4 +74,7 @@ object RainbowHighlighter {
                         .range(element)
                         .create()
             }
+
+    private fun jBColor(light: Array<Int>, dark: Array<Int>): Array<Color> =
+            light.zip(dark).map { JBColor(it.first, it.second) }.toTypedArray()
 }
