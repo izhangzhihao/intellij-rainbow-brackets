@@ -1,11 +1,19 @@
-# Rainbow Brackets [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=Rainbowify+your+IDE&url=https://github.com/izhangzhihao/intellij-rainbow-brackets&via=izhangzhihao&hashtags=rainbow,IntelliJIDEA,DriveToDevelop,idea,developers)
+# Rainbow Brackets
 
-[![Join the chat at https://gitter.im/izhangzhihao/intellij-rainbow-brackets](https://badges.gitter.im/izhangzhihao/intellij-rainbow-brackets.svg)](https://gitter.im/izhangzhihao/intellij-rainbow-brackets?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets.svg?branch=master)](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets) [![codecov](https://codecov.io/gh/izhangzhihao/intellij-rainbow-brackets/branch/IC-2017.2/graph/badge.svg)](https://codecov.io/gh/izhangzhihao/intellij-rainbow-brackets) [![Rainbow Brackets Release](https://img.shields.io/github/release/izhangzhihao/intellij-rainbow-brackets.svg)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) [![Plugin downloads](https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) [![Plugin version](https://img.shields.io/jetbrains/plugin/v/10080-rainbow-brackets.svg)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat-square&logo=twitter)](https://twitter.com/intent/tweet?text=Rainbowify+your+IDE&url=https://github.com/izhangzhihao/intellij-rainbow-brackets&via=izhangzhihao&hashtags=rainbow,IntelliJIDEA,DriveToDevelop,idea,developers) [![Gitter](https://img.shields.io/gitter/room/izhangzhihao/intellij-rainbow-brackets.svg?style=flat-square)](https://gitter.im/izhangzhihao/intellij-rainbow-brackets) [![Build Status](https://img.shields.io/travis/izhangzhihao/intellij-rainbow-brackets/IC-2017.2.svg?style=flat-square)](https://travis-ci.org/izhangzhihao/intellij-rainbow-brackets) [![codecov](https://img.shields.io/codecov/c/github/izhangzhihao/intellij-rainbow-brackets/IC-2017.2.svg?style=flat-square)] [![Rainbow Brackets Release](https://img.shields.io/github/release/izhangzhihao/intellij-rainbow-brackets.svg?style=flat-square)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) [![Plugin downloads](https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg?style=flat-square)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) [![Plugin version](https://img.shields.io/jetbrains/plugin/v/10080-rainbow-brackets.svg?style=flat-square)](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues)
 
-## Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA based IDEs
+Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA based IDEs
 
-## Compatible with
+- [Rainbow Brackets](#rainbow-brackets)
+    - [Compatibility](#compatibility)
+    - [Supported languages](#supported-languages)
+    - [Screenshots](#screenshots)
+    - [Install](#install)
+    - [Config brackets colors](#config-brackets-colors)
+    - [Contribute](#contribute)
+    - [Acknowledgements](#acknowledgements)
+
+## Compatibility
 
 IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, DataGrip, Rider, MPS, Android Studio
 
@@ -45,64 +53,68 @@ If you want to config the color, edit your config file and restart your IDE(APP_
 
 ```xml
 <option name="lightRoundBracketsColors">
-      <array>
-        <option value="0xE6B422" />
-        <option value="0x43A047" />
-        <option value="0x2196F3" />
-        <option value="0x3F51B5" />
-        <option value="0x00897B" />
-      </array>
+   <array>
+      <option value="0xE6B422" />
+      <option value="0x43A047" />
+      <option value="0x2196F3" />
+      <option value="0x3F51B5" />
+      <option value="0x00897B" />
+   </array>
 </option>
 ```
 
 **NOTE: The lightXXX and the darkXXX should be the same size!**
 
-The default color:
+
+<details>
+    <summary>The default colors:</summary>
 
 ```kotlin
-    var lightRoundBracketsColors = arrayOf(
-            "0xE66A01",
-            "0x1B5E20",
-            "0x006BE7",
-            "0x283593",
-            "0x004D40"
-    )
+var lightRoundBracketsColors = arrayOf(
+        "0xE66A01",
+        "0x1B5E20",
+        "0x006BE7",
+        "0x283593",
+        "0x004D40"
+)
 
-    var darkRoundBracketsColors = arrayOf(
-            "0xE6B422",
-            "0x43A047",
-            "0x2196F3",
-            "0x3F51B5",
-            "0x00897B"
-    )
+var darkRoundBracketsColors = arrayOf(
+        "0xE6B422",
+        "0x43A047",
+        "0x2196F3",
+        "0x3F51B5",
+        "0x00897B"
+)
 
-    var lightSquareBracketsColors = arrayOf(
-            "0x0B9087",
-            "0x827717",
-            "0x6444E6"
-    )
+var lightSquareBracketsColors = arrayOf(
+        "0x0B9087",
+        "0x827717",
+        "0x6444E6"
+)
 
-    var darkSquareBracketsColors = arrayOf(
-            "0x33CCFF",
-            "0xD4E157",
-            "0x8080FF"
-    )
+var darkSquareBracketsColors = arrayOf(
+        "0x33CCFF",
+        "0xD4E157",
+        "0x8080FF"
+)
 
-    var lightSquigglyBracketsColors = arrayOf(
-            "0x0057D2",
-            "0x558B2F",
-            "0xFF6D27"
-    )
+var lightSquigglyBracketsColors = arrayOf(
+        "0x0057D2",
+        "0x558B2F",
+        "0xFF6D27"
+)
 
-    var darkSquigglyBracketsColors = arrayOf(
-            "0x1976D2",
-            "0x8BC34A",
-            "0xFF9863"
-    )
+var darkSquigglyBracketsColors = arrayOf(
+        "0x1976D2",
+        "0x8BC34A",
+        "0xFF9863"
+)
 
-    var lightAngleBracketsColor = lightRoundBracketsColors
-    var darkAngleBracketsColor = darkRoundBracketsColors
+var lightAngleBracketsColor = lightRoundBracketsColors
+var darkAngleBracketsColor = darkRoundBracketsColors
 ```
+
+</details>
 
 ## Contribute
 
