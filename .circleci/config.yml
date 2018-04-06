@@ -19,11 +19,9 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: gradle dependencies buildPlugin compileTestKotlin -PdownloadIdeaSources=false
+      - run: gradle dependencies test buildPlugin compileTestKotlin -PdownloadIdeaSources=false
 
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
-
-      - run: gradle test -PdownloadIdeaSources=false
