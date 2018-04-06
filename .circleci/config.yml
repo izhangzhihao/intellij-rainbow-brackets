@@ -19,11 +19,11 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: gradle dependencies buildPlugin
+      - run: gradle dependencies buildPlugin -PdownloadIdeaSources=false
 
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      - run: gradle test
+      - run: gradle test -PdownloadIdeaSources=false
