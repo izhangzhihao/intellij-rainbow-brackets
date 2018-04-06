@@ -7,14 +7,14 @@ install:
   - echo "Override default Travis install step to avoid unnecessary './gradlew assemble'."
 
 script:
-  - ./gradlew check buildPlugin
+  - ./gradlew check buildPlugin -PdownloadIdeaSources=false
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 deploy:
   provider: script
-  script: ./gradlew clean check publishPlugin
+  script: ./gradlew clean check publishPlugin -PdownloadIdeaSources=false
   on:
     tags: true
     all_branches: true
