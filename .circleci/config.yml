@@ -9,7 +9,7 @@ jobs:
     environment:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
-    
+
     steps:
       - checkout
 
@@ -19,7 +19,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: gradle dependencies test buildPlugin compileTestKotlin -PdownloadIdeaSources=false
+      - run: gradle test buildPlugin -PdownloadIdeaSources=false
 
       - save_cache:
           paths:
