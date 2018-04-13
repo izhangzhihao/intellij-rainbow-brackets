@@ -2,6 +2,7 @@ package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isDoNOTRainbowifyBracketsWithoutContent
 import com.github.izhangzhihao.rainbow.brackets.bracePairs
+import com.github.izhangzhihao.rainbow.brackets.visitor.DefaultRainbowVisitor.Companion.filterPairs
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.lang.BracePair
 import com.intellij.psi.PsiElement
@@ -31,17 +32,6 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
         val level = element.getBracketLevel(pair)
         if (level >= 0) {
             element.setHighlightInfo(level)
-        }
-    }
-
-    private fun filterPairs(pairs: List<BracePair>, type: IElementType, element: LeafPsiElement): List<BracePair> {
-        val filterBraceType = pairs.filter { it.leftBraceType == type || it.rightBraceType == type }
-        return if (!isDoNOTRainbowifyBracketsWithoutContent) {
-            filterBraceType
-        } else {
-            filterBraceType
-                    .filterNot { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
-                    .filterNot { it.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
         }
     }
 
@@ -126,6 +116,17 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             }
 
             return false
+        }
+
+        private fun filterPairs(pairs: List<BracePair>, type: IElementType, element: LeafPsiElement): List<BracePair> {
+            val filterBraceType = pairs.filter { it.leftBraceType == type || it.rightBraceType == type }
+            return if (!isDoNOTRainbowifyBracketsWithoutContent) {
+                filterBraceType
+            } else {
+                filterBraceType
+                        .filterNot { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
+                        .filterNot { it.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
+            }
         }
     }
 }
