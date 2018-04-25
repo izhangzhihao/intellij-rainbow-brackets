@@ -10,6 +10,7 @@ Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA based IDEs
     - [Screenshots](#screenshots)
     - [Install](#install)
     - [Config brackets colors](#config-brackets-colors)
+    - [HTML code in js](#html-code-in-js)
     - [Contribute](#contribute)
     - [Acknowledgements](#acknowledgements)
 
@@ -119,6 +120,16 @@ var darkAngleBracketsColor = darkRoundBracketsColors
 ```
 
 </details>
+
+## HTML code in js
+
+If you are trying to enable rainbow brackets for HTML in js code like this:
+
+```javascript
+var html = '<div><div><div>Hello</div></div></div>';
+```
+
+You need to change your color scheme for HTML code, [cause our rainbow color been covered by intellij built-in functionality](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360000117450-My-HighlightVisitor-been-covered-by-intellij-built-in-functionality).
 
 ## Contribute
 
