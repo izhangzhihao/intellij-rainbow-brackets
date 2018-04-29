@@ -16,6 +16,11 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.1</p>
+      <ul>
+        <li>#39 Enable rainbow html in js</li>
+      </ul>
+      <br/>
       <p>5.0</p>
       <ul>
         <li>Finally, intellij-rainbow-brackets released version 5.0 with all RC features & bug fix</li>
