@@ -1,9 +1,8 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven {
-            url "http://maven.aliyun.com/nexus/content/groups/public/"
-        }
+        maven { url "https://maven-central.storage-download.googleapis.com/repos/central/data/" }
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
     }
 
     dependencies {
@@ -23,9 +22,8 @@ testlogger {
 
 repositories {
     mavenLocal()
-    maven {
-        url "http://maven.aliyun.com/nexus/content/groups/public/"
-    }
+    maven { url "https://maven-central.storage-download.googleapis.com/repos/central/data/" }
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 }
 
 apply plugin: "idea"
