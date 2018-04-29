@@ -123,13 +123,14 @@ var darkAngleBracketsColor = darkRoundBracketsColors
 
 ## HTML code in js
 
-If you are trying to enable rainbow brackets for HTML in js code like this:
+To enable rainbow brackets for HTML in js code like this:
 
 ```javascript
 var html = '<div><div><div>Hello</div></div></div>';
 ```
 
-You need to change your color scheme for HTML code, [cause our rainbow color been covered by intellij built-in functionality](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360000117450-My-HighlightVisitor-been-covered-by-intellij-built-in-functionality).
+This plugin will automatically override color scheme "HTML_CODE" [cause our rainbow color been covered by intellij built-in functionality](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360000117450-My-HighlightVisitor-been-covered-by-intellij-built-in-functionality).
+You still could set `<option name="rainbowifyHTMLInsideJS" value="true" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
 
 ## Contribute
 
