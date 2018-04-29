@@ -19,9 +19,11 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: gradle test buildPlugin -PdownloadIdeaSources=false
+      - run: gradle check buildPlugin -PdownloadIdeaSources=false
 
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
+
+      - run: bash <(curl -s https://codecov.io/bash)
