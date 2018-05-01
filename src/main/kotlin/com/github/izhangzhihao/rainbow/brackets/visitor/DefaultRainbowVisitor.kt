@@ -2,7 +2,6 @@ package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isDoNOTRainbowifyBracketsWithoutContent
 import com.github.izhangzhihao.rainbow.brackets.bracePairs
-import com.github.izhangzhihao.rainbow.brackets.visitor.DefaultRainbowVisitor.Companion.filterPairs
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.lang.BracePair
 import com.intellij.psi.PsiElement
@@ -85,12 +84,12 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
         private fun filterPairs(type: IElementType, element: LeafPsiElement): BracePair? {
             val pairs = element.language.bracePairs ?: return null
-            val filterBraceType = pairs[type.toString()]
+            val filterBraceType = pairs[type.toString()] ?: return null
             return if (!isDoNOTRainbowifyBracketsWithoutContent) {
                 filterBraceType
             } else {
                 filterBraceType
-                        .takeUnless { it?.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
+                        .takeUnless { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
                         .takeUnless { it?.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
             }
         }
