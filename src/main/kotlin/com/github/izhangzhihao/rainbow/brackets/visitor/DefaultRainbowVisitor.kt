@@ -24,8 +24,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
         val matching = filterPairs(type, element) ?: return
 
-        val pair = matching.takeIf { element.isValidBracket(it) } ?: return
-        val level = element.getBracketLevel(pair)
+        val level = element.getBracketLevel(matching)
         if (level >= 0) {
             element.setHighlightInfo(level)
         }
@@ -82,36 +81,6 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
         private fun PsiElement.elementType(): IElementType? {
             return (this as? LeafPsiElement)?.elementType
-        }
-
-        private fun LeafPsiElement.isValidBracket(pair: BracePair): Boolean {
-            val pairType = when (elementType) {
-                pair.leftBraceType -> pair.rightBraceType
-                pair.rightBraceType -> pair.leftBraceType
-                else -> return false
-            }
-
-            return if (pairType == pair.leftBraceType) {
-                checkBracePair(this, parent.firstChild, pairType, PsiElement::getNextSibling)
-            } else {
-                checkBracePair(this, parent.lastChild, pairType, PsiElement::getPrevSibling)
-            }
-        }
-
-        private fun checkBracePair(brace: PsiElement,
-                                   start: PsiElement,
-                                   type: IElementType,
-                                   next: PsiElement.() -> PsiElement?): Boolean {
-            var element: PsiElement? = start
-            while (element != null && element != brace) {
-                if (element is LeafPsiElement && element.elementType == type) {
-                    return true
-                }
-
-                element = element.next()
-            }
-
-            return false
         }
 
         private fun filterPairs(type: IElementType, element: LeafPsiElement): BracePair? {
