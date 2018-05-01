@@ -16,21 +16,20 @@ object BracePairs {
                         return@map language to null
                     }
 
-                    val pairs by lazy {
-                        LanguageBraceMatching.INSTANCE.forLanguage(language)?.pairs.let {
-                            if (it == null || it.isEmpty()) {
-                                language.associatedFileType
-                                        ?.let { BraceMatchingUtil.getBraceMatcher(it, language) as? PairedBraceMatcher }
-                                        ?.pairs
-                            } else {
-                                it
+                    val pairs =
+                            LanguageBraceMatching.INSTANCE.forLanguage(language)?.pairs.let {
+                                if (it == null || it.isEmpty()) {
+                                    language.associatedFileType
+                                            ?.let { BraceMatchingUtil.getBraceMatcher(it, language) as? PairedBraceMatcher }
+                                            ?.pairs
+                                } else {
+                                    it
+                                }
                             }
-                        }
-                    }
 
                     val pairsList = providers.forLanguage(language)?.pairs?.let {
                         if (pairs != null && pairs.isNotEmpty()) {
-                            it.toMutableSet().apply { addAll(pairs) }.toList()
+                            it.toMutableSet().apply { addAll(pairs) }
                         } else {
                             it
                         }
