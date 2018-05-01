@@ -22,9 +22,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
     override fun visit(element: PsiElement) {
         val type = (element as? LeafPsiElement)?.elementType ?: return
 
-        val matching = filterPairs(type, element)
-
-        matching ?: return
+        val matching = filterPairs(type, element) ?: return
 
         val pair = matching.takeIf { element.isValidBracket(it) } ?: return
         val level = element.getBracketLevel(pair)
