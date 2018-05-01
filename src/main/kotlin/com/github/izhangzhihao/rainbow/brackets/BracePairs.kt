@@ -1,8 +1,3 @@
-/*
- * BracePairs
- *
- * Created by Yii.Guxing on 2018/01/25
- */
 package com.github.izhangzhihao.rainbow.brackets
 
 import com.github.izhangzhihao.rainbow.brackets.provider.PairedBraceProvider
@@ -21,16 +16,17 @@ object BracePairs {
                         return@map language to null
                     }
 
-                    val pairs =
-                            LanguageBraceMatching.INSTANCE.forLanguage(language)?.pairs.let {
-                                if (it == null || it.isEmpty()) {
-                                    language.associatedFileType
-                                            ?.let { BraceMatchingUtil.getBraceMatcher(it, language) as? PairedBraceMatcher }
-                                            ?.pairs
-                                } else {
-                                    it
-                                }
+                    val pairs by lazy {
+                        LanguageBraceMatching.INSTANCE.forLanguage(language)?.pairs.let {
+                            if (it == null || it.isEmpty()) {
+                                language.associatedFileType
+                                        ?.let { BraceMatchingUtil.getBraceMatcher(it, language) as? PairedBraceMatcher }
+                                        ?.pairs
+                            } else {
+                                it
                             }
+                        }
+                    }
 
                     val pairsList = providers.forLanguage(language)?.pairs?.let {
                         if (pairs != null && pairs.isNotEmpty()) {
@@ -40,7 +36,12 @@ object BracePairs {
                         }
                     } ?: pairs?.toList()
 
-                    language to pairsList
+                    val braceMap = pairsList
+                            ?.map { listOf(Pair(it.leftBraceType.toString(), it), Pair(it.rightBraceType.toString(), it)) }
+                            ?.flatten()
+                            ?.toMap()
+
+                    language to braceMap
                 }
                 .toMap()
     }
@@ -49,5 +50,5 @@ object BracePairs {
 
 }
 
-inline val Language.bracePairs: List<BracePair>?
+inline val Language.bracePairs: Map<String, BracePair>?
     get() = BracePairs.getBracePairs(this)
