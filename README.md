@@ -68,6 +68,10 @@ If you want to config the color, edit your config file and restart your IDE(APP_
 </option>
 ```
 
+If you prefer using light theme, here is a example from @Avinash-Bhat [gray config](https://gist.github.com/Avinash-Bhat/c4d0575dad56046d930b1af3197d8d5d) using [Material Deisgn Color Tool](https://material.io/color), it works greate with light themed bg (basically white) but dark theme is not so good.
+
+
+
 **NOTE: The lightXXX and the darkXXX should be the same size!**
 
 
