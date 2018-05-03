@@ -26,6 +26,8 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 * with Java
 
+![](./screenshots/with-java.png)
+
 ![](./screenshots/with-material-theme-ui.png)
 
 * with Scala
