@@ -18,6 +18,11 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.3</p>
+      <ul>
+        <li>Improve angle bracket support for Groovy</li>
+      </ul>
+      <br/>
       <p>5.2</p>
       <ul>
         <li>#48 Performance improvement</li>
