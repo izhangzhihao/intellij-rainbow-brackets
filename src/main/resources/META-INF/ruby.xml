@@ -1,6 +1,0 @@
-<idea-plugin>
-    <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets">
-        <pairedBraceProvider language="ruby"
-                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.RubyBracketsProvider"/>
-    </extensions>
-</idea-plugin>
