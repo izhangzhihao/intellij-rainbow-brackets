@@ -6,7 +6,7 @@ import com.jetbrains.php.lang.PhpFileType
 import io.kotlintest.matchers.shouldBe
 
 class RainbowPHPTest : LightCodeInsightFixtureTestCase() {
-    fun testRainbowForKotlin() {
+    fun testRainbowForPHP() {
         val code =
                 """
 <?php

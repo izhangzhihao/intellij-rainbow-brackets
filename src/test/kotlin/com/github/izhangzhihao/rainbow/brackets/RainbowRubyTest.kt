@@ -6,7 +6,7 @@ import io.kotlintest.matchers.shouldBe
 import org.jetbrains.plugins.ruby.ruby.lang.RubyFileType
 
 class RainbowRubyTest : LightCodeInsightFixtureTestCase() {
-    fun testRainbowForKotlin() {
+    fun testRainbowForRuby() {
         val code =
                 """
 class Test
