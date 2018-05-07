@@ -185,6 +185,7 @@
     <depends optional="true" config-file="JSX.xml">JavaScript</depends>
     <depends optional="true" config-file="dart-brackets.xml">Dart</depends>
     <depends optional="true" config-file="groovy-brackets.xml">org.intellij.groovy</depends>
+    <depends optional="true" config-file="ruby.xml">org.jetbrains.plugins.ruby</depends>
 
     <extensionPoints>
         <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint">
