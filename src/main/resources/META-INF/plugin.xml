@@ -18,6 +18,11 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.4</p>
+      <ul>
+        <li>Fix #53 The closing brackets or keywords are not highlighted (Ruby & PHP)</li>
+      </ul>
+      <br/>
       <p>5.3</p>
       <ul>
         <li>Improve angle bracket support for Groovy</li>
