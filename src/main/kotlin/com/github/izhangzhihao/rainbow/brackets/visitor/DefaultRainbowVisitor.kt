@@ -2,7 +2,6 @@ package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isDoNOTRainbowifyBracketsWithoutContent
 import com.github.izhangzhihao.rainbow.brackets.bracePairs
-import com.github.izhangzhihao.rainbow.brackets.visitor.DefaultRainbowVisitor.Companion.filterPairs
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.lang.BracePair
 import com.intellij.psi.PsiElement
@@ -21,15 +20,10 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun visit(element: PsiElement) {
         val type = (element as? LeafPsiElement)?.elementType ?: return
-        val pairs = element.language.bracePairs ?: return
 
-        val matching = filterPairs(pairs, type, element)
-        if (matching.isEmpty()) {
-            return
-        }
+        val matching = filterPairs(type, element) ?: return
 
-        val pair = matching.find { element.isValidBracket(it) } ?: return
-        val level = element.getBracketLevel(pair)
+        val level = element.getBracketLevel(matching)
         if (level >= 0) {
             element.setHighlightInfo(level)
         }
@@ -88,44 +82,17 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             return (this as? LeafPsiElement)?.elementType
         }
 
-        private fun LeafPsiElement.isValidBracket(pair: BracePair): Boolean {
-            val pairType = when (elementType) {
-                pair.leftBraceType -> pair.rightBraceType
-                pair.rightBraceType -> pair.leftBraceType
-                else -> return false
-            }
-
-            return if (pairType == pair.leftBraceType) {
-                checkBracePair(this, parent.firstChild, pairType, PsiElement::getNextSibling)
-            } else {
-                checkBracePair(this, parent.lastChild, pairType, PsiElement::getPrevSibling)
-            }
-        }
-
-        private fun checkBracePair(brace: PsiElement,
-                                   start: PsiElement,
-                                   type: IElementType,
-                                   next: PsiElement.() -> PsiElement?): Boolean {
-            var element: PsiElement? = start
-            while (element != null && element != brace) {
-                if (element is LeafPsiElement && element.elementType == type) {
-                    return true
-                }
-
-                element = element.next()
-            }
-
-            return false
-        }
-
-        private fun filterPairs(pairs: List<BracePair>, type: IElementType, element: LeafPsiElement): List<BracePair> {
+        private fun filterPairs(type: IElementType, element: LeafPsiElement): BracePair? {
+            val pairs = element.language.bracePairs ?: return null
             val filterBraceType = pairs.filter { it.leftBraceType == type || it.rightBraceType == type }
-            return if (!isDoNOTRainbowifyBracketsWithoutContent) {
-                filterBraceType
+            return if (filterBraceType.isEmpty()) {
+                null
+            } else if (!isDoNOTRainbowifyBracketsWithoutContent) {
+                filterBraceType[0]
             } else {
-                filterBraceType
-                        .filterNot { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
-                        .filterNot { it.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
+                filterBraceType[0]
+                        .takeUnless { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
+                        .takeUnless { it?.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
             }
         }
     }
