@@ -1,3 +1,8 @@
+/*
+ * BracePairs
+ *
+ * Created by Yii.Guxing on 2018/01/25
+ */
 package com.github.izhangzhihao.rainbow.brackets
 
 import com.github.izhangzhihao.rainbow.brackets.provider.PairedBraceProvider
@@ -29,18 +34,13 @@ object BracePairs {
 
                     val pairsList = providers.forLanguage(language)?.pairs?.let {
                         if (pairs != null && pairs.isNotEmpty()) {
-                            it.toMutableSet().apply { addAll(pairs) }
+                            it.toMutableSet().apply { addAll(pairs) }.toList()
                         } else {
                             it
                         }
                     } ?: pairs?.toList()
 
-                    val braceMap = pairsList
-                            ?.map { listOf(Pair(it.leftBraceType.toString(), it), Pair(it.rightBraceType.toString(), it)) }
-                            ?.flatten()
-                            ?.toMap()
-
-                    language to braceMap
+                    language to pairsList
                 }
                 .toMap()
     }
@@ -49,5 +49,5 @@ object BracePairs {
 
 }
 
-inline val Language.bracePairs: Map<String, BracePair>?
+inline val Language.bracePairs: List<BracePair>?
     get() = BracePairs.getBracePairs(this)
