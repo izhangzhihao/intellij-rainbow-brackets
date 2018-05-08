@@ -23,7 +23,8 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
         val matching = filterPairs(type, element) ?: return
 
-        val level = element.getBracketLevel(matching)
+        val pair = matching.find { element.isValidBracket(it) } ?: return
+        val level = element.getBracketLevel(pair)
         if (level >= 0) {
             element.setHighlightInfo(level)
         }
@@ -82,17 +83,47 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             return (this as? LeafPsiElement)?.elementType
         }
 
-        private fun filterPairs(type: IElementType, element: LeafPsiElement): BracePair? {
+        private fun LeafPsiElement.isValidBracket(pair: BracePair): Boolean {
+            val pairType = when (elementType) {
+                pair.leftBraceType -> pair.rightBraceType
+                pair.rightBraceType -> pair.leftBraceType
+                else -> return false
+            }
+
+            return if (pairType == pair.leftBraceType) {
+                checkBracePair(this, parent.firstChild, pairType, PsiElement::getNextSibling)
+            } else {
+                checkBracePair(this, parent.lastChild, pairType, PsiElement::getPrevSibling)
+            }
+        }
+
+        private fun checkBracePair(brace: PsiElement,
+                                   start: PsiElement,
+                                   type: IElementType,
+                                   next: PsiElement.() -> PsiElement?): Boolean {
+            var element: PsiElement? = start
+            while (element != null && element != brace) {
+                if (element is LeafPsiElement && element.elementType == type) {
+                    return true
+                }
+
+                element = element.next()
+            }
+
+            return false
+        }
+
+        private fun filterPairs(type: IElementType, element: LeafPsiElement): List<BracePair>? {
             val pairs = element.language.bracePairs ?: return null
             val filterBraceType = pairs.filter { it.leftBraceType == type || it.rightBraceType == type }
             return if (filterBraceType.isEmpty()) {
                 null
             } else if (!isDoNOTRainbowifyBracketsWithoutContent) {
-                filterBraceType[0]
+                filterBraceType
             } else {
-                filterBraceType[0]
-                        .takeUnless { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
-                        .takeUnless { it?.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
+                filterBraceType
+                        .filterNot { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
+                        .filterNot { it?.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
             }
         }
     }

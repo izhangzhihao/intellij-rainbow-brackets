@@ -29,4 +29,24 @@ end
                         )
                 )
     }
+
+    fun `testRainbowFor#53`() {
+        val code =
+                """
+foobar(p1: "", p2: false, p3: 1)
+                """.trimIndent()
+        myFixture.configureByText(RubyFileType.RUBY, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+        doHighlighting.filter { brackets.contains(it.text.toChar()) }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                roundLevel(0),
+                                roundLevel(0)
+                        )
+                )
+    }
 }
