@@ -29,13 +29,27 @@ object BracePairs {
 
                     val pairsList = providers.forLanguage(language)?.pairs?.let {
                         if (pairs != null && pairs.isNotEmpty()) {
-                            it.toMutableSet().apply { addAll(pairs) }.toList()
+                            it.toMutableSet().apply { addAll(pairs) }
                         } else {
                             it
                         }
                     } ?: pairs?.toList()
 
-                    language to pairsList
+                    val braceMap: MutableMap<String, MutableList<BracePair>> = mutableMapOf()
+
+                    pairsList
+                            ?.map { listOf(Pair(it.leftBraceType.toString(), it), Pair(it.rightBraceType.toString(), it)) }
+                            ?.flatten()
+                            ?.forEach { it ->
+                                val bracePairs = braceMap[it.first]
+                                if (bracePairs == null) {
+                                    braceMap[it.first] = mutableListOf(it.second)
+                                } else {
+                                    bracePairs.add(it.second)
+                                }
+                            }
+
+                    language to braceMap
                 }
                 .toMap()
     }
@@ -44,5 +58,5 @@ object BracePairs {
 
 }
 
-inline val Language.bracePairs: List<BracePair>?
+inline val Language.bracePairs: MutableMap<String, MutableList<BracePair>>?
     get() = BracePairs.getBracePairs(this)

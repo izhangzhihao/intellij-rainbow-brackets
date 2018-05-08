@@ -115,7 +115,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
         private fun filterPairs(type: IElementType, element: LeafPsiElement): List<BracePair>? {
             val pairs = element.language.bracePairs ?: return null
-            val filterBraceType = pairs.filter { it.leftBraceType == type || it.rightBraceType == type }
+            val filterBraceType = pairs[type.toString()] ?: return null
             return if (filterBraceType.isEmpty()) {
                 null
             } else if (!isDoNOTRainbowifyBracketsWithoutContent) {
