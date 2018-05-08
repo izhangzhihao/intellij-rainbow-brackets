@@ -30,7 +30,7 @@ end
                 )
     }
 
-    fun `testRainbowFor#53`() {
+    fun testRainbowForIssue53Part1() {
         val code =
                 """
 foobar(p1: "", p2: false, p3: 1)
@@ -45,6 +45,41 @@ foobar(p1: "", p2: false, p3: 1)
                 .shouldBe(
                         arrayOf(
                                 roundLevel(0),
+                                roundLevel(0)
+                        )
+                )
+    }
+
+    fun testRainbowForIssue53Part2() {
+        val code =
+                """
+def foo
+  some_function(true, { :before => {a: 1},
+                        :after => {b: 2} })
+  call_block { do_something }
+end
+                """.trimIndent()
+        myFixture.configureByText(RubyFileType.RUBY, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+        doHighlighting//.filter { brackets.contains(it.text.toChar()) }
+                .filterNot { it.forcedTextAttributes == null }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                roundLevel(0),
+                                roundLevel(0),
+                                squigglyLevel(0),
+                                squigglyLevel(1),
+                                squigglyLevel(1),
+                                squigglyLevel(1),
+                                squigglyLevel(1),
+                                squigglyLevel(0),
+                                roundLevel(0),
+                                squigglyLevel(0),
+                                squigglyLevel(0),
                                 roundLevel(0)
                         )
                 )
