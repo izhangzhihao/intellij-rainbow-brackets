@@ -212,7 +212,8 @@
     </project-components>
 
     <actions>
-        <!-- Add your actions here -->
+        <action id="RainbowBrackets.GrayOutAll" class="com.github.izhangzhihao.rainbow.brackets.handler.ToggleGrayOutAction" text="Toggle Gray Out All Text But Brackets">
+            <keyboard-shortcut first-keystroke="control alt /" keymap="$default"/>
+        </action>
     </actions>
-
 </idea-plugin>
