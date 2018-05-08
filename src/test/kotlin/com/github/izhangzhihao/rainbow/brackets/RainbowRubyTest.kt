@@ -84,4 +84,67 @@ end
                         )
                 )
     }
+
+    fun testRainbowForIssue53Part3() {
+        val code =
+                """
+def bar
+  case @var
+    when 1
+      print [1..42]
+    else
+      print [1...42]
+  end
+end
+                """.trimIndent()
+        myFixture.configureByText(RubyFileType.RUBY, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+        doHighlighting//.filter { brackets.contains(it.text.toChar()) }
+                .filterNot { it.forcedTextAttributes == null }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                roundLevel(0),
+                                roundLevel(0),
+                                squareLevel(0),
+                                squareLevel(0),
+                                squareLevel(0),
+                                squareLevel(0),
+                                roundLevel(0),
+                                roundLevel(0)
+                        )
+                )
+    }
+
+    fun testRainbowForIssue53Part4() {
+        val code =
+                """
+if true
+  A = [1, [2, [3] ] ]
+end
+                """.trimIndent()
+        myFixture.configureByText(RubyFileType.RUBY, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+        doHighlighting//.filter { brackets.contains(it.text.toChar()) }
+                .filterNot { it.forcedTextAttributes == null }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                roundLevel(0),
+                                squareLevel(0),
+                                squareLevel(1),
+                                squareLevel(2),
+                                squareLevel(2),
+                                squareLevel(1),
+                                squareLevel(0),
+                                roundLevel(0)
+                        )
+                )
+    }
 }
