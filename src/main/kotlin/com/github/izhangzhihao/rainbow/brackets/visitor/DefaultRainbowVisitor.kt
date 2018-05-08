@@ -23,7 +23,13 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
         val matching = filterPairs(type, element) ?: return
 
-        val pair = matching.find { element.isValidBracket(it) } ?: return
+        val pair =
+                if (matching.size == 1) {
+                    matching[0]
+                } else {
+                    matching.find { element.isValidBracket(it) }
+                } ?: return
+
         val level = element.getBracketLevel(pair)
         if (level >= 0) {
             element.setHighlightInfo(level)
