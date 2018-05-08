@@ -213,7 +213,7 @@
 
     <actions>
         <action id="RainbowBrackets.GrayOutAll" class="com.github.izhangzhihao.rainbow.brackets.handler.ToggleGrayOutAction" text="Toggle Gray Out All Text But Brackets">
-            <keyboard-shortcut first-keystroke="ctrl alt slash" keymap="$default"/>
+            <keyboard-shortcut first-keystroke="ctrl alt SLASH" keymap="$default"/>
         </action>
     </actions>
 </idea-plugin>
