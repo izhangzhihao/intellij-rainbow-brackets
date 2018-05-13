@@ -28,12 +28,12 @@ interface EditorEventListener : EventListener {
     fun onKeyReleased(editor: Editor, keyEvent: KeyEvent) {}
 
     /**
-     * Invoked when a [Editor] gains the keyboard focus.
+     * Invoked when an [Editor] gains the keyboard focus.
      */
     fun onFocusGained(editor: Editor, focusEvent: FocusEvent) {}
 
     /**
-     * Invoked when a [Editor] loses the keyboard focus.
+     * Invoked when an [Editor] loses the keyboard focus.
      */
     fun onFocusLost(editor: Editor, focusEvent: FocusEvent) {}
 
