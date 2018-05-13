@@ -2,12 +2,14 @@ package com.github.izhangzhihao.rainbow.brackets
 
 import com.intellij.codeInsight.highlighting.HighlightManager
 import com.intellij.openapi.editor.Editor
+import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.RangeHighlighter
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.openapi.util.Key
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFile
+import java.awt.Color
 import java.awt.Font
 import java.awt.event.FocusEvent
 import java.awt.event.KeyEvent
@@ -53,9 +55,11 @@ class CtrlHandler : EditorEventListener {
         val psiFile = project.let { PsiDocumentManager.getInstance(it).getPsiFile(document) } ?: return false
         val rainbowInfo = psiFile.findRainbowInfoAt(offset) ?: return false
 
-        val highlighters = ArrayList<RangeHighlighter>()
-        val attributes = TextAttributes(null, null, rainbowInfo.color, EffectType.BOXED, Font.PLAIN)
+        val defaultBackground = EditorColorsManager.getInstance().globalScheme.defaultBackground
+        val background = rainbowInfo.color.alphaBlend(defaultBackground, 0.3f)
+        val attributes = TextAttributes(null, background, rainbowInfo.color, EffectType.BOXED, Font.PLAIN)
         val highlightManager = HighlightManager.getInstance(project)
+        val highlighters = ArrayList<RangeHighlighter>()
 
         highlightManager.addRangeHighlight(
                 this,
@@ -97,6 +101,14 @@ class CtrlHandler : EditorEventListener {
             }
 
             return rainbowInfo
+        }
+
+        private fun Color.alphaBlend(background: Color, alpha: Float): Color {
+            val r = (1 - alpha) * background.red + alpha * red
+            val g = (1 - alpha) * background.green + alpha * green
+            val b = (1 - alpha) * background.blue + alpha * blue
+
+            return Color(r.toInt(), g.toInt(), b.toInt())
         }
     }
 }
