@@ -216,6 +216,8 @@
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
         <applicationService serviceInterface="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"
                             serviceImplementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"/>
+        <applicationService serviceInterface="com.github.izhangzhihao.rainbow.brackets.EditorEventActionManager"
+                            serviceImplementation="com.github.izhangzhihao.rainbow.brackets.EditorEventActionManager"/>
     </extensions>
 
     <application-components>
