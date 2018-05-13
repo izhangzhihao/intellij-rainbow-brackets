@@ -88,6 +88,7 @@ class CtrlHandler : EditorEventListener {
         storedCaretOffset = -1
         if (highlighting) {
             KEY_REMOVE_HIGHLIGHTER_ACTION[this]?.invoke()
+            putUserData(KEY_REMOVE_HIGHLIGHTER_ACTION, null)
             highlighting = false
         }
     }
