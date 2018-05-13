@@ -8,6 +8,8 @@ import com.intellij.psi.xml.XmlFile
 import com.intellij.psi.xml.XmlTag
 import com.intellij.psi.xml.XmlToken
 import com.intellij.psi.xml.XmlTokenType
+import org.jetbrains.kotlin.psi.psiUtil.endOffset
+import org.jetbrains.kotlin.psi.psiUtil.startOffset
 
 /**
  * XmlRainbowVisitor
@@ -28,31 +30,67 @@ open class XmlRainbowVisitor : RainbowHighlightVisitor() {
             return
         }
 
-        element.apply {
-            when (tokenType) {
-                XmlTokenType.XML_DOCTYPE_START,
-                XmlTokenType.XML_DOCTYPE_END,
-                XmlTokenType.XML_PI_START,
-                XmlTokenType.XML_PI_END -> {
-                    setHighlightInfo(0)
+        val tokenType = element.tokenType
+        when (tokenType) {
+            XmlTokenType.XML_DOCTYPE_START,
+            XmlTokenType.XML_DOCTYPE_END,
+            XmlTokenType.XML_PI_START,
+            XmlTokenType.XML_PI_END -> {
+                val startOffset = when (tokenType) {
+                    XmlTokenType.XML_DOCTYPE_START,
+                    XmlTokenType.XML_PI_START -> element.startOffset
+                    else -> null
                 }
+                val endOffset = when (tokenType) {
+                    XmlTokenType.XML_DOCTYPE_END,
+                    XmlTokenType.XML_PI_END -> element.endOffset
+                    else -> null
+                }
+                element.setHighlightInfo(element.xmlParent, 0, startOffset, endOffset)
+            }
 
-                XmlTokenType.XML_START_TAG_START,
-                XmlTokenType.XML_END_TAG_START,
-                XmlTokenType.XML_TAG_END,
-                XmlTokenType.XML_EMPTY_ELEMENT_END -> {
-                    level?.let { setHighlightInfo(it) }
+            XmlTokenType.XML_START_TAG_START,
+            XmlTokenType.XML_END_TAG_START,
+            XmlTokenType.XML_TAG_END,
+            XmlTokenType.XML_EMPTY_ELEMENT_END -> {
+                val startOffset = when (tokenType) {
+                    XmlTokenType.XML_START_TAG_START -> element.startOffset
+                    else -> null
                 }
+                val endOffset = when (tokenType) {
+                    XmlTokenType.XML_TAG_END,
+                    XmlTokenType.XML_EMPTY_ELEMENT_END -> element.endOffset
+                    else -> null
+                }
+                element.level?.let { element.setHighlightInfo(element.xmlParent, it, startOffset, endOffset) }
+            }
 
-                XmlTokenType.XML_CDATA_START,
-                XmlTokenType.XML_CDATA_END -> {
-                    level?.let { setHighlightInfo(it + 1) }
+            XmlTokenType.XML_CDATA_START,
+            XmlTokenType.XML_CDATA_END -> {
+                val startOffset = when (tokenType) {
+                    XmlTokenType.XML_CDATA_START -> element.startOffset
+                    else -> null
                 }
+                val endOffset = when (tokenType) {
+                    XmlTokenType.XML_CDATA_END -> element.endOffset
+                    else -> null
+                }
+                element.level?.let { element.setHighlightInfo(element.parent, it + 1, startOffset, endOffset) }
             }
         }
     }
 
     companion object {
+        private val PsiElement.xmlParent: PsiElement?
+            get() {
+                var pElement = parent
+                while (pElement != null && pElement !is XmlTag && pElement !is PsiFile) {
+                    pElement = pElement.parent
+                }
+
+                return pElement
+            }
+
         private tailrec fun iterateXmlTagParents(element: PsiElement?, count: Int): Int {
             if (element == null || element is PsiFile) {
                 return count

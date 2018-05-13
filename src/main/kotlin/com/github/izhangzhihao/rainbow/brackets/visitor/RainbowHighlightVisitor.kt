@@ -2,10 +2,12 @@ package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getHighlightInfo
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isRainbowEnabled
+import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
+import java.awt.Color
 
 /**
  * RainbowHighlightVisitor
@@ -49,7 +51,25 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
         check(isCalled) { "Overriding method must invoke super." }
     }
 
-    protected fun PsiElement.setHighlightInfo(level: Int) {
-        highlightInfoHolder?.add(getHighlightInfo(this, level))
+    protected fun PsiElement.setHighlightInfo(parent: PsiElement?, level: Int, startOffset: Int?, endOffset: Int?) {
+        getHighlightInfo(this, level)
+                ?.also {
+                    highlightInfoHolder?.add(it)
+
+                    if (startOffset != null || endOffset != null) {
+                        val color = it.forcedTextAttributes.foregroundColor
+                        parent?.saveRainbowInfo(level, color, startOffset, endOffset)
+                    }
+                }
+    }
+
+    private fun PsiElement.saveRainbowInfo(level: Int, color: Color, startOffset: Int?, endOffset: Int?) {
+        val rainbowInfo = RainbowInfo.KEY_RAINBOW[this]?.also {
+            it.level = level
+            it.color = color
+        } ?: RainbowInfo(level, color).also { RainbowInfo.KEY_RAINBOW[this] = it }
+
+        startOffset?.let { rainbowInfo.startOffset = it }
+        endOffset?.let { rainbowInfo.endOffset = it }
     }
 }

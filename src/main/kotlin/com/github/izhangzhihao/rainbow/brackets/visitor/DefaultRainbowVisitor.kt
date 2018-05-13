@@ -8,6 +8,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import com.intellij.psi.tree.IElementType
+import org.jetbrains.kotlin.psi.psiUtil.endOffset
 
 /**
  * DefaultRainbowVisitor
@@ -32,7 +33,9 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
         val level = element.getBracketLevel(pair)
         if (level >= 0) {
-            element.setHighlightInfo(level)
+            val startOffset = if (element.elementType == pair.leftBraceType) element.startOffset else null
+            val endOffset = if (element.elementType == pair.rightBraceType) element.endOffset else null
+            element.setHighlightInfo(element.parent, level, startOffset, endOffset)
         }
     }
 
