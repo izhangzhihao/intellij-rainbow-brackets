@@ -51,25 +51,31 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
         check(isCalled) { "Overriding method must invoke super." }
     }
 
-    protected fun PsiElement.setHighlightInfo(parent: PsiElement?, level: Int, startOffset: Int?, endOffset: Int?) {
+    protected fun PsiElement.setHighlightInfo(parent: PsiElement?,
+                                              level: Int,
+                                              startElement: PsiElement?,
+                                              endElement: PsiElement?) {
         getHighlightInfo(this, level)
                 ?.also {
                     highlightInfoHolder?.add(it)
 
-                    if (startOffset != null || endOffset != null) {
+                    if (startElement != null || endElement != null) {
                         val color = it.forcedTextAttributes.foregroundColor
-                        parent?.saveRainbowInfo(level, color, startOffset, endOffset)
+                        parent?.saveRainbowInfo(level, color, startElement, endElement)
                     }
                 }
     }
 
-    private fun PsiElement.saveRainbowInfo(level: Int, color: Color, startOffset: Int?, endOffset: Int?) {
+    private fun PsiElement.saveRainbowInfo(level: Int,
+                                           color: Color,
+                                           startElement: PsiElement?,
+                                           endElement: PsiElement?) {
         val rainbowInfo = RainbowInfo.KEY_RAINBOW[this]?.also {
             it.level = level
             it.color = color
         } ?: RainbowInfo(level, color).also { RainbowInfo.KEY_RAINBOW[this] = it }
 
-        startOffset?.let { rainbowInfo.startOffset = it }
-        endOffset?.let { rainbowInfo.endOffset = it }
+        startElement?.let { rainbowInfo.startElement = it }
+        endElement?.let { rainbowInfo.endElement = it }
     }
 }
