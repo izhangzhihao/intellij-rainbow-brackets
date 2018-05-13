@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.codeInsight.highlighting.HighlightManager
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.colors.EditorColorsManager
@@ -21,10 +22,16 @@ import java.awt.event.KeyEvent
  */
 class CtrlHandler : EditorEventListener {
 
+    private var settings = RainbowSettings.instance
+
     private var highlighting = false
     private var storedCaretOffset = -1
 
     override fun onKeyPressed(editor: Editor, keyEvent: KeyEvent) {
+        if (!settings.isEnableHighlightCurrentScopeWhenCtrlPressed) {
+            return
+        }
+
         if (keyEvent.keyCode != KeyEvent.VK_CONTROL || !keyEvent.isControlDown) {
             editor.removeHighlighter()
             return
