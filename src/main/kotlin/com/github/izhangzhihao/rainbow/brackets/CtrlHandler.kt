@@ -56,7 +56,7 @@ class CtrlHandler : EditorEventListener {
         val rainbowInfo = psiFile.findRainbowInfoAt(offset) ?: return false
 
         val defaultBackground = EditorColorsManager.getInstance().globalScheme.defaultBackground
-        val background = rainbowInfo.color.alphaBlend(defaultBackground, 0.3f)
+        val background = rainbowInfo.color.alphaBlend(defaultBackground, 0.2f)
         val attributes = TextAttributes(null, background, rainbowInfo.color, EffectType.BOXED, Font.PLAIN)
         val highlightManager = HighlightManager.getInstance(project)
         val highlighters = ArrayList<RangeHighlighter>()
