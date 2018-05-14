@@ -10,6 +10,7 @@ import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.openapi.util.Key
 import com.intellij.openapi.util.SystemInfo
 import com.intellij.psi.PsiDocumentManager
+import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import java.awt.Color
 import java.awt.Font
@@ -105,17 +106,16 @@ class CtrlHandler : EditorEventListener {
 
         private fun PsiFile.findRainbowInfoAt(offset: Int): RainbowInfo? {
             var element = findElementAt(offset)
-            var rainbowInfo: RainbowInfo? = null
             while (element != null) {
-                rainbowInfo = RainbowInfo.KEY_RAINBOW[element]
-                if (rainbowInfo != null && rainbowInfo.isValid()) {
-                    break
-                }
-
+                element.getRainbowInfo(offset)?.let { return it }
                 element = element.parent
             }
 
-            return rainbowInfo
+            return null
+        }
+
+        private fun PsiElement.getRainbowInfo(offset: Int): RainbowInfo? {
+            return RainbowInfo.KEY_RAINBOW[this]?.takeIf { it.containsOffset(offset) }
         }
 
         private fun Color.alphaBlend(background: Color, alpha: Float): Color {

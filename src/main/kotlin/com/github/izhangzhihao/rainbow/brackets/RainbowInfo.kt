@@ -32,13 +32,13 @@ data class RainbowInfo(var level: Int, var color: Color) {
 
     val endOffset get() = endElement?.endOffset ?: -1
 
-    fun isValid(): Boolean {
+    fun containsOffset(offset: Int): Boolean {
         val startElement = startElement ?: return false
         val endElement = endElement ?: return false
         val startOffset = startElement.startOffset
         val endOffset = endElement.endOffset
 
-        return startOffset in 0..(endOffset - 1)
+        return offset in startOffset..endOffset
     }
 
     companion object {
