@@ -8,6 +8,7 @@ import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.RangeHighlighter
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.openapi.util.Key
+import com.intellij.openapi.util.SystemInfo
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFile
 import java.awt.Color
@@ -32,7 +33,7 @@ class CtrlHandler : EditorEventListener {
             return
         }
 
-        if (keyEvent.keyCode != KeyEvent.VK_CONTROL || !keyEvent.isControlDown) {
+        if (!keyEvent.isControlOrMetaKey) {
             editor.removeHighlighter()
             return
         }
@@ -48,6 +49,13 @@ class CtrlHandler : EditorEventListener {
             highlighting = editor.addHighlightAt(caretOffset)
         }
     }
+
+    private val KeyEvent.isControlOrMetaKey: Boolean
+        get() = if (SystemInfo.isMac) {
+            isMetaDown && keyCode == KeyEvent.VK_META
+        } else {
+            isControlDown && keyCode == KeyEvent.VK_CONTROL
+        }
 
     override fun onKeyReleased(editor: Editor, keyEvent: KeyEvent) {
         editor.removeHighlighter()
