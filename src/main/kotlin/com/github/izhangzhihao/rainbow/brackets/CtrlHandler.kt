@@ -50,13 +50,6 @@ class CtrlHandler : EditorEventListener {
         }
     }
 
-    private val KeyEvent.isControlOrMetaKey: Boolean
-        get() = if (SystemInfo.isMac) {
-            isMetaDown && keyCode == KeyEvent.VK_META
-        } else {
-            isControlDown && keyCode == KeyEvent.VK_CONTROL
-        }
-
     override fun onKeyReleased(editor: Editor, keyEvent: KeyEvent) {
         editor.removeHighlighter()
     }
@@ -76,8 +69,7 @@ class CtrlHandler : EditorEventListener {
         val highlightManager = HighlightManager.getInstance(project)
         val highlighters = ArrayList<RangeHighlighter>()
 
-        highlightManager.addRangeHighlight(
-                this,
+        highlightManager.addRangeHighlight(this,
                 rainbowInfo.startOffset,
                 rainbowInfo.endOffset,
                 attributes,
@@ -103,6 +95,13 @@ class CtrlHandler : EditorEventListener {
 
     companion object {
         private val KEY_REMOVE_HIGHLIGHTER_ACTION: Key<() -> Unit> = Key.create("REMOVE_HIGHLIGHTER_ACTION")
+
+        private val KeyEvent.isControlOrMetaKey: Boolean
+            get() = if (SystemInfo.isMac) {
+                isMetaDown && keyCode == KeyEvent.VK_META
+            } else {
+                isControlDown && keyCode == KeyEvent.VK_CONTROL
+            }
 
         private fun PsiFile.findRainbowInfoAt(offset: Int): RainbowInfo? {
             var element = findElementAt(offset)
