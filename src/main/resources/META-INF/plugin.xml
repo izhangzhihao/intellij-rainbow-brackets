@@ -15,9 +15,15 @@
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-kotlin.png" border="0" width="500" height="171" alt="with-kotlin"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-Clojure.png" border="0" width="500" height="200" alt="with-Clojure.png"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-HTML.png" border="0" width="500" height="112" alt="with-HTML.png"/></p>
+        <p><img src="https://user-images.githubusercontent.com/10737066/39988979-5df3f05e-579b-11e8-8d19-7d9e95c7a0b5.gif" border="0" width="500" height="206" alt="Highlight current scope.gif"/></p>
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.7</p>
+      <ul>
+        <li>Experimental feature: Highlight current scope when Ctrl(Windows & Linux)/Meta(Mac) key pressed (feature #37 / pull request#59)</li>
+      </ul>
+      <br/>
       <p>5.6</p>
       <ul>
         <li>Performance improvement</li>
