@@ -46,6 +46,10 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 ![](./screenshots/with-HTML.png)
 
+* Highlight text between brackets when Ctrl pressed
+
+![](https://user-images.githubusercontent.com/10737066/39988979-5df3f05e-579b-11e8-8d19-7d9e95c7a0b5.gif)
+
 * looking forward to your screenshots...
 
 ## Install
