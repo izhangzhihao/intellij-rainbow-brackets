@@ -19,6 +19,12 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.7.1</p>
+      <ul>
+        <li>Fix #60 :Exception in v5.7</li>
+        <li>Experimental feature: Highlight current scope when Ctrl(Windows & Linux)/Meta(Mac) key pressed (feature #37 / pull request#59)</li>
+      </ul>
+      <br/>
       <p>5.7</p>
       <ul>
         <li>Experimental feature: Highlight current scope when Ctrl(Windows & Linux)/Meta(Mac) key pressed (feature #37 / pull request#59)</li>
