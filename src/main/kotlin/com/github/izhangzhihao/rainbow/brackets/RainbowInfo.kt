@@ -2,8 +2,6 @@ package com.github.izhangzhihao.rainbow.brackets
 
 import com.intellij.openapi.util.Key
 import com.intellij.psi.PsiElement
-import org.jetbrains.kotlin.psi.psiUtil.endOffset
-import org.jetbrains.kotlin.psi.psiUtil.startOffset
 import java.awt.Color
 import java.lang.ref.WeakReference
 
@@ -22,7 +20,7 @@ data class RainbowInfo(var level: Int, var color: Color) {
             _startElement = value?.let { WeakReference(it) }
         }
 
-    val startOffset get() = startElement?.startOffset ?: -1
+    val startOffset get() = startElement?.textRange?.startOffset ?: -1
 
     var endElement: PsiElement?
         get() = _endElement?.get()
@@ -30,13 +28,13 @@ data class RainbowInfo(var level: Int, var color: Color) {
             _endElement = value?.let { WeakReference(it) }
         }
 
-    val endOffset get() = endElement?.endOffset ?: -1
+    val endOffset get() = endElement?.textRange?.endOffset ?: -1
 
     fun containsOffset(offset: Int): Boolean {
         val startElement = startElement ?: return false
         val endElement = endElement ?: return false
-        val startOffset = startElement.startOffset
-        val endOffset = endElement.endOffset
+        val startOffset = startElement.textRange.startOffset
+        val endOffset = endElement.textRange.endOffset
 
         return offset in startOffset..endOffset
     }
