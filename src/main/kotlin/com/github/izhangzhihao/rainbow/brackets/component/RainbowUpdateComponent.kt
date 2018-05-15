@@ -22,10 +22,11 @@ class RainbowUpdateComponent(project: Project) : AbstractProjectComponent(projec
         private var channel = "izhangzhihao.rainbow.brackets"
         private val updateContent = """
     <br/>
-    Thank you for downloading <b>Rainbow Brackets</b>!<br>
-    If you find my plugin helpful, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets">Please give me a star on github</a></b><br/>
-    If you find any issue, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues">Feel free to raise a issue</a></b><br/>
-    See <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases/tag/$version">Changelog</a></b> for more details.
+    Thank you for downloading <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets">Rainbow Brackets</a></b>!<br>
+    If you find this plugin helpful, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets">please give me a star on github</a>.</b>
+    If you run into any issue, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues">feel free to raise a issue</a>.</b><br/><br/>
+    See <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases/tag/$version">changelog</a></b> for more details about this update.<br/><br/>
+    Enjoy your colorful code.
     """
 
         private fun showUpdate(project: Project) {
