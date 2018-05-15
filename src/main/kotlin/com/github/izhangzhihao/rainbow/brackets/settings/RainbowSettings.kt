@@ -65,6 +65,9 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
 
     var lightAngleBracketsColor = lightRoundBracketsColors
     var darkAngleBracketsColor = darkRoundBracketsColors
+    
+    var lightGrayoutColor = "0xebebeb"
+    var darkGrayoutColor = "0x3a3a3a"
 
     @Nullable
     override fun getState() = this
