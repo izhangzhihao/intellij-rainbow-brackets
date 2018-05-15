@@ -16,6 +16,7 @@ import java.awt.Color
 import java.awt.Font
 import java.awt.event.FocusEvent
 import java.awt.event.KeyEvent
+import java.util.*
 
 /**
  * CtrlHandler
@@ -27,6 +28,7 @@ class CtrlHandler : EditorEventListener {
     private var settings = RainbowSettings.instance
 
     private var highlighting = false
+    private var restraining = false
     private var storedCaretOffset = -1
 
     override fun onKeyPressed(editor: Editor, keyEvent: KeyEvent) {
@@ -34,21 +36,19 @@ class CtrlHandler : EditorEventListener {
             return
         }
 
-        if (!keyEvent.isControlOrMetaKey) {
+        val controlOrMetaDown = keyEvent.isControlOrMetaKeyDown
+        val altDown = keyEvent.isAltKayDown
+        if (controlOrMetaDown == altDown) {
             editor.removeHighlighter()
             return
         }
 
         val caretOffset = editor.caretModel.offset
-        if (caretOffset == storedCaretOffset) {
+        if (highlighting == controlOrMetaDown && restraining == altDown && caretOffset == storedCaretOffset) {
             return
         }
 
-        editor.removeHighlighter()
-        storedCaretOffset = caretOffset
-        if (!highlighting) {
-            highlighting = editor.addHighlightAt(caretOffset)
-        }
+        addHighlighter(editor, caretOffset, altDown)
     }
 
     override fun onKeyReleased(editor: Editor, keyEvent: KeyEvent) {
@@ -59,50 +59,94 @@ class CtrlHandler : EditorEventListener {
         editor.removeHighlighter()
     }
 
-    private fun Editor.addHighlightAt(offset: Int): Boolean {
+    private fun addHighlighter(editor: Editor, caretOffset: Int, restrainOutside: Boolean) {
+        editor.removeHighlighter()
+        storedCaretOffset = caretOffset
+        val added = editor.addHighlighterAt(caretOffset, restrainOutside)
+        if (restrainOutside) {
+            restraining = added
+        } else {
+            highlighting = added
+        }
+    }
+
+    private fun Editor.addHighlighterAt(offset: Int, restrainOutside: Boolean): Boolean {
         val project = project ?: return false
         val psiFile = project.let { PsiDocumentManager.getInstance(it).getPsiFile(document) } ?: return false
         val rainbowInfo = psiFile.findRainbowInfoAt(offset) ?: return false
 
         val defaultBackground = EditorColorsManager.getInstance().globalScheme.defaultBackground
-        val background = rainbowInfo.color.alphaBlend(defaultBackground, 0.2f)
-        val attributes = TextAttributes(null, background, rainbowInfo.color, EffectType.BOXED, Font.PLAIN)
         val highlightManager = HighlightManager.getInstance(project)
-        val highlighters = ArrayList<RangeHighlighter>()
+        val highlighters = LinkedList<RangeHighlighter>()
 
-        highlightManager.addRangeHighlight(this,
-                rainbowInfo.startOffset,
-                rainbowInfo.endOffset,
-                attributes,
-                true,
-                true,
-                highlighters)
+        if (restrainOutside) {
+            val background = Color.GRAY.alphaBlend(defaultBackground, 0.06f)
+            val foreground = Color.GRAY.alphaBlend(defaultBackground, 0.55f)
+            val attributes = TextAttributes(foreground, background, background, EffectType.BOXED, Font.PLAIN)
+            val startOffset = rainbowInfo.startOffset
+            val endOffset = rainbowInfo.endOffset
+            if (startOffset > 0) {
+                highlightManager.addRangeHighlight(this,
+                        0,
+                        startOffset,
+                        attributes,
+                        true,
+                        true,
+                        highlighters)
+            }
+            val lastOffset = document.textLength
+            if (endOffset < lastOffset) {
+                highlightManager.addRangeHighlight(this,
+                        endOffset,
+                        lastOffset,
+                        attributes,
+                        true,
+                        true,
+                        highlighters)
+            }
+        } else {
+            val background = rainbowInfo.color.alphaBlend(defaultBackground, 0.2f)
+            val attributes = TextAttributes(null, background, rainbowInfo.color, EffectType.BOXED, Font.PLAIN)
+            highlightManager.addRangeHighlight(this,
+                    rainbowInfo.startOffset,
+                    rainbowInfo.endOffset,
+                    attributes,
+                    true,
+                    true,
+                    highlighters)
+        }
 
-        KEY_REMOVE_HIGHLIGHTER_ACTION[this] = {
-            highlighters.forEach { highlightManager.removeSegmentHighlighter(this, it) }
+        if (highlighters.isNotEmpty()) {
+            KEY_REMOVE_HIGHLIGHTER_ACTION[this] = {
+                highlighters.forEach { highlightManager.removeSegmentHighlighter(this, it) }
+            }
         }
 
         return true
     }
 
     private fun Editor.removeHighlighter() {
-        storedCaretOffset = -1
-        if (highlighting) {
+        if (highlighting || restraining) {
+            storedCaretOffset = -1
             KEY_REMOVE_HIGHLIGHTER_ACTION[this]?.invoke()
             putUserData(KEY_REMOVE_HIGHLIGHTER_ACTION, null)
             highlighting = false
+            restraining = false
         }
     }
 
     companion object {
         private val KEY_REMOVE_HIGHLIGHTER_ACTION: Key<() -> Unit> = Key.create("REMOVE_HIGHLIGHTER_ACTION")
 
-        private val KeyEvent.isControlOrMetaKey: Boolean
+        private val KeyEvent.isControlOrMetaKeyDown: Boolean
             get() = if (SystemInfo.isMac) {
                 isMetaDown && keyCode == KeyEvent.VK_META
             } else {
                 isControlDown && keyCode == KeyEvent.VK_CONTROL
             }
+
+        private val KeyEvent.isAltKayDown: Boolean
+            get() = isAltDown && keyCode == KeyEvent.VK_ALT
 
         private fun PsiFile.findRainbowInfoAt(offset: Int): RainbowInfo? {
             var element = findElementAt(offset)
