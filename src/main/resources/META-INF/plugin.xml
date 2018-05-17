@@ -245,7 +245,22 @@
     </project-components>
 
     <actions>
-        <!-- Add your actions here -->
+        <action class="com.github.izhangzhihao.rainbow.brackets.action.ScopeHighlightingAction"
+                id="Rainbow.ScopeHighlightingAction"
+                text="Highlight current scope"
+                description="Highlight current scope.">
+            <mouse-shortcut keymap="$default" keystroke="control button3"/>
+            <mouse-shortcut keymap="Mac OS X" keystroke="meta button3"/>
+            <mouse-shortcut keymap="Mac OS X 10.5+" keystroke="meta button3"/>
+        </action>
+        <action class="com.github.izhangzhihao.rainbow.brackets.action.ScopeOutsideHighlightingRestrainAction"
+                id="Rainbow.ScopeOutsideHighlightingRestrainAction"
+                text="Restrain scope highlighting"
+                description="Restrain outside of current scope highlighting.">
+            <mouse-shortcut keymap="$default" keystroke="alt button3"/>
+            <mouse-shortcut keymap="Mac OS X" keystroke="alt button3"/>
+            <mouse-shortcut keymap="Mac OS X 10.5+" keystroke="alt button3"/>
+        </action>
     </actions>
 
 </idea-plugin>
