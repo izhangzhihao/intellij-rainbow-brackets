@@ -24,6 +24,7 @@ repositories {
     mavenLocal()
     maven { url "https://maven-central.storage-download.googleapis.com/repos/central/data/" }
     maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url "https://repo.eclipse.org/content/groups/releases/" }
 }
 
 apply plugin: "idea"
@@ -57,6 +58,9 @@ idea {
 }
 
 dependencies {
+    compile("org.eclipse.mylyn.github:org.eclipse.egit.github.core:4.11.0.201803080745-r") {
+        exclude module: "gson"
+    }
     compileOnly("org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion")
     testCompile("org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion")
     testCompile("io.kotlintest:kotlintest:2.0.7")
