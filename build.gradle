@@ -88,10 +88,10 @@ jacocoTestReport {
 
 check.dependsOn jacocoTestReport
 
-def verifierVersion = "1.99"
+def verifierVersion = "1.172"
 
 task downloadIntellijPluginVerifier(type: Download) {
-    src "https://dl.bintray.com/jetbrains/intellij-plugin-service/org/jetbrains/intellij/plugins/verifier-cli/1.99/verifier-cli-" + verifierVersion + "-all.jar"
+    src "https://dl.bintray.com/jetbrains/intellij-plugin-service/org/jetbrains/intellij/plugins/verifier-cli/$verifierVersion/verifier-cli-$verifierVersion-all.jar"
     dest buildDir
     overwrite false
 }
