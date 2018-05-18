@@ -11,7 +11,6 @@ class RainbowSettingsForm {
     private var enableRainbowSquigglyBrackets: JCheckBox? = null
     private var enableRainbowSquareBrackets: JCheckBox? = null
     private var enableRainbowAngleBrackets: JCheckBox? = null
-    private var enableHighlightCurrentScopeWhenCtrlPressed: JCheckBox? = null
     private var doNOTRainbowifyBracketsWithoutContent: JCheckBox? = null
 
     private val settings: RainbowSettings = RainbowSettings.instance
@@ -28,8 +27,6 @@ class RainbowSettingsForm {
 
     fun isRainbowAngleBracketsEnabled() = enableRainbowAngleBrackets?.isSelected
 
-    fun isHighlightCurrentScopeWhenCtrlPressed() = enableHighlightCurrentScopeWhenCtrlPressed?.isSelected
-
     fun isDoNOTRainbowifyBracketsWithoutContent() = doNOTRainbowifyBracketsWithoutContent?.isSelected
 
     val isModified: Boolean
@@ -38,7 +35,6 @@ class RainbowSettingsForm {
                 || isRainbowRoundBracketsEnabled() != settings.isEnableRainbowRoundBrackets
                 || isRainbowSquigglyBracketsEnabled() != settings.isEnableRainbowSquigglyBrackets
                 || isRainbowSquareBracketsEnabled() != settings.isEnableRainbowSquareBrackets
-                || isHighlightCurrentScopeWhenCtrlPressed() != settings.isEnableHighlightCurrentScopeWhenCtrlPressed
                 || isDoNOTRainbowifyBracketsWithoutContent() != settings.isDoNOTRainbowifyBracketsWithoutContent)
 
     init {
@@ -51,7 +47,6 @@ class RainbowSettingsForm {
         enableRainbowAngleBrackets?.isSelected = settings.isEnableRainbowAngleBrackets
         enableRainbowSquigglyBrackets?.isSelected = settings.isEnableRainbowSquigglyBrackets
         enableRainbowSquareBrackets?.isSelected = settings.isEnableRainbowSquareBrackets
-        enableHighlightCurrentScopeWhenCtrlPressed?.isSelected = settings.isEnableHighlightCurrentScopeWhenCtrlPressed
         doNOTRainbowifyBracketsWithoutContent?.isSelected = settings.isDoNOTRainbowifyBracketsWithoutContent
     }
 }

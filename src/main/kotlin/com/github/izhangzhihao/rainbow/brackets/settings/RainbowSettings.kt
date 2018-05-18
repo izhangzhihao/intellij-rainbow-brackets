@@ -18,7 +18,6 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var isEnableRainbowSquigglyBrackets = true
     var isEnableRainbowSquareBrackets = true
     var isEnableRainbowAngleBrackets = true
-    var isEnableHighlightCurrentScopeWhenCtrlPressed = true
     var isDoNOTRainbowifyBracketsWithoutContent = false
     var version: String? = null
     var isRainbowifyHTMLInsideJS = false
