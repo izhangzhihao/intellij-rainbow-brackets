@@ -37,15 +37,15 @@ abstract class AbstractScopeHighlightingAction : AnAction() {
         val rainbowInfo = psiFile.findRainbowInfoAt(offset) ?: return
         val highlightManager = HighlightManager.getInstance(project)
 
-        KEY_DISPOSE_HIGHLIGHTER_ACTION[editor]?.invoke()
+        DISPOSE_HIGHLIGHTER_ACTION_KEY[editor]?.invoke()
 
         val highlighters = editor.addHighlighter(highlightManager, rainbowInfo)
         if (highlighters.isNotEmpty()) {
             val disposer = HighlightDisposer(editor) {
                 highlighters.forEach { highlightManager.removeSegmentHighlighter(editor, it) }
-                KEY_DISPOSE_HIGHLIGHTER_ACTION[editor] = null
+                DISPOSE_HIGHLIGHTER_ACTION_KEY[editor] = null
             }
-            KEY_DISPOSE_HIGHLIGHTER_ACTION[editor] = { disposer.dispose() }
+            DISPOSE_HIGHLIGHTER_ACTION_KEY[editor] = { disposer.dispose() }
         }
     }
 
@@ -76,12 +76,12 @@ abstract class AbstractScopeHighlightingAction : AnAction() {
     }
 
     companion object {
-        private val KEY_DISPOSE_HIGHLIGHTER_ACTION: Key<() -> Unit> = Key.create("DISPOSE_HIGHLIGHTER_ACTION")
+        private val DISPOSE_HIGHLIGHTER_ACTION_KEY: Key<() -> Unit> = Key.create("DISPOSE_HIGHLIGHTER_ACTION")
 
         private val AnActionEvent.editor: Editor? get() = CommonDataKeys.EDITOR.getData(dataContext)
 
         private fun PsiElement.getRainbowInfo(offset: Int): RainbowInfo? {
-            return RainbowInfo.KEY_RAINBOW[this]?.takeIf { it.containsOffset(offset) }
+            return RainbowInfo.RAINBOW_INFO_KEY[this]?.takeIf { it.containsOffset(offset) }
         }
 
         private fun PsiFile.findRainbowInfoAt(offset: Int): RainbowInfo? {

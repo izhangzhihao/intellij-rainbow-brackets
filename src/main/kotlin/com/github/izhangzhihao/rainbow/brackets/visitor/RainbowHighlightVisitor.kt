@@ -70,10 +70,10 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
                                            color: Color,
                                            startElement: PsiElement?,
                                            endElement: PsiElement?) {
-        val rainbowInfo = RainbowInfo.KEY_RAINBOW[this]?.also {
+        val rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[this]?.also {
             it.level = level
             it.color = color
-        } ?: RainbowInfo(level, color).also { RainbowInfo.KEY_RAINBOW[this] = it }
+        } ?: RainbowInfo(level, color).also { RainbowInfo.RAINBOW_INFO_KEY[this] = it }
 
         startElement?.let { rainbowInfo.startElement = it }
         endElement?.let { rainbowInfo.endElement = it }
