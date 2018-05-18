@@ -40,6 +40,6 @@ data class RainbowInfo(var level: Int, var color: Color) {
     }
 
     companion object {
-        val KEY_RAINBOW: Key<RainbowInfo> = Key.create("RAINBOW_INFO")
+        val RAINBOW_INFO_KEY: Key<RainbowInfo> = Key.create("RAINBOW_INFO")
     }
 }

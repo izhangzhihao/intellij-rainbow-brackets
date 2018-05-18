@@ -26,7 +26,6 @@ class RainbowConfigurable : Configurable {
         settings.isEnableRainbowAngleBrackets = settingsForm?.isRainbowAngleBracketsEnabled() ?: true
         settings.isEnableRainbowSquigglyBrackets = settingsForm?.isRainbowSquigglyBracketsEnabled() ?: true
         settings.isEnableRainbowSquareBrackets = settingsForm?.isRainbowSquareBracketsEnabled() ?: true
-        settings.isEnableHighlightCurrentScopeWhenCtrlPressed = settingsForm?.isHighlightCurrentScopeWhenCtrlPressed() ?: true
         settings.isDoNOTRainbowifyBracketsWithoutContent = settingsForm?.isDoNOTRainbowifyBracketsWithoutContent() ?: false
     }
 
