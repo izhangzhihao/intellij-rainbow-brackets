@@ -21,7 +21,7 @@ class ScopeOutsideHighlightingRestrainAction : AbstractScopeHighlightingAction()
     override fun Editor.addHighlighter(highlightManager: HighlightManager,
                                        rainbowInfo: RainbowInfo): Collection<RangeHighlighter> {
         val defaultBackground = EditorColorsManager.getInstance().globalScheme.defaultBackground
-        val background = Color.GRAY.alphaBlend(defaultBackground, 0.06f)
+        val background = Color.GRAY.alphaBlend(defaultBackground, 0.05f)
         val foreground = Color.GRAY.alphaBlend(defaultBackground, 0.55f)
         val attributes = TextAttributes(foreground, background, background, EffectType.BOXED, Font.PLAIN)
         val highlighters = LinkedList<RangeHighlighter>()
