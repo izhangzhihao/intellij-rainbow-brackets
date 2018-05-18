@@ -36,24 +36,22 @@ abstract class AbstractScopeHighlightingAction : AnAction() {
         val offset = editor.caretModel.offset
         val rainbowInfo = psiFile.findRainbowInfoAt(offset) ?: return
         val highlightManager = HighlightManager.getInstance(project)
-
-        DISPOSE_HIGHLIGHTER_ACTION_KEY[editor]?.invoke()
-
         val highlighters = editor.addHighlighter(highlightManager, rainbowInfo)
+
+        editor.highlightingDisposer?.dispose()
         if (highlighters.isNotEmpty()) {
-            val disposer = HighlightDisposer(editor) {
+            editor.highlightingDisposer = HighlightingDisposer(editor) {
+                editor.highlightingDisposer = null
                 highlighters.forEach { highlightManager.removeSegmentHighlighter(editor, it) }
-                DISPOSE_HIGHLIGHTER_ACTION_KEY[editor] = null
             }
-            DISPOSE_HIGHLIGHTER_ACTION_KEY[editor] = { disposer.dispose() }
         }
     }
 
     protected abstract fun Editor.addHighlighter(highlightManager: HighlightManager,
                                                  rainbowInfo: RainbowInfo): Collection<RangeHighlighter>
 
-    private class HighlightDisposer(private val editor: Editor,
-                                    private val disposeAction: () -> Unit) : KeyAdapter(), FocusListener {
+    private class HighlightingDisposer(private val editor: Editor,
+                                       private val disposeAction: () -> Unit) : KeyAdapter(), FocusListener {
 
         init {
             editor.contentComponent.let {
@@ -76,7 +74,13 @@ abstract class AbstractScopeHighlightingAction : AnAction() {
     }
 
     companion object {
-        private val DISPOSE_HIGHLIGHTER_ACTION_KEY: Key<() -> Unit> = Key.create("DISPOSE_HIGHLIGHTER_ACTION")
+        private val HIGHLIGHTING_DISPOSER_KEY: Key<HighlightingDisposer> = Key.create("HIGHLIGHTING_DISPOSER_KEY")
+
+        private var Editor.highlightingDisposer: HighlightingDisposer?
+            get() = HIGHLIGHTING_DISPOSER_KEY[this]
+            set(value) {
+                HIGHLIGHTING_DISPOSER_KEY[this] = value
+            }
 
         private val AnActionEvent.editor: Editor? get() = CommonDataKeys.EDITOR.getData(dataContext)
 
