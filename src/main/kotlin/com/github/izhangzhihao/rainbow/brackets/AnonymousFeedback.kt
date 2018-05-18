@@ -59,10 +59,10 @@ import java.awt.Component
 import java.util.*
 
 private object AnonymousFeedback {
-    //    private const val gitRepoUser = "izhangzhihao"
-    private const val gitRepoUser = "intellij-rainbow-brackets"
-    //    private const val gitRepo = "intellij-rainbow-brackets"
-    private const val gitRepo = "bug"
+    private const val gitRepoUser = "izhangzhihao"
+    //private const val gitRepoUser = "intellij-rainbow-brackets"
+    private const val gitRepo = "intellij-rainbow-brackets"
+    //private const val gitRepo = "bug"
     private const val issueLabel = "pending"
 
     /**
@@ -84,7 +84,7 @@ private object AnonymousFeedback {
             val duplicate = findFirstDuplicate(newGibHubIssue.title, issueService, repoID)
             var isNewIssue = true
             if (duplicate != null) {
-                issueService.createComment(repoID, duplicate.number, generateGitHubIssueBody(environmentDetails, true))
+                issueService.createComment(repoID, duplicate.number, generateGitHubIssueBody(environmentDetails, false))
                 newGibHubIssue = duplicate
                 isNewIssue = false
             } else newGibHubIssue = issueService.createIssue(repoID, newGibHubIssue)
@@ -136,7 +136,7 @@ private object AnonymousFeedback {
     }
 }
 
-private const val something = "73c14d371a6ca051235342405c8e16d17b7c0000"
+private const val something = "0dc15c045662cb07366" + "c36903d05d7603e941456"
 
 class GitHubErrorReporter : ErrorReportSubmitter() {
     override fun getReportActionText() = ErrorReportBundle.message("report.error.to.plugin.vendor")
@@ -217,7 +217,6 @@ private class AnonymousFeedbackTask(
         private val params: MutableMap<String, String>,
         private val callback: Consumer<SubmittedReportInfo>) : Task.Backgroundable(project, title, canBeCancelled, DEAF) {
     override fun run(indicator: ProgressIndicator) {
-        //indicator.isIndeterminate = true
         callback.consume(AnonymousFeedback.sendFeedback(params))
     }
 }
@@ -246,7 +245,7 @@ private fun getKeyValuePairs(
             "OS Name" to SystemInfo.OS_NAME,
             "Java Version" to SystemInfo.JAVA_VERSION,
             "App Name" to namesInfo.productName,
-            "App Full Name" to myFullProductName, //namesInfo.fullProductName
+            "App Full Name" to myFullProductName,
 //            "App Version name" to namesInfo.productName, //versionName
 //            "Is EAP" to java.lang.Boolean.toString(appInfo.isEAP),
 //            "App Build" to appInfo.build.asString(),
