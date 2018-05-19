@@ -19,6 +19,13 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.8</p>
+      <ul>
+        <li>Feature #52 Flat out all text other than brackets on key (Alt + Button3) press. (via pull request#63)</li>
+        <li>Feature #61 Change Highlight Current Scope Keymap to Ctrl + Button3 (Windows & Linux) or Meta+ Button3 (Mac) (via pull request#63)</li>
+        <li>Add anonymous feedback support</li>
+      </ul>
+      <br/>
       <p>5.7.1</p>
       <ul>
         <li>Fix #60 :Exception in v5.7</li>
