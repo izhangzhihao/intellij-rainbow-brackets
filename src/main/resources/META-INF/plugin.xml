@@ -7,7 +7,7 @@
         <strong>Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA-based IDEs</strong>
         <br/>
         <p>Supported languages:</p>
-        <p>Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, C#, HTML, XML, SQL, Apex language ...</p>
+        <p>Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language ...</p>
         <br/>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-java.png" border="0" width="500" height="205" alt="with-java"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-material-theme-ui.png" border="0" width="500" height="167" alt="with-material-theme-ui.png"/></p>
