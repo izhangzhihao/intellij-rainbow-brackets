@@ -62,7 +62,7 @@ private object AnonymousFeedback {
     //private const val gitRepoUser = "intellij-rainbow-brackets"
     private const val gitRepo = "intellij-rainbow-brackets"
     //private const val gitRepo = "bug"
-    private const val issueLabel = "pending"
+    private const val issueLabel = "Auto generated"
 
     /**
      * Makes a connection to GitHub. Checks if there is an issue that is a duplicate and based on this, creates either a
