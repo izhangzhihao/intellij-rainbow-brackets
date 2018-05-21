@@ -34,7 +34,6 @@ import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.application.ApplicationNamesInfo
 import com.intellij.openapi.application.ApplicationNamesInfo.getComponentName
-import com.intellij.openapi.application.ex.ApplicationInfoEx
 import com.intellij.openapi.application.impl.ApplicationInfoImpl
 import com.intellij.openapi.diagnostic.ErrorReportSubmitter
 import com.intellij.openapi.diagnostic.IdeaLoggingEvent
@@ -168,7 +167,7 @@ class GitHubErrorReporter : ErrorReportSubmitter() {
         val project = CommonDataKeys.PROJECT.getData(dataContext)
         val reportValues = getKeyValuePairs(
                 bean,
-                ApplicationInfoImpl.getShadowInstance(),
+                ApplicationInfoImpl.getShadowInstance() as ApplicationInfoImpl,
                 ApplicationNamesInfo.getInstance())
         val notifyingCallback = CallbackWithNotification(callback, project)
         val task = AnonymousFeedbackTask(project, ErrorReportBundle.message(
@@ -226,7 +225,7 @@ private class AnonymousFeedbackTask(
  */
 private fun getKeyValuePairs(
         error: GitHubErrorBean,
-        appInfo: ApplicationInfoEx,
+        appInfo: ApplicationInfoImpl,
         namesInfo: ApplicationNamesInfo): MutableMap<String, String> {
 
     val resource = "/idea/" + getComponentName() + ".xml"
@@ -237,7 +236,6 @@ private fun getKeyValuePairs(
     val myProductName = names.getAttributeValue("product")
     val myFullProductName = names.getAttributeValue("fullname", myProductName)
 
-
     val params = mutableMapOf(
             "error.description" to error.description,
             "Plugin Name" to error.pluginName,
@@ -247,18 +245,15 @@ private fun getKeyValuePairs(
             "Java Version" to SystemInfo.JAVA_VERSION,
             "App Name" to namesInfo.productName,
             "App Full Name" to myFullProductName,
-//            "App Version name" to namesInfo.productName, //versionName
-//            "Is EAP" to java.lang.Boolean.toString(appInfo.isEAP),
-//            "App Build" to appInfo.build.asString(),
-//            "App Version" to appInfo.fullVersion,
+            "Is Snapshot" to java.lang.Boolean.toString(appInfo.build.isSnapshot),
+            "App Build" to appInfo.build.asString(),
             "Last Action" to error.lastAction,
             "error.message" to error.message,
             "error.stacktrace" to error.stackTrace,
             "error.hash" to error.exceptionHash)
-//    error.attachments[0].displayText
-//    for (attachment in error.attachments) {
-//        params["attachment.name"] = attachment.name
-//        params["attachment.value"] = attachment.encodedBytes
-//    }
+    for (attachment in error.attachments) {
+        params["attachment.name"] = attachment.path
+        params["attachment.value"] = attachment.displayText
+    }
     return params
 }
