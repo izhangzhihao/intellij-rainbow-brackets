@@ -14,16 +14,17 @@ class RainbowComponent : ApplicationComponent {
     var updated: Boolean = false
 
     override fun initComponent() {
-        updated = getPlugin()?.version != RainbowSettings.instance.version
+        val settings = RainbowSettings.instance
+        updated = getPlugin()?.version != settings.version
         if (updated) {
-            RainbowSettings.instance.version = getPlugin()?.version
+            settings.version = getPlugin()!!.version
         }
-        if (!RainbowSettings.instance.isRainbowifyHTMLInsideJS) {
+        if (!settings.isRainbowifyHTMLInsideJS) {
             EditorColorsManager
                     .getInstance()
                     .globalScheme
                     .setAttributes(createTextAttributesKey("HTML_CODE"), TextAttributes())
-            RainbowSettings.instance.isRainbowifyHTMLInsideJS = true
+            settings.isRainbowifyHTMLInsideJS = true
         }
     }
 

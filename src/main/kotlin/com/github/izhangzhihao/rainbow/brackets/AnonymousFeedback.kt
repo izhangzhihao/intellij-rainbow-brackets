@@ -241,8 +241,9 @@ private fun getKeyValuePairs(
     val params = mutableMapOf(
             "error.description" to error.description,
             "Plugin Name" to error.pluginName,
-            "Plugin Version" to (RainbowSettings.instance.version ?: "Unknown"),
+            "Plugin Version" to RainbowSettings.instance.version,
             "OS Name" to SystemInfo.OS_NAME,
+            "OS Version" to SystemInfo.OS_VERSION,
             "Java Version" to SystemInfo.JAVA_VERSION,
             "App Name" to namesInfo.productName,
             "App Full Name" to myFullProductName,
