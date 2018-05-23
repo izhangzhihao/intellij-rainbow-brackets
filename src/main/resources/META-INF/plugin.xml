@@ -19,6 +19,12 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.8.1</p>
+      <ul>
+        <li>Fix #67: Can't find resource for bundle java.util.PropertyResourceBundle, key version</li>
+        <li>Improve anonymous feedback</li>
+      </ul>
+      <br/>
       <p>5.8</p>
       <ul>
         <li>Feature #52 Flat out all text other than brackets on key (Alt + Button3) press. (via pull request#63)</li>
