@@ -19,12 +19,15 @@ class RainbowComponent : ApplicationComponent {
         if (updated) {
             settings.version = getPlugin()!!.version
         }
+        val globalScheme = EditorColorsManager.getInstance().globalScheme
         if (!settings.isRainbowifyHTMLInsideJS) {
-            EditorColorsManager
-                    .getInstance()
-                    .globalScheme
-                    .setAttributes(createTextAttributesKey("HTML_CODE"), TextAttributes())
+            globalScheme.setAttributes(createTextAttributesKey("HTML_CODE"), TextAttributes())
             settings.isRainbowifyHTMLInsideJS = true
+        }
+
+        if (!settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow) {
+            globalScheme.setAttributes(createTextAttributesKey("KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW"), TextAttributes())
+            settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow = true
         }
     }
 
