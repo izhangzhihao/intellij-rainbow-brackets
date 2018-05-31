@@ -11,6 +11,7 @@ Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA based IDEs
     - [Install](#install)
     - [Config brackets colors](#config-brackets-colors)
     - [HTML code in js](#html-code-in-js)
+    - [Kotlin function literal braces and arrow](#kotlin-function-literal-braces-and-arrow)
     - [Contribute](#contribute)
     - [Acknowledgements](#acknowledgements)
 
@@ -147,6 +148,26 @@ var html = '<div><div><div>Hello</div></div></div>';
 
 This plugin will automatically override color scheme "HTML_CODE" [cause our rainbow color been covered by intellij built-in functionality](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360000117450-My-HighlightVisitor-been-covered-by-intellij-built-in-functionality).
 You still could set `<option name="rainbowifyHTMLInsideJS" value="true" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
+
+## Kotlin function literal braces and arrow
+
+To enable rainbow brackets for multiple level lambda Kotlin code like this:
+
+```kotlin
+event.throwable?.let { throwable ->
+    IdeErrorsDialog.findPluginId(throwable)?.let { pluginId ->
+        PluginManager.getPlugin(pluginId)?.let { ideaPluginDescriptor ->
+            if (!ideaPluginDescriptor.isBundled) {
+                bean.pluginName = ideaPluginDescriptor.name
+                bean.pluginVersion = ideaPluginDescriptor.version
+            }
+        }
+    }
+}
+```
+
+This plugin will automatically override color scheme "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color been covered by kotlin plugin built-in functionality.
+You still could set `<option name="isRainbowifyKotlinFunctionLiteralBracesAndArrow" value="true" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
 
 ## Contribute
 
