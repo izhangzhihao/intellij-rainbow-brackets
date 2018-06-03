@@ -25,6 +25,9 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 ## Screenshots
 
+<details>
+    <summary>Expand to view the screenshots</summary>
+
 * with Java
 
 ![](./screenshots/with-java.png)
@@ -57,7 +60,13 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 ![](https://user-images.githubusercontent.com/10737066/40235004-642dfe54-5adb-11e8-9fd7-648b92fab8f5.gif)
 
+* [night-owl-jetbrains](https://github.com/xdrop/night-owl-jetbrains)
+
+![](https://github.com/xdrop/night-owl-jetbrains/blob/master/screenshot.png)
+
 * looking forward to your screenshots...
+
+</details>
 
 ## Install
 
@@ -89,7 +98,7 @@ If you prefer using light theme, here is a example from @Avinash-Bhat [gray conf
 
 
 <details>
-    <summary>The default colors:</summary>
+    <summary>Expand to view the default colors:</summary>
 
 ```kotlin
 var lightRoundBracketsColors = arrayOf(
