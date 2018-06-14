@@ -19,6 +19,11 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.8.3</p>
+      <ul>
+        <li>Improve anonymous feedback</li>
+      </ul>
+      <br/>
       <p>5.8.2</p>
       <ul>
         <li>Override kotlin plugin setting `KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW` to empty so that we could rainbowify multiple level lambda expressions.</li>
