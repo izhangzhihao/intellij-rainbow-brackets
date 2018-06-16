@@ -2,6 +2,7 @@ buildscript {
     repositories {
         mavenLocal()
         maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://maven-central.storage-download.googleapis.com/repos/central/data/" }
         maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
     }
 
@@ -11,8 +12,8 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.3.1"
-    id "com.adarshr.test-logger" version "1.1.2"
+    id "org.jetbrains.intellij" version "0.3.4"
+    id "com.adarshr.test-logger" version "1.2.0"
     id "de.undercouch.download" version "3.4.2"
 }
 
@@ -88,7 +89,7 @@ jacocoTestReport {
 
 check.dependsOn jacocoTestReport
 
-def verifierVersion = "1.172"
+def verifierVersion = "1.178"
 
 task downloadIntellijPluginVerifier(type: Download) {
     src "https://dl.bintray.com/jetbrains/intellij-plugin-service/org/jetbrains/intellij/plugins/verifier-cli/$verifierVersion/verifier-cli-$verifierVersion-all.jar"
