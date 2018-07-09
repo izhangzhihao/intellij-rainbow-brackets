@@ -62,4 +62,64 @@ fun <T> filter(l: List<T>, f: (T) -> Boolean): MutableList<T> {
                         )
                 )
     }
+
+    fun testRainbowArrowForKotlin() {
+        val code =
+                """
+val a: (Int) -> Unit = { aa ->
+    val b: (Int) -> Unit = { bb ->
+        val c: (Int) -> Unit  = { cc ->
+            val d: (Int) -> Unit = { dd ->
+            }
+        }
+    }
+}
+                """.trimIndent()
+        myFixture.configureByText(KotlinFileType.INSTANCE, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+        doHighlighting
+                .filter { it.forcedTextAttributes != null }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                roundLevel(0),
+                                roundLevel(0),
+
+                                squigglyLevel(0),
+                                squigglyLevel(0),
+
+                                roundLevel(0),
+                                roundLevel(0),
+
+                                squigglyLevel(1),
+                                squigglyLevel(1),
+
+
+                                roundLevel(0),
+                                roundLevel(0),
+
+                                squigglyLevel(2),
+                                squigglyLevel(2),
+
+                                roundLevel(0),
+                                roundLevel(0),
+
+                                squigglyLevel(3),
+                                squigglyLevel(3),
+
+
+                                squigglyLevel(3),
+
+                                squigglyLevel(2),
+
+
+                                squigglyLevel(1),
+
+                                squigglyLevel(0)
+                        )
+                )
+    }
 }
