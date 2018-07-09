@@ -7,8 +7,10 @@ import com.intellij.lang.annotation.Annotator
 import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
+import com.intellij.psi.impl.source.tree.LeafPsiElement
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.ui.JBColor
+import org.jetbrains.kotlin.lexer.KtTokens
 import org.jetbrains.kotlin.psi.*
 import java.awt.Font
 
@@ -27,6 +29,10 @@ class KotlinLabelAnnotator : Annotator {
         var refElement: PsiElement?
         when (element) {
             is KtLabelReferenceExpression -> {
+                if ((element.lastChild as? LeafPsiElement)?.elementType == KtTokens.AT) {
+                    return
+                }
+
                 target = element
                 refElement = try {
                     element.reference?.resolve()
