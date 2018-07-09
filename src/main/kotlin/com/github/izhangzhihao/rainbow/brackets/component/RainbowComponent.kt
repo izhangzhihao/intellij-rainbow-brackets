@@ -33,6 +33,11 @@ class RainbowComponent : ApplicationComponent {
                     TextAttributes(null, null, null, EffectType.BOXED, Font.BOLD))
             settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow = true
         }
+
+        if (settings.isRainbowifyKotlinLabel) {
+            globalScheme.setAttributes(createTextAttributesKey("KOTLIN_LABEL"),
+                    TextAttributes(null, null, null, EffectType.BOXED, Font.PLAIN))
+        }
     }
 
     companion object {

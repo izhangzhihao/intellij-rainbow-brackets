@@ -22,6 +22,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var version = "Unknown"
     var isRainbowifyHTMLInsideJS = false
     var isRainbowifyKotlinFunctionLiteralBracesAndArrow = false
+    var isRainbowifyKotlinLabel = true
 
     var lightRoundBracketsColors = arrayOf(
             "0xE66A01",
