@@ -7,8 +7,10 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.ApplicationComponent
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
+import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.openapi.extensions.PluginId
+import java.awt.Font
 
 class RainbowComponent : ApplicationComponent {
     var updated: Boolean = false
@@ -26,7 +28,9 @@ class RainbowComponent : ApplicationComponent {
         }
 
         if (!settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow) {
-            globalScheme.setAttributes(createTextAttributesKey("KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW"), TextAttributes())
+            globalScheme.setAttributes(createTextAttributesKey("KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW"),
+                    // Default Attributes
+                    TextAttributes(null, null, null, EffectType.BOXED, Font.BOLD))
             settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow = true
         }
     }

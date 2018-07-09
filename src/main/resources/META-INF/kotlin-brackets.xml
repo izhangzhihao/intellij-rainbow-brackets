@@ -3,4 +3,8 @@
         <pairedBraceProvider language="kotlin"
                              implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.KotlinAngleBracketProvider"/>
     </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <annotator language="kotlin"
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.annotator.KotlinLambdaExpressionArrowAnnotator"/>
+    </extensions>
 </idea-plugin>
