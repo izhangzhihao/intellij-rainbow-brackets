@@ -6,5 +6,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <annotator language="kotlin"
                    implementationClass="com.github.izhangzhihao.rainbow.brackets.annotator.KotlinLambdaExpressionArrowAnnotator"/>
+        <annotator language="kotlin"
+                   implementationClass="com.github.izhangzhihao.rainbow.brackets.annotator.KotlinLabelAnnotator"/>
     </extensions>
 </idea-plugin>
