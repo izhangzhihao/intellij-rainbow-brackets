@@ -22,16 +22,14 @@ class RainbowComponent : ApplicationComponent {
             settings.version = getPlugin()!!.version
         }
         val globalScheme = EditorColorsManager.getInstance().globalScheme
-        if (!settings.isRainbowifyHTMLInsideJS) {
+        if (settings.isRainbowifyHTMLInsideJS) {
             globalScheme.setAttributes(createTextAttributesKey("HTML_CODE"), TextAttributes())
-            settings.isRainbowifyHTMLInsideJS = true
         }
 
-        if (!settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow) {
+        if (settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow) {
             globalScheme.setAttributes(createTextAttributesKey("KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW"),
                     // Default Attributes
                     TextAttributes(null, null, null, EffectType.BOXED, Font.BOLD))
-            settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow = true
         }
 
         if (settings.isRainbowifyKotlinLabel) {
