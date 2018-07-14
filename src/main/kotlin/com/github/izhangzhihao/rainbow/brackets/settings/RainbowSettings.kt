@@ -8,7 +8,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil.copyBean
 import org.jetbrains.annotations.Nullable
 
 
-@State(name = "RainbowSettings", storages = [(Storage(id = "rainbow_brackets", file = "\$APP_CONFIG$/rainbow_brackets.xml"))])
+@State(name = "RainbowSettings", storages = [(Storage("rainbow_brackets.xml"))])
 class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     /**
      * default value
