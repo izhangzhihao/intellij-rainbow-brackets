@@ -55,7 +55,7 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 * with Kotlin
 
-![](https://user-images.githubusercontent.com/12044174/40778403-9d9165f0-6503-11e8-8ee2-b3d0262d9fd6.png)
+![](./screenshots/with-kotlin.png)
 
 * with HTML/XML
 

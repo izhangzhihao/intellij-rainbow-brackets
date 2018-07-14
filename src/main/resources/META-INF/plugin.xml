@@ -4,7 +4,7 @@
     <vendor email="izhangzhihao@hotmail.com" url="https://github.com/izhangzhihao">izhangzhihao</vendor>
 
     <description><![CDATA[
-        <strong>Rainbow Brackets / Rainbow Parentheses for IntelliJ IDEA-based IDEs</strong>
+        <strong>Rainbow Brackets / Rainbow Parentheses for IntelliJ based IDEs</strong>
         <br/>
         <p>Supported languages:</p>
         <p>Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language ...</p>
@@ -12,10 +12,11 @@
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-java.png" border="0" width="500" height="205" alt="with-java"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-material-theme-ui.png" border="0" width="500" height="167" alt="with-material-theme-ui.png"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-scala.png" border="0" width="500" height="250" alt="with-scala"/></p>
-        <p><img src="https://user-images.githubusercontent.com/12044174/40778403-9d9165f0-6503-11e8-8ee2-b3d0262d9fd6.png" border="0" width="500" height="191" alt="with-kotlin"/></p>
-        <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-Clojure.png" border="0" width="500" height="200" alt="with-Clojure.png"/></p>
+        <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-kotlin.png" border="0" width="500" height="191" alt="with-kotlin"/></p>
+        <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-Clojure.png" border="0" width="500" height="190" alt="with-Clojure.png"/></p>
         <p><img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-HTML.png" border="0" width="500" height="112" alt="with-HTML.png"/></p>
-        <p><img src="https://user-images.githubusercontent.com/10737066/39988979-5df3f05e-579b-11e8-8d19-7d9e95c7a0b5.gif" border="0" width="500" height="206" alt="Highlight current scope.gif"/></p>
+        <p><img src="https://user-images.githubusercontent.com/10737066/40234968-46593fe2-5adb-11e8-8ea8-0026fad86ca9.gif" border="0" width="500" height="206" alt="Highlight current scope.gif"/></p>
+        <p><img src="https://user-images.githubusercontent.com/10737066/40235004-642dfe54-5adb-11e8-9fd7-648b92fab8f5.gif" border="0" width="500" height="206" alt="Highlight current scope.gif"/></p>
     ]]></description>
 
     <change-notes><![CDATA[
