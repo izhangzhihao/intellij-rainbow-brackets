@@ -15,7 +15,7 @@
 
 # Table of Contents
 
-- [Rainbow Brackets](#rainbow-brackets)
+- [Table of Contents](#table-of-contents)
     - [Compatibility](#compatibility)
     - [Supported languages](#supported-languages)
     - [Screenshots](#screenshots)
@@ -167,7 +167,7 @@ var html = '<div><div><div>Hello</div></div></div>';
 ```
 
 This plugin will automatically override color scheme "HTML_CODE" [cause our rainbow color been covered by intellij built-in functionality](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360000117450-My-HighlightVisitor-been-covered-by-intellij-built-in-functionality).
-You still could set `<option name="rainbowifyHTMLInsideJS" value="true" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
+You still could set `<option name="rainbowifyHTMLInsideJS" value="false" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
 
 ## Kotlin function literal braces and arrow
 
@@ -187,7 +187,7 @@ event.throwable?.let { throwable ->
 ```
 
 This plugin will automatically override color scheme "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color been covered by kotlin plugin built-in functionality.
-You still could set `<option name="isRainbowifyKotlinFunctionLiteralBracesAndArrow" value="true" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
+You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow" value="false" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
 
 ## Contribute
 
