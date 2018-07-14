@@ -91,7 +91,6 @@ private object AnonymousFeedback {
                     if (isNewIssue) "git.issue.text" else "git.issue.duplicate.text", newGibHubIssue.htmlUrl, newGibHubIssue.number.toLong()),
                     if (isNewIssue) SubmissionStatus.NEW_ISSUE else SubmissionStatus.DUPLICATE)
         } catch (e: Exception) {
-            e.printStackTrace()
             return SubmittedReportInfo(null,
                     ErrorReportBundle.message("report.error.connection.failure"),
                     SubmissionStatus.FAILED)
