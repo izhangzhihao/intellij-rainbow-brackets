@@ -10,6 +10,7 @@ import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributes
 import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.openapi.extensions.PluginId
+import java.awt.Color
 import java.awt.Font
 
 class RainbowComponent : ApplicationComponent {
@@ -35,6 +36,11 @@ class RainbowComponent : ApplicationComponent {
         if (settings.isRainbowifyKotlinLabel) {
             globalScheme.setAttributes(createTextAttributesKey("KOTLIN_LABEL"),
                     TextAttributes(null, null, null, EffectType.BOXED, Font.PLAIN))
+        }
+
+        if (settings.isOverrideMatchedBraceAttributes) {
+            globalScheme.setAttributes(createTextAttributesKey("MATCHED_BRACE_ATTRIBUTES"),
+                    TextAttributes(null, Color(Integer.decode("0x3b514d")), null, EffectType.BOXED, Font.BOLD))
         }
     }
 
