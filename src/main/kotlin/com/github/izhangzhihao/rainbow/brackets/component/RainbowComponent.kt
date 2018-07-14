@@ -33,6 +33,11 @@ class RainbowComponent : ApplicationComponent {
                     TextAttributes(null, null, null, EffectType.BOXED, Font.BOLD))
         }
 
+        if (settings.isRainbowifyKotlinLabel) {
+            globalScheme.setAttributes(createTextAttributesKey("KOTLIN_LABEL"),
+                    TextAttributes(null, null, null, EffectType.BOXED, Font.PLAIN))
+        }
+
         if (settings.isOverrideMatchedBraceAttributes) {
             globalScheme.setAttributes(createTextAttributesKey("MATCHED_BRACE_ATTRIBUTES"),
                     TextAttributes(null, Color(Integer.decode("0x3b514d")), null, EffectType.BOXED, Font.BOLD))
