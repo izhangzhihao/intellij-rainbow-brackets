@@ -72,7 +72,7 @@ private object AnonymousFeedback {
      * @return The report info that is then used in [GitHubErrorReporter] to show the user a balloon with the link
      * of the created issue.
      */
-    internal fun sendFeedback(environmentDetails: MutableMap<String, String>): SubmittedReportInfo {
+    internal fun sendFeedback(environmentDetails: Map<String, String>): SubmittedReportInfo {
         try {
             val gitAccessToken = something
             val client = GitHubClient()
@@ -80,10 +80,11 @@ private object AnonymousFeedback {
             val repoID = RepositoryId(gitRepoUser, gitRepo)
             val issueService = IssueService(client)
             var newGibHubIssue = createNewGibHubIssue(environmentDetails)
-            val duplicate = findFirstDuplicate(newGibHubIssue.title, issueService, repoID)
+            val errorMessage = environmentDetails.getOrDefault("error.message", "Unspecified error")
+            val duplicate = findFirstDuplicate(errorMessage, issueService, repoID)
             var isNewIssue = true
             if (duplicate != null) {
-                issueService.createComment(repoID, duplicate.number, generateGitHubIssueBody(environmentDetails, false))
+                issueService.createComment(repoID, duplicate.number, generateGitHubIssueBody(environmentDetails))
                 newGibHubIssue = duplicate
                 isNewIssue = false
             } else newGibHubIssue = issueService.createIssue(repoID, newGibHubIssue)
@@ -97,40 +98,43 @@ private object AnonymousFeedback {
         }
     }
 
-    private fun findFirstDuplicate(uniqueTitle: String, service: IssueService, repo: RepositoryId): Issue? {
-        val openIssue = hashMapOf(IssueService.FILTER_STATE to IssueService.STATE_OPEN)
-        val closedIssue = hashMapOf(IssueService.FILTER_STATE to IssueService.STATE_CLOSED)
-        return service.pageIssues(repo, openIssue).flatMap { it }.firstOrNull { it.title == uniqueTitle }
-                ?: service.pageIssues(repo, closedIssue).flatMap { it }.firstOrNull { it.title == uniqueTitle }
+    private fun findFirstDuplicate(title: String, service: IssueService, repo: RepositoryId): Issue? {
+        val searchIssue = (service.searchIssues(repo, "open", title).firstOrNull()
+                ?: service.searchIssues(repo, "closed", title).firstOrNull())
+        return searchIssue?.let {
+            val issue = Issue()
+            issue.htmlUrl = it.htmlUrl
+            issue.number = it.number
+            issue
+        }
     }
 
-    private fun createNewGibHubIssue(details: MutableMap<String, String>) = Issue().apply {
-        val errorMessage = details.remove("error.message")?.takeIf(String::isNotBlank) ?: "Unspecified error"
-        title = ErrorReportBundle.message("git.issue.title", details.remove("error.hash").orEmpty(), errorMessage)
-        body = generateGitHubIssueBody(details, true)
+    private fun createNewGibHubIssue(details: Map<String, String>) = Issue().apply {
+        val errorMessage = details.getOrDefault("error.message", "Unspecified error")
+        title = ErrorReportBundle.message("git.issue.title", errorMessage)
+        body = generateGitHubIssueBody(details)
         labels = listOf(Label().apply { name = issueLabel })
     }
 
-    private fun generateGitHubIssueBody(details: MutableMap<String, String>, includeStacktrace: Boolean): String {
-        val errorDescription = details.remove("error.description").orEmpty()
-        val stackTrace = details.remove("error.stacktrace")?.takeIf(String::isNotBlank) ?: "invalid stacktrace"
+    private fun generateGitHubIssueBody(details: Map<String, String>): String {
+        val errorDescription = details.getOrDefault("error.description", "")
+        val stackTrace = details.getOrDefault("error.stacktrace", "invalid stacktrace")
         val result = StringBuilder()
         if (!errorDescription.isEmpty()) {
             result.append(errorDescription)
             result.append("\n\n----------------------\n\n")
         }
-        for ((key, value) in details) {
-            result.append("- ")
-            result.append(key)
-            result.append(": ")
-            result.append(value)
-            result.append("\n")
-        }
-        if (includeStacktrace) {
-            result.append("\n```\n")
-            result.append(stackTrace)
-            result.append("\n```\n")
-        }
+        details.filterKeys { it != "error.stacktrace" }
+                .forEach { (key, value) ->
+                    result.append("- ")
+                    result.append(key)
+                    result.append(": ")
+                    result.append(value)
+                    result.append("\n")
+                }
+        result.append("\n```\n")
+        result.append(stackTrace)
+        result.append("\n```\n")
         return result.toString()
     }
 }
@@ -141,13 +145,13 @@ class GitHubErrorReporter : ErrorReportSubmitter() {
     override fun getReportActionText() = ErrorReportBundle.message("report.error.to.plugin.vendor")
     override fun submit(
             events: Array<IdeaLoggingEvent>, info: String?, parent: Component, consumer: Consumer<SubmittedReportInfo>) =
-            doSubmit(events[0], parent, consumer, GitHubErrorBean(events[0].throwable, IdeaLogger.ourLastActionId), info)
+            doSubmit(events[0], parent, consumer, ErrorBean(events[0].throwable, IdeaLogger.ourLastActionId), info)
 
     private fun doSubmit(
             event: IdeaLoggingEvent,
             parent: Component,
             callback: Consumer<SubmittedReportInfo>,
-            bean: GitHubErrorBean,
+            bean: ErrorBean,
             description: String?): Boolean {
         val dataContext = DataManager.getInstance().getDataContext(parent)
         bean.description = description
@@ -190,15 +194,6 @@ class GitHubErrorReporter : ErrorReportSubmitter() {
 }
 
 /**
- * Extends the standard class to provide the hash of the thrown exception stack trace.
- *
- * @author patrick (17.06.17).
- */
-class GitHubErrorBean(throwable: Throwable, lastAction: String?) : ErrorBean(throwable, lastAction) {
-    val exceptionHash = Arrays.hashCode(throwable.stackTrace).toString()
-}
-
-/**
  * Messages and strings used by the error reporter
  */
 private object ErrorReportBundle {
@@ -213,7 +208,7 @@ private object ErrorReportBundle {
 
 private class AnonymousFeedbackTask(
         project: Project?, title: String, canBeCancelled: Boolean,
-        private val params: MutableMap<String, String>,
+        private val params: Map<String, String>,
         private val callback: Consumer<SubmittedReportInfo>) : Task.Backgroundable(project, title, canBeCancelled, DEAF) {
     override fun run(indicator: ProgressIndicator) {
         callback.consume(AnonymousFeedback.sendFeedback(params))
@@ -224,9 +219,9 @@ private class AnonymousFeedbackTask(
  * Collects information about the running IDEA and the error
  */
 private fun getKeyValuePairs(
-        error: GitHubErrorBean,
+        error: ErrorBean,
         appInfo: ApplicationInfoImpl,
-        namesInfo: ApplicationNamesInfo): MutableMap<String, String> {
+        namesInfo: ApplicationNamesInfo): Map<String, String> {
 
     val resource = "/idea/" + getComponentName() + ".xml"
 
@@ -236,7 +231,7 @@ private fun getKeyValuePairs(
     val myProductName = names.getAttributeValue("product")
     val myFullProductName = names.getAttributeValue("fullname", myProductName)
 
-    val params = mutableMapOf(
+    val params: MutableMap<String, String?> = mutableMapOf(
             "error.description" to error.description,
             "Plugin Name" to error.pluginName,
             "Plugin Version" to RainbowSettings.instance.version,
@@ -249,11 +244,11 @@ private fun getKeyValuePairs(
             "App Build" to appInfo.build.asString(),
             "Last Action" to error.lastAction,
             "error.message" to error.message,
-            "error.stacktrace" to error.stackTrace,
-            "error.hash" to error.exceptionHash)
+            "error.stacktrace" to error.stackTrace)
     for (attachment in error.attachments) {
         params["attachment.name"] = attachment.path
         params["attachment.value"] = attachment.displayText
     }
-    return params
+
+    return params.mapValues { it -> it.value ?: "" }
 }
