@@ -20,6 +20,16 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.9</p>
+      <ul>
+        <li>Rainbow Kotlin lambda expression arrow(#142).</li>
+        <li>Experimental feature: Highlight Kotlin label(#143).</li>
+        <li>Override "MATCHED_BRACE_ATTRIBUTES".</li>
+        <li>Improve configs & docs.</li>
+        <li>Cleanup temp code & deprecated code.</li>
+        <li>Remove anonymous feedback.</li>
+      </ul>
+      <br/>
       <p>5.8.3</p>
       <ul>
         <li>Improve anonymous feedback</li>
