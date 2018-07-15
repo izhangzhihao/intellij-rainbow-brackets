@@ -252,7 +252,6 @@
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
         <applicationService serviceInterface="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"
                             serviceImplementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"/>
-        <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.GitHubErrorReporter"/>
     </extensions>
 
     <application-components>
