@@ -20,6 +20,11 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.9.1</p>
+      <ul>
+        <li>Fix wrong background color on a light theme of "MATCHED_BRACE_ATTRIBUTES"(#155).</li>
+      </ul>
+      <br/>
       <p>5.9</p>
       <ul>
         <li>Rainbow Kotlin lambda expression arrow(#142).</li>
