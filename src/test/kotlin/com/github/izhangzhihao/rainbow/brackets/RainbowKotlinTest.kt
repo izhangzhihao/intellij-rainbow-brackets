@@ -122,4 +122,61 @@ val a: (Int) -> Unit = { aa ->
                         )
                 )
     }
+
+    fun testRainbowLabelForKotlin() {
+        val code =
+                """
+class AA {
+    fun aa() {
+        return@aa
+    }
+
+    inner class BB {
+        fun BB.bb(): Any = TODO()
+        fun cc() {
+            this@AA.aa()
+            this@BB.bb()
+            arrayOf(1, 2, 3).forEach {
+                it.let dd@{
+                    if (it > 0) a@ {
+                        return@dd
+                    }
+                }
+                return@forEach
+            };
+            e@ {
+                f@{}
+                g@ { h@{ return@e } }()
+                Unit
+            }()
+        }
+    }
+}
+                """.trimIndent()
+        myFixture.configureByText(KotlinFileType.INSTANCE, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+
+        doHighlighting
+                .filter { it.forcedTextAttributes != null && it.text.contains("@") }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                squigglyLevel(1),
+                                squigglyLevel(0),
+                                squigglyLevel(1),
+                                squigglyLevel(1),
+                                squigglyLevel(2),
+                                squigglyLevel(1),
+                                squigglyLevel(0),
+                                squigglyLevel(0),
+                                squigglyLevel(1),
+                                squigglyLevel(1),
+                                squigglyLevel(2),
+                                squigglyLevel(0)
+                        )
+                )
+    }
 }
