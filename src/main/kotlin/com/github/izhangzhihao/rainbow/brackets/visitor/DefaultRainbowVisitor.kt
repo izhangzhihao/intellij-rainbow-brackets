@@ -1,7 +1,7 @@
 package com.github.izhangzhihao.rainbow.brackets.visitor
 
-import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.isDoNOTRainbowifyBracketsWithoutContent
 import com.github.izhangzhihao.rainbow.brackets.bracePairs
+import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.lang.BracePair
 import com.intellij.psi.PsiElement
@@ -126,7 +126,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             val filterBraceType = pairs[type.toString()] ?: return null
             return if (filterBraceType.isEmpty()) {
                 null
-            } else if (!isDoNOTRainbowifyBracketsWithoutContent) {
+            } else if (!RainbowSettings.instance.isDoNOTRainbowifyBracketsWithoutContent) {
                 filterBraceType
             } else {
                 filterBraceType

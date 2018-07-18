@@ -18,22 +18,12 @@ object RainbowHighlighter {
     val squigglyBrackets: CharArray = charArrayOf('{', '}')
     val angleBrackets: CharArray = charArrayOf('<', '>')
 
-    val roundBracketsColors: Array<Color> by lazy { jBColor(settings.lightRoundBracketsColors, settings.darkRoundBracketsColors) }
-
-    val squareBracketsColors: Array<Color> by lazy { jBColor(settings.lightSquareBracketsColors, settings.darkSquareBracketsColors) }
-
-    val squigglyBracketsColors: Array<Color> by lazy { jBColor(settings.lightSquigglyBracketsColors, settings.darkSquigglyBracketsColors) }
-
-    val angleBracketsColor: Array<Color> by lazy { jBColor(settings.lightAngleBracketsColor, settings.darkAngleBracketsColor) }
-
     private val settings = RainbowSettings.instance
 
-    val isRainbowEnabled get() = settings.isRainbowEnabled
-    val isEnableRainbowRoundBrackets get() = settings.isEnableRainbowRoundBrackets
-    val isEnableRainbowSquigglyBrackets get() = settings.isEnableRainbowSquigglyBrackets
-    val isEnableRainbowSquareBrackets get() = settings.isEnableRainbowSquareBrackets
-    val isEnableRainbowAngleBrackets get() = settings.isEnableRainbowAngleBrackets
-    val isDoNOTRainbowifyBracketsWithoutContent get() = settings.isDoNOTRainbowifyBracketsWithoutContent
+    val roundBracketsColors: Array<Color> = jBColor(settings.lightRoundBracketsColors, settings.darkRoundBracketsColors)
+    val squareBracketsColors: Array<Color> = jBColor(settings.lightSquareBracketsColors, settings.darkSquareBracketsColors)
+    val squigglyBracketsColors: Array<Color> = jBColor(settings.lightSquigglyBracketsColors, settings.darkSquigglyBracketsColors)
+    val angleBracketsColor: Array<Color> = jBColor(settings.lightAngleBracketsColor, settings.darkAngleBracketsColor)
 
     private val rainbowElement: HighlightInfoType = HighlightInfoType
             .HighlightInfoTypeImpl(HighlightSeverity.INFORMATION, DefaultLanguageHighlighterColors.CONSTANT)
@@ -46,15 +36,15 @@ object RainbowHighlighter {
     private val PsiElement.isAngleBracket get() = angleBrackets.any { textContains(it) }
 
     private fun createTextAttributes(element: PsiElement, level: Int): TextAttributes? {
-        if (!isRainbowEnabled) {
+        if (!settings.isRainbowEnabled) {
             return null
         }
 
         val color = when {
-            element.isRoundBracket -> if (isEnableRainbowRoundBrackets) roundBracketsColors else return null
-            element.isSquareBracket -> if (isEnableRainbowSquareBrackets) squareBracketsColors else return null
-            element.isSquigglyBracket -> if (isEnableRainbowSquigglyBrackets) squigglyBracketsColors else return null
-            element.isAngleBracket -> if (isEnableRainbowAngleBrackets) angleBracketsColor else return null
+            element.isRoundBracket -> if (settings.isEnableRainbowRoundBrackets) roundBracketsColors else return null
+            element.isSquareBracket -> if (settings.isEnableRainbowSquareBrackets) squareBracketsColors else return null
+            element.isSquigglyBracket -> if (settings.isEnableRainbowSquigglyBrackets) squigglyBracketsColors else return null
+            element.isAngleBracket -> if (settings.isEnableRainbowAngleBrackets) angleBracketsColor else return null
             else -> roundBracketsColors
         }.getColor(level)
 
