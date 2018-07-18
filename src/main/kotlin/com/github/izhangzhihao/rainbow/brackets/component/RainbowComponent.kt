@@ -11,7 +11,6 @@ import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.ui.JBColor
-import java.awt.Color
 import java.awt.Font
 
 class RainbowComponent : ApplicationComponent {
@@ -41,7 +40,7 @@ class RainbowComponent : ApplicationComponent {
 
         if (settings.isOverrideMatchedBraceAttributes) {
             globalScheme.setAttributes(createTextAttributesKey("MATCHED_BRACE_ATTRIBUTES"),
-                    TextAttributes(null, JBColor(Integer.decode("0x99ccbb"), Integer.decode("0x3b514d")), null, EffectType.BOXED, Font.BOLD))
+                    TextAttributes(null, JBColor(0x99ccbb, 0x3b514d), null, EffectType.BOXED, Font.BOLD))
         }
     }
 
