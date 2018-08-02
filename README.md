@@ -73,7 +73,7 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 * [night-owl-jetbrains](https://github.com/xdrop/night-owl-jetbrains)
 
-![](https://github.com/xdrop/night-owl-jetbrains/blob/master/screenshot.png)
+![](https://github.com/xdrop/night-owl-jetbrains/raw/2018.2/screenshot.png)
 
 * looking forward to your screenshots...
 
