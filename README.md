@@ -20,7 +20,7 @@
     - [Supported languages](#supported-languages)
     - [Screenshots](#screenshots)
     - [Install](#install)
-    - [Config brackets colors](#config-brackets-colors)
+    - [Customize colors](#customize-colors)
     - [HTML code in js](#html-code-in-js)
     - [Kotlin function literal braces and arrow](#kotlin-function-literal-braces-and-arrow)
     - [Contribute](#contribute)
@@ -35,9 +35,6 @@ IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, D
 Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language ...
 
 ## Screenshots
-
-<details>
-    <summary>Expand to view the screenshots</summary>
 
 * with Java
 
@@ -75,9 +72,7 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 ![](https://github.com/xdrop/night-owl-jetbrains/raw/2018.2/screenshot.png)
 
-* looking forward to your screenshots...
-
-</details>
+* looking forward to your screenshots(PR welcome!)
 
 ## Install
 
@@ -85,9 +80,9 @@ For Windows - <kbd>File</kbd> > <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>
 
 For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Browse repositories...</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd>  > <kbd>Restart IntelliJ IDEA</kbd>
 
-## Config brackets colors
+## Customize colors
 
-If you want to config the color, edit your config file and restart your IDE(APP_CONFIG/rainbow_brackets.xml), In my env(MAC os) is /Users/izhangzhihao/Library/Preferences/IntelliJIdea2018.1/options/rainbow_brackets.xml:
+If you want to customize colors, edit your config file and restart your IDE(`APP_CONFIG/rainbow_brackets.xml`), In my env(MAC os) is `/Users/izhangzhihao/Library/Preferences/IntelliJIdea2018.2/options/rainbow_brackets.xml`:
 
 ```xml
 <option name="lightRoundBracketsColors">
@@ -160,13 +155,13 @@ var darkAngleBracketsColor = darkRoundBracketsColors
 
 ## HTML code in js
 
-To enable rainbow brackets for HTML in js code like this:
+To enable rainbow brackets for HTML inside js code like this:
 
 ```javascript
 var html = '<div><div><div>Hello</div></div></div>';
 ```
 
-This plugin will automatically override color scheme "HTML_CODE" [cause our rainbow color been covered by intellij built-in functionality](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360000117450-My-HighlightVisitor-been-covered-by-intellij-built-in-functionality).
+This plugin will automatically override color scheme propertie "HTML_CODE" [cause our rainbow color been covered by intellij built-in functionality](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360000117450-My-HighlightVisitor-been-covered-by-intellij-built-in-functionality).
 You still could set `<option name="rainbowifyHTMLInsideJS" value="false" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
 
 ## Kotlin function literal braces and arrow
@@ -186,7 +181,7 @@ event.throwable?.let { throwable ->
 }
 ```
 
-This plugin will automatically override color scheme "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color been covered by kotlin plugin built-in functionality.
+This plugin will automatically override color scheme propertie "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color been covered by kotlin plugin built-in functionality.
 You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow" value="false" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
 
 ## Contribute
