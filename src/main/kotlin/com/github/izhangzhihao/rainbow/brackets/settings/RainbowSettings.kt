@@ -35,8 +35,8 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
 
     var darkRoundBracketsColors = arrayOf(
             "0xE6B422",
-            "0x43A047",
             "0x2196F3",
+            "0x43A047",
             "0x3F51B5",
             "0x00897B"
     )
