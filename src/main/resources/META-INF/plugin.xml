@@ -267,6 +267,8 @@
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
         <applicationService serviceInterface="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"
                             serviceImplementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"/>
+        <colorAndFontPanelFactory implementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowColorsPageFactory"/>
+        <colorAndFontDescriptorProvider implementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowColorsPageFactory"/>
 
         <additionalTextAttributes scheme="Default" file="colorSchemes/rainbow-color-defuault.xml"/>
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-defuault-darcula.xml"/>
