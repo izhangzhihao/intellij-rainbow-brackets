@@ -58,8 +58,6 @@ idea {
 }
 
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion")
-    testCompile("org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion")
     testCompile("io.kotlintest:kotlintest:2.0.7")
 }
 
