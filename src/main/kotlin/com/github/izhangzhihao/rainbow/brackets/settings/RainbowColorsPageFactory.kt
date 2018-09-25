@@ -47,7 +47,7 @@ class RainbowColorsPageFactory : ColorAndFontPanelFactory, ColorAndFontDescripto
                 createDescriptors(RainbowHighlighter.NAME_ANGLE_BRACKETS)
 
         private fun createDescriptors(name: String): Array<AttributesDescriptor> {
-            return RainbowHighlighter.createRainbowAttributesKeys(name)
+            return RainbowHighlighter.getRainbowAttributesKeys(name)
                     .map { key -> AttributesDescriptor("$name:$key", key) }
                     .toTypedArray()
         }

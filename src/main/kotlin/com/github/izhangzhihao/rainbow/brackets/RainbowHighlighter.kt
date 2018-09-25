@@ -29,6 +29,15 @@ object RainbowHighlighter {
     val squigglyBrackets: CharArray = charArrayOf('{', '}')
     val angleBrackets: CharArray = charArrayOf('<', '>')
 
+    private val roundBracketsRainbowColorKeys: List<TextAttributesKey> =
+            createRainbowAttributesKeys(KEY_ROUND_BRACKETS, 5)
+    private val squareBracketsRainbowColorKeys: List<TextAttributesKey> =
+            createRainbowAttributesKeys(KEY_SQUARE_BRACKETS, 3)
+    private val squigglyBracketsRainbowColorKeys: List<TextAttributesKey> =
+            createRainbowAttributesKeys(KEY_SQUIGGLY_BRACKETS, 3)
+    private val angleBracketsRainbowColorKeys: List<TextAttributesKey> =
+            createRainbowAttributesKeys(KEY_ANGLE_BRACKETS, 5)
+
     private val settings = RainbowSettings.instance
 
     val roundBracketsColors: Array<Color> = jBColor(settings.lightRoundBracketsColors, settings.darkRoundBracketsColors)
@@ -46,19 +55,21 @@ object RainbowHighlighter {
     private val PsiElement.isSquigglyBracket get() = squigglyBrackets.any { textContains(it) }
     private val PsiElement.isAngleBracket get() = angleBrackets.any { textContains(it) }
 
-    fun createRainbowAttributesKeys(rainbowName: String): List<TextAttributesKey> {
-        val (keyName, keyCount) = when (rainbowName) {
-            NAME_ROUND_BRACKETS -> KEY_ROUND_BRACKETS to 5
-            NAME_SQUARE_BRACKETS -> KEY_SQUARE_BRACKETS to 3
-            NAME_SQUIGGLY_BRACKETS -> KEY_SQUIGGLY_BRACKETS to 3
-            NAME_ANGLE_BRACKETS -> KEY_ANGLE_BRACKETS to 5
-            else -> throw IllegalArgumentException("Unknown rainbow name: $rainbowName")
-        }
-
+    private fun createRainbowAttributesKeys(keyName: String, size: Int): List<TextAttributesKey> {
         return generateSequence(0) { it + 1 }
                 .map { TextAttributesKey.createTextAttributesKey("$keyName$it") }
-                .take(keyCount)
+                .take(size)
                 .toList()
+    }
+
+    fun getRainbowAttributesKeys(rainbowName: String): List<TextAttributesKey> {
+        return when (rainbowName) {
+            NAME_ROUND_BRACKETS -> roundBracketsRainbowColorKeys
+            NAME_SQUARE_BRACKETS -> squareBracketsRainbowColorKeys
+            NAME_SQUIGGLY_BRACKETS -> squigglyBracketsRainbowColorKeys
+            NAME_ANGLE_BRACKETS -> angleBracketsRainbowColorKeys
+            else -> throw IllegalArgumentException("Unknown rainbow name: $rainbowName")
+        }
     }
 
     fun isRainbowEnabled(rainbowName: String): Boolean {
