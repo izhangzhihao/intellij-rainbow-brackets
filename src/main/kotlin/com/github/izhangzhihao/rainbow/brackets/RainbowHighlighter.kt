@@ -66,6 +66,7 @@ object RainbowHighlighter {
         }
     }
 
+    // FIXME: Meta properties(SchemeMetaInfo) should be used.
     fun isRainbowEnabled(rainbowName: String): Boolean {
         return when (rainbowName) {
             NAME_ROUND_BRACKETS -> settings.isEnableRainbowRoundBrackets
@@ -76,6 +77,7 @@ object RainbowHighlighter {
         }
     }
 
+    // FIXME: Meta properties(SchemeMetaInfo) should be used.
     fun setRainbowEnabled(rainbowName: String, enabled: Boolean) {
         when (rainbowName) {
             NAME_ROUND_BRACKETS -> settings.isEnableRainbowRoundBrackets = enabled
