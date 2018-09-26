@@ -25,10 +25,10 @@ object RainbowHighlighter {
     private const val KEY_SQUIGGLY_BRACKETS = "SQUIGGLY_BRACKETS_RAINBOW_COLOR"
     private const val KEY_ANGLE_BRACKETS = "ANGLE_BRACKETS_RAINBOW_COLOR"
 
-    val roundBrackets: CharArray = charArrayOf('(', ')') @TestOnly get
-    val squareBrackets: CharArray = charArrayOf('[', ']') @TestOnly get
-    val squigglyBrackets: CharArray = charArrayOf('{', '}') @TestOnly get
-    val angleBrackets: CharArray = charArrayOf('<', '>') @TestOnly get
+    private val roundBrackets: CharArray = charArrayOf('(', ')')
+    private val squareBrackets: CharArray = charArrayOf('[', ']')
+    private val squigglyBrackets: CharArray = charArrayOf('{', '}')
+    private val angleBrackets: CharArray = charArrayOf('<', '>')
 
     private val roundBracketsRainbowColorKeys: List<TextAttributesKey> =
             createRainbowAttributesKeys(KEY_ROUND_BRACKETS, 5)
@@ -94,6 +94,9 @@ object RainbowHighlighter {
         val key = getRainbowAttributesKeys(rainbowName).getAttributesKey(level)
         return colorsScheme.getAttributes(key)
     }
+
+    @TestOnly
+    fun getBrackets(): CharArray = roundBrackets + squareBrackets + squigglyBrackets + angleBrackets
 
     @TestOnly
     fun getRainbowColor(rainbowName: String, level: Int): Color? {
