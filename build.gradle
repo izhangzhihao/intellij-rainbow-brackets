@@ -97,5 +97,15 @@ task verifyPluginCompatibility(type: Exec, dependsOn: ['downloadIntellijPluginVe
     args "-c", "java -jar verifier-cli-$verifierVersion-all.jar check-plugin distributions/*.zip ~/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2017.2/5155889067278eb216234aa0eeb8e1944644624c/ideaIC-2017.2"
 }
 
+jacocoTestReport {
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    '**/settings/**'
+            ])
+        })
+    }
+}
+
 check.dependsOn verifyPluginCompatibility
 check.dependsOn verifyPlugin
