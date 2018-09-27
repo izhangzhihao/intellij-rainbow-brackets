@@ -57,10 +57,11 @@ private fun AbstractColorsScheme.migrateFrom(round: List<Color>?,
                                              square: List<Color>?,
                                              squiggly: List<Color>?,
                                              angle: List<Color>?) {
-    val migrated = migrateFrom(RainbowHighlighter.NAME_ROUND_BRACKETS, round)
-            || migrateFrom(RainbowHighlighter.NAME_SQUARE_BRACKETS, square)
-            || migrateFrom(RainbowHighlighter.NAME_SQUIGGLY_BRACKETS, squiggly)
-            || migrateFrom(RainbowHighlighter.NAME_ANGLE_BRACKETS, angle)
+    val migrateRound = migrateFrom(RainbowHighlighter.NAME_ROUND_BRACKETS, round)
+    val migrateSquare = migrateFrom(RainbowHighlighter.NAME_SQUARE_BRACKETS, square)
+    val migrateSquiggly = migrateFrom(RainbowHighlighter.NAME_SQUIGGLY_BRACKETS, squiggly)
+    val migrateAngle = migrateFrom(RainbowHighlighter.NAME_ANGLE_BRACKETS, angle)
+    val migrated = migrateRound || migrateSquare || migrateSquiggly || migrateAngle
 
     if (migrated) {
         setSaveNeeded(true)
