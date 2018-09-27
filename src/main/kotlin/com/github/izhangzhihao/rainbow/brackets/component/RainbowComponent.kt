@@ -7,11 +7,17 @@ import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManager
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.ApplicationComponent
+import com.intellij.openapi.editor.colors.EditorColorsListener
+import com.intellij.openapi.editor.colors.EditorColorsManager
+import com.intellij.openapi.editor.colors.EditorColorsScheme
 import com.intellij.openapi.extensions.PluginId
+import com.intellij.openapi.util.Disposer
 
-class RainbowComponent : ApplicationComponent {
+class RainbowComponent : ApplicationComponent, EditorColorsListener {
 
     var updated: Boolean = false
+
+    private val disposable = Disposer.newDisposable(javaClass.name)
 
     override fun initComponent() {
         val settings = RainbowSettings.instance
@@ -22,6 +28,18 @@ class RainbowComponent : ApplicationComponent {
         }
 
         RainbowHighlighter.fixHighlighting()
+        ApplicationManager.getApplication()
+                .messageBus
+                .connect(disposable)
+                .subscribe<EditorColorsListener>(EditorColorsManager.TOPIC, this)
+    }
+
+    override fun globalSchemeChange(scheme: EditorColorsScheme?) {
+        scheme?.let { RainbowHighlighter.fixHighlighting(it) }
+    }
+
+    override fun disposeComponent() {
+        Disposer.dispose(disposable)
     }
 
     companion object {

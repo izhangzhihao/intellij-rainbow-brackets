@@ -114,7 +114,9 @@ object RainbowHighlighter {
         return getTextAttributes(EditorColorsManager.getInstance().globalScheme, rainbowName, level).foregroundColor
     }
 
-    private fun getTextAttributes(colorsScheme: TextAttributesScheme?, element: PsiElement, level: Int): TextAttributes? {
+    private fun getTextAttributes(colorsScheme: TextAttributesScheme?,
+                                  element: PsiElement,
+                                  level: Int): TextAttributes? {
         if (!settings.isRainbowEnabled) {
             return null
         }
@@ -148,14 +150,14 @@ object RainbowHighlighter {
             TextAttributesKey.createTextAttributesKey("MATCHED_BRACE_ATTRIBUTES")
 
 
-    fun fixHighlighting() {
-        val globalScheme = EditorColorsManager.getInstance().globalScheme
-        globalScheme.setInherited(KEY_HTML_CODE, !settings.isRainbowifyHTMLInsideJS)
+    fun fixHighlighting(scheme: EditorColorsScheme = EditorColorsManager.getInstance().globalScheme) {
+        // html code
+        scheme.setInherited(KEY_HTML_CODE, !settings.isRainbowifyHTMLInsideJS)
 
         // kotlin label
         val kotlinLabelColor = DEFAULT_KOTLIN_LABEL_COLOR.takeUnless { settings.isRainbowifyKotlinLabel }
         val kotlinLabel = TextAttributes(kotlinLabelColor, null, null, EffectType.BOXED, Font.PLAIN)
-        globalScheme.setAttributes(KEY_KOTLIN_LABEL, kotlinLabel)
+        scheme.setAttributes(KEY_KOTLIN_LABEL, kotlinLabel)
 
         // matched brace
         val matchedBraceAttributes = if (settings.isOverrideMatchedBraceAttributes) {
@@ -166,7 +168,7 @@ object RainbowHighlighter {
             val fontType = if (isDark) Font.BOLD else Font.PLAIN
             TextAttributes(foregroundColor, JBColor(0x99ccff, 0x3b514d), null, EffectType.BOXED, fontType)
         }
-        globalScheme.setAttributes(KEY_MATCHED_BRACE_ATTRIBUTES, matchedBraceAttributes)
+        scheme.setAttributes(KEY_MATCHED_BRACE_ATTRIBUTES, matchedBraceAttributes)
     }
 
     private fun EditorColorsScheme.setInherited(key: TextAttributesKey, inherited: Boolean) {
