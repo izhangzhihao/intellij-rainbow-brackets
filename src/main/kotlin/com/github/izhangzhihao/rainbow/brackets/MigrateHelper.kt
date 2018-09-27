@@ -6,11 +6,10 @@ import com.intellij.openapi.editor.colors.EditorColorsScheme
 import com.intellij.openapi.editor.colors.impl.AbstractColorsScheme
 import java.awt.Color
 
-private const val DEFAULT_SCHEME_NAME = "Default"
-private const val DARCULA_SCHEME_NAME = "Darcula"
+const val DEFAULT_SCHEME_NAME = "Default"
+const val DARCULA_SCHEME_NAME = "Darcula"
 
-fun migrateRainbowColors() {
-    val settings = RainbowSettings.instance
+fun migrateRainbowColors(settings: RainbowSettings) {
     if (settings.lightRoundBracketsColors.isNullOrEmpty()
             && settings.lightSquareBracketsColors.isNullOrEmpty()
             && settings.lightSquigglyBracketsColors.isNullOrEmpty()
@@ -83,4 +82,4 @@ private fun EditorColorsScheme.migrateFrom(rainbowName: String, colors: List<Col
 
 private fun <T> Array<T>?.isNullOrEmpty() = this == null || isEmpty()
 
-private fun color(hex: String) = Color(Integer.decode(hex))
+fun color(hex: String) = Color(Integer.decode(hex))

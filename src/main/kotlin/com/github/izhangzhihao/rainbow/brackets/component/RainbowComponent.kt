@@ -23,7 +23,7 @@ class RainbowComponent : ApplicationComponent, EditorColorsListener {
         val settings = RainbowSettings.instance
         updated = getPlugin()?.version != settings.version
         if (updated) {
-            migrateRainbowColors()
+            migrateRainbowColors(settings)
             settings.version = getPlugin()!!.version
         }
 
