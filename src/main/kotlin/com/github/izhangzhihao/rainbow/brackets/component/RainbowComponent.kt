@@ -20,13 +20,11 @@ import java.awt.Font
 
 class RainbowComponent : ApplicationComponent {
 
-    private var _updated: Boolean = false
-
-    val updated: Boolean get() = _updated
+    var updated: Boolean = false
 
     override fun initComponent() {
         val settings = RainbowSettings.instance
-        _updated = getPlugin()?.version != settings.version
+        updated = getPlugin()?.version != settings.version
         if (updated) {
             onUpgrade()
             settings.version = getPlugin()!!.version
