@@ -8,10 +8,12 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.colors.TextAttributesScheme
+import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
 import org.jetbrains.annotations.TestOnly
 import java.awt.Color
+import java.awt.Font
 
 object RainbowHighlighter {
 
@@ -64,6 +66,10 @@ object RainbowHighlighter {
             NAME_ANGLE_BRACKETS -> angleBracketsRainbowColorKeys
             else -> throw IllegalArgumentException("Unknown rainbow name: $rainbowName")
         }
+    }
+
+    fun createRainbowAttributes(color: Color): TextAttributes {
+        return TextAttributes(color, null, null, EffectType.BOXED, Font.PLAIN)
     }
 
     // FIXME: Meta properties(SchemeMetaInfo) should be used.
