@@ -51,4 +51,35 @@ class MigrateSettingsTest : LightCodeInsightFixtureTestCase() {
         darculaSchema?.read(RainbowHighlighter.NAME_ANGLE_BRACKETS).shouldBe(round.map { color(it) })
         darculaSchema?.read(RainbowHighlighter.NAME_SQUARE_BRACKETS).shouldBe(square.map { color(it) })
     }
+
+    fun testMigrateFromCustomSomeColorSchema() {
+        val round = arrayOf(
+                "0x11111",
+                "0x22222",
+                "0x33333",
+                "0x44444",
+                "0x55555"
+        )
+        val square = arrayOf(
+                "0x11111",
+                "0x22222",
+                "0x33333"
+        )
+        val settings = RainbowSettings.instance
+        settings.darkRoundBracketsColors = round
+        settings.lightSquareBracketsColors = square
+
+        migrateRainbowColors(settings)
+
+        val schemeGroup = EditorColorsManager.getInstance()
+                .allSchemes
+                .mapNotNull { scheme -> (scheme as? AbstractColorsScheme)?.takeUnless { it.isReadOnly } }
+                .groupBy { it.parentScheme?.name }
+
+        val darculaSchema = schemeGroup[DARCULA_SCHEME_NAME]?.get(0)
+        darculaSchema?.read(RainbowHighlighter.NAME_ROUND_BRACKETS).shouldBe(round.map { color(it) })
+
+        val defaultSchema = schemeGroup[DEFAULT_SCHEME_NAME]?.get(0)
+        defaultSchema?.read(RainbowHighlighter.NAME_SQUARE_BRACKETS).shouldBe(square.map { color(it) })
+    }
 }
