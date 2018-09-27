@@ -12,13 +12,13 @@ private const val DARCULA_SCHEME_NAME = "Darcula"
 fun migrateRainbowColors() {
     val settings = RainbowSettings.instance
     if (settings.lightRoundBracketsColors.isNullOrEmpty()
-            || settings.lightSquareBracketsColors.isNullOrEmpty()
-            || settings.lightSquigglyBracketsColors.isNullOrEmpty()
-            || settings.lightAngleBracketsColor.isNullOrEmpty()
-            || settings.darkRoundBracketsColors.isNullOrEmpty()
-            || settings.darkSquareBracketsColors.isNullOrEmpty()
-            || settings.darkSquigglyBracketsColors.isNullOrEmpty()
-            || settings.darkAngleBracketsColor.isNullOrEmpty()) {
+            && settings.lightSquareBracketsColors.isNullOrEmpty()
+            && settings.lightSquigglyBracketsColors.isNullOrEmpty()
+            && settings.lightAngleBracketsColor.isNullOrEmpty()
+            && settings.darkRoundBracketsColors.isNullOrEmpty()
+            && settings.darkSquareBracketsColors.isNullOrEmpty()
+            && settings.darkSquigglyBracketsColors.isNullOrEmpty()
+            && settings.darkAngleBracketsColor.isNullOrEmpty()) {
         return
     }
 
