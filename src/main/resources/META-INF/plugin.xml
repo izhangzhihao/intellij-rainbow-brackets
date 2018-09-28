@@ -20,6 +20,12 @@
     ]]></description>
 
     <change-notes><![CDATA[
+      <p>5.10</p>
+      <ul>
+        <li>New color settings page!!! Thanks this PR(#179) from https://github.com/YiiGuxing.</li>
+        <li>See the new settings page in Settings/Preferences > Editor > Color Scheme > Rainbow Brackets.</li>
+      </ul>
+      <br/>
       <p>5.9.1</p>
       <ul>
         <li>Fix wrong background color on a light theme of "MATCHED_BRACE_ATTRIBUTES"(#155).</li>
