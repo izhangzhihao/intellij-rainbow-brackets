@@ -55,9 +55,10 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
                                               level: Int,
                                               startElement: PsiElement?,
                                               endElement: PsiElement?) {
-        getHighlightInfo(this, level)
+        val holder = highlightInfoHolder ?: return
+        getHighlightInfo(holder.colorsScheme, this, level)
                 ?.also {
-                    highlightInfoHolder?.add(it)
+                    holder.add(it)
 
                     if (startElement != null || endElement != null) {
                         val color = it.forcedTextAttributes.foregroundColor

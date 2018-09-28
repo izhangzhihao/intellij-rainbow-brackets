@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets.annotator
 
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.lang.annotation.AnnotationHolder
@@ -9,7 +10,6 @@ import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.ui.JBColor
 import org.jetbrains.kotlin.lexer.KtTokens
 import org.jetbrains.kotlin.psi.*
 import java.awt.Font
@@ -66,14 +66,11 @@ class KotlinLabelAnnotator : Annotator {
         }
 
         refElement
-                .let { RainbowInfo.RAINBOW_INFO_KEY[it]?.color ?: DEFAULT_LABEL_COLOR }
+                .let { RainbowInfo.RAINBOW_INFO_KEY[it]?.color ?: RainbowHighlighter.DEFAULT_KOTLIN_LABEL_COLOR }
                 .let {
                     holder.createInfoAnnotation(target, null)
                             .enforcedTextAttributes = TextAttributes(it, null, null, EffectType.BOXED, Font.PLAIN)
                 }
     }
 
-    companion object {
-        private val DEFAULT_LABEL_COLOR = JBColor(0x4a86e8, 0x467cda)
-    }
 }
