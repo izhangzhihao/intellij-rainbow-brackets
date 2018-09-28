@@ -1,4 +1,4 @@
-package com.github.izhangzhihao.rainbow.brackets.settings
+package com.github.izhangzhihao.rainbow.brackets.settings.form
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter
 import com.intellij.application.options.colors.*

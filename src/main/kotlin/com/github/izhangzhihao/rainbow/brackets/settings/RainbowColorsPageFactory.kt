@@ -1,6 +1,7 @@
 package com.github.izhangzhihao.rainbow.brackets.settings
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter
+import com.github.izhangzhihao.rainbow.brackets.settings.form.RainbowOptionsPanel
 import com.intellij.application.options.colors.*
 import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorAndFontDescriptorsProvider
