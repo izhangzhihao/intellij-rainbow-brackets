@@ -20,7 +20,7 @@ object BracePairs {
                                 LanguageBraceMatching.INSTANCE.forLanguage(language)?.pairs.let {
                                     if (it == null || it.isEmpty()) {
                                         language.associatedFileType
-                                                ?.let { BraceMatchingUtil.getBraceMatcher(it, language) as? PairedBraceMatcher }
+                                                ?.let { fileType -> BraceMatchingUtil.getBraceMatcher(fileType, language) as? PairedBraceMatcher }
                                                 ?.pairs
                                     } else {
                                         it
