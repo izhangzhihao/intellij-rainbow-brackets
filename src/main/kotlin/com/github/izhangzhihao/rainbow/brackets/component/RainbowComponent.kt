@@ -1,47 +1,45 @@
 package com.github.izhangzhihao.rainbow.brackets.component
 
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter
+import com.github.izhangzhihao.rainbow.brackets.migrateRainbowColors
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManager
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.ApplicationComponent
+import com.intellij.openapi.editor.colors.EditorColorsListener
 import com.intellij.openapi.editor.colors.EditorColorsManager
-import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey
-import com.intellij.openapi.editor.markup.EffectType
-import com.intellij.openapi.editor.markup.TextAttributes
+import com.intellij.openapi.editor.colors.EditorColorsScheme
 import com.intellij.openapi.extensions.PluginId
-import com.intellij.ui.JBColor
-import java.awt.Font
+import com.intellij.openapi.util.Disposer
 
-class RainbowComponent : ApplicationComponent {
+class RainbowComponent : ApplicationComponent, EditorColorsListener {
+
     var updated: Boolean = false
+
+    private val disposable = Disposer.newDisposable(javaClass.name)
 
     override fun initComponent() {
         val settings = RainbowSettings.instance
         updated = getPlugin()?.version != settings.version
         if (updated) {
+            migrateRainbowColors(settings)
             settings.version = getPlugin()!!.version
         }
-        val globalScheme = EditorColorsManager.getInstance().globalScheme
-        if (settings.isRainbowifyHTMLInsideJS) {
-            globalScheme.setAttributes(createTextAttributesKey("HTML_CODE"), TextAttributes())
-        }
 
-        if (settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow) {
-            globalScheme.setAttributes(createTextAttributesKey("KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW"),
-                    // Default Attributes
-                    TextAttributes(null, null, null, EffectType.BOXED, Font.BOLD))
-        }
+        RainbowHighlighter.fixHighlighting()
+        ApplicationManager.getApplication()
+                .messageBus
+                .connect(disposable)
+                .subscribe<EditorColorsListener>(EditorColorsManager.TOPIC, this)
+    }
 
-        if (settings.isRainbowifyKotlinLabel) {
-            globalScheme.setAttributes(createTextAttributesKey("KOTLIN_LABEL"),
-                    TextAttributes(null, null, null, EffectType.BOXED, Font.PLAIN))
-        }
+    override fun globalSchemeChange(scheme: EditorColorsScheme?) {
+        scheme?.let { RainbowHighlighter.fixHighlighting(it) }
+    }
 
-        if (settings.isOverrideMatchedBraceAttributes) {
-            globalScheme.setAttributes(createTextAttributesKey("MATCHED_BRACE_ATTRIBUTES"),
-                    TextAttributes(null, JBColor(0x99ccbb, 0x3b514d), null, EffectType.BOXED, Font.BOLD))
-        }
+    override fun disposeComponent() {
+        Disposer.dispose(disposable)
     }
 
     companion object {
@@ -50,5 +48,6 @@ class RainbowComponent : ApplicationComponent {
 
         private fun getPlugin(): IdeaPluginDescriptor? = PluginManager.getPlugin(
                 PluginId.getId("izhangzhihao.rainbow.brackets"))
+
     }
 }

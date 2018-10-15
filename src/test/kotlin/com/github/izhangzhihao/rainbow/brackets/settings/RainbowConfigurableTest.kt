@@ -59,24 +59,4 @@ class RainbowConfigurableTest : LightCodeInsightFixtureTestCase() {
         rainbowConfigurable.disposeUIResources()
         rainbowConfigurable.settingsForm.shouldBe(null)
     }
-
-    // just for increase test coverage, not actually work
-    fun testReset() {
-
-        val rainbowConfigurable = RainbowConfigurable()
-        rainbowConfigurable.createComponent()
-        rainbowConfigurable.apply()
-
-        rainbowConfigurable.reset()
-        rainbowConfigurable.helpTopic
-
-        rainbowConfigurable.settingsForm!!.isModified shouldBe false
-
-        val settings = RainbowSettings.instance
-        settings.state
-        settings.loadState(settings)
-
-        rainbowConfigurable.disposeUIResources()
-        rainbowConfigurable.settingsForm.shouldBe(null)
-    }
 }

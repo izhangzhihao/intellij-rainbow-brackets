@@ -82,28 +82,9 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ## Customize colors
 
-If you want to customize colors, edit your config file and restart your IDE(`APP_CONFIG/rainbow_brackets.xml`), In my env(MAC os) is `/Users/izhangzhihao/Library/Preferences/IntelliJIdea2018.2/options/rainbow_brackets.xml`:
+<kbd>Settings/Preferences</kbd> > <kbd>Editor</kbd> > <kbd>Color Scheme</kbd> > <kbd>Rainbow Brackets</kbd>:
 
-```xml
-<option name="lightRoundBracketsColors">
-   <array>
-      <option value="0xE6B422" />
-      <option value="0x43A047" />
-      <option value="0x2196F3" />
-      <option value="0x3F51B5" />
-      <option value="0x00897B" />
-   </array>
-</option>
-```
-
-If you prefer using light theme, here is a example from @Avinash-Bhat [gray config](https://gist.github.com/Avinash-Bhat/c4d0575dad56046d930b1af3197d8d5d) using [Material Deisgn Color Tool](https://material.io/color), it works greate with light themed bg (basically white) but dark theme is not so good.
-
-
-
-**NOTE: The lightXXX and the darkXXX should be the same size!**
-
-
-[Default colors](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/IC-2017.2/src/main/kotlin/com/github/izhangzhihao/rainbow/brackets/settings/RainbowSettings.kt#L28-L69)
+![Customize colors](./screenshots/customize-colors.png)
 
 ## HTML code in js
 
