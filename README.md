@@ -13,18 +13,17 @@
 
 <br>
 
-# Table of Contents
-
-- [Table of Contents](#table-of-contents)
-    - [Compatibility](#compatibility)
-    - [Supported languages](#supported-languages)
-    - [Screenshots](#screenshots)
-    - [Install](#install)
-    - [Customize colors](#customize-colors)
-    - [HTML code in js](#html-code-in-js)
-    - [Kotlin function literal braces and arrow](#kotlin-function-literal-braces-and-arrow)
-    - [Contribute](#contribute)
-    - [Acknowledgements](#acknowledgements)
+- [Compatibility](#compatibility)
+- [Supported languages](#supported-languages)
+- [Screenshots](#screenshots)
+- [Install](#install)
+- [Customize colors](#customize-colors)
+- [Config file path](#config-file-path)
+- [HTML code in js](#html-code-in-js)
+- [Kotlin function literal braces and arrow](#kotlin-function-literal-braces-and-arrow)
+- [Disable rainbow brackets for specific languages](#disable-rainbow-brackets-for-specific-languages)
+- [Contribute](#contribute)
+- [Acknowledgements](#acknowledgements)
 
 ## Compatibility
 
