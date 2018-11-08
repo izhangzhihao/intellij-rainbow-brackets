@@ -16,6 +16,7 @@ class RainbowJavaTest : LightCodeInsightFixtureTestCase() {
         rainbowSettings.isEnableRainbowSquareBrackets = true
         rainbowSettings.isEnableRainbowSquigglyBrackets = true
         rainbowSettings.isDoNOTRainbowifyBracketsWithoutContent = false
+        rainbowSettings.getLanguageBlacklist = setOf()
     }
 
     fun testRainbowForJava() {
