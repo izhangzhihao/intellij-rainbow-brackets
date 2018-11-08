@@ -86,6 +86,13 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ![Customize colors](./screenshots/customize-colors.png)
 
+## Config file path
+
+If you want to customize advanced configuration, you could edit the config file then restart your IDE. 
+Config file path in `APP_CONFIG/rainbow_brackets.xml`. 
+In MAC OS env maybe like `/Users/izhangzhihao/Library/Preferences/IntelliJIdea2018.3/options/rainbow_brackets.xml`.
+In Linux env maybe like `~/.IntelliJIdea/config/options/rainbow_brackets.xml`.
+
 ## HTML code in js
 
 To enable rainbow brackets for HTML inside js code like this:
@@ -116,6 +123,25 @@ event.throwable?.let { throwable ->
 
 This plugin will automatically override color scheme propertie "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color been covered by kotlin plugin built-in functionality.
 You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow" value="false" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
+
+## Disable rainbow brackets for specific languages
+
+If you want to disable rainbow brackets for javascript languages and java languages, you could set `languageBlacklist` property in config file just like: 
+
+```xml
+<application>
+  <component name="RainbowSettings">
+    <option name="languageBlacklist">
+      <array>
+        <option value="java" />
+        <option value="javascript" />
+      </array>
+    </option>
+  </component>
+</application>
+```
+
+NOTE: The languages name should be **lowercase**, and do **NOT** use shorthand.
 
 ## Contribute
 
