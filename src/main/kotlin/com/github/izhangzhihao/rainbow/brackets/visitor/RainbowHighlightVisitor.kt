@@ -20,7 +20,10 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 
     private var isCalled = false
 
-    override fun suitableForFile(file: PsiFile): Boolean = RainbowSettings.instance.isRainbowEnabled
+    override fun suitableForFile(file: PsiFile): Boolean {
+        return RainbowSettings.instance.isRainbowEnabled &&
+                RainbowSettings.instance.getLanguageBlacklist.contains(file.fileType.name.toLowerCase()).not()
+    }
 
     @Suppress("OverridingDeprecatedMember")
     final override fun order(): Int = 1

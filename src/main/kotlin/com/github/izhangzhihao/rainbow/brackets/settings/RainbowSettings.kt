@@ -33,6 +33,12 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var lightAngleBracketsColor: Array<String>? = null
     var darkAngleBracketsColor: Array<String>? = null
 
+    @Suppress("MemberVisibilityCanBePrivate")
+    var languageBlacklist: Array<String> = arrayOf()
+
+    @Transient
+    var getLanguageBlacklist: Set<String> = languageBlacklist.toSet()
+
     @Nullable
     override fun getState() = this
 
