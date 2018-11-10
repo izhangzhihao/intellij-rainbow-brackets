@@ -65,7 +65,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 
                     if (startElement != null || endElement != null) {
                         val color: Color? = it.forcedTextAttributes.foregroundColor
-                        if (color != null) {
+                        color?.let {
                             parent?.saveRainbowInfo(level, color, startElement, endElement)
                         }
                     }
