@@ -101,7 +101,7 @@ object RainbowHighlighter {
 
     private fun List<TextAttributesKey>.getAttributesKey(level: Int) = this[level % size]
 
-    private fun getTextAttributes(colorsScheme: TextAttributesScheme, rainbowName: String, level: Int): TextAttributes {
+    fun getTextAttributes(colorsScheme: TextAttributesScheme, rainbowName: String, level: Int): TextAttributes {
         val key = getRainbowAttributesKeys(rainbowName).getAttributesKey(level)
         return colorsScheme.getAttributes(key)
     }
