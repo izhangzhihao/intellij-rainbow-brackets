@@ -19,6 +19,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
     override fun clone(): HighlightVisitor = DefaultRainbowVisitor()
 
     override fun visit(element: PsiElement) {
+        if (element.javaClass.simpleName == "OCMacroForeignLeafElement") return
         val type = (element as? LeafPsiElement)?.elementType ?: return
 
         val matching = filterPairs(type, element) ?: return
