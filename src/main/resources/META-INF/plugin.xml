@@ -37,6 +37,11 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.13</p>
+        <ul>
+            <li>Fix macro support of Clang(#198)</li>
+            <li>Remove red-variation colors from default configuration(#192)</li>
+        </ul>
         <p>5.12</p>
         <ul>
             <li>Intellij-rainbow-brackets now support C# language(#6)!</li>
