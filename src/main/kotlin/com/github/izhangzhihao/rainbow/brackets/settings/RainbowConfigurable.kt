@@ -39,6 +39,4 @@ class RainbowConfigurable : Configurable {
 
     @Nls
     override fun getDisplayName() = "Rainbow Brackets"
-
-    override fun getHelpTopic() = null
 }
