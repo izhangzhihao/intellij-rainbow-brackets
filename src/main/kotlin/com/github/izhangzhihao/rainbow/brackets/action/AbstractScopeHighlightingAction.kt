@@ -99,7 +99,7 @@ abstract class AbstractScopeHighlightingAction : AnAction() {
         }
 
         fun Color.alphaBlend(background: Color, alpha: Float): Color {
-            require(alpha in 0..1) { "alpha(0.0 <= alpha <= 1.0): $alpha" }
+            require(alpha in 0.0..1.0) { "alpha(0.0 <= alpha <= 1.0): $alpha" }
 
             val r = (1 - alpha) * background.red + alpha * red
             val g = (1 - alpha) * background.green + alpha * green

@@ -6,14 +6,14 @@ import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManager
 import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.components.ApplicationComponent
+import com.intellij.openapi.components.BaseComponent
 import com.intellij.openapi.editor.colors.EditorColorsListener
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.editor.colors.EditorColorsScheme
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.util.Disposer
 
-class RainbowComponent : ApplicationComponent, EditorColorsListener {
+class RainbowComponent : BaseComponent, EditorColorsListener {
 
     var updated: Boolean = false
 
