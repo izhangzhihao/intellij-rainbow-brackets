@@ -172,6 +172,7 @@ object RainbowHighlighter {
     }
 
     private fun EditorColorsScheme.setInherited(key: TextAttributesKey, inherited: Boolean) {
+        //TODO: `USE_INHERITED_MARKER` been moved to AbstractColorsScheme.USE_INHERITED_MARKER in version 173.4674.60, that may cause compatibility problems
         setAttributes(key, if (inherited) TextAttributes.USE_INHERITED_MARKER else TextAttributes())
     }
 }
