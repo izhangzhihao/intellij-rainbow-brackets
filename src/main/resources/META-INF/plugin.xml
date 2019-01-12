@@ -37,6 +37,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.14</p>
+        <ul>
+            <li>Remove deprecated API usages.</li>
+            <li>Refactoring.</li>
+            <li>Added Dart to the supported languages list(#205).</li>
+        </ul>
         <p>5.13</p>
         <ul>
             <li>Fix macro support of Clang(#198)</li>
@@ -191,7 +197,7 @@
         <p>5.0-RC3</p>
         <ul>
             <li>#32 Add version info in setting page</li>
-            <li>#31 Fix 'Enablement of round brackets enables all but angle brackets'</li>
+            <li>#31 Fix 'Enablement of round brackets enables all but angle brackets(#31)'</li>
         </ul>
         <br/>
         <p>5.0-RC2</p>
