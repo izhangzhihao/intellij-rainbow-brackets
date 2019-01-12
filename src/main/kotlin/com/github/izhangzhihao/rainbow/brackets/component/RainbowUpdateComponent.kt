@@ -2,17 +2,17 @@ package com.github.izhangzhihao.rainbow.brackets.component
 
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.show
-import com.intellij.notification.*
-import com.intellij.openapi.components.AbstractProjectComponent
-import com.intellij.openapi.project.Project
+import com.intellij.notification.NotificationListener
+import com.intellij.notification.NotificationType
+import com.intellij.openapi.components.ProjectComponent
 
-class RainbowUpdateComponent(project: Project) : AbstractProjectComponent(project) {
+class RainbowUpdateComponent : ProjectComponent {
 
     private val applicationComponent = RainbowComponent.instance
 
     override fun projectOpened() {
         if (applicationComponent.updated) {
-            showUpdate(myProject)
+            showUpdate()
             applicationComponent.updated = false
         }
     }
@@ -29,9 +29,8 @@ class RainbowUpdateComponent(project: Project) : AbstractProjectComponent(projec
     Enjoy your colorful code.
     """
 
-        private fun showUpdate(project: Project) {
+        private fun showUpdate() {
             show(
-                    project,
                     "Rainbow Brackets updated to $version",
                     updateContent,
                     channel + "_UPDATE",
