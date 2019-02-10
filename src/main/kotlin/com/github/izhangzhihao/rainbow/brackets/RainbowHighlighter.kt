@@ -175,6 +175,9 @@ object RainbowHighlighter {
         if (settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow) {
             scheme.setAttributes(KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW,
                     TextAttributes(null, null, null, EffectType.BOXED, Font.BOLD))
+        } else {
+            scheme.setAttributes(KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW,
+                    TextAttributes(JBColor(0x89ddff, 0x89ddff), null, null, EffectType.BOXED, Font.BOLD))
         }
     }
 
