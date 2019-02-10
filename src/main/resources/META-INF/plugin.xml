@@ -37,6 +37,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.15</p>
+        <ul>
+            <li>Fix support for kotlin scheme attribute "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW".</li>
+        </ul>
         <p>5.14</p>
         <ul>
             <li>Remove deprecated API usages.</li>
