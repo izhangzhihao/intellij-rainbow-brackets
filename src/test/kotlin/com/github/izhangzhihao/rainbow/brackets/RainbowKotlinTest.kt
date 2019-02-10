@@ -179,4 +179,35 @@ class AA {
                         )
                 )
     }
+
+    fun testKotlinFunctionLiteralBracesAndArrow() {
+        val code =
+                """
+val a :Int = 1
+
+fun t() {
+    a?.let {
+    }
+}
+                """.trimIndent()
+        myFixture.configureByText(KotlinFileType.INSTANCE, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+
+        doHighlighting
+                .filter { it.forcedTextAttributes != null }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                roundLevel(0),
+                                roundLevel(0),
+                                squigglyLevel(0),
+                                squigglyLevel(1),
+                                squigglyLevel(1),
+                                squigglyLevel(0)
+                        )
+                )
+    }
 }

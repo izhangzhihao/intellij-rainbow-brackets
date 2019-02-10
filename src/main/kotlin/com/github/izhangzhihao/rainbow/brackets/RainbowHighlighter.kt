@@ -148,6 +148,8 @@ object RainbowHighlighter {
     private val KEY_KOTLIN_LABEL = TextAttributesKey.createTextAttributesKey("KOTLIN_LABEL")
     private val KEY_MATCHED_BRACE_ATTRIBUTES =
             TextAttributesKey.createTextAttributesKey("MATCHED_BRACE_ATTRIBUTES")
+    private val KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW =
+            TextAttributesKey.createTextAttributesKey("KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW")
 
 
     fun fixHighlighting(scheme: EditorColorsScheme = EditorColorsManager.getInstance().globalScheme) {
@@ -169,6 +171,11 @@ object RainbowHighlighter {
             TextAttributes(foregroundColor, JBColor(0x99ccff, 0x3b514d), null, EffectType.BOXED, fontType)
         }
         scheme.setAttributes(KEY_MATCHED_BRACE_ATTRIBUTES, matchedBraceAttributes)
+
+        if (settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow) {
+            scheme.setAttributes(KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW,
+                    TextAttributes(null, null, null, EffectType.BOXED, Font.BOLD))
+        }
     }
 
     private fun EditorColorsScheme.setInherited(key: TextAttributesKey, inherited: Boolean) {
