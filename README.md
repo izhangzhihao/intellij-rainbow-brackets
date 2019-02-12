@@ -20,6 +20,7 @@
 
 - [Compatibility](#compatibility)
 - [Supported languages](#supported-languages)
+- [Author's choice](#authors-choice)
 - [Screenshots](#screenshots)
 - [Install](#install)
 - [Customize colors](#customize-colors)
@@ -37,6 +38,10 @@ IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, D
 ## Supported languages
 
 Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language, C#, Dart, ...
+
+## Author's choice
+
+Rainbow Brackets + Material Theme UI(Oceanic theme) + Nyan Progress Bar
 
 ## Screenshots
 
