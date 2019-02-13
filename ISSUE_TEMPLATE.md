@@ -1,9 +1,9 @@
-**You should “star” this repo before creating a issue, thanks for your support 😁**
+**“Star” this repo before you creating a issue, thanks for your support 😁**
 
 Your issue may already be reported!
 Please search on the [issue track](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues) before creating one.
 
-## Your programming language
+## Your programming language(s)
 
 ## Expected Behavior
 * If you're describing a bug, tell us what should happen
@@ -31,13 +31,4 @@ Build #IU-181.4203.519, built on March 22, 2018
 JRE: 1.8.0_152-release-1136-b20 x86_64
 JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 macOS 10.13.3
-```
-
-**NOTE: If you are reporting a performance issue, please comment your hardware env like this:**
-
-```
-CPU: 2.2 GHz Intel Core i7
-Total Number of Cores: 4
-Memery: 16GB 1600 MHz DDR3
-Storage: 256GB SSD
 ```
