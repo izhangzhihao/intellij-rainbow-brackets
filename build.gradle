@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven { url "https://plugins.gradle.org/m2/" }
+        gradlePluginPortal()
         maven { url "https://maven-central.storage-download.googleapis.com/repos/central/data/" }
         maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
     }
@@ -99,11 +99,13 @@ task verifyPluginCompatibility(type: Exec, dependsOn: ['downloadIntellijPluginVe
 
 jacocoTestReport {
     afterEvaluate {
-        classDirectories = files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: [
-                    '**/settings/**'
-            ])
-        })
+        classDirectories.setFrom(
+                files(classDirectories.files.collect {
+                    fileTree(dir: it, exclude: [
+                            '**/settings/**'
+                    ])
+                })
+        )
     }
 }
 
