@@ -44,9 +44,8 @@ intellij {
 }
 
 publishPlugin {
-    def publishPassword = "$System.env.publishPassword"
-    username publishUsername
-    password publishPassword
+    def authenticationToken = "$System.env.token"
+    token authenticationToken
     channels publishChannels
 }
 
