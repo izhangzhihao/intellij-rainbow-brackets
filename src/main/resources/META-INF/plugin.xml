@@ -39,6 +39,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.16</p>
+        <ul>
+            <li>Add shiny new icon.</li>
+        </ul>
         <p>5.15</p>
         <ul>
             <li>Fix support for kotlin scheme attribute "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW".</li>
