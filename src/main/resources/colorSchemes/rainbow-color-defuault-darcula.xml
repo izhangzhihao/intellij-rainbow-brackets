@@ -25,6 +25,16 @@
             <option name="FOREGROUND" value="00897b"/>
         </value>
     </option>
+    <option name="SQUARE_BRACKETS_RAINBOW_COLOR3">
+        <value>
+            <option name="FOREGROUND"/>
+        </value>
+    </option>
+    <option name="SQUARE_BRACKETS_RAINBOW_COLOR4">
+        <value>
+            <option name="FOREGROUND"/>
+        </value>
+    </option>
 
     <option name="SQUARE_BRACKETS_RAINBOW_COLOR0">
         <value>
@@ -39,6 +49,16 @@
     <option name="SQUARE_BRACKETS_RAINBOW_COLOR2">
         <value>
             <option name="FOREGROUND" value="8080ff"/>
+        </value>
+    </option>
+    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR3">
+        <value>
+            <option name="FOREGROUND"/>
+        </value>
+    </option>
+    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR4">
+        <value>
+            <option name="FOREGROUND"/>
         </value>
     </option>
 
