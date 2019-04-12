@@ -34,6 +34,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
         onBeforeAnalyze(file, updateWholeFile)
         try {
             action.run()
+        } catch (ignore: Throwable) {
         } finally {
             call(::onAfterAnalyze)
         }
