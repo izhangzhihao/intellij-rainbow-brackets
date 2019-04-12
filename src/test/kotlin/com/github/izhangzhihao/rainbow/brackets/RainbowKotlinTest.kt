@@ -128,28 +128,14 @@ val a: (Int) -> Unit = { aa ->
                 """
 class AA {
     fun aa() {
-        return@aa
-    }
-
-    inner class BB {
-        fun BB.bb(): Any = TODO()
-        fun cc() {
-            this@AA.aa()
-            this@BB.bb()
-            arrayOf(1, 2, 3).forEach {
+        arrayOf(1, 2, 3).forEach {
                 it.let dd@{
                     if (it > 0) a@ {
                         return@dd
                     }
                 }
                 return@forEach
-            };
-            e@ {
-                f@{}
-                g@ { h@{ return@e } }()
-                Unit
-            }()
-        }
+            }
     }
 }
                 """.trimIndent()
@@ -164,18 +150,10 @@ class AA {
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
-                                squigglyLevel(1),
-                                squigglyLevel(0),
-                                squigglyLevel(1),
-                                squigglyLevel(1),
-                                squigglyLevel(2),
-                                squigglyLevel(1),
-                                squigglyLevel(0),
-                                squigglyLevel(0),
-                                squigglyLevel(1),
-                                squigglyLevel(1),
-                                squigglyLevel(2),
-                                squigglyLevel(0)
+                                squigglyLevel(3),
+                                squigglyLevel(4),
+                                squigglyLevel(3),
+                                squigglyLevel(2)
                         )
                 )
     }

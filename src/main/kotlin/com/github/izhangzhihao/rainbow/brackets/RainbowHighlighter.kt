@@ -40,9 +40,9 @@ object RainbowHighlighter {
     private val roundBracketsRainbowColorKeys: List<TextAttributesKey> =
             createRainbowAttributesKeys(KEY_ROUND_BRACKETS, 5)
     private val squareBracketsRainbowColorKeys: List<TextAttributesKey> =
-            createRainbowAttributesKeys(KEY_SQUARE_BRACKETS, 3)
+            createRainbowAttributesKeys(KEY_SQUARE_BRACKETS, 5)
     private val squigglyBracketsRainbowColorKeys: List<TextAttributesKey> =
-            createRainbowAttributesKeys(KEY_SQUIGGLY_BRACKETS, 3)
+            createRainbowAttributesKeys(KEY_SQUIGGLY_BRACKETS, 5)
     private val angleBracketsRainbowColorKeys: List<TextAttributesKey> =
             createRainbowAttributesKeys(KEY_ANGLE_BRACKETS, 5)
 

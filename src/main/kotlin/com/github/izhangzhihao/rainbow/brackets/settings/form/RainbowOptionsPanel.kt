@@ -166,7 +166,7 @@ class RainbowOptionsPanel(
 
             RainbowHighlighter.NAME_SQUARE_BRACKETS,
             RainbowHighlighter.NAME_SQUIGGLY_BRACKETS -> {
-                hideExcessColorPanel()
+                showAllColorPanel()
             }
 
             else -> return

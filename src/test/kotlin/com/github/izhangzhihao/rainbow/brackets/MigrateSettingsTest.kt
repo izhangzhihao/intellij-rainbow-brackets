@@ -47,9 +47,9 @@ class MigrateSettingsTest : LightCodeInsightFixtureTestCase() {
 
         val darculaSchema = schemeGroup[DARCULA_SCHEME_NAME]?.get(0)
         darculaSchema?.read(RainbowHighlighter.NAME_ROUND_BRACKETS).shouldBe(round.map { color(it) })
-        darculaSchema?.read(RainbowHighlighter.NAME_SQUIGGLY_BRACKETS).shouldBe(squiggly.map { color(it) })
+        darculaSchema?.read(RainbowHighlighter.NAME_SQUIGGLY_BRACKETS)?.take(3).shouldBe(squiggly.map { color(it) })
         darculaSchema?.read(RainbowHighlighter.NAME_ANGLE_BRACKETS).shouldBe(round.map { color(it) })
-        darculaSchema?.read(RainbowHighlighter.NAME_SQUARE_BRACKETS).shouldBe(square.map { color(it) })
+        darculaSchema?.read(RainbowHighlighter.NAME_SQUARE_BRACKETS)?.take(3).shouldBe(square.map { color(it) })
     }
 
     fun testMigrateFromCustomSomeColorSchema() {
@@ -80,6 +80,6 @@ class MigrateSettingsTest : LightCodeInsightFixtureTestCase() {
         darculaSchema?.read(RainbowHighlighter.NAME_ROUND_BRACKETS).shouldBe(round.map { color(it) })
 
         val defaultSchema = schemeGroup[DEFAULT_SCHEME_NAME]?.get(0)
-        defaultSchema?.read(RainbowHighlighter.NAME_SQUARE_BRACKETS).shouldBe(square.map { color(it) })
+        defaultSchema?.read(RainbowHighlighter.NAME_SQUARE_BRACKETS)?.take(3).shouldBe(square.map { color(it) })
     }
 }
