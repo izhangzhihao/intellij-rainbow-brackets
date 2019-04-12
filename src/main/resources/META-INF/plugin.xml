@@ -39,6 +39,11 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.17</p>
+        <ul>
+            <li>More color options for squiggly brackets before cycle(#215).</li>
+            <li>NullPointerException in while analyse code(#216).</li>
+        </ul>
         <p>5.16</p>
         <ul>
             <li>Add shiny new icon.</li>
