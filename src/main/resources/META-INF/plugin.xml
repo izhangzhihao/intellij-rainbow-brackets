@@ -357,6 +357,7 @@
 
         <additionalTextAttributes scheme="Default" file="colorSchemes/rainbow-color-defuault.xml"/>
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-defuault-darcula.xml"/>
+        <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowUpdateActivity"/>
     </extensions>
 
     <application-components>
@@ -368,11 +369,6 @@
     </application-components>
 
     <project-components>
-        <!-- Add your project components here -->
-        <component>
-            <implementation-class>com.github.izhangzhihao.rainbow.brackets.component.RainbowUpdateComponent
-            </implementation-class>
-        </component>
     </project-components>
 
     <actions>

@@ -1,16 +1,17 @@
-package com.github.izhangzhihao.rainbow.brackets.component
+package com.github.izhangzhihao.rainbow.brackets.activity
 
+import com.github.izhangzhihao.rainbow.brackets.component.RainbowComponent
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.show
 import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType
-import com.intellij.openapi.components.ProjectComponent
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.startup.StartupActivity
 
-class RainbowUpdateComponent : ProjectComponent {
-
+class RainbowUpdateActivity : StartupActivity {
     private val applicationComponent = RainbowComponent.instance
 
-    override fun projectOpened() {
+    override fun runActivity(project: Project) {
         if (applicationComponent.updated) {
             showUpdate()
             applicationComponent.updated = false
