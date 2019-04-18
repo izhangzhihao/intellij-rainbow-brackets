@@ -1,6 +1,10 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.notification.*
+import com.intellij.openapi.options.ShowSettingsUtil
+import com.intellij.openapi.project.Project
+import javax.swing.event.HyperlinkEvent
 
 fun show(title: String, content: String, displayId: String,
          type: NotificationType, listener: NotificationListener) {
@@ -11,4 +15,13 @@ fun show(title: String, content: String, displayId: String,
     )
     val notification = group.createNotification(title, content, type, listener)
     Notifications.Bus.notify(notification)
+}
+
+class SettingsOpeningListener(val project: Project, private val nameToSelect: String) : NotificationListener.Adapter() {
+    override fun hyperlinkActivated(notifi: Notification, event: HyperlinkEvent) {
+        if (!project.isDisposed) {
+            RainbowSettings.instance.isCustomNotifyShowed = true
+            ShowSettingsUtil.getInstance().showSettingsDialog(project, nameToSelect)
+        }
+    }
 }
