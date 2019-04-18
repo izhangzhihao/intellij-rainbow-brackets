@@ -39,6 +39,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.18</p>
+        <ul>
+            <li>Add notification for custom your own rainbow colors.</li>
+        </ul>
         <p>5.17</p>
         <ul>
             <li>More color options for squiggly brackets before cycle(#215).</li>
