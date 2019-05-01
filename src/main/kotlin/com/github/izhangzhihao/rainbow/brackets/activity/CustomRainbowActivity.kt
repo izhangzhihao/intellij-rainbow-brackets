@@ -31,6 +31,7 @@ class CustomRainbowActivity : StartupActivity {
                     NotificationType.INFORMATION,
                     SettingsOpeningListener(project, RainbowColorsPageFactory().displayName)
             )
+            RainbowSettings.instance.isCustomNotifyShowed = true
         }
     }
 }
