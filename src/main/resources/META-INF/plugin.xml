@@ -39,6 +39,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.19</p>
+        <ul>
+            <li>Fix notification.</li>
+        </ul>
         <p>5.18</p>
         <ul>
             <li>Add notification for custom your own rainbow colors.</li>
