@@ -41,7 +41,7 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 ## Author's choice
 
-Rainbow Brackets + Material Theme UI(Oceanic theme) + Nyan Progress Bar + Menlo(Font)
+Rainbow Brackets + Material Theme UI(Oceanic theme) + Nyan Progress Bar + [Fira Code](https://github.com/tonsky/FiraCode) (Font)
 
 ## Screenshots
 
