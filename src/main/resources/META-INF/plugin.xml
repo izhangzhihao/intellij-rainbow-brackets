@@ -387,7 +387,7 @@
     <actions>
         <action class="com.github.izhangzhihao.rainbow.brackets.action.ScopeHighlightingAction"
                 id="Rainbow.ScopeHighlightingAction"
-                text="Highlight current scope"
+                text="Highlight Current Scope"
                 description="Highlight current scope.">
             <mouse-shortcut keymap="$default" keystroke="control button3"/>
             <mouse-shortcut keymap="Mac OS X" keystroke="meta button3"/>
@@ -395,7 +395,7 @@
         </action>
         <action class="com.github.izhangzhihao.rainbow.brackets.action.ScopeOutsideHighlightingRestrainAction"
                 id="Rainbow.ScopeOutsideHighlightingRestrainAction"
-                text="Restrain scope highlighting"
+                text="Restrain Scope Highlighting"
                 description="Restrain outside of current scope highlighting.">
             <mouse-shortcut keymap="$default" keystroke="alt button3"/>
             <mouse-shortcut keymap="Mac OS X" keystroke="alt button3"/>
