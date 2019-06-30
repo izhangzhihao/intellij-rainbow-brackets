@@ -42,6 +42,7 @@
         <p>5.20</p>
         <ul>
             <li>#233 Option to not rainbowify brackets of first level</li>
+            <li>#234 Color is displayed with wrong order in C# code</li>
         </ul>
         <p>5.19</p>
         <ul>
