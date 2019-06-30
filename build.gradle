@@ -108,5 +108,5 @@ jacocoTestReport {
     }
 }
 
-check.dependsOn verifyPluginCompatibility
+//check.dependsOn verifyPluginCompatibility
 check.dependsOn verifyPlugin
