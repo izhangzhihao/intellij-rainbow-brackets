@@ -360,15 +360,15 @@
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.XmlRainbowVisitor"/>
 
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
-        <applicationService serviceInterface="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"
-                            serviceImplementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"/>
+        <applicationService
+                serviceImplementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"/>
         <colorAndFontPanelFactory
                 implementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowColorsPageFactory"/>
         <colorAndFontDescriptorProvider
                 implementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowColorsPageFactory"/>
 
-        <additionalTextAttributes scheme="Default" file="colorSchemes/rainbow-color-defuault.xml"/>
-        <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-defuault-darcula.xml"/>
+        <additionalTextAttributes scheme="Default" file="colorSchemes/rainbow-color-default.xml"/>
+        <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-default-darcula.xml"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowUpdateActivity"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.CustomRainbowActivity"/>
     </extensions>
