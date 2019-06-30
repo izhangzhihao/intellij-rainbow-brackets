@@ -19,6 +19,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var isEnableRainbowSquareBrackets = true
     var isEnableRainbowAngleBrackets = true
     var isDoNOTRainbowifyBracketsWithoutContent = false
+    var isDoNOTRainbowifyTheFirstLevel = false
     var version = "Unknown"
     var isRainbowifyHTMLInsideJS = true
     var isRainbowifyKotlinLabel = true

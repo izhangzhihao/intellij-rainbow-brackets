@@ -32,11 +32,21 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
                 } ?: return
 
         val level = element.getBracketLevel(pair)
-        if (level >= 0) {
-            val startElement = element.takeIf { it.elementType == pair.leftBraceType }
-            val endElement = element.takeIf { it.elementType == pair.rightBraceType }
-            element.setHighlightInfo(element.parent, level, startElement, endElement)
+        if (RainbowSettings.instance.isDoNOTRainbowifyTheFirstLevel) {
+            if (level >= 1) {
+                rainbowPairs(element, pair, level)
+            }
+        } else {
+            if (level >= 0) {
+                rainbowPairs(element, pair, level)
+            }
         }
+    }
+
+    private fun rainbowPairs(element: LeafPsiElement, pair: BracePair, level: Int) {
+        val startElement = element.takeIf { it.elementType == pair.leftBraceType }
+        val endElement = element.takeIf { it.elementType == pair.rightBraceType }
+        element.setHighlightInfo(element.parent, level, startElement, endElement)
     }
 
     companion object {

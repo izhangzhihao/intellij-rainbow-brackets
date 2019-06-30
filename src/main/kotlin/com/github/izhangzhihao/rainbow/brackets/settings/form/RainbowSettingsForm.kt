@@ -12,6 +12,7 @@ class RainbowSettingsForm {
     private var enableRainbowSquareBrackets: JCheckBox? = null
     private var enableRainbowAngleBrackets: JCheckBox? = null
     private var doNOTRainbowifyBracketsWithoutContent: JCheckBox? = null
+    private var isDoNOTRainbowifyTheFirstLevel: JCheckBox? = null
 
     private val settings: RainbowSettings = RainbowSettings.instance
 
@@ -29,13 +30,16 @@ class RainbowSettingsForm {
 
     fun isDoNOTRainbowifyBracketsWithoutContent() = doNOTRainbowifyBracketsWithoutContent?.isSelected
 
+    fun isDoNOTRainbowifyTheFirstLevel() = isDoNOTRainbowifyTheFirstLevel?.isSelected
+
     val isModified: Boolean
         get() = (isRainbowEnabled() != settings.isRainbowEnabled
                 || isRainbowAngleBracketsEnabled() != settings.isEnableRainbowAngleBrackets
                 || isRainbowRoundBracketsEnabled() != settings.isEnableRainbowRoundBrackets
                 || isRainbowSquigglyBracketsEnabled() != settings.isEnableRainbowSquigglyBrackets
                 || isRainbowSquareBracketsEnabled() != settings.isEnableRainbowSquareBrackets
-                || isDoNOTRainbowifyBracketsWithoutContent() != settings.isDoNOTRainbowifyBracketsWithoutContent)
+                || isDoNOTRainbowifyBracketsWithoutContent() != settings.isDoNOTRainbowifyBracketsWithoutContent
+                || isDoNOTRainbowifyTheFirstLevel() != settings.isDoNOTRainbowifyTheFirstLevel)
 
     init {
         loadSettings()
@@ -48,5 +52,6 @@ class RainbowSettingsForm {
         enableRainbowSquigglyBrackets?.isSelected = settings.isEnableRainbowSquigglyBrackets
         enableRainbowSquareBrackets?.isSelected = settings.isEnableRainbowSquareBrackets
         doNOTRainbowifyBracketsWithoutContent?.isSelected = settings.isDoNOTRainbowifyBracketsWithoutContent
+        isDoNOTRainbowifyTheFirstLevel?.isSelected = settings.isDoNOTRainbowifyTheFirstLevel
     }
 }
