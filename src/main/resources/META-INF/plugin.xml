@@ -355,7 +355,9 @@
     </extensionPoints>
 
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <!--test only-->
+        <!--<annotator language="JAVA" implementationClass="com.github.izhangzhihao.rainbow.brackets.annotator.RainbowAnnotator"/>-->
+
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.DefaultRainbowVisitor"/>
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.XmlRainbowVisitor"/>
 

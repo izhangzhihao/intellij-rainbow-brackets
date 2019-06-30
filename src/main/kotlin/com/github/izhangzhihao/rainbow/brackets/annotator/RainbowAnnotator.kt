@@ -32,7 +32,7 @@ object RainbowUtils {
                      LEFT: String, RIGHT: String, rainbowName: String) {
         fun getBracketLevel(element: LeafPsiElement): Int {
             //Using `element.elementType.toString()` if we didn't want add more dependencies.
-            var level = if (element.text == RIGHT) 1 else 0
+            var level = if (element.text == RIGHT) 0 else -1
             tailrec fun iterateParents(currentNode: PsiElement) {
                 tailrec fun iterateChildren(currentChild: PsiElement) {
                     if (currentChild is LeafPsiElement) {
@@ -58,10 +58,10 @@ object RainbowUtils {
         //Using `element.elementType.toString()` if we didn't want add more dependencies.
         val level = when (element.text) {
             LEFT, RIGHT -> getBracketLevel(element)
-            else -> 0
+            else -> -1
         }
         val scheme = EditorColorsManager.getInstance().globalScheme
-        if (level > 0) {
+        if (level >= 0) {
             holder.createInfoAnnotation(element.psi, null).enforcedTextAttributes = getTextAttributes(scheme, rainbowName, level)
         }
     }
