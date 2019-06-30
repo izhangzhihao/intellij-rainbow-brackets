@@ -61,8 +61,14 @@ object RainbowUtils {
             else -> -1
         }
         val scheme = EditorColorsManager.getInstance().globalScheme
-        if (level >= 0) {
-            holder.createInfoAnnotation(element.psi, null).enforcedTextAttributes = getTextAttributes(scheme, rainbowName, level)
+        if (RainbowSettings.instance.isDoNOTRainbowifyTheFirstLevel) {
+            if (level >= 1) {
+                holder.createInfoAnnotation(element.psi, null).enforcedTextAttributes = getTextAttributes(scheme, rainbowName, level)
+            }
+        } else {
+            if (level >= 0) {
+                holder.createInfoAnnotation(element.psi, null).enforcedTextAttributes = getTextAttributes(scheme, rainbowName, level)
+            }
         }
     }
 }
