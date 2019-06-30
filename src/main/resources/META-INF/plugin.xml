@@ -39,6 +39,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.20</p>
+        <ul>
+            <li>#233 Option to not rainbowify brackets of first level</li>
+        </ul>
         <p>5.19</p>
         <ul>
             <li>Fix notification.</li>
