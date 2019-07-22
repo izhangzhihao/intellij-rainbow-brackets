@@ -69,8 +69,8 @@ abstract class AbstractScopeHighlightingAction : AnAction() {
         }
 
         override fun focusGained(e: FocusEvent) = Unit
-        override fun focusLost(e: FocusEvent) = dispose()
-        override fun keyReleased(e: KeyEvent) = dispose()
+        override fun focusLost(e: FocusEvent) = Unit
+        override fun keyReleased(e: KeyEvent) = Unit
     }
 
     companion object {

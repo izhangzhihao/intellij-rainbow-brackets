@@ -32,8 +32,8 @@ class ScopeOutsideHighlightingRestrainAction : AbstractScopeHighlightingAction()
                     0,
                     startOffset,
                     attributes,
-                    true,
-                    true,
+                    false, //hideByTextChange
+                    false, //hideByAnyKey
                     highlighters)
         }
 
@@ -44,8 +44,8 @@ class ScopeOutsideHighlightingRestrainAction : AbstractScopeHighlightingAction()
                     endOffset,
                     lastOffset,
                     attributes,
-                    true,
-                    true,
+                    false, //hideByTextChange
+                    false, //hideByAnyKey
                     highlighters)
         }
 

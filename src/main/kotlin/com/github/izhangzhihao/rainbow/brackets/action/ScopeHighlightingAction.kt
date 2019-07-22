@@ -27,8 +27,8 @@ class ScopeHighlightingAction : AbstractScopeHighlightingAction() {
                 rainbowInfo.startOffset,
                 rainbowInfo.endOffset,
                 attributes,
-                true,
-                true,
+                false, //hideByTextChange
+                false, //hideByAnyKey
                 highlighters)
 
         return highlighters
