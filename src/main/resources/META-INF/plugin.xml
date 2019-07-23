@@ -49,6 +49,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.21</p>
+        <ul>
+            <li>#65 [Scope Highlighting] now the effects will not been removed after shortcut released, users could press the key `ESC` to do this. There also have an option `Press any key to remove the highlighting effects`</li>
+        </ul>
         <p>5.20</p>
         <ul>
             <li>#233 Option to not rainbowify brackets of the first level</li>

@@ -26,6 +26,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var isRainbowifyKotlinFunctionLiteralBracesAndArrow = true
     var isOverrideMatchedBraceAttributes = true
     var isCustomNotifyShowed = false
+    var pressAnyKeyToRemoveTheHighlightingEffects = false
 
     var lightRoundBracketsColors: Array<String>? = null
     var darkRoundBracketsColors: Array<String>? = null

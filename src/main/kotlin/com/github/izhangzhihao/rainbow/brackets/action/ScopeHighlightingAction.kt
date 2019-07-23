@@ -1,6 +1,7 @@
 package com.github.izhangzhihao.rainbow.brackets.action
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
+import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.codeInsight.highlighting.HighlightManager
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.colors.EditorColorsManager
@@ -28,7 +29,7 @@ class ScopeHighlightingAction : AbstractScopeHighlightingAction() {
                 rainbowInfo.endOffset,
                 attributes,
                 false, //hideByTextChange
-                false, //hideByAnyKey
+                RainbowSettings.instance.pressAnyKeyToRemoveTheHighlightingEffects, //hideByAnyKey
                 highlighters)
 
         return highlighters
