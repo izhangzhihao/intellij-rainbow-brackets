@@ -54,6 +54,9 @@ idea {
         jdkName = javaVersion
         languageLevel = javaVersion
     }
+    module {
+        excludeDirs += file(".sandbox")
+    }
 }
 
 dependencies {
