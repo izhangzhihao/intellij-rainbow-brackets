@@ -27,7 +27,7 @@ class CustomRainbowActivity : StartupActivity {
             show(
                     "Want to custom your own rainbow colors?",
                     notifyContent,
-                    channel + "_UPDATE",
+                    channel,
                     NotificationType.INFORMATION,
                     SettingsOpeningListener(project, RainbowColorsPageFactory().displayName)
             )

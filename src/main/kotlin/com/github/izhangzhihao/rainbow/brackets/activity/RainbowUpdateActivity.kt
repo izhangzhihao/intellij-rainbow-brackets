@@ -36,7 +36,7 @@ class RainbowUpdateActivity : StartupActivity {
             show(
                     "Rainbow Brackets updated to $version",
                     updateContent,
-                    channel + "_UPDATE",
+                    channel,
                     NotificationType.INFORMATION,
                     NotificationListener.URL_OPENING_LISTENER
             )
