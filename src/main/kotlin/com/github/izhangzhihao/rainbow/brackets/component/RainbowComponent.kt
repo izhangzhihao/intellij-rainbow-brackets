@@ -1,7 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets.component
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter
-import com.github.izhangzhihao.rainbow.brackets.migrateRainbowColors
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManager
@@ -23,7 +22,6 @@ class RainbowComponent : BaseComponent, EditorColorsListener {
         val settings = RainbowSettings.instance
         updated = getPlugin()?.version != settings.version
         if (updated) {
-            migrateRainbowColors(settings)
             settings.version = getPlugin()!!.version
         }
 
