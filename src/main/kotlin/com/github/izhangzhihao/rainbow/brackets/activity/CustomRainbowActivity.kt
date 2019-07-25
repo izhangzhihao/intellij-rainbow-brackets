@@ -3,8 +3,9 @@ package com.github.izhangzhihao.rainbow.brackets.activity
 import com.github.izhangzhihao.rainbow.brackets.SettingsOpeningListener
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowColorsPageFactory
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
-import com.github.izhangzhihao.rainbow.brackets.show
+import com.github.izhangzhihao.rainbow.brackets.createNotification
 import com.intellij.notification.NotificationType
+import com.intellij.notification.Notifications
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 
@@ -24,13 +25,14 @@ class CustomRainbowActivity : StartupActivity {
     """
 
         private fun notify(project: Project) {
-            show(
+            val notification = createNotification(
                     "Want to custom your own rainbow colors?",
                     notifyContent,
                     channel,
                     NotificationType.INFORMATION,
                     SettingsOpeningListener(project, RainbowColorsPageFactory().displayName)
             )
+            Notifications.Bus.notify(notification)
             RainbowSettings.instance.isCustomNotifyShowed = true
         }
     }
