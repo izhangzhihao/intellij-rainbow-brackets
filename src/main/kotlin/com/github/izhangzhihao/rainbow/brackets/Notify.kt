@@ -23,6 +23,10 @@ fun createNotification(title: String, content: String, displayId: String,
 
 fun showFullNotification(project: Project, notification: Notification) {
     val frame = WindowManager.getInstance().getIdeFrame(project)
+    if (frame == null) {
+        notification.notify(project)
+        return
+    }
     val bounds = frame.component.bounds
     val target = RelativePoint(frame.component, Point(bounds.x + bounds.width, 20))
 
