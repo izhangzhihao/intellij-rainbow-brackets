@@ -25,7 +25,8 @@ class RainbowUpdateActivity : StartupActivity {
     <br/>
     Thank you for downloading <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets">Rainbow Brackets</a></b>!<br>
     Sponsored by <a href="https://codestream.com/?utm_source=jbmarket&utm_medium=banner&utm_campaign=jbrainbowbrackets">CodeStream</a>.<br>
-    If you find this plugin helpful, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets">please star this project on GitHub</a>.</b><br>
+    If you find this plugin helpful, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#support-us">please support us!</a>.</b><br>
+    If you love this plugin, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#support-us">become a sponsor!</a>.</b><br>
     If you run into any problem, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues">feel free to raise a issue</a>.</b><br/><br>
     See <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases/tag/$version">changelog</a></b> for more details about this update.<br>
     Enjoy your colorful code.

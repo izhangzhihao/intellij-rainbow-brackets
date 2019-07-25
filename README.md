@@ -30,6 +30,8 @@
 - [Kotlin function literal braces and arrow](#kotlin-function-literal-braces-and-arrow)
 - [Disable rainbow brackets for specific languages](#disable-rainbow-brackets-for-specific-languages)
 - [Contribute](#contribute)
+- [Support Us](#support-us)
+- [Backers](#backers)
 - [Acknowledgements](#acknowledgements)
 
 ## Compatibility
@@ -178,6 +180,47 @@ NOTE: The languages name should be **lowercase**, and do **NOT** use shorthand.
 * `gradle test`
 * `gradle runIde`
 * `gradle buildPlugin`
+
+## Support Us
+
+You can support us by the following actions:
+
+* Star this project on GitHub
+* Share this plugin with your friends/colleagues
+* Rate this plugin on [JetBrains plugin repository](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
+* Make pull requests
+* Report bugs
+* Tell us your ideas
+* Become a sponsor by donating on [Open Collective](https://opencollective.com/intellij-rainbow-brackets)
+* Become a sponsor by donating with AliPay or WeChatPay
+
+<table>
+  <tr>
+    <th width="50%">AliPay</th>
+    <th width="50%">WeChatPay</th>
+  </tr>
+  <tr></tr>
+  <tr align="center">
+    <td><img width="70%" src="./screenshots/alipay.jpg"></td>
+    <td><img width="70%" src="./screenshots/wechat.jpg"></td>
+  </tr>
+</table>
+
+## Backers
+
+Thank you to all our backers! ❤️ [[Become a backer](https://opencollective.com/intellij-rainbow-brackets#backer)]
+
+<a href="https://opencollective.com/intellij-rainbow-brackets#backers" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/backers.svg?width=890"></a>
+
+## Sponsors
+
+Support this project by becoming a sponsor! 🌈 Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/intellij-rainbow-brackets#sponsor)]
+
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/0/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/1/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/2/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/3/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/4/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/4/avatar.svg"></a>
 
 ## Acknowledgements
 
