@@ -33,8 +33,8 @@ fun showFullNotification(project: Project, notification: Notification) {
     try {
         val balloon = NotificationsManagerImpl.createBalloon(frame,
                 notification,
-                true,
-                true,
+                true, // showCallout
+                false, // hideOnClickOutside
                 BalloonLayoutData.fullContent()) { }
         balloon.show(target, Balloon.Position.atLeft)
     } catch (e: Exception) {
