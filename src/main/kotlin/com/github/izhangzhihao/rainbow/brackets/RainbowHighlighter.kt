@@ -73,10 +73,6 @@ object RainbowHighlighter {
         }
     }
 
-    fun createRainbowAttributes(color: Color): TextAttributes {
-        return TextAttributes(color, null, null, EffectType.BOXED, Font.PLAIN)
-    }
-
     // FIXME: Meta properties(SchemeMetaInfo) should be used.
     fun isRainbowEnabled(rainbowName: String): Boolean {
         return when (rainbowName) {
