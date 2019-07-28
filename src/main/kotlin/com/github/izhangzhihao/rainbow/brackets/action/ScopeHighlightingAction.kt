@@ -11,11 +11,7 @@ import com.intellij.openapi.editor.markup.TextAttributes
 import java.awt.Font
 import java.util.*
 
-/**
- * ScopeHighlightingAction
- *
- * Created by Yii.Guxing on 2018/05/15
- */
+
 class ScopeHighlightingAction : AbstractScopeHighlightingAction() {
 
     override fun Editor.addHighlighter(highlightManager: HighlightManager,

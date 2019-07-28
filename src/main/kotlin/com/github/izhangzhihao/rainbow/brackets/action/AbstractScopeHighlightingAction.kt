@@ -18,11 +18,7 @@ import java.awt.event.FocusListener
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
 
-/**
- * AbstractScopeHighlightingAction
- *
- * Created by Yii.Guxing on 2018/05/17
- */
+
 abstract class AbstractScopeHighlightingAction : AnAction() {
 
     final override fun update(e: AnActionEvent) {

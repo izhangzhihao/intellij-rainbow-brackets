@@ -14,11 +14,7 @@ import org.jetbrains.kotlin.lexer.KtTokens
 import org.jetbrains.kotlin.psi.*
 import java.awt.Font
 
-/**
- * KotlinLabelAnnotator
- *
- * Created by Yii.Guxing on 2018/07/09
- */
+
 class KotlinLabelAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (!RainbowSettings.instance.isRainbowifyKotlinLabel) {

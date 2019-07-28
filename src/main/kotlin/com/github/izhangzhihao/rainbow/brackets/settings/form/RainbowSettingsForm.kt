@@ -1,7 +1,9 @@
 package com.github.izhangzhihao.rainbow.brackets.settings.form
 
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
-import javax.swing.*
+import javax.swing.JCheckBox
+import javax.swing.JComponent
+import javax.swing.JPanel
 
 class RainbowSettingsForm {
     private var panel: JPanel? = null

@@ -5,11 +5,6 @@ import com.intellij.psi.PsiElement
 import java.awt.Color
 import java.lang.ref.WeakReference
 
-/**
- * RainbowInfo
- *
- * Created by Yii.Guxing on 2018/05/12
- */
 data class RainbowInfo(var level: Int, var color: Color) {
     private var _startElement: WeakReference<PsiElement>? = null
     private var _endElement: WeakReference<PsiElement>? = null

@@ -10,11 +10,7 @@ import com.intellij.psi.impl.source.tree.LeafPsiElement
 import org.jetbrains.kotlin.lexer.KtTokens
 import java.awt.Font
 
-/**
- * KotlinLambdaExpressionArrowAnnotator
- *
- * Created by Yii.Guxing on 2018/07/09
- */
+
 class KotlinLambdaExpressionArrowAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if ((element as? LeafPsiElement)?.elementType == KtTokens.ARROW) {

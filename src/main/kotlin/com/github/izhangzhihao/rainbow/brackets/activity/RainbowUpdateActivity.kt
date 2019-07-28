@@ -1,8 +1,8 @@
 package com.github.izhangzhihao.rainbow.brackets.activity
 
 import com.github.izhangzhihao.rainbow.brackets.component.RainbowComponent
-import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.createNotification
+import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.showFullNotification
 import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType

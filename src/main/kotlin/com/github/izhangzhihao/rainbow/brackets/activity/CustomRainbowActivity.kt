@@ -1,9 +1,9 @@
 package com.github.izhangzhihao.rainbow.brackets.activity
 
 import com.github.izhangzhihao.rainbow.brackets.SettingsOpeningListener
+import com.github.izhangzhihao.rainbow.brackets.createNotification
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowColorsPageFactory
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
-import com.github.izhangzhihao.rainbow.brackets.createNotification
 import com.intellij.notification.NotificationType
 import com.intellij.notification.Notifications
 import com.intellij.openapi.project.Project

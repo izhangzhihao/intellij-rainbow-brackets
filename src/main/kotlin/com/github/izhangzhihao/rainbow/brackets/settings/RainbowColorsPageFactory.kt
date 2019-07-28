@@ -9,11 +9,7 @@ import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.psi.codeStyle.DisplayPriority
 import com.intellij.psi.codeStyle.DisplayPrioritySortable
 
-/**
- * RainbowColorsPageFactory
- *
- * Created by Yii.Guxing on 2018/09/16
- */
+
 class RainbowColorsPageFactory : ColorAndFontPanelFactory, ColorAndFontDescriptorsProvider, DisplayPrioritySortable {
 
     override fun getDisplayName(): String = RAINBOW_BRACKETS_GROUP

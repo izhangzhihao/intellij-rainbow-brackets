@@ -9,11 +9,7 @@ import com.intellij.psi.PsiFile
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import com.intellij.psi.tree.IElementType
 
-/**
- * DefaultRainbowVisitor
- *
- * Created by Yii.Guxing on 2018/1/23
- */
+
 class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun clone(): HighlightVisitor = DefaultRainbowVisitor()

@@ -9,11 +9,7 @@ import com.intellij.psi.xml.XmlTag
 import com.intellij.psi.xml.XmlToken
 import com.intellij.psi.xml.XmlTokenType
 
-/**
- * XmlRainbowVisitor
- *
- * Created by Yii.Guxing on 2018/01/24
- */
+
 open class XmlRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun suitableForFile(file: PsiFile)

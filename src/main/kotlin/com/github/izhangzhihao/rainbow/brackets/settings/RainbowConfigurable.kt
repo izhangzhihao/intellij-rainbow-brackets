@@ -26,9 +26,11 @@ class RainbowConfigurable : Configurable {
         settings.isEnableRainbowAngleBrackets = settingsForm?.isRainbowAngleBracketsEnabled() ?: true
         settings.isEnableRainbowSquigglyBrackets = settingsForm?.isRainbowSquigglyBracketsEnabled() ?: true
         settings.isEnableRainbowSquareBrackets = settingsForm?.isRainbowSquareBracketsEnabled() ?: true
-        settings.isDoNOTRainbowifyBracketsWithoutContent = settingsForm?.isDoNOTRainbowifyBracketsWithoutContent() ?: false
+        settings.isDoNOTRainbowifyBracketsWithoutContent = settingsForm?.isDoNOTRainbowifyBracketsWithoutContent()
+                ?: false
         settings.isDoNOTRainbowifyTheFirstLevel = settingsForm?.isDoNOTRainbowifyTheFirstLevel() ?: false
-        settings.pressAnyKeyToRemoveTheHighlightingEffects = settingsForm?.pressAnyKeyToRemoveTheHighlightingEffects() ?: false
+        settings.pressAnyKeyToRemoveTheHighlightingEffects = settingsForm?.pressAnyKeyToRemoveTheHighlightingEffects()
+                ?: false
     }
 
     override fun reset() {

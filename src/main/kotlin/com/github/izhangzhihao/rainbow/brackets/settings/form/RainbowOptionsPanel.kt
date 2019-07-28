@@ -17,11 +17,7 @@ import javax.swing.tree.DefaultTreeModel
 import javax.swing.tree.TreePath
 import javax.swing.tree.TreeSelectionModel
 
-/**
- * RainbowOptionsPanel
- *
- * Created by Yii.Guxing on 2018/09/23
- */
+
 class RainbowOptionsPanel(
         private val options: ColorAndFontOptions,
         private val schemesProvider: SchemesPanel,

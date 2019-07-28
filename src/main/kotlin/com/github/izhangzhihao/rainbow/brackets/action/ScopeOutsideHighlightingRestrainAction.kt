@@ -12,11 +12,6 @@ import java.awt.Color
 import java.awt.Font
 import java.util.*
 
-/**
- * ScopeOutsideHighlightingRestrainAction
- *
- * Created by Yii.Guxing on 2018/05/15
- */
 class ScopeOutsideHighlightingRestrainAction : AbstractScopeHighlightingAction() {
 
     override fun Editor.addHighlighter(highlightManager: HighlightManager,

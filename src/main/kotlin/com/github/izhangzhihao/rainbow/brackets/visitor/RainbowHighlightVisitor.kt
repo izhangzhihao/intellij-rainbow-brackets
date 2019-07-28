@@ -9,11 +9,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import java.awt.Color
 
-/**
- * RainbowHighlightVisitor
- *
- * Created by Yii.Guxing on 2018/1/24
- */
+
 abstract class RainbowHighlightVisitor : HighlightVisitor {
 
     private var highlightInfoHolder: HighlightInfoHolder? = null
