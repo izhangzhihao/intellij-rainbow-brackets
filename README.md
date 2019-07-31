@@ -176,6 +176,8 @@ NOTE: The languages name should be **lowercase**, and do **NOT** use shorthand.
 
 ## Contribute
 
+NOTE: To view the PSI tree and explore the internal structure of source code, you need to setup your IDE follow [this](https://www.jetbrains.com/help/idea/psi-viewer.html).
+
 * `gradle test`
 * `gradle runIde`
 * `gradle buildPlugin`
