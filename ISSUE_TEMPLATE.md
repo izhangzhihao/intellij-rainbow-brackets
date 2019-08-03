@@ -1,4 +1,4 @@
-**“Star” this repo before you creating a issue, thanks for your support 😁**
+**Please [support us](https://github.com/izhangzhihao/intellij-rainbow-brackets#support-us) before creating a feature request, thanks for your support 😁**
 
 Your issue may already be reported!
 Please search on the [issues](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues) before creating one.
