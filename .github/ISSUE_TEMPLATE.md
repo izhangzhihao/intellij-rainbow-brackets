@@ -3,6 +3,12 @@
 Your issue may already be reported!
 Please search on the [issues](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues) before creating one.
 
+## Please check
+
+- [ ] I already support this project.
+- [ ] If you are submitting a feature request, please do consider donating us on [Open Collective](https://opencollective.com/intellij-rainbow-brackets) Or by AliPay/WeChatPay.
+- [ ] This issue/feature request is not reported before.
+
 ## Your programming language(s)
 
 ## Expected Behavior
