@@ -3,11 +3,12 @@ package com.github.izhangzhihao.rainbow.brackets
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
+import org.intellij.lang.annotations.Language
 import org.jetbrains.kotlin.idea.KotlinFileType
 
 class RainbowKotlinTest : LightCodeInsightFixtureTestCase() {
     fun testRainbowForKotlin() {
-        val code =
+        @Language("kotlin") val code =
                 """
 fun <T> filter(l: List<T>, f: (T) -> Boolean): MutableList<T> {
     val res = mutableListOf<T>()
@@ -64,7 +65,7 @@ fun <T> filter(l: List<T>, f: (T) -> Boolean): MutableList<T> {
     }
 
     fun testRainbowArrowForKotlin() {
-        val code =
+        @Language("kotlin") val code =
                 """
 val a: (Int) -> Unit = { aa ->
     val b: (Int) -> Unit = { bb ->
@@ -124,7 +125,7 @@ val a: (Int) -> Unit = { aa ->
     }
 
     fun testRainbowLabelForKotlin() {
-        val code =
+        @Language("kotlin") val code =
                 """
 class AA {
     fun aa() {
@@ -159,7 +160,7 @@ class AA {
     }
 
     fun testKotlinFunctionLiteralBracesAndArrow() {
-        val code =
+        @Language("kotlin") val code =
                 """
 val a :Int = 1
 

@@ -6,10 +6,11 @@ import com.intellij.lang.javascript.TypeScriptFileType
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
+import org.intellij.lang.annotations.Language
 
 class RainbowJavaScriptTest : LightCodeInsightFixtureTestCase() {
     fun testIssue11() {
-        val code = """
+        @Language("JavaScript") val code = """
 "use strict";
 
 const _ = require('lodash') || false
@@ -34,7 +35,7 @@ const moment = require('moment')
     }
 
     fun testIssue12() {
-        val code = """
+        @Language("JavaScript") val code = """
 "use strict";
 console.log(a > b)
 console.log(a == b)
@@ -58,7 +59,7 @@ console.log(a == b)
 
     fun testIssue21() {
 
-        val code = "open (\$" + "{f})\n" + "open (\$" + "{f} )"
+        @Language("JavaScript") val code = "open (\$" + "{f})\n" + "open (\$" + "{f} )"
 
         myFixture.configureByText(JavaScriptFileType.INSTANCE, code)
         PsiDocumentManager.getInstance(project).commitAllDocuments()
@@ -78,7 +79,7 @@ console.log(a == b)
     }
 
     fun testIssue23() {
-        val code = """
+        @Language("JavaScript") val code = """
 "use strict";
 
 var a;
@@ -124,7 +125,7 @@ if ((a.field_detail && a.is) ||
     }
 
     fun testIssue31() {
-        val code = """
+        @Language("JavaScript") val code = """
 "use strict";
 const f = () => {}
 const a = [1,2,3]
@@ -154,7 +155,7 @@ const s = `<ololo>`
     }
 
     fun testIssue38() {
-        val code = """
+        @Language("JavaScript") val code = """
 const element = ( <div> <h1>Hello, world!</h1> </div> );
                             """.trimIndent()
 
@@ -185,7 +186,7 @@ const element = ( <div> <h1>Hello, world!</h1> </div> );
     }
 
     fun testIssue39() {
-        val code = """
+        @Language("JavaScript") val code = """
 const html = '<div><div><div>Hello</div></div></div>'
                             """.trimIndent()
 

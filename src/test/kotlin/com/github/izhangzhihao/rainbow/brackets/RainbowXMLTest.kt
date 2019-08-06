@@ -4,10 +4,11 @@ import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
+import org.intellij.lang.annotations.Language
 
 class RainbowXMLTest : LightCodeInsightFixtureTestCase() {
     fun testRainbowForXML() {
-        val code =
+        @Language("XML") val code =
                 """
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE note SYSTEM>

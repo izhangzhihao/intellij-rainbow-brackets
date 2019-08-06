@@ -5,6 +5,7 @@ import com.intellij.ide.highlighter.JavaFileType
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
+import org.intellij.lang.annotations.Language
 
 class RainbowJavaTest : LightCodeInsightFixtureTestCase() {
     override fun tearDown() {
@@ -20,7 +21,7 @@ class RainbowJavaTest : LightCodeInsightFixtureTestCase() {
     }
 
     fun testRainbowForJava() {
-        val code =
+        @Language("Java") val code =
                 """
 public class Test<T> {
     public Boolean test() {
@@ -60,7 +61,7 @@ public class Test<T> {
     fun testDisableRainbowForJava() {
         val rainbowSettings = RainbowSettings.instance
         rainbowSettings.isRainbowEnabled = false
-        val code =
+        @Language("Java") val code =
                 """
 public class Test<T> {
     public Boolean test() {
@@ -83,7 +84,7 @@ public class Test<T> {
     fun testDisableRainbowAngleBracketsForJava() {
         val rainbowSettings = RainbowSettings.instance
         rainbowSettings.isEnableRainbowAngleBrackets = false
-        val code =
+        @Language("Java") val code =
                 """
 public class Test<T> {
     public Boolean test() {
@@ -121,7 +122,7 @@ public class Test<T> {
     fun testDisableRainbowRoundBracketsForJava() {
         val rainbowSettings = RainbowSettings.instance
         rainbowSettings.isEnableRainbowRoundBrackets = false
-        val code =
+        @Language("Java") val code =
                 """
 public class Test<T> {
     public Boolean test() {
@@ -151,7 +152,7 @@ public class Test<T> {
     fun testDisableRainbowSquigglyBracketsForJava() {
         val rainbowSettings = RainbowSettings.instance
         rainbowSettings.isEnableRainbowSquigglyBrackets = false
-        val code =
+        @Language("Java") val code =
                 """
 public class Test<T> {
     public Boolean test() {
@@ -187,7 +188,7 @@ public class Test<T> {
     fun testDoNOTRainbowifyBracketsWithoutContentForJava() {
         val rainbowSettings = RainbowSettings.instance
         rainbowSettings.isDoNOTRainbowifyBracketsWithoutContent = true
-        val code =
+        @Language("Java") val code =
                 """
 public class Test<T> {
     public Boolean test() {
@@ -224,7 +225,7 @@ public class Test<T> {
         val rainbowSettings = RainbowSettings.instance
         rainbowSettings.isDoNOTRainbowifyBracketsWithoutContent = true
         rainbowSettings.getLanguageBlacklist = setOf("java")
-        val code =
+        @Language("Java") val code =
                 """
 public class Test<T> {
     public Boolean test() {

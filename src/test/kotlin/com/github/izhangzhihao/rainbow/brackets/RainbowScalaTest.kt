@@ -4,6 +4,7 @@ import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
+import org.intellij.lang.annotations.Language
 import org.jetbrains.plugins.scala.ScalaFileType
 
 class RainbowScalaTest : LightCodeInsightFixtureTestCase() {
@@ -20,7 +21,7 @@ class RainbowScalaTest : LightCodeInsightFixtureTestCase() {
     }
 
     fun testRainbowForScala() {
-        val code =
+        @Language("Scala") val code =
                 """
 import scala.annotation.tailrec
 
@@ -62,7 +63,7 @@ import scala.annotation.tailrec
     fun testDisableRainbowSquareBracketsForScala() {
         val rainbowSettings = RainbowSettings.instance
         rainbowSettings.isEnableRainbowSquareBrackets = false
-        val code =
+        @Language("Scala") val code =
                 """
 import scala.annotation.tailrec
 

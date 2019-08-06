@@ -3,12 +3,13 @@ package com.github.izhangzhihao.rainbow.brackets
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
+import org.intellij.lang.annotations.Language
 import org.jetbrains.plugins.groovy.GroovyFileType
 
 class RainbowGroovyTest : LightCodeInsightFixtureTestCase() {
 
     fun testRainbowForGroovy() {
-        val code =
+        @Language("Groovy") val code =
                 """
 Map<String, Map<String, String>> convertObjectsToMapProperties(Map<String, Object> body) {
     return body.collectEntries {
