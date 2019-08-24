@@ -13,7 +13,6 @@ import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
 import com.intellij.ui.JBColor
-import com.intellij.util.ui.UIUtil
 import org.jetbrains.annotations.TestOnly
 import java.awt.Color
 import java.awt.Font
@@ -158,15 +157,10 @@ object RainbowHighlighter {
         scheme.setAttributes(KEY_KOTLIN_LABEL, kotlinLabel)
 
         // matched brace
-        val matchedBraceAttributes = if (settings.isOverrideMatchedBraceAttributes) {
-            TextAttributes(null, JBColor(0x99ccbb, 0x3b514d), null, EffectType.BOXED, Font.BOLD)
-        } else {
-            val isDark = UIUtil.isUnderDarcula()
-            val foregroundColor = if (isDark) Color(0xffef28) else null
-            val fontType = if (isDark) Font.BOLD else Font.PLAIN
-            TextAttributes(foregroundColor, JBColor(0x99ccff, 0x3b514d), null, EffectType.BOXED, fontType)
+        if (settings.isOverrideMatchedBraceAttributes) {
+            val matchedBraceAttributes = TextAttributes(null, JBColor(0x99ccbb, 0x3b514d), null, EffectType.BOXED, Font.BOLD)
+            scheme.setAttributes(KEY_MATCHED_BRACE_ATTRIBUTES, matchedBraceAttributes)
         }
-        scheme.setAttributes(KEY_MATCHED_BRACE_ATTRIBUTES, matchedBraceAttributes)
 
         if (settings.isRainbowifyKotlinFunctionLiteralBracesAndArrow) {
             scheme.setAttributes(KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW,
