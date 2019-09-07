@@ -49,6 +49,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.22</p>
+        <ul>
+            <li>Fix #243 #180, allow users custom matched brace by setting `overrideMatchedBraceAttributes = false`</li>
+        </ul>
         <p>5.21</p>
         <ul>
             <li>#65 [Scope Highlighting] now the effects will not been removed after shortcut released, users could press the key `ESC` to do this. There also have an option `Press any key to remove the highlighting effects`</li>
