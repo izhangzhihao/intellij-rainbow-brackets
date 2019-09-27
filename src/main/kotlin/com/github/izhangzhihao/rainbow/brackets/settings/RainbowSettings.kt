@@ -18,6 +18,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var isEnableRainbowSquigglyBrackets = true
     var isEnableRainbowSquareBrackets = true
     var isEnableRainbowAngleBrackets = true
+    var isShowRainbowIndentGuides = false
     var isDoNOTRainbowifyBracketsWithoutContent = false
     var isDoNOTRainbowifyTheFirstLevel = false
     var version = "Unknown"

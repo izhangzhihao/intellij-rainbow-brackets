@@ -1,6 +1,7 @@
 package com.github.izhangzhihao.rainbow.brackets.indents
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
+import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.lang.Language
@@ -31,7 +32,7 @@ import org.jetbrains.kotlin.psi.psiUtil.startOffset
 import java.lang.StrictMath.*
 import java.util.*
 
-// From com.intellij.codeInsight.daemon.impl.IndentsPass
+/** From [com.intellij.codeInsight.daemon.impl.IndentsPass] */
 class RainbowIndentsPass internal constructor(
         project: Project,
         editor: Editor,
@@ -69,19 +70,33 @@ class RainbowIndentsPass internal constructor(
     }
 
     private fun nowStamp(): Long {
-        return if (myEditor.settings.isIndentGuidesShown) {
+        val settings = RainbowSettings.instance
+        return if (settings.isRainbowEnabled && settings.isShowRainbowIndentGuides) {
             checkNotNull(myDocument).modificationStamp
         } else -1
     }
 
     override fun doApplyInformationToEditor() {
         val stamp = myEditor.getUserData(LAST_TIME_INDENTS_BUILT)
-        if (stamp != null && stamp.toLong() == nowStamp()) return
+        val nowStamp = nowStamp()
+
+        if (stamp == nowStamp) return
+
+        myEditor.putUserData(LAST_TIME_INDENTS_BUILT, nowStamp)
 
         val oldHighlighters = myEditor.getUserData(INDENT_HIGHLIGHTERS_IN_EDITOR_KEY)
+        if (nowStamp == -1L) {
+            if (oldHighlighters != null) {
+                for (oldHighlighter in oldHighlighters) {
+                    oldHighlighter.dispose()
+                }
+                oldHighlighters.clear()
+            }
+            return
+        }
+
         val newHighlighters = ArrayList<RangeHighlighter>()
         val mm = myEditor.markupModel
-
         var curRange = 0
 
         if (oldHighlighters != null) {
@@ -129,9 +144,7 @@ class RainbowIndentsPass internal constructor(
             }
         }
 
-
         myEditor.putUserData(INDENT_HIGHLIGHTERS_IN_EDITOR_KEY, newHighlighters)
-        myEditor.putUserData(LAST_TIME_INDENTS_BUILT, nowStamp())
         myEditor.indentsModel.assumeIndents(myDescriptors)
     }
 
