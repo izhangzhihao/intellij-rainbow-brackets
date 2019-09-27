@@ -2,6 +2,7 @@ package com.github.izhangzhihao.rainbow.brackets.indents
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
+import com.github.izhangzhihao.rainbow.brackets.util.alphaBlend
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.lang.Language
@@ -410,7 +411,12 @@ class RainbowIndentsPass internal constructor(
                 maxY = min(maxY, clip.y + clip.height)
             }
 
-            g.color = if (selected) rainbowInfo.color else rainbowInfo.color
+            g.color = if (selected) {
+                rainbowInfo.color
+            } else {
+                val defaultBackground = editor.colorsScheme.defaultBackground
+                rainbowInfo.color.alphaBlend(defaultBackground, 0.2f)
+            }
 
             // There is a possible case that indent line intersects soft wrap-introduced text. Example:
             //     this is a long line <soft-wrap>
