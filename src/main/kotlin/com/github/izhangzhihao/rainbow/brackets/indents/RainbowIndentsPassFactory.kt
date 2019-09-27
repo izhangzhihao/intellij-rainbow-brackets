@@ -13,7 +13,13 @@ class RainbowIndentsPassFactory(project: Project, registrar: TextEditorHighlight
         AbstractProjectComponent(project), TextEditorHighlightingPassFactory {
 
     init {
-        registrar.registerTextEditorHighlightingPass(this, TextEditorHighlightingPassRegistrar.Anchor.BEFORE, Pass.UPDATE_FOLDING, false, false)
+        registrar.registerTextEditorHighlightingPass(
+                this,
+                TextEditorHighlightingPassRegistrar.Anchor.LAST,
+                Pass.LAST_PASS,
+                false,
+                false
+        )
     }
 
     override fun getComponentName(): String = "RainbowIndentsPassFactory"

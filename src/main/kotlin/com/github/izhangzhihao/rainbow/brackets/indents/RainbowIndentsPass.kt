@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets.indents
 
+import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.lang.Language
@@ -7,7 +8,6 @@ import com.intellij.lang.LanguageParserDefinitions
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.IndentGuideDescriptor
 import com.intellij.openapi.editor.VisualPosition
-import com.intellij.openapi.editor.colors.EditorColors
 import com.intellij.openapi.editor.ex.EditorEx
 import com.intellij.openapi.editor.ex.util.EditorUtil
 import com.intellij.openapi.editor.markup.CustomHighlighterRenderer
@@ -22,11 +22,12 @@ import com.intellij.openapi.util.Key
 import com.intellij.openapi.util.Segment
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiFile
+import com.intellij.psi.PsiManager
 import com.intellij.psi.tree.TokenSet
 import com.intellij.util.DocumentUtil
 import com.intellij.util.containers.IntStack
 import com.intellij.util.text.CharArrayUtil
-import java.awt.Color
+import org.jetbrains.kotlin.psi.psiUtil.startOffset
 import java.lang.StrictMath.*
 import java.util.*
 
@@ -199,7 +200,7 @@ class RainbowIndentsPass internal constructor(
     }
 
     /*
-    private fun findCodeConstructStartLine(startLine: Int): Int {
+    private fun findCodeConstructStart(startLine: Int): Int? {
         val document = myEditor.document
         val text = document.immutableCharSequence
         val lineStartOffset = document.getLineStartOffset(startLine)
@@ -209,11 +210,14 @@ class RainbowIndentsPass internal constructor(
         val braceMatcher = BraceMatchingUtil.getBraceMatcher(type, language)
         val iterator = myEditor.highlighter.createIterator(firstNonWsOffset)
         return if (braceMatcher.isLBraceToken(iterator, text, type)) {
-            val codeConstructStart = braceMatcher.getCodeConstructStart(myFile, firstNonWsOffset)
-            document.getLineNumber(codeConstructStart)
-        } else {
-            startLine
-        }
+            braceMatcher.getCodeConstructStart(myFile, firstNonWsOffset)
+        } else null
+    }
+
+
+    private fun findCodeConstructStartLine(startLine: Int): Int {
+        val codeConstructStart = findCodeConstructStart(startLine)
+        return if (codeConstructStart != null) myEditor.document.getLineNumber(codeConstructStart) else startLine
     }
     */
 
@@ -317,10 +321,22 @@ class RainbowIndentsPass internal constructor(
         private val INDENT_HIGHLIGHTERS_IN_EDITOR_KEY = Key.create<MutableList<RangeHighlighter>>("_INDENT_HIGHLIGHTERS_IN_EDITOR_KEY_")
         private val LAST_TIME_INDENTS_BUILT = Key.create<Long>("_LAST_TIME_INDENTS_BUILT_")
 
-        private val RENDERER: CustomHighlighterRenderer = CustomHighlighterRenderer { editor, highlighter, g ->
+        private val RENDERER: CustomHighlighterRenderer = CustomHighlighterRenderer renderer@{ editor, highlighter, g ->
+            if (editor !is EditorEx) return@renderer
+            val document = editor.document
+            val project = editor.project ?: return@renderer
+            val psiFile = PsiManager.getInstance(project).findFile(editor.virtualFile) ?: return@renderer
+            val element = psiFile.findElementAt(highlighter.endOffset)?.parent ?: return@renderer
+
+            if (document.getLineNumber(element.startOffset) < document.getLineNumber(highlighter.startOffset)) {
+                return@renderer
+            }
+
+            val rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[element] ?: return@renderer
+
             val startOffset = highlighter.startOffset
             val doc = highlighter.document
-            if (startOffset >= doc.textLength) return@CustomHighlighterRenderer
+            if (startOffset >= doc.textLength) return@renderer
 
             val endOffset = highlighter.endOffset
             val endLine = doc.getLineNumber(endOffset)
@@ -348,19 +364,18 @@ class RainbowIndentsPass internal constructor(
                 indentColumn = descriptor.indentLevel
                 lineShift = 0
             }
-            if (indentColumn <= 0) return@CustomHighlighterRenderer
+            if (indentColumn <= 0) return@renderer
 
             val foldingModel = editor.foldingModel
-            if (foldingModel.isOffsetCollapsed(off)) return@CustomHighlighterRenderer
+            if (foldingModel.isOffsetCollapsed(off)) return@renderer
 
             val headerRegion = foldingModel.getCollapsedRegionAtOffset(doc.getLineEndOffset(doc.getLineNumber(off)))
             val tailRegion = foldingModel.getCollapsedRegionAtOffset(doc.getLineStartOffset(doc.getLineNumber(endOffset)))
 
-            if (tailRegion != null && tailRegion === headerRegion) return@CustomHighlighterRenderer
+            if (tailRegion != null && tailRegion === headerRegion) return@renderer
 
-            val selected: Boolean
             val guide = editor.indentsModel.caretIndentGuide
-            selected = if (guide != null) {
+            val selected = if (guide != null) {
                 val caretModel = editor.caretModel
                 val caretOffset = caretModel.offset
                 caretOffset in off until endOffset && caretModel.logicalPosition.column == indentColumn
@@ -377,13 +392,12 @@ class RainbowIndentsPass internal constructor(
             val clip = g.clipBounds
             if (clip != null) {
                 if (clip.y >= maxY || clip.y + clip.height <= start.y) {
-                    return@CustomHighlighterRenderer
+                    return@renderer
                 }
                 maxY = min(maxY, clip.y + clip.height)
             }
 
-            val scheme = editor.colorsScheme
-            g.color = scheme.getColor(if (selected) EditorColors.SELECTED_INDENT_GUIDE_COLOR else EditorColors.INDENT_GUIDE_COLOR)
+            g.color = if (selected) rainbowInfo.color else rainbowInfo.color
 
             // There is a possible case that indent line intersects soft wrap-introduced text. Example:
             //     this is a long line <soft-wrap>
@@ -400,7 +414,6 @@ class RainbowIndentsPass internal constructor(
             //     1. Show only active indent if it crosses soft wrap-introduced text;
             //     2. Show indent as is if it doesn't intersect with soft wrap-introduced text;
             if (selected) {
-                g.color = Color.RED
                 g.drawLine(start.x + 2, start.y, start.x + 2, maxY - 1)
             } else {
                 var y = start.y
@@ -432,16 +445,21 @@ class RainbowIndentsPass internal constructor(
                 }
 
                 if (y < maxY) {
-                    g.color = Color.GREEN
                     g.drawLine(start.x + 2, y, start.x + 2, maxY - 1)
                 }
             }
         }
 
         private fun createHighlighter(mm: MarkupModel, range: TextRange): RangeHighlighter {
-            val highlighter = mm.addRangeHighlighter(range.startOffset, range.endOffset, 0, null, HighlighterTargetArea.EXACT_RANGE)
-            highlighter.customRenderer = RENDERER
-            return highlighter
+            return mm.addRangeHighlighter(
+                    range.startOffset,
+                    range.endOffset,
+                    0,
+                    null,
+                    HighlighterTargetArea.EXACT_RANGE
+            ).apply {
+                customRenderer = RENDERER
+            }
         }
 
         private fun compare(r: TextRange, h: RangeHighlighter): Int {
