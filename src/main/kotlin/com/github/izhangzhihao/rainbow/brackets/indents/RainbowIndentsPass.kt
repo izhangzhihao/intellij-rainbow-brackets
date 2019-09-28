@@ -29,6 +29,7 @@ import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiManager
 import com.intellij.psi.tree.TokenSet
 import com.intellij.psi.util.PsiTreeUtil
+import com.intellij.psi.xml.XmlElement
 import com.intellij.psi.xml.XmlFile
 import com.intellij.psi.xml.XmlTag
 import com.intellij.util.DocumentUtil
@@ -474,15 +475,17 @@ class RainbowIndentsPass internal constructor(
             val psiFile = PsiManager.getInstance(project).findFile(editor.virtualFile) ?: return null
             var element = psiFile.findElementAt(highlighter.endOffset)?.parent ?: return null
 
-            if (psiFile is XmlFile && element !is XmlTag) {
+            var rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[element]
+            if (rainbowInfo == null && psiFile is XmlFile && element is XmlElement && element !is XmlTag) {
                 element = PsiTreeUtil.findFirstParent(element, true, XML_TAG_PARENT_CONDITION) ?: return null
+                rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[element] ?: return null
             }
 
             if (document.getLineNumber(element.startOffset) < document.getLineNumber(highlighter.startOffset)) {
                 return null
             }
 
-            return RainbowInfo.RAINBOW_INFO_KEY[element]
+            return rainbowInfo
         }
 
         private fun createHighlighter(mm: MarkupModel, range: TextRange): RangeHighlighter {
