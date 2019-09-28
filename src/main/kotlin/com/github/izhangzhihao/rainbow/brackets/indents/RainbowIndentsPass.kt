@@ -20,12 +20,17 @@ import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.util.Condition
 import com.intellij.openapi.util.Key
 import com.intellij.openapi.util.Segment
 import com.intellij.openapi.util.TextRange
+import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiManager
 import com.intellij.psi.tree.TokenSet
+import com.intellij.psi.util.PsiTreeUtil
+import com.intellij.psi.xml.XmlFile
+import com.intellij.psi.xml.XmlTag
 import com.intellij.util.DocumentUtil
 import com.intellij.util.containers.IntStack
 import com.intellij.util.text.CharArrayUtil
@@ -335,18 +340,12 @@ class RainbowIndentsPass internal constructor(
         private val INDENT_HIGHLIGHTERS_IN_EDITOR_KEY = Key.create<MutableList<RangeHighlighter>>("_INDENT_HIGHLIGHTERS_IN_EDITOR_KEY_")
         private val LAST_TIME_INDENTS_BUILT = Key.create<Long>("_LAST_TIME_INDENTS_BUILT_")
 
+        private val XML_TAG_PARENT_CONDITION = Condition<PsiElement> { it is XmlTag }
+
         private val RENDERER: CustomHighlighterRenderer = CustomHighlighterRenderer renderer@{ editor, highlighter, g ->
             if (editor !is EditorEx) return@renderer
-            val document = editor.document
-            val project = editor.project ?: return@renderer
-            val psiFile = PsiManager.getInstance(project).findFile(editor.virtualFile) ?: return@renderer
-            val element = psiFile.findElementAt(highlighter.endOffset)?.parent ?: return@renderer
 
-            if (document.getLineNumber(element.startOffset) < document.getLineNumber(highlighter.startOffset)) {
-                return@renderer
-            }
-
-            val rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[element] ?: return@renderer
+            val rainbowInfo = getRainbowInfo(editor, highlighter) ?: return@renderer
 
             val startOffset = highlighter.startOffset
             val doc = highlighter.document
@@ -467,6 +466,23 @@ class RainbowIndentsPass internal constructor(
                     g.drawLine(start.x + 2, y, start.x + 2, maxY - 1)
                 }
             }
+        }
+
+        private fun getRainbowInfo(editor: EditorEx, highlighter: RangeHighlighter): RainbowInfo? {
+            val document = editor.document
+            val project = editor.project ?: return null
+            val psiFile = PsiManager.getInstance(project).findFile(editor.virtualFile) ?: return null
+            var element = psiFile.findElementAt(highlighter.endOffset)?.parent ?: return null
+
+            if (psiFile is XmlFile && element !is XmlTag) {
+                element = PsiTreeUtil.findFirstParent(element, true, XML_TAG_PARENT_CONDITION) ?: return null
+            }
+
+            if (document.getLineNumber(element.startOffset) < document.getLineNumber(highlighter.startOffset)) {
+                return null
+            }
+
+            return RainbowInfo.RAINBOW_INFO_KEY[element]
         }
 
         private fun createHighlighter(mm: MarkupModel, range: TextRange): RangeHighlighter {
