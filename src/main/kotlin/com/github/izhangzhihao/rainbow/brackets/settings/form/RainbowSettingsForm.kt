@@ -13,6 +13,7 @@ class RainbowSettingsForm {
     private var enableRainbowSquigglyBrackets: JCheckBox? = null
     private var enableRainbowSquareBrackets: JCheckBox? = null
     private var enableRainbowAngleBrackets: JCheckBox? = null
+    private var showRainbowIndentGuides: JCheckBox? = null
     private var doNOTRainbowifyBracketsWithoutContent: JCheckBox? = null
     private var isDoNOTRainbowifyTheFirstLevel: JCheckBox? = null
     private var pressAnyKeyToRemoveTheHighlightingEffects: JCheckBox? = null
@@ -31,6 +32,8 @@ class RainbowSettingsForm {
 
     fun isRainbowAngleBracketsEnabled() = enableRainbowAngleBrackets?.isSelected
 
+    fun isShowRainbowIndentGuides() = showRainbowIndentGuides?.isSelected
+
     fun isDoNOTRainbowifyBracketsWithoutContent() = doNOTRainbowifyBracketsWithoutContent?.isSelected
 
     fun isDoNOTRainbowifyTheFirstLevel() = isDoNOTRainbowifyTheFirstLevel?.isSelected
@@ -43,6 +46,7 @@ class RainbowSettingsForm {
                 || isRainbowRoundBracketsEnabled() != settings.isEnableRainbowRoundBrackets
                 || isRainbowSquigglyBracketsEnabled() != settings.isEnableRainbowSquigglyBrackets
                 || isRainbowSquareBracketsEnabled() != settings.isEnableRainbowSquareBrackets
+                || isShowRainbowIndentGuides() != settings.isShowRainbowIndentGuides
                 || isDoNOTRainbowifyBracketsWithoutContent() != settings.isDoNOTRainbowifyBracketsWithoutContent
                 || isDoNOTRainbowifyTheFirstLevel() != settings.isDoNOTRainbowifyTheFirstLevel
                 || pressAnyKeyToRemoveTheHighlightingEffects() != settings.pressAnyKeyToRemoveTheHighlightingEffects
@@ -58,6 +62,7 @@ class RainbowSettingsForm {
         enableRainbowAngleBrackets?.isSelected = settings.isEnableRainbowAngleBrackets
         enableRainbowSquigglyBrackets?.isSelected = settings.isEnableRainbowSquigglyBrackets
         enableRainbowSquareBrackets?.isSelected = settings.isEnableRainbowSquareBrackets
+        showRainbowIndentGuides?.isSelected = settings.isShowRainbowIndentGuides
         doNOTRainbowifyBracketsWithoutContent?.isSelected = settings.isDoNOTRainbowifyBracketsWithoutContent
         isDoNOTRainbowifyTheFirstLevel?.isSelected = settings.isDoNOTRainbowifyTheFirstLevel
         pressAnyKeyToRemoveTheHighlightingEffects?.isSelected = settings.pressAnyKeyToRemoveTheHighlightingEffects
