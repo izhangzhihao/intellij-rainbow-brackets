@@ -29,7 +29,6 @@ import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiManager
 import com.intellij.psi.tree.TokenSet
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.psi.xml.XmlElement
 import com.intellij.psi.xml.XmlFile
 import com.intellij.psi.xml.XmlTag
 import com.intellij.util.DocumentUtil
@@ -476,7 +475,7 @@ class RainbowIndentsPass internal constructor(
             var element = psiFile.findElementAt(highlighter.endOffset)?.parent ?: return null
 
             var rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[element]
-            if (rainbowInfo == null && psiFile is XmlFile && element is XmlElement && element !is XmlTag) {
+            if (rainbowInfo == null && psiFile is XmlFile && element !is XmlTag) {
                 element = PsiTreeUtil.findFirstParent(element, true, XML_TAG_PARENT_CONDITION) ?: return null
                 rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[element] ?: return null
             }
