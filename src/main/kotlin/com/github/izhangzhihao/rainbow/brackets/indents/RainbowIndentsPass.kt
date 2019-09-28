@@ -75,12 +75,7 @@ class RainbowIndentsPass internal constructor(
         myRanges = ranges
     }
 
-    private fun nowStamp(): Long {
-        val settings = RainbowSettings.instance
-        return if (settings.isRainbowEnabled && settings.isShowRainbowIndentGuides) {
-            checkNotNull(myDocument).modificationStamp
-        } else -1
-    }
+    private fun nowStamp(): Long = if (isRainbowIndentGuidesShown()) checkNotNull(myDocument).modificationStamp else -1
 
     override fun doApplyInformationToEditor() {
         val stamp = myEditor.getUserData(LAST_TIME_INDENTS_BUILT)
@@ -155,7 +150,7 @@ class RainbowIndentsPass internal constructor(
     }
 
     private fun buildDescriptors(): List<IndentGuideDescriptor> {
-        if (!myEditor.settings.isIndentGuidesShown) return emptyList()
+        if (!isRainbowIndentGuidesShown()) return emptyList()
 
         val calculator = IndentsCalculator()
         calculator.calculate()
@@ -485,6 +480,11 @@ class RainbowIndentsPass internal constructor(
             }
 
             return rainbowInfo
+        }
+
+        private fun isRainbowIndentGuidesShown(): Boolean {
+            val settings = RainbowSettings.instance
+            return settings.isRainbowEnabled && settings.isShowRainbowIndentGuides
         }
 
         private fun createHighlighter(mm: MarkupModel, range: TextRange): RangeHighlighter {
