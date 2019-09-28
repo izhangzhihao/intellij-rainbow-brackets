@@ -482,10 +482,8 @@ class RainbowIndentsPass internal constructor(
             return rainbowInfo
         }
 
-        private fun isRainbowIndentGuidesShown(): Boolean {
-            val settings = RainbowSettings.instance
-            return settings.isRainbowEnabled && settings.isShowRainbowIndentGuides
-        }
+        private fun isRainbowIndentGuidesShown(): Boolean =
+                RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
 
         private fun createHighlighter(mm: MarkupModel, range: TextRange): RangeHighlighter {
             return mm.addRangeHighlighter(
