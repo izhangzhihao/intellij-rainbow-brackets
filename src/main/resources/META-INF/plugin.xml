@@ -49,6 +49,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.23</p>
+        <ul>
+            <li>#164 #251 New feature: Rainbow indent guide lines(experimental), Thanks https://github.com/YiiGuxing !</li>
+        </ul>
         <p>5.22</p>
         <ul>
             <li>Fix #243 #180, allow users custom matched brace by setting `overrideMatchedBraceAttributes = false`</li>
