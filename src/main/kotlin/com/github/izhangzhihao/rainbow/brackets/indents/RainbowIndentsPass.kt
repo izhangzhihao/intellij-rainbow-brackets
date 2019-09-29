@@ -3,6 +3,7 @@ package com.github.izhangzhihao.rainbow.brackets.indents
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.alphaBlend
+import com.github.izhangzhihao.rainbow.brackets.util.startOffset
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.lang.Language
@@ -34,7 +35,6 @@ import com.intellij.psi.xml.XmlTag
 import com.intellij.util.DocumentUtil
 import com.intellij.util.containers.IntStack
 import com.intellij.util.text.CharArrayUtil
-import org.jetbrains.kotlin.psi.psiUtil.startOffset
 import java.lang.StrictMath.*
 import java.util.*
 
