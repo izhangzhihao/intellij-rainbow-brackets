@@ -7,9 +7,7 @@
 <p align="center">Rainbow Brackets / Rainbow Parentheses for IntelliJ based IDEs.</p>
 
 <p align="center"> 
-<a href="https://gitter.im/izhangzhihao/intellij-rainbow-brackets"><img src="https://img.shields.io/gitter/room/izhangzhihao/intellij-rainbow-brackets.svg?style=flat-square"></a>
 <a href="https://circleci.com/gh/izhangzhihao/intellij-rainbow-brackets"><img src="https://img.shields.io/circleci/project/github/izhangzhihao/intellij-rainbow-brackets/IC-2017.2.svg?style=flat-square"></a>
-<a href="https://codecov.io/gh/izhangzhihao/intellij-rainbow-brackets"><img src="https://img.shields.io/codecov/c/github/izhangzhihao/intellij-rainbow-brackets/IC-2017.2.svg?style=flat-square"></a>
 <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases"><img src="https://img.shields.io/github/release/izhangzhihao/intellij-rainbow-brackets.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/v/10080-rainbow-brackets.svg?style=flat-square"></a>
@@ -85,6 +83,13 @@ NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)"
 NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)" on Mac os, "Right click" for Windows or Linux.
 
 ![](https://user-images.githubusercontent.com/10737066/40235004-642dfe54-5adb-11e8-9fd7-648b92fab8f5.gif)
+
+* Rainbow indent guide lines
+
+NOTE: This feature is **experimental** and **disabled** by default at this moment. You could turn it on by check "Show rainbow indent guides (Experimental)" in setting page.
+
+![](https://user-images.githubusercontent.com/10737066/65765792-c41cb500-e15b-11e9-8877-2239c6afa7bf.gif)
+
 
 * [night-owl-jetbrains](https://github.com/xdrop/night-owl-jetbrains)
 
