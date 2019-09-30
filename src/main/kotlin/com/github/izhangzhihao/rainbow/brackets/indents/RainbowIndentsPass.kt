@@ -2,12 +2,12 @@ package com.github.izhangzhihao.rainbow.brackets.indents
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
-import com.github.izhangzhihao.rainbow.brackets.util.alphaBlend
-import com.github.izhangzhihao.rainbow.brackets.util.startOffset
+import com.github.izhangzhihao.rainbow.brackets.util.*
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.lang.Language
 import com.intellij.lang.LanguageParserDefinitions
+import com.intellij.openapi.editor.Document
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.IndentGuideDescriptor
 import com.intellij.openapi.editor.VisualPosition
@@ -32,6 +32,8 @@ import com.intellij.psi.tree.TokenSet
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.xml.XmlFile
 import com.intellij.psi.xml.XmlTag
+import com.intellij.psi.xml.XmlToken
+import com.intellij.psi.xml.XmlTokenType
 import com.intellij.util.DocumentUtil
 import com.intellij.util.containers.IntStack
 import com.intellij.util.text.CharArrayUtil
@@ -336,6 +338,12 @@ class RainbowIndentsPass internal constructor(
         private val LAST_TIME_INDENTS_BUILT = Key.create<Long>("_LAST_TIME_INDENTS_BUILT_")
 
         private val XML_TAG_PARENT_CONDITION = Condition<PsiElement> { it is XmlTag }
+        private val XML_END_TAG_START_CONDITION: (PsiElement) -> Boolean = { element ->
+            element is XmlToken && element.tokenType == XmlTokenType.XML_END_TAG_START
+        }
+        private val XML_TAG_END_CONDITION: (PsiElement) -> Boolean = { element ->
+            element is XmlToken && element.tokenType == XmlTokenType.XML_TAG_END
+        }
 
         private val RENDERER: CustomHighlighterRenderer = CustomHighlighterRenderer renderer@{ editor, highlighter, g ->
             if (editor !is EditorEx) return@renderer
@@ -475,12 +483,94 @@ class RainbowIndentsPass internal constructor(
                 rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[element] ?: return null
             }
 
-            if (document.getLineNumber(element.startOffset) < document.getLineNumber(highlighter.startOffset)) {
+            if (!checkBoundary(document, element, highlighter)) {
                 return null
             }
 
             return rainbowInfo
         }
+
+        private fun checkBoundary(document: Document, element: PsiElement, highlighter: RangeHighlighter): Boolean {
+            val elementStartLine = document.getLineNumber(element.startOffset)
+            val highlighterStartLine = document.getLineNumber(highlighter.startOffset)
+
+            var xmlStartTagEndLine: Int? = null
+            var xmlEndTagStartLine: Int? = null
+
+            val isValidStartBoundary = if (element is XmlTag) {
+                /*
+                 *     <tag                  // [*] element & highlighter start line
+                 *     | <- vertical indent
+                 *     >                     // [*] highlighter start/end line, start tag end line
+                 *     | <- vertical indent
+                 *     </tag                 // [*] highlighter start/end line, end tag start line
+                 *     | <- vertical indent
+                 *     >                     // [ ] element/highlighter end line
+                 */
+                xmlStartTagEndLine = element.getStartTagEndLineNumber(document)
+                xmlEndTagStartLine = element.getEndTagStartLineNumber(document)
+
+                highlighterStartLine == elementStartLine ||
+                        highlighterStartLine == xmlStartTagEndLine ||
+                        highlighterStartLine == xmlEndTagStartLine
+            } else {
+                /*
+                 * Element start line > Highlighter start line:
+                 *     function foo(arg1,   // highlighter start line
+                 *     |            arg2) { // element start line
+                 *     | <- vertical indent
+                 *     }                    // element & highlighter end line
+                 */
+                elementStartLine >= highlighterStartLine
+            }
+            if (!isValidStartBoundary) {
+                return false
+            }
+
+            val elementEndOffset = element.endOffset
+            val highlighterEndOffset = highlighter.endOffset
+            val documentLength = document.textLength
+            if (elementEndOffset >= documentLength || highlighterEndOffset >= documentLength) {
+                return false
+            }
+
+            val elementEndLine = document.getLineNumber(elementEndOffset)
+            val highlighterEndLine = document.getLineNumber(highlighterEndOffset)
+            val isValidEndBoundary = if (element is XmlTag) {
+                /*
+                 *     <tag                  // [ ] element & highlighter start line
+                 *     | <- vertical indent
+                 *     >                     // [*] highlighter start/end line, start tag end line
+                 *     | <- vertical indent
+                 *     </tag                 // [*] highlighter start/end line, end tag start line
+                 *     | <- vertical indent
+                 *     >                     // [*] element/highlighter end line
+                 */
+                highlighterEndLine == elementEndLine ||
+                        highlighterEndLine == xmlStartTagEndLine ||
+                        highlighterEndLine == xmlEndTagStartLine
+            } else {
+                /*
+                 * Element end line != Highlighter end line:
+                 *     function foo() {     // element & highlighter start line
+                 *     | <- vertical indent
+                 *   var bar = "bar";       // highlighter end line
+                 *     }                    // element end line
+                 */
+                elementEndLine == highlighterEndLine
+            }
+            if (!isValidEndBoundary) {
+                return false
+            }
+
+            return true
+        }
+
+        private fun XmlTag.getStartTagEndLineNumber(document: Document): Int? =
+                firstChild?.findNextSibling(XML_TAG_END_CONDITION)?.let { document.getLineNumber(it.startOffset) }
+
+        private fun XmlTag.getEndTagStartLineNumber(document: Document): Int? =
+                lastChild?.findPrevSibling(XML_END_TAG_START_CONDITION)?.let { document.getLineNumber(it.startOffset) }
 
         private fun isRainbowIndentGuidesShown(): Boolean =
                 RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
