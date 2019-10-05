@@ -397,6 +397,7 @@
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-default-darcula.xml"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowUpdateActivity"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.CustomRainbowActivity"/>
+        <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.GitHubErrorReporter"/>
     </extensions>
 
     <application-components>
