@@ -49,6 +49,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.24</p>
+        <ul>
+            <li>Fix #252 Runtime error in rainbow indent guide lines.</li>
+            <li>Fix #254 Nginx support is been disabled from now on.</li>
+            <li>Re-enable anonymous feedback</li>
+        </ul>
         <p>5.23</p>
         <ul>
             <li>#164 #251 New feature: Rainbow indent guide lines(experimental), Thanks https://github.com/YiiGuxing !</li>
