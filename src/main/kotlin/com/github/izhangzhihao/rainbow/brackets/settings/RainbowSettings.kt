@@ -42,7 +42,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var languageBlacklist: Array<String> = arrayOf()
 
     @Transient
-    var getLanguageBlacklist: Set<String> = languageBlacklist.toSet()
+    var getLanguageBlacklist: Set<String> = languageBlacklist.toSet().plus("nginx")
 
     @Nullable
     override fun getState() = this
