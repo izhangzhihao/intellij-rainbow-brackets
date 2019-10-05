@@ -12,7 +12,7 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.4.7"
+    id "org.jetbrains.intellij" version "0.4.10"
     id "com.adarshr.test-logger" version "1.6.0"
     id "de.undercouch.download" version "3.4.2"
 }
