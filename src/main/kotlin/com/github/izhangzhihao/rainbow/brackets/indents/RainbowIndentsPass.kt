@@ -472,9 +472,10 @@ class RainbowIndentsPass internal constructor(
         }
 
         private fun getRainbowInfo(editor: EditorEx, highlighter: RangeHighlighter): RainbowInfo? {
+            val virtualFile = editor.virtualFile ?: return null
             val document = editor.document
             val project = editor.project ?: return null
-            val psiFile = PsiManager.getInstance(project).findFile(editor.virtualFile) ?: return null
+            val psiFile = PsiManager.getInstance(project).findFile(virtualFile) ?: return null
             var element = psiFile.findElementAt(highlighter.endOffset)?.parent ?: return null
 
             var rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[element]
