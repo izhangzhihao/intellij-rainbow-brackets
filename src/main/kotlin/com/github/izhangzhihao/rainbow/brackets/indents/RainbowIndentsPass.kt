@@ -484,7 +484,7 @@ class RainbowIndentsPass internal constructor(
                 rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[element] ?: return null
             }
 
-            if (!checkBoundary(document, element, highlighter)) {
+            if (!element.isValid || !checkBoundary(document, element, highlighter)) {
                 return null
             }
 
@@ -492,8 +492,8 @@ class RainbowIndentsPass internal constructor(
         }
 
         private fun checkBoundary(document: Document, element: PsiElement, highlighter: RangeHighlighter): Boolean {
-            val elementStartLine = document.getLineNumber(element.startOffset)
-            val highlighterStartLine = document.getLineNumber(highlighter.startOffset)
+            val elementStartLine = document.lineNumber(element.startOffset) ?: return false
+            val highlighterStartLine = document.lineNumber(highlighter.startOffset) ?: return false
 
             var xmlStartTagEndLine: Int? = null
             var xmlEndTagStartLine: Int? = null
@@ -528,15 +528,8 @@ class RainbowIndentsPass internal constructor(
                 return false
             }
 
-            val elementEndOffset = element.endOffset
-            val highlighterEndOffset = highlighter.endOffset
-            val documentLength = document.textLength
-            if (elementEndOffset >= documentLength || highlighterEndOffset >= documentLength) {
-                return false
-            }
-
-            val elementEndLine = document.getLineNumber(elementEndOffset)
-            val highlighterEndLine = document.getLineNumber(highlighterEndOffset)
+            val elementEndLine = document.lineNumber(element.endOffset) ?: return false
+            val highlighterEndLine = document.lineNumber(highlighter.endOffset) ?: return false
             val isValidEndBoundary = if (element is XmlTag) {
                 /*
                  *     <tag                  // [ ] element & highlighter start line
@@ -568,10 +561,10 @@ class RainbowIndentsPass internal constructor(
         }
 
         private fun XmlTag.getStartTagEndLineNumber(document: Document): Int? =
-                firstChild?.findNextSibling(XML_TAG_END_CONDITION)?.let { document.getLineNumber(it.startOffset) }
+                firstChild?.findNextSibling(XML_TAG_END_CONDITION)?.let { document.lineNumber(it.startOffset) }
 
         private fun XmlTag.getEndTagStartLineNumber(document: Document): Int? =
-                lastChild?.findPrevSibling(XML_END_TAG_START_CONDITION)?.let { document.getLineNumber(it.startOffset) }
+                lastChild?.findPrevSibling(XML_END_TAG_START_CONDITION)?.let { document.lineNumber(it.startOffset) }
 
         private fun isRainbowIndentGuidesShown(): Boolean =
                 RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
