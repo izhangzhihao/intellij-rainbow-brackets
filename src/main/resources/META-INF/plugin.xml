@@ -49,6 +49,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.26</p>
+        <ul>
+            <li>Improve error report.</li>
+        </ul>
         <p>5.25</p>
         <ul>
             <li>Fix #259 Runtime error in rainbow indent guide lines.</li>
