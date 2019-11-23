@@ -19,6 +19,7 @@
 - [Compatibility](#compatibility)
 - [Supported languages](#supported-languages)
 - [Author's choice](#authors-choice)
+- [Sponsored By](#sponsored-by)
 - [Screenshots](#screenshots)
 - [Install](#install)
 - [Customize colors](#customize-colors)
@@ -43,6 +44,14 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 ## Author's choice
 
 Rainbow Brackets + Material Theme UI(Oceanic theme) + Nyan Progress Bar + [Fira Code](https://github.com/tonsky/FiraCode) (Font)
+
+## Sponsored By
+
+The Intellij Rainbow Brackets plugin is sponsored by [CodeStream](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner).
+
+[![https://codestream.com](https://alt-images.codestream.com/codestream_logo_jbrainbowbrackets.png)](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
+
+Discussing code is now as easy as highlighting a block and typing a comment right from your IDE. Take the pain out of code reviews and improve code quality. Try it free. [Try it free](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)!
 
 ## Screenshots
 
