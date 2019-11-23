@@ -86,8 +86,6 @@ NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)"
 
 * Rainbow indent guide lines
 
-NOTE: This feature is **experimental** and **disabled** by default at this moment. You could turn it on by check "Show rainbow indent guides (Experimental)" in setting page.
-
 ![](https://user-images.githubusercontent.com/10737066/65765792-c41cb500-e15b-11e9-8877-2239c6afa7bf.gif)
 
 
