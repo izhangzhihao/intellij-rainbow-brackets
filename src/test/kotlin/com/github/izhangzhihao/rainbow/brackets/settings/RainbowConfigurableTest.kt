@@ -29,7 +29,7 @@ class RainbowConfigurableTest : LightCodeInsightFixtureTestCase() {
         rainbowConfigurable.settingsForm!!.isRainbowRoundBracketsEnabled() shouldBe true
         rainbowConfigurable.settingsForm!!.isRainbowSquareBracketsEnabled() shouldBe true
         rainbowConfigurable.settingsForm!!.isRainbowSquigglyBracketsEnabled() shouldBe true
-        rainbowConfigurable.settingsForm!!.isShowRainbowIndentGuides() shouldBe false
+        rainbowConfigurable.settingsForm!!.isShowRainbowIndentGuides() shouldBe true
         rainbowConfigurable.settingsForm!!.isDoNOTRainbowifyBracketsWithoutContent() shouldBe false
 
         rainbowConfigurable.disposeUIResources()
