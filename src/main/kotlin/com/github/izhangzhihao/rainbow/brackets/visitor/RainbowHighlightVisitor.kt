@@ -14,8 +14,6 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 
     private var highlightInfoHolder: HighlightInfoHolder? = null
 
-    private var isCalled = false
-
     override fun suitableForFile(file: PsiFile): Boolean {
         return RainbowSettings.instance.isRainbowEnabled &&
                 RainbowSettings.instance.getLanguageBlacklist.contains(file.fileType.name.toLowerCase()).not()
@@ -28,27 +26,15 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
             : Boolean {
         highlightInfoHolder = holder
         onBeforeAnalyze(file, updateWholeFile)
-        try {
-            action.run()
-        } catch (ignore: Throwable) {
-        } finally {
-            call(::onAfterAnalyze)
-        }
-
+        action.run()
+        onAfterAnalyze()
         return true
     }
 
     protected open fun onBeforeAnalyze(file: PsiFile, updateWholeFile: Boolean) = Unit
 
     protected open fun onAfterAnalyze() {
-        isCalled = true
         highlightInfoHolder = null
-    }
-
-    private inline fun call(block: () -> Unit) {
-        isCalled = false
-        block()
-        check(isCalled) { "Overriding method must invoke super." }
     }
 
     protected fun PsiElement.setHighlightInfo(parent: PsiElement?,
