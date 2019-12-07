@@ -228,7 +228,7 @@ private fun getKeyValuePairs(
             "Is Snapshot" to java.lang.Boolean.toString(appInfo.build.isSnapshot),
             "App Build" to appInfo.build.asString(),
             "Last Action" to error.lastAction,
-            "error.message" to error.stackTrace.lines()[0],
+            "error.message" to error.javaClass.canonicalName,
             "error.stacktrace" to error.stackTrace)
     for (attachment in error.attachments) {
         params["attachment.name"] = attachment.path
