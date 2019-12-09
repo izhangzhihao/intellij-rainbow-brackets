@@ -9,6 +9,7 @@ import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.editor.colors.EditorColorsScheme
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.colors.TextAttributesScheme
+import com.intellij.openapi.editor.colors.impl.AbstractColorsScheme
 import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
@@ -174,7 +175,6 @@ object RainbowHighlighter {
     }
 
     private fun EditorColorsScheme.setInherited(key: TextAttributesKey, inherited: Boolean) {
-        //TODO: `USE_INHERITED_MARKER` been moved to AbstractColorsScheme.USE_INHERITED_MARKER in version 173.4674.60, that may cause compatibility problems
-        setAttributes(key, if (inherited) TextAttributes.USE_INHERITED_MARKER else TextAttributes())
+        setAttributes(key, if (inherited) AbstractColorsScheme.INHERITED_ATTRS_MARKER else TextAttributes())
     }
 }

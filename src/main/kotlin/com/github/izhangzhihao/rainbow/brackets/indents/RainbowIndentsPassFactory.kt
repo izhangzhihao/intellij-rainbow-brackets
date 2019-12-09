@@ -4,13 +4,14 @@ import com.intellij.codeHighlighting.Pass
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.codeHighlighting.TextEditorHighlightingPassFactory
 import com.intellij.codeHighlighting.TextEditorHighlightingPassRegistrar
-import com.intellij.openapi.components.AbstractProjectComponent
+import com.intellij.openapi.components.ProjectComponent
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiFile
 
 class RainbowIndentsPassFactory(project: Project, registrar: TextEditorHighlightingPassRegistrar) :
-        AbstractProjectComponent(project), TextEditorHighlightingPassFactory {
+        ProjectComponent, TextEditorHighlightingPassFactory {
+    private val myProject: Project = project
 
     init {
         registrar.registerTextEditorHighlightingPass(

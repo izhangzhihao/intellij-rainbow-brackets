@@ -1,11 +1,11 @@
 package com.github.izhangzhihao.rainbow.brackets
 
 import com.intellij.psi.PsiDocumentManager
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
 import com.jetbrains.php.lang.PhpFileType
 import io.kotlintest.matchers.shouldBe
 
-class RainbowPHPTest : LightCodeInsightFixtureTestCase() {
+class RainbowPHPTest : LightJavaCodeInsightFixtureTestCase() {
     fun testRainbowForPHP() {
         val code =
                 """

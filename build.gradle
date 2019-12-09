@@ -42,7 +42,7 @@ intellij {
     updateSinceUntilBuild = false
 
     sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"
-    plugins "org.jetbrains.kotlin:$kotlinVersion-release-IJ2017.2-1", 'org.intellij.scala:2017.2.7', 'JavaScriptLanguage', 'CSS', 'Dart:172.3317.48', 'Groovy', 'properties', 'org.jetbrains.plugins.ruby:2017.2.20170906', 'com.jetbrains.php:172.4155.41', 'java-i18n'
+    plugins 'java', "org.jetbrains.kotlin:$kotlinVersion-release-IJ2019.3-1", 'org.intellij.scala:2019.3.17', 'JavaScriptLanguage', 'CSS', 'Dart:193.5731', 'Groovy', 'properties', 'org.jetbrains.plugins.ruby:193.5233.57', 'com.jetbrains.php:193.5233.102', 'java-i18n'
 }
 
 publishPlugin {
@@ -104,7 +104,7 @@ jacocoTestReport {
 
 pluginVerifier {
     pluginFileName = "$rootProject.name-$version"
-    ides = ["IC-2019.1", "IC-2019.2", "IC-2019.3"]
+    ides = ["IC-2019.3"]
     verifierVersion = "1.222"
 }
 

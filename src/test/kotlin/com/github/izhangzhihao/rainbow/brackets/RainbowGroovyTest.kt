@@ -1,12 +1,12 @@
 package com.github.izhangzhihao.rainbow.brackets
 
 import com.intellij.psi.PsiDocumentManager
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
 import org.intellij.lang.annotations.Language
 import org.jetbrains.plugins.groovy.GroovyFileType
 
-class RainbowGroovyTest : LightCodeInsightFixtureTestCase() {
+class RainbowGroovyTest : LightJavaCodeInsightFixtureTestCase() {
 
     fun testRainbowForGroovy() {
         @Language("Groovy") val code =

@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/openjdk:11-jdk
 
     working_directory: ~/intellij-rainbow-brackets
 
@@ -19,9 +19,9 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: gradle buildPlugin -PdownloadIdeaSources=false
+      - run: ./gradlew buildPlugin -PdownloadIdeaSources=false
 
-      - run: gradle check -PdownloadIdeaSources=false
+      - run: ./gradlew check -PdownloadIdeaSources=false
 
       - run: bash <(curl -s https://codecov.io/bash)
 

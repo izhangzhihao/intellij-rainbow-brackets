@@ -1,10 +1,10 @@
 package com.github.izhangzhihao.rainbow.brackets.settings
 
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
 import io.kotlintest.matchers.shouldNotBe
 
-class RainbowConfigurableTest : LightCodeInsightFixtureTestCase() {
+class RainbowConfigurableTest : LightJavaCodeInsightFixtureTestCase() {
 
     override fun tearDown() {
         super.tearDown()

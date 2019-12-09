@@ -3,11 +3,11 @@ package com.github.izhangzhihao.rainbow.brackets
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.ide.highlighter.JavaFileType
 import com.intellij.psi.PsiDocumentManager
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
 import org.intellij.lang.annotations.Language
 
-class RainbowJavaTest : LightCodeInsightFixtureTestCase() {
+class RainbowJavaTest : LightJavaCodeInsightFixtureTestCase() {
     override fun tearDown() {
         super.tearDown()
         val rainbowSettings = RainbowSettings.instance

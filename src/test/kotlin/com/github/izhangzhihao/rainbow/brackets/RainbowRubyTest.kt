@@ -1,11 +1,13 @@
 package com.github.izhangzhihao.rainbow.brackets
 
 import com.intellij.psi.PsiDocumentManager
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
 import org.jetbrains.plugins.ruby.ruby.lang.RubyFileType
+import org.junit.Ignore
 
-class RainbowRubyTest : LightCodeInsightFixtureTestCase() {
+@Ignore
+class RainbowRubyTest : LightJavaCodeInsightFixtureTestCase() {
     fun testRainbowForIssue53Part0() {
         val code =
                 """

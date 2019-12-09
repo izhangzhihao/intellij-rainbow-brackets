@@ -24,7 +24,7 @@ class RainbowColorsPageFactory : ColorAndFontPanelFactory, ColorAndFontDescripto
         val optionsPanel = RainbowOptionsPanel(options, schemesPanel, RAINBOW_BRACKETS_GROUP)
 
         schemesPanel.addListener(object : ColorAndFontSettingsListener.Abstract() {
-            override fun schemeChanged(source: Any?) {
+            override fun schemeChanged(source: Any) {
                 optionsPanel.updateOptionsList()
             }
         })
