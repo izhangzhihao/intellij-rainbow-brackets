@@ -49,6 +49,11 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.28</p>
+        <ul>
+            <li>Improve error report</li>
+            <li>Fix some errors with Nginx plugin</li>
+        </ul>
         <p>5.27</p>
         <ul>
             <li>Improve rainbow indent guide lines</li>
