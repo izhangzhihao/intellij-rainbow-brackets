@@ -315,7 +315,11 @@ class RainbowIndentsPass internal constructor(
 
         private fun isComment(offset: Int): Boolean {
             val it = myEditor.highlighter.createIterator(offset)
-            val tokenType = it.tokenType
+            val tokenType = try {
+                it.tokenType
+            } catch (e: Throwable) {
+                return false
+            }
             val language = tokenType.language
             var comments: TokenSet? = myComments[language]
             if (comments == null) {
