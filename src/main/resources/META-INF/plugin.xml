@@ -49,6 +49,11 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.29</p>
+        <ul>
+            <li>Compatible color schema with latest version of material-theme-jetbrains</li>
+            <li>Fix some errors</li>
+        </ul>
         <p>5.28</p>
         <ul>
             <li>Improve error report</li>
