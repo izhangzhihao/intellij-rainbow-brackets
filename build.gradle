@@ -105,10 +105,9 @@ jacocoTestReport {
 }
 
 
-verifyPluginCompatibility {
+runPluginVerifier {
     pluginFileName = "$rootProject.name-$version"
     ides = ["IC-2019.1", "IC-2019.2", "IC-2019.3"]
 }
 
-check.dependsOn verifyPluginCompatibility
-check.dependsOn verifyPlugin
+check.dependsOn runPluginVerifier
