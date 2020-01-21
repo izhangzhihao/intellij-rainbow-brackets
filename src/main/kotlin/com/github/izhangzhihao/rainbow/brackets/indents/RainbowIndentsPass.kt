@@ -421,7 +421,7 @@ class RainbowIndentsPass internal constructor(
                 rainbowInfo.color
             } else {
                 val defaultBackground = editor.colorsScheme.defaultBackground
-                rainbowInfo.color.alphaBlend(defaultBackground, 0.5f)
+                rainbowInfo.color.alphaBlend(defaultBackground, 0.2f)
             }
 
             // There is a possible case that indent line intersects soft wrap-introduced text. Example:
