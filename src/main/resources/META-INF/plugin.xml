@@ -49,6 +49,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.30</p>
+        <ul>
+            <li>Rollback indent guides</li>
+        </ul>
         <p>5.29</p>
         <ul>
             <li>Compatible color schema with latest version of material-theme-jetbrains</li>

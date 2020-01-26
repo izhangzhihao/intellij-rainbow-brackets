@@ -13,9 +13,13 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.4.10"
+    id "org.jetbrains.intellij" version "0.4.15"
     id "com.adarshr.test-logger" version "1.6.0"
     id "de.undercouch.download" version "4.0.2"
+    id "de.undercouch.download" version "3.4.2"
+    id "org.jetbrains.kotlin.jvm" version "1.3.61"
+    id "jacoco"
+    id "idea"
 }
 
 apply from: "$rootDir/verifier.gradle"
@@ -30,11 +34,6 @@ repositories {
     maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
     maven { url "https://repo.eclipse.org/content/groups/releases/" }
 }
-
-apply plugin: "idea"
-apply plugin: "kotlin"
-apply plugin: "org.jetbrains.intellij"
-apply plugin: "jacoco"
 
 intellij {
     pluginName name
