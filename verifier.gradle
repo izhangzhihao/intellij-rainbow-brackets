@@ -1,0 +1,188 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "de.undercouch:gradle-download-task:4.0.2"
+    }
+}
+
+import de.undercouch.gradle.tasks.download.DownloadAction
+import org.gradle.api.internal.ConventionTask
+
+
+/**
+ * Runs the IntelliJ plugin verifier.
+ */
+class PluginVerifierRunner extends ConventionTask {
+    /**
+     * The directory name to be used by the plugin verifier.
+     */
+    private static final PLUGIN_VERIFIER_DIR = "pluginVerifier"
+    /**
+     * The file name to store the verifier JAR as.
+     */
+    private static final PLUGIN_VERIFIER_NAME = "verifier-all.jar"
+
+    /**
+     * The logger to use for logging.
+     */
+    private final logger = Logging.getLogger(PluginVerifierRunner)
+
+    /**
+     * The name of the plugin's distribution file, excluding the extension.
+     */
+    private String pluginFileName
+    /**
+     * The identifiers of the IDEs to verify against.
+     */
+    private List<String> ides = new ArrayList<String>()
+    /**
+     * The version of the plugin verifier to use.
+     */
+    private String verifierVersion = "1.222"
+
+
+    @Input
+    String getPluginFileName() {
+        return pluginFileName
+    }
+
+    void setPluginFileName(String pluginFileName) {
+        this.pluginFileName = pluginFileName
+    }
+
+    @Input
+    List<String> getIdes() {
+        return ides
+    }
+
+    void setIdes(List<String> ides) {
+        this.ides = ides
+    }
+
+    @Input
+    String getVerifierVersion() {
+        return verifierVersion
+    }
+
+    void setVerifierVersion(String verifierVersion) {
+        this.verifierVersion = verifierVersion
+    }
+
+
+    /**
+     * Runs the plugin verifier.
+     */
+    @TaskAction
+    void runTaskAction() {
+        if (!project.file("${project.buildDir}/distributions/${pluginFileName}.zip").exists())
+            throw new IllegalStateException("Plugin file $pluginFileName does not exist.")
+
+        downloadVerifier()
+        runVerifier(ides.collect { ide -> resolveIde(ide) })
+    }
+
+
+    /**
+     * Downloads the verifier JAR.
+     */
+    void downloadVerifier() {
+        def url = "" +
+                "https://dl.bintray.com/jetbrains/intellij-plugin-service/org/jetbrains/intellij/" +
+                "plugins/verifier-cli/$verifierVersion/verifier-cli-$verifierVersion-all.jar"
+
+        new DownloadAction(project)
+                .with {
+                    src(url)
+                    dest("$project.buildDir/$PLUGIN_VERIFIER_DIR/$PLUGIN_VERIFIER_NAME")
+                    overwrite(false)
+                    execute()
+                }
+    }
+
+    /**
+     * Resolves the IDE with the given identifier, ensuring that it is present in the Gradle cache, and extracts the
+     * archive in the same directory if it does not already exist.
+     *
+     * @param identifier the IDE to download, described by its identifier and version, separated by a dash
+     * @return the link to the resolved archive
+     */
+    File resolveIde(String identifier) {
+        logger.lifecycle("Resolving $identifier")
+        def dependency = project.dependencies.create(identifierToDependency(identifier))
+        def configuration = project.configurations.detachedConfiguration(dependency)
+        def archive = configuration.singleFile.absolutePath
+
+        def extractionTarget = new File(archive.substring(0, archive.length() - ".zip".length()))
+        if (!extractionTarget.exists()) {
+            logger.lifecycle("Extracting $identifier")
+            project.copy {
+                from project.zipTree(archive)
+                into extractionTarget
+            }
+        }
+        return extractionTarget
+    }
+
+    /**
+     * Runs the verifier JAR against the configured IDEs and plugin.
+     *
+     * @param ides the locations of the IDEs to give to the verifier
+     */
+    void runVerifier(List<File> ides) {
+        project.javaexec {
+            classpath = project.files("$project.buildDir/$PLUGIN_VERIFIER_DIR/$PLUGIN_VERIFIER_NAME")
+            main = "com.jetbrains.pluginverifier.PluginVerifierMain"
+            args = [
+                    "-verification-reports-dir", "build/$PLUGIN_VERIFIER_DIR/reports",
+                    "check-plugin",
+                    "${project.buildDir}/distributions/${pluginFileName}.zip",
+                    *(ides*.absolutePath)
+            ]
+        }
+    }
+
+
+    /**
+     * Translates a user-friendly identifier to a Maven-style dependency.
+     *
+     * @param identifier the user-friendly identifier
+     * @return a Maven-style dependency
+     * @throws IllegalArgumentException if the identifier was not recognized
+     */
+    static String identifierToDependency(String identifier) {
+        def (type, version) = identifier.split("-")
+
+        def dependencyGroup
+        def dependencyName
+        switch (type) {
+            case "IC":
+            case "IU":
+                dependencyGroup = "com.jetbrains.intellij.idea"
+                dependencyName = "idea$type"
+                break
+            case "CL":
+                dependencyGroup = "com.jetbrains.intellij.clion"
+                dependencyName = "clion"
+                break
+            case "PC":
+            case "PY":
+                dependencyGroup = "com.jetbrains.intellij.pycharm"
+                dependencyName = "pycharm$type"
+                break
+            case "RD":
+                dependencyGroup = "com.jetbrains.intellij.rider"
+                dependencyName = "riderRD"
+                break
+            default:
+                throw new IllegalArgumentException("Unknown IDE type `$type`.")
+        }
+
+        return "$dependencyGroup:$dependencyName:$version"
+    }
+}
+
+
+project.tasks.create("runPluginVerifier", PluginVerifierRunner)
+        .with { it.dependsOn(project.tasks.findByName("buildPlugin")) }
