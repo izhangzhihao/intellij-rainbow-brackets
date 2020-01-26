@@ -16,7 +16,6 @@ plugins {
     id "org.jetbrains.intellij" version "0.4.15"
     id "com.adarshr.test-logger" version "1.6.0"
     id "de.undercouch.download" version "4.0.2"
-    id "de.undercouch.download" version "3.4.2"
     id "org.jetbrains.kotlin.jvm" version "1.3.61"
     id "jacoco"
     id "idea"
@@ -106,7 +105,7 @@ jacocoTestReport {
 
 runPluginVerifier {
     pluginFileName = "$rootProject.name-$version"
-    ides = ["IC-2019.1", "IC-2019.2", "IC-2019.3"]
+    ides = ["IC-2020.1", "IC-2019.2", "IC-2019.3"]
 }
 
 check.dependsOn runPluginVerifier
