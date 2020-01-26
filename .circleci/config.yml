@@ -19,7 +19,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: ./gradlew buildPlugin check -PdownloadIdeaSources=false
+      - run: gradle buildPlugin check -PdownloadIdeaSources=false
 
       - save_cache:
           paths:
@@ -33,10 +33,10 @@ jobs:
         command: |
           if git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+\.[0-9]\+$";
           then
-            ./gradlew publishPlugin -PdownloadIdeaSources=false
+            gradle publishPlugin -PdownloadIdeaSources=false
           elif git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+$";
           then
-            ./gradlew publishPlugin -PdownloadIdeaSources=false
+            gradle publishPlugin -PdownloadIdeaSources=false
           else
             echo "Not a release, skipping deploy"
           fi

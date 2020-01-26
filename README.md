@@ -47,7 +47,7 @@ Rainbow Brackets + Material Theme UI(Oceanic theme) + Nyan Progress Bar + [Fira 
 
 ## Sponsored By
 
-The Intellij Rainbow Brackets plugin is sponsored by [CodeStream](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner).
+This plugin is being sponsored by [CodeStream](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner).
 
 [![https://codestream.com](https://alt-images.codestream.com/codestream_logo_jbrainbowbrackets.png)](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
 
@@ -118,7 +118,7 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ## Config file path
 
-If you want to customize advanced configuration, you could edit the config file then restart your IDE. 
+If you want to customize the advanced configuration, you could edit the config file then restart your IDE. 
 Config file path in `APP_CONFIG/rainbow_brackets.xml`. 
 
 In MAC OS env maybe like `/Users/izhangzhihao/Library/Preferences/IntelliJIdea2018.3/options/rainbow_brackets.xml`.
