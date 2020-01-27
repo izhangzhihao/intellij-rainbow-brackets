@@ -3,7 +3,7 @@ buildscript {
         mavenLocal()
         gradlePluginPortal()
         maven { url "https://maven-central.storage-download.googleapis.com/repos/central/data/" }
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
     }
 
     dependencies {
@@ -30,7 +30,7 @@ testlogger {
 repositories {
     mavenLocal()
     maven { url "https://maven-central.storage-download.googleapis.com/repos/central/data/" }
-    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
     maven { url "https://repo.eclipse.org/content/groups/releases/" }
 }
 
@@ -62,16 +62,14 @@ idea {
 }
 
 dependencies {
-    compile("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.5.0.201909110433-r") {
+    implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.5.0.201909110433-r") {
         exclude module: "gson"
     }
-    testCompile("io.kotlintest:kotlintest:2.0.7")
+    testImplementation("io.kotlintest:kotlintest:2.0.7")
 }
 
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
-
-jar.archiveName = "intellij-rainbow-brackets.jar"
 
 [compileKotlin, compileTestKotlin]*.kotlinOptions {
     languageVersion = kotlinLanguageVersion
