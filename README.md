@@ -175,7 +175,7 @@ If you want to disable rainbow brackets for javascript languages and java langua
 </application>
 ```
 
-NOTE: The languages name should be **lowercase**, and do **NOT** use shorthand.
+NOTE: You can use **name** of language or **extension** of file name(The names should be **lowercase**).
 
 ## Contribute
 

@@ -3,6 +3,7 @@ package com.github.izhangzhihao.rainbow.brackets.visitor
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getHighlightInfo
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
+import com.github.izhangzhihao.rainbow.brackets.util.memoizedFileExtension
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder
 import com.intellij.psi.PsiElement
@@ -16,7 +17,8 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 
     override fun suitableForFile(file: PsiFile): Boolean {
         return RainbowSettings.instance.isRainbowEnabled &&
-                RainbowSettings.instance.getLanguageBlacklist.contains(file.fileType.name.toLowerCase()).not()
+                !RainbowSettings.instance.getLanguageBlacklist.contains(file.fileType.name) &&
+                !RainbowSettings.instance.getLanguageBlacklist.contains(memoizedFileExtension(file.name))
     }
 
     @Suppress("OverridingDeprecatedMember")
