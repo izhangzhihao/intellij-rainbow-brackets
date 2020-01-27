@@ -95,7 +95,8 @@ jacocoTestReport {
         classDirectories.setFrom(
                 files(classDirectories.files.collect {
                     fileTree(dir: it, exclude: [
-                            '**/settings/**'
+                            '**/settings/**',
+                            'AnonymousFeedback.kt',
                     ])
                 })
         )
@@ -103,9 +104,9 @@ jacocoTestReport {
 }
 
 
-runPluginVerifier {
+pluginVerifier {
     pluginFileName = "$rootProject.name-$version"
     ides = ["IC-2019.1", "IC-2019.2", "IC-2019.3"]
 }
 
-check.dependsOn runPluginVerifier
+check.dependsOn pluginVerifier

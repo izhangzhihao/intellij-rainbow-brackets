@@ -23,16 +23,8 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
                 fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(file.fileType.name)
     }
 
-    private fun fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(fileType: String): Boolean {
-        if (fileType != "Haskell") {
-            return true
-        }
-        if (!RainbowComponent.isIntelliJHaskellEnabled && !RainbowComponent.isHaskForceEnabled) {
-            return true
-        } else {
-            return !RainbowComponent.isIntelliJHaskellEnabled
-        }
-    }
+    private fun fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(fileType: String) =
+            fileType != "Haskell" || !RainbowComponent.isIntelliJHaskellEnabled
 
     @Suppress("OverridingDeprecatedMember")
     final override fun order(): Int = 1

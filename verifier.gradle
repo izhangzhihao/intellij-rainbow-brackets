@@ -184,5 +184,5 @@ class PluginVerifierRunner extends ConventionTask {
 }
 
 
-project.tasks.create("runPluginVerifier", PluginVerifierRunner)
+project.tasks.create("pluginVerifier", PluginVerifierRunner)
         .with { it.dependsOn(project.tasks.findByName("buildPlugin")) }
