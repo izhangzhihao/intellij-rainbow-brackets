@@ -442,7 +442,7 @@
         <additionalTextAttributes scheme="Solarized Light" file="colorSchemes/rainbow-color-default.xml"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowUpdateActivity"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.CustomRainbowActivity"/>
-        <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.GitHubErrorReporter"/>
+        <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.util.GitHubErrorReporter"/>
     </extensions>
 
     <application-components>

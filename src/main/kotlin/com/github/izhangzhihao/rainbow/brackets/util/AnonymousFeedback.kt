@@ -18,7 +18,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.github.izhangzhihao.rainbow.brackets
+package com.github.izhangzhihao.rainbow.brackets.util
 
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.CommonBundle
