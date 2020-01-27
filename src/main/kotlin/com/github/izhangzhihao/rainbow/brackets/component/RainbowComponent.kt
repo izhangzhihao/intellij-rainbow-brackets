@@ -47,5 +47,15 @@ class RainbowComponent : BaseComponent, EditorColorsListener {
         private fun getPlugin(): IdeaPluginDescriptor? = PluginManager.getPlugin(
                 PluginId.getId("izhangzhihao.rainbow.brackets"))
 
+
+        val isIntelliJHaskellEnabled: Boolean by lazy {
+            PluginManager.getPlugin(
+                    PluginId.getId("intellij.haskell"))?.isEnabled ?: false
+        }
+
+        val isHaskForceEnabled: Boolean by lazy {
+            PluginManager.getPlugin(
+                    PluginId.getId("com.haskforce"))?.isEnabled ?: false
+        }
     }
 }

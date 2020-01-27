@@ -2,6 +2,7 @@ package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getHighlightInfo
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
+import com.github.izhangzhihao.rainbow.brackets.component.RainbowComponent
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.memoizedFileExtension
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
@@ -18,7 +19,19 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     override fun suitableForFile(file: PsiFile): Boolean {
         return RainbowSettings.instance.isRainbowEnabled &&
                 !RainbowSettings.instance.getLanguageBlacklist.contains(file.fileType.name) &&
-                !RainbowSettings.instance.getLanguageBlacklist.contains(memoizedFileExtension(file.name))
+                !RainbowSettings.instance.getLanguageBlacklist.contains(memoizedFileExtension(file.name)) &&
+                fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(file.fileType.name)
+    }
+
+    private fun fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(fileType: String): Boolean {
+        if (fileType != "Haskell") {
+            return true
+        }
+        if (!RainbowComponent.isIntelliJHaskellEnabled && !RainbowComponent.isHaskForceEnabled) {
+            return true
+        } else {
+            return !RainbowComponent.isIntelliJHaskellEnabled
+        }
     }
 
     @Suppress("OverridingDeprecatedMember")
