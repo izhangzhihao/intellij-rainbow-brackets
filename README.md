@@ -121,11 +121,13 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 If you want to customize the advanced configuration, you could edit the config file then restart your IDE. 
 Config file path in `APP_CONFIG/rainbow_brackets.xml`. 
 
-In MAC OS env maybe like `/Users/izhangzhihao/Library/Preferences/IntelliJIdea2018.3/options/rainbow_brackets.xml`.
+In MAC OS env maybe like `~/Library/Preferences/IntelliJIdea2020.1/options/rainbow_brackets.xml`.
+
+If you are using the ToolBox, then it will be like `~/Library/ApplicationSupport/JetBrains/IntelliJIdea2020.1/options/rainbow_brackets.xml`
 
 In Linux env maybe like `~/.IntelliJIdea/config/options/rainbow_brackets.xml`.
 
-In Windows env maybe like `C:\Users\izhangzhihao\.IntelliJIdea2018.3\config\options\rainbow_brackets.xml`.
+In Windows env maybe like `C:\Users\izhangzhihao\.IntelliJIdea2020.1\config\options\rainbow_brackets.xml`.
 
 ## HTML code in js
 
