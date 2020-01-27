@@ -1,6 +1,9 @@
 package com.github.izhangzhihao.rainbow.brackets.annotator
 
-import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.NAME_ANGLE_BRACKETS
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.NAME_ROUND_BRACKETS
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.NAME_SQUARE_BRACKETS
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.NAME_SQUIGGLY_BRACKETS
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getTextAttributes
 import com.github.izhangzhihao.rainbow.brackets.annotator.RainbowUtils.annotateUtil
 import com.github.izhangzhihao.rainbow.brackets.annotator.RainbowUtils.settings
@@ -15,10 +18,17 @@ import com.intellij.psi.impl.source.tree.LeafPsiElement
 class RainbowAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if (settings.isRainbowEnabled && element is LeafPsiElement) {
-            if (settings.isEnableRainbowRoundBrackets) annotateUtil(element, holder, "(", ")", RainbowHighlighter.NAME_ROUND_BRACKETS)
-            if (settings.isEnableRainbowSquareBrackets) annotateUtil(element, holder, "[", "]", RainbowHighlighter.NAME_SQUARE_BRACKETS)
-            if (settings.isEnableRainbowSquigglyBrackets) annotateUtil(element, holder, "{", "}", RainbowHighlighter.NAME_SQUIGGLY_BRACKETS)
-            if (settings.isEnableRainbowAngleBrackets) annotateUtil(element, holder, "<", ">", RainbowHighlighter.NAME_ANGLE_BRACKETS)
+            if (!settings.applyColorsOfRoundForAllBrackets) {
+                if (settings.isEnableRainbowRoundBrackets) annotateUtil(element, holder, "(", ")", NAME_ROUND_BRACKETS)
+                if (settings.isEnableRainbowSquareBrackets) annotateUtil(element, holder, "[", "]", NAME_SQUARE_BRACKETS)
+                if (settings.isEnableRainbowSquigglyBrackets) annotateUtil(element, holder, "{", "}", NAME_SQUIGGLY_BRACKETS)
+                if (settings.isEnableRainbowAngleBrackets) annotateUtil(element, holder, "<", ">", NAME_ANGLE_BRACKETS)
+            } else {
+                if (settings.isEnableRainbowRoundBrackets) annotateUtil(element, holder, "(", ")", NAME_ROUND_BRACKETS)
+                if (settings.isEnableRainbowSquareBrackets) annotateUtil(element, holder, "[", "]", NAME_ROUND_BRACKETS)
+                if (settings.isEnableRainbowSquigglyBrackets) annotateUtil(element, holder, "{", "}", NAME_ROUND_BRACKETS)
+                if (settings.isEnableRainbowAngleBrackets) annotateUtil(element, holder, "<", ">", NAME_ROUND_BRACKETS)
+            }
         }
     }
 }

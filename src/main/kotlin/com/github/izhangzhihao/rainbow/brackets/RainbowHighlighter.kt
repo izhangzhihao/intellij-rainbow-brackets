@@ -118,6 +118,7 @@ object RainbowHighlighter {
 
         val scheme = colorsScheme ?: EditorColorsManager.getInstance().globalScheme
         val rainbowName = when {
+            settings.applyColorsOfRoundForAllBrackets -> NAME_ROUND_BRACKETS
             element.isRoundBracket -> if (settings.isEnableRainbowRoundBrackets) NAME_ROUND_BRACKETS else null
             element.isSquareBracket -> if (settings.isEnableRainbowSquareBrackets) NAME_SQUARE_BRACKETS else null
             element.isSquigglyBracket -> if (settings.isEnableRainbowSquigglyBrackets) NAME_SQUIGGLY_BRACKETS else null

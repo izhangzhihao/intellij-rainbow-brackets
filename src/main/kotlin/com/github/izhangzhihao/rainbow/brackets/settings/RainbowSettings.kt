@@ -28,15 +28,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var isOverrideMatchedBraceAttributes = true
     var isCustomNotifyShowed = false
     var pressAnyKeyToRemoveTheHighlightingEffects = false
-
-    var lightRoundBracketsColors: Array<String>? = null
-    var darkRoundBracketsColors: Array<String>? = null
-    var lightSquareBracketsColors: Array<String>? = null
-    var darkSquareBracketsColors: Array<String>? = null
-    var lightSquigglyBracketsColors: Array<String>? = null
-    var darkSquigglyBracketsColors: Array<String>? = null
-    var lightAngleBracketsColor: Array<String>? = null
-    var darkAngleBracketsColor: Array<String>? = null
+    var applyColorsOfRoundForAllBrackets = false
 
     @Suppress("MemberVisibilityCanBePrivate")
     var languageBlacklist: Array<String> = arrayOf()

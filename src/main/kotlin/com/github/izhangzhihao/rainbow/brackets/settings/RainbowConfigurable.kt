@@ -32,6 +32,8 @@ class RainbowConfigurable : Configurable {
         settings.isDoNOTRainbowifyTheFirstLevel = settingsForm?.isDoNOTRainbowifyTheFirstLevel() ?: false
         settings.pressAnyKeyToRemoveTheHighlightingEffects = settingsForm?.pressAnyKeyToRemoveTheHighlightingEffects()
                 ?: false
+        settings.applyColorsOfRoundForAllBrackets = settingsForm?.applyColorsOfRoundForAllBrackets()
+                ?: false
     }
 
     override fun reset() {

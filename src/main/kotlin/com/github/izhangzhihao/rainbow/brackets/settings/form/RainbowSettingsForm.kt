@@ -17,6 +17,7 @@ class RainbowSettingsForm {
     private var doNOTRainbowifyBracketsWithoutContent: JCheckBox? = null
     private var isDoNOTRainbowifyTheFirstLevel: JCheckBox? = null
     private var pressAnyKeyToRemoveTheHighlightingEffects: JCheckBox? = null
+    private var applyColorsOfRoundForAllBrackets: JCheckBox? = null
 
     private val settings: RainbowSettings = RainbowSettings.instance
 
@@ -40,6 +41,9 @@ class RainbowSettingsForm {
 
     fun pressAnyKeyToRemoveTheHighlightingEffects() = pressAnyKeyToRemoveTheHighlightingEffects?.isSelected
 
+    fun applyColorsOfRoundForAllBrackets() = applyColorsOfRoundForAllBrackets?.isSelected
+
+
     val isModified: Boolean
         get() = (isRainbowEnabled() != settings.isRainbowEnabled
                 || isRainbowAngleBracketsEnabled() != settings.isEnableRainbowAngleBrackets
@@ -50,6 +54,7 @@ class RainbowSettingsForm {
                 || isDoNOTRainbowifyBracketsWithoutContent() != settings.isDoNOTRainbowifyBracketsWithoutContent
                 || isDoNOTRainbowifyTheFirstLevel() != settings.isDoNOTRainbowifyTheFirstLevel
                 || pressAnyKeyToRemoveTheHighlightingEffects() != settings.pressAnyKeyToRemoveTheHighlightingEffects
+                || applyColorsOfRoundForAllBrackets() != settings.applyColorsOfRoundForAllBrackets
                 )
 
     init {
@@ -66,5 +71,6 @@ class RainbowSettingsForm {
         doNOTRainbowifyBracketsWithoutContent?.isSelected = settings.isDoNOTRainbowifyBracketsWithoutContent
         isDoNOTRainbowifyTheFirstLevel?.isSelected = settings.isDoNOTRainbowifyTheFirstLevel
         pressAnyKeyToRemoveTheHighlightingEffects?.isSelected = settings.pressAnyKeyToRemoveTheHighlightingEffects
+        applyColorsOfRoundForAllBrackets?.isSelected = settings.applyColorsOfRoundForAllBrackets
     }
 }
