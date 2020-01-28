@@ -118,6 +118,16 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ![Customize colors](./screenshots/customize-colors.png)
 
+### Want to config the number of colors?
+
+<kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > `Number of colors`: 10 or more
+
+NOTE: There are 10 default colors for both light and dark theme, if your number is bigger than 10, you can config them in the config file.
+Please fellow [the official guide](https://www.jetbrains.com/help/idea/configuring-colors-and-fonts.html#share-color-scheme): 
+* `Export a color scheme as XML`
+* Edit the xml file, put `ROUND_BRACKETS_RAINBOW_COLOR10` to `ROUND_BRACKETS_RAINBOW_COLOR100` to match your number just like [the default color scheme](./src/main/resources/colorSchemes/rainbow-color-default-darcula.xml).
+* `Import a color scheme`
+
 ## Config file path
 
 If you want to customize the advanced configuration, you could edit the config file then restart your IDE. 
