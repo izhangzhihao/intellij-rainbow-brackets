@@ -108,7 +108,7 @@ NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)"
 
 ## Install
 
-For Windows - <kbd>File</kbd> > <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd> > <kbd>Restart IntelliJ IDEA</kbd>
+For Windows & Linux - <kbd>File</kbd> > <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd> > <kbd>Restart IntelliJ IDEA</kbd>
 
 For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd>  > <kbd>Restart IntelliJ IDEA</kbd>
 
@@ -169,7 +169,7 @@ event.throwable?.let { throwable ->
 }
 ```
 
-This plugin will automatically override color scheme property "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color been covered by kotlin plugin built-in functionality.
+This plugin will automatically override color scheme property "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color is being covered by kotlin plugin built-in functionality.
 You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow" value="false" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
 
 ## Disable rainbow brackets for specific languages
@@ -244,6 +244,12 @@ Support this project by becoming a sponsor! 🌈 Your logo will show up here wit
 <a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/7/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/7/avatar.svg"></a>
 <a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/8/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/8/avatar.svg"></a>
 <a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/9/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/10/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/10/avatar.svg"></a>
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/11/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/11/avatar.svg"></a>
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/12/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/12/avatar.svg"></a>
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/13/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/13/avatar.svg"></a>
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/14/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/14/avatar.svg"></a>
+<a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/15/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/15/avatar.svg"></a>
 
 ## Acknowledgements
 
