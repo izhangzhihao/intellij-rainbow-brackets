@@ -29,6 +29,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var isCustomNotifyShowed = false
     var pressAnyKeyToRemoveTheHighlightingEffects = false
     var applyColorsOfRoundForAllBrackets = false
+    var numberOfColors = 5
 
     @Suppress("MemberVisibilityCanBePrivate")
     var languageBlacklist: Array<String> = arrayOf()

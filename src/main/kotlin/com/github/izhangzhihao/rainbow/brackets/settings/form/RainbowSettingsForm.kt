@@ -4,6 +4,7 @@ import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import javax.swing.JCheckBox
 import javax.swing.JComponent
 import javax.swing.JPanel
+import javax.swing.JTextField
 
 class RainbowSettingsForm {
     private var panel: JPanel? = null
@@ -18,6 +19,8 @@ class RainbowSettingsForm {
     private var isDoNOTRainbowifyTheFirstLevel: JCheckBox? = null
     private var pressAnyKeyToRemoveTheHighlightingEffects: JCheckBox? = null
     private var applyColorsOfRoundForAllBrackets: JCheckBox? = null
+
+    private var numberOfColors: JTextField? = null
 
     private val settings: RainbowSettings = RainbowSettings.instance
 
@@ -43,6 +46,8 @@ class RainbowSettingsForm {
 
     fun applyColorsOfRoundForAllBrackets() = applyColorsOfRoundForAllBrackets?.isSelected
 
+    fun numberOfColors() = numberOfColors?.text?.toIntOrNull()
+
 
     val isModified: Boolean
         get() = (isRainbowEnabled() != settings.isRainbowEnabled
@@ -55,6 +60,7 @@ class RainbowSettingsForm {
                 || isDoNOTRainbowifyTheFirstLevel() != settings.isDoNOTRainbowifyTheFirstLevel
                 || pressAnyKeyToRemoveTheHighlightingEffects() != settings.pressAnyKeyToRemoveTheHighlightingEffects
                 || applyColorsOfRoundForAllBrackets() != settings.applyColorsOfRoundForAllBrackets
+                || numberOfColors() != settings.numberOfColors
                 )
 
     init {
@@ -72,5 +78,6 @@ class RainbowSettingsForm {
         isDoNOTRainbowifyTheFirstLevel?.isSelected = settings.isDoNOTRainbowifyTheFirstLevel
         pressAnyKeyToRemoveTheHighlightingEffects?.isSelected = settings.pressAnyKeyToRemoveTheHighlightingEffects
         applyColorsOfRoundForAllBrackets?.isSelected = settings.applyColorsOfRoundForAllBrackets
+        numberOfColors?.text = settings.numberOfColors.toString()
     }
 }

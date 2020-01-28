@@ -36,16 +36,16 @@ object RainbowHighlighter {
     private val squigglyBrackets: CharArray = charArrayOf('{', '}')
     private val angleBrackets: CharArray = charArrayOf('<', '>')
 
-    private val roundBracketsRainbowColorKeys: List<TextAttributesKey> =
-            createRainbowAttributesKeys(KEY_ROUND_BRACKETS, 5)
-    private val squareBracketsRainbowColorKeys: List<TextAttributesKey> =
-            createRainbowAttributesKeys(KEY_SQUARE_BRACKETS, 5)
-    private val squigglyBracketsRainbowColorKeys: List<TextAttributesKey> =
-            createRainbowAttributesKeys(KEY_SQUIGGLY_BRACKETS, 5)
-    private val angleBracketsRainbowColorKeys: List<TextAttributesKey> =
-            createRainbowAttributesKeys(KEY_ANGLE_BRACKETS, 5)
-
     private val settings = RainbowSettings.instance
+
+    private val roundBracketsRainbowColorKeys: List<TextAttributesKey> =
+            createRainbowAttributesKeys(KEY_ROUND_BRACKETS, settings.numberOfColors)
+    private val squareBracketsRainbowColorKeys: List<TextAttributesKey> =
+            createRainbowAttributesKeys(KEY_SQUARE_BRACKETS, settings.numberOfColors)
+    private val squigglyBracketsRainbowColorKeys: List<TextAttributesKey> =
+            createRainbowAttributesKeys(KEY_SQUIGGLY_BRACKETS, settings.numberOfColors)
+    private val angleBracketsRainbowColorKeys: List<TextAttributesKey> =
+            createRainbowAttributesKeys(KEY_ANGLE_BRACKETS, settings.numberOfColors)
 
     private val rainbowElement: HighlightInfoType = HighlightInfoType
             .HighlightInfoTypeImpl(HighlightSeverity.INFORMATION, DefaultLanguageHighlighterColors.CONSTANT)

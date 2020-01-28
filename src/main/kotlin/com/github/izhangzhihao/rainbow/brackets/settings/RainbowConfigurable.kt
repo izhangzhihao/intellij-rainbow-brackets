@@ -34,6 +34,7 @@ class RainbowConfigurable : Configurable {
                 ?: false
         settings.applyColorsOfRoundForAllBrackets = settingsForm?.applyColorsOfRoundForAllBrackets()
                 ?: false
+        settings.numberOfColors = settingsForm?.numberOfColors() ?: 5
     }
 
     override fun reset() {

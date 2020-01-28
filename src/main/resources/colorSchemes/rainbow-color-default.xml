@@ -25,6 +25,32 @@
             <option name="FOREGROUND" value="64463B"/>
         </value>
     </option>
+    <option name="ROUND_BRACKETS_RAINBOW_COLOR5">
+        <value>
+            <option name="FOREGROUND" value="006636"/>
+        </value>
+    </option>
+    <option name="ROUND_BRACKETS_RAINBOW_COLOR6">
+        <value>
+            <option name="FOREGROUND" value="665A00"/>
+        </value>
+    </option>
+    <option name="ROUND_BRACKETS_RAINBOW_COLOR7">
+        <value>
+            <option name="FOREGROUND" value="456600"/>
+        </value>
+    </option>
+    <option name="ROUND_BRACKETS_RAINBOW_COLOR8">
+        <value>
+            <option name="FOREGROUND" value="170066"/>
+        </value>
+    </option>
+    <option name="ROUND_BRACKETS_RAINBOW_COLOR9">
+        <value>
+            <option name="FOREGROUND" value="662800"/>
+        </value>
+    </option>
+
 
     <option name="SQUARE_BRACKETS_RAINBOW_COLOR0">
         <value>
@@ -51,6 +77,32 @@
             <option name="FOREGROUND" value="64463B"/>
         </value>
     </option>
+    <option name="SQUARE_BRACKETS_RAINBOW_COLOR5">
+        <value>
+            <option name="FOREGROUND" value="006636"/>
+        </value>
+    </option>
+    <option name="SQUARE_BRACKETS_RAINBOW_COLOR6">
+        <value>
+            <option name="FOREGROUND" value="665A00"/>
+        </value>
+    </option>
+    <option name="SQUARE_BRACKETS_RAINBOW_COLOR7">
+        <value>
+            <option name="FOREGROUND" value="456600"/>
+        </value>
+    </option>
+    <option name="SQUARE_BRACKETS_RAINBOW_COLOR8">
+        <value>
+            <option name="FOREGROUND" value="170066"/>
+        </value>
+    </option>
+    <option name="SQUARE_BRACKETS_RAINBOW_COLOR9">
+        <value>
+            <option name="FOREGROUND" value="662800"/>
+        </value>
+    </option>
+
 
     <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR0">
         <value>
@@ -77,6 +129,32 @@
             <option name="FOREGROUND" value="64463B"/>
         </value>
     </option>
+    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR5">
+        <value>
+            <option name="FOREGROUND" value="006636"/>
+        </value>
+    </option>
+    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR6">
+        <value>
+            <option name="FOREGROUND" value="665A00"/>
+        </value>
+    </option>
+    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR7">
+        <value>
+            <option name="FOREGROUND" value="456600"/>
+        </value>
+    </option>
+    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR8">
+        <value>
+            <option name="FOREGROUND" value="170066"/>
+        </value>
+    </option>
+    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR9">
+        <value>
+            <option name="FOREGROUND" value="662800"/>
+        </value>
+    </option>
+
 
     <option name="ANGLE_BRACKETS_RAINBOW_COLOR0">
         <value>
@@ -101,6 +179,31 @@
     <option name="ANGLE_BRACKETS_RAINBOW_COLOR4">
         <value>
             <option name="FOREGROUND" value="64463B"/>
+        </value>
+    </option>
+    <option name="ANGLE_BRACKETS_RAINBOW_COLOR5">
+        <value>
+            <option name="FOREGROUND" value="006636"/>
+        </value>
+    </option>
+    <option name="ANGLE_BRACKETS_RAINBOW_COLOR6">
+        <value>
+            <option name="FOREGROUND" value="665A00"/>
+        </value>
+    </option>
+    <option name="ANGLE_BRACKETS_RAINBOW_COLOR7">
+        <value>
+            <option name="FOREGROUND" value="456600"/>
+        </value>
+    </option>
+    <option name="ANGLE_BRACKETS_RAINBOW_COLOR8">
+        <value>
+            <option name="FOREGROUND" value="170066"/>
+        </value>
+    </option>
+    <option name="ANGLE_BRACKETS_RAINBOW_COLOR9">
+        <value>
+            <option name="FOREGROUND" value="662800"/>
         </value>
     </option>
 </list>
