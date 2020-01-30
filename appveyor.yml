@@ -5,7 +5,7 @@ environment:
   JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
 
 build_script:
-  - cmd: gradlew buildPlugin check -PdownloadIdeaSources=false
+  - cmd: gradlew buildPlugin -PdownloadIdeaSources=false
   - cmd: gradlew --stop # should fix `Error calculating CRC32 for C:\Users\appveyor\.gradle\caches\6.1.1\executionHistory\executionHistory.lock: The process cannot access the file because it is being used by another process`
 
 cache:

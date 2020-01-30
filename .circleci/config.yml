@@ -26,7 +26,7 @@ jobs:
       - run: bash <(curl -s https://codecov.io/bash)
 
       - type: shell
-        name: deploy
+        name: Release
         command: |
           if git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+\.[0-9]\+$";
           then
@@ -35,7 +35,7 @@ jobs:
           then
             gradle publishPlugin -PdownloadIdeaSources=false
           else
-            echo "Not a release, skipping deploy"
+            echo "Not a release, skipping"
           fi
 
       - save_cache:
