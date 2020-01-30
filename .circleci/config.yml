@@ -19,12 +19,9 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: gradle buildPlugin check -PdownloadIdeaSources=false
+      - run: gradle buildPlugin -PdownloadIdeaSources=false
 
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+      - run: gradle check -PdownloadIdeaSources=false
 
       - run: bash <(curl -s https://codecov.io/bash)
 
@@ -40,3 +37,11 @@ jobs:
           else
             echo "Not a release, skipping deploy"
           fi
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+
+      - store_artifacts:
+          path: ~/intellij-rainbow-brackets/build/distributions/
