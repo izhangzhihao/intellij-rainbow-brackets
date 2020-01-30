@@ -7,6 +7,3 @@ environment:
 build_script:
   - cmd: gradlew buildPlugin -PdownloadIdeaSources=false
   - cmd: gradlew --stop # should fix `Error calculating CRC32 for C:\Users\appveyor\.gradle\caches\6.1.1\executionHistory\executionHistory.lock: The process cannot access the file because it is being used by another process`
-
-cache:
-  - C:\Users\appveyor\.gradle

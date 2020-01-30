@@ -49,6 +49,14 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.31</p>
+        <ul>
+            <li>#187 Feature: Ability to increase the number of colours in the IDE</li>
+            <li>#247 Feature: Add a button to apply the color code to all kind of brackets</li>
+            <li>#374 Feature: Add support for IntelliJ-Haskell</li>
+            <li>Fix #54: Disable rainbow for mxml files</li>
+            <li>Fix typo</li>
+        </ul>
         <p>5.30</p>
         <ul>
             <li>Rollback indent guides</li>
