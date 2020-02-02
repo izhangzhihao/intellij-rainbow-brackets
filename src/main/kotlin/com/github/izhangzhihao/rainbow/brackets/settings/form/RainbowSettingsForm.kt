@@ -19,6 +19,7 @@ class RainbowSettingsForm {
     private var isDoNOTRainbowifyTheFirstLevel: JCheckBox? = null
     private var pressAnyKeyToRemoveTheHighlightingEffects: JCheckBox? = null
     private var applyColorsOfRoundForAllBrackets: JCheckBox? = null
+    private var cycleCountOnAllBrackets: JCheckBox? = null
 
     private var numberOfColors: JTextField? = null
 
@@ -46,6 +47,8 @@ class RainbowSettingsForm {
 
     fun applyColorsOfRoundForAllBrackets() = applyColorsOfRoundForAllBrackets?.isSelected
 
+    fun cycleCountOnAllBrackets() = cycleCountOnAllBrackets?.isSelected
+
     fun numberOfColors() = numberOfColors?.text?.toIntOrNull()
 
 
@@ -60,6 +63,7 @@ class RainbowSettingsForm {
                 || isDoNOTRainbowifyTheFirstLevel() != settings.isDoNOTRainbowifyTheFirstLevel
                 || pressAnyKeyToRemoveTheHighlightingEffects() != settings.pressAnyKeyToRemoveTheHighlightingEffects
                 || applyColorsOfRoundForAllBrackets() != settings.applyColorsOfRoundForAllBrackets
+                || cycleCountOnAllBrackets() != settings.cycleCountOnAllBrackets
                 || numberOfColors() != settings.numberOfColors
                 )
 
@@ -78,6 +82,7 @@ class RainbowSettingsForm {
         isDoNOTRainbowifyTheFirstLevel?.isSelected = settings.isDoNOTRainbowifyTheFirstLevel
         pressAnyKeyToRemoveTheHighlightingEffects?.isSelected = settings.pressAnyKeyToRemoveTheHighlightingEffects
         applyColorsOfRoundForAllBrackets?.isSelected = settings.applyColorsOfRoundForAllBrackets
+        cycleCountOnAllBrackets?.isSelected = settings.cycleCountOnAllBrackets
         numberOfColors?.text = settings.numberOfColors.toString()
     }
 }

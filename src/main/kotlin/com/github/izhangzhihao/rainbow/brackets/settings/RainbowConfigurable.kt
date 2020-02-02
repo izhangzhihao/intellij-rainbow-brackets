@@ -34,6 +34,8 @@ class RainbowConfigurable : Configurable {
                 ?: false
         settings.applyColorsOfRoundForAllBrackets = settingsForm?.applyColorsOfRoundForAllBrackets()
                 ?: false
+        settings.cycleCountOnAllBrackets = settingsForm?.cycleCountOnAllBrackets()
+                ?: false
         settings.numberOfColors = settingsForm?.numberOfColors() ?: 5
     }
 

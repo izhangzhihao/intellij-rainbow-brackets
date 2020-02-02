@@ -1,8 +1,10 @@
 package com.github.izhangzhihao.rainbow.brackets
 
 import com.github.izhangzhihao.rainbow.brackets.provider.PairedBraceProvider
+import com.github.izhangzhihao.rainbow.brackets.util.memoize
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.lang.*
+import com.intellij.psi.tree.IElementType
 
 object BracePairs {
 
@@ -53,8 +55,15 @@ object BracePairs {
                     }
                     .toMap()
 
-    fun getBracePairs(language: Language) = bracePairs[language]
+    fun getBracePairs(language: Language): MutableMap<String, MutableList<BracePair>>? = bracePairs[language]
+
+    private fun getBraceTypeSetOf(language: Language): Set<IElementType>? = getBracePairs(language)?.values?.flatten()?.map { it -> listOf(it.leftBraceType, it.rightBraceType) }?.flatten()?.toSet()
+
+    val braceTypeSet: (Language) -> Set<IElementType>? = { language: Language -> getBraceTypeSetOf(language) }.memoize()
 }
 
 inline val Language.bracePairs: MutableMap<String, MutableList<BracePair>>?
     get() = BracePairs.getBracePairs(this)
+
+inline val Language.braceTypeSet: Set<IElementType>?
+    get() = BracePairs.braceTypeSet(this)
