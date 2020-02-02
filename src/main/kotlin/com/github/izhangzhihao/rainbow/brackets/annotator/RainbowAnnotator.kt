@@ -36,6 +36,9 @@ class RainbowAnnotator : Annotator {
 
 object RainbowUtils {
 
+    private val leftBracketsSet = setOf("(", "[", "{", "<")
+    private val rightBracketsSet = setOf(")", "]", "}", ">")
+
     val settings = RainbowSettings.instance
 
     fun annotateUtil(element: LeafPsiElement, holder: AnnotationHolder,
@@ -47,9 +50,17 @@ object RainbowUtils {
                 tailrec fun iterateChildren(currentChild: PsiElement) {
                     if (currentChild is LeafPsiElement) {
                         //Using `currentChild.elementType.toString()` if we didn't want add more dependencies.
-                        when (currentChild.text) {
-                            LEFT -> level++
-                            RIGHT -> level--
+                        if (!settings.cycleCountOnAllBrackets) {
+                            when (currentChild.text) {
+                                LEFT -> level++
+                                RIGHT -> level--
+                            }
+                        } else {
+                            if (leftBracketsSet.contains(currentChild.text)) {
+                                level++
+                            } else if (rightBracketsSet.contains(currentChild.text)) {
+                                level--
+                            }
                         }
                     }
                     if ((currentChild != currentNode) && (currentChild != currentNode.parent.lastChild)) {
