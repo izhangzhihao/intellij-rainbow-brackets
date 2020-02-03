@@ -56,11 +56,11 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
             var nextCount = count
             if (!RainbowSettings.instance.cycleCountOnAllBrackets) {
-                if (element.haveSameTypeOfBrackets(pair)) {
+                if (element.haveBrackets({ left: PsiElement -> left.elementType() == pair.leftBraceType }, { right: PsiElement -> right.elementType() == pair.rightBraceType })) {
                     nextCount++
                 }
             } else {
-                if (element.haveAnyTypeOfBrackets(element.language.braceTypeSet)) {
+                if (element.haveBrackets({ left: PsiElement -> element.language.braceTypeSet.contains(left.elementType()) }, { right: PsiElement -> element.language.braceTypeSet.contains(right.elementType()) })) {
                     nextCount++
                 }
             }
@@ -68,16 +68,11 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             return iterateBracketParents(element.parent, pair, nextCount)
         }
 
-
-        private fun PsiElement.haveAnyTypeOfBrackets(braceTypeSet: Set<IElementType>?): Boolean {
-
-            if (braceTypeSet == null) {
-                return false
-            }
-
+        private fun PsiElement.haveBrackets(checkLeft: (PsiElement) -> Boolean, checkRight: (PsiElement) -> Boolean): Boolean {
             if (this is LeafPsiElement) {
                 return false
             }
+
             var findLeftBracket = false
             var findRightBracket = false
             var left: PsiElement? = firstChild
@@ -85,46 +80,12 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             while (left != right && (!findLeftBracket || !findRightBracket)) {
                 val needBreak = left == null || left.nextSibling == right
 
-                if (left is LeafPsiElement && braceTypeSet.contains(left.elementType)) {
+                if (left is LeafPsiElement && checkLeft(left)) {
                     findLeftBracket = true
                 } else {
                     left = left?.nextSibling
                 }
-                if (right is LeafPsiElement && braceTypeSet.contains(right.elementType)) {
-                    findRightBracket = true
-                } else {
-                    right = right?.prevSibling
-                }
-
-                if (needBreak) {
-                    break
-                }
-            }
-
-            return findLeftBracket && findRightBracket
-
-        }
-
-        private fun PsiElement.haveSameTypeOfBrackets(pair: BracePair): Boolean {
-            if (this is LeafPsiElement) {
-                return false
-            }
-
-            val leftBraceType = pair.leftBraceType
-            val rightBraceType = pair.rightBraceType
-            var findLeftBracket = false
-            var findRightBracket = false
-            var left: PsiElement? = firstChild
-            var right: PsiElement? = lastChild
-            while (left != right && (!findLeftBracket || !findRightBracket)) {
-                val needBreak = left == null || left.nextSibling == right
-
-                if (left is LeafPsiElement && left.elementType == leftBraceType) {
-                    findLeftBracket = true
-                } else {
-                    left = left?.nextSibling
-                }
-                if (right is LeafPsiElement && right.elementType == rightBraceType) {
+                if (right is LeafPsiElement && checkRight(right)) {
                     findRightBracket = true
                 } else {
                     right = right?.prevSibling

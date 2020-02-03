@@ -65,5 +65,5 @@ object BracePairs {
 inline val Language.bracePairs: MutableMap<String, MutableList<BracePair>>?
     get() = BracePairs.getBracePairs(this)
 
-inline val Language.braceTypeSet: Set<IElementType>?
-    get() = BracePairs.braceTypeSet(this)
+inline val Language.braceTypeSet: Set<IElementType>
+    get() = BracePairs.braceTypeSet(this) ?: emptySet()
