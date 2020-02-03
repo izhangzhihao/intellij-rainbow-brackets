@@ -56,11 +56,13 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
             var nextCount = count
             if (!RainbowSettings.instance.cycleCountOnAllBrackets) {
-                if (element.haveBrackets({ left: PsiElement -> left.elementType() == pair.leftBraceType }, { right: PsiElement -> right.elementType() == pair.rightBraceType })) {
+                if (element.haveBrackets({ left: PsiElement -> left.elementType() == pair.leftBraceType },
+                                { right: PsiElement -> right.elementType() == pair.rightBraceType })) {
                     nextCount++
                 }
             } else {
-                if (element.haveBrackets({ left: PsiElement -> element.language.braceTypeSet.contains(left.elementType()) }, { right: PsiElement -> element.language.braceTypeSet.contains(right.elementType()) })) {
+                if (element.haveBrackets({ left: PsiElement -> element.language.braceTypeSet.contains(left.elementType()) },
+                                { right: PsiElement -> element.language.braceTypeSet.contains(right.elementType()) })) {
                     nextCount++
                 }
             }
