@@ -53,9 +53,5 @@ class RainbowComponent : BaseComponent, EditorColorsListener {
                     PluginId.getId("intellij.haskell"))?.isEnabled ?: false
         }
 
-        val isHaskForceEnabled: Boolean by lazy {
-            PluginManager.getPlugin(
-                    PluginId.getId("com.haskforce"))?.isEnabled ?: false
-        }
     }
 }

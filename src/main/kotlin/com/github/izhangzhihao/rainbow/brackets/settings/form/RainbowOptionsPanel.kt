@@ -46,8 +46,6 @@ class RainbowOptionsPanel(
     private val colors: Array<ColorPanel>
 
     private lateinit var gradientLabel: JLabel
-    private lateinit var color4Panel: JPanel
-    private lateinit var color5Panel: JPanel
 
     private val properties: PropertiesComponent = PropertiesComponent.getInstance()
     private val eventDispatcher: EventDispatcher<ColorAndFontSettingsListener> =
@@ -144,8 +142,6 @@ class RainbowOptionsPanel(
         rainbow.isSelected = false
         gradientLabel.text = "Assign each brackets its own color from the spectrum below:"
 
-        showAllColorPanel()
-
         for (i in 0 until 5) {
             colors[i].isEnabled = false
             colors[i].selectedColor = null
@@ -154,20 +150,6 @@ class RainbowOptionsPanel(
     }
 
     private fun reset(rainbowName: String, descriptions: List<TextAttributesDescription>) {
-        when (rainbowName) {
-            RainbowHighlighter.NAME_ROUND_BRACKETS,
-            RainbowHighlighter.NAME_ANGLE_BRACKETS -> {
-                showAllColorPanel()
-            }
-
-            RainbowHighlighter.NAME_SQUARE_BRACKETS,
-            RainbowHighlighter.NAME_SQUIGGLY_BRACKETS -> {
-                showAllColorPanel()
-            }
-
-            else -> return
-        }
-
         val rainbowOn = RainbowHighlighter.isRainbowEnabled(rainbowName)
 
         rainbow.isEnabled = true
@@ -180,16 +162,6 @@ class RainbowOptionsPanel(
             colors[i].selectedColor = descriptions[i].rainbowColor
             eventDispatcher.multicaster.selectedOptionChanged(descriptions[i])
         }
-    }
-
-    private fun showAllColorPanel() {
-        color4Panel.isVisible = true
-        color5Panel.isVisible = true
-    }
-
-    private fun hideExcessColorPanel() {
-        color4Panel.isVisible = false
-        color5Panel.isVisible = false
     }
 
 
