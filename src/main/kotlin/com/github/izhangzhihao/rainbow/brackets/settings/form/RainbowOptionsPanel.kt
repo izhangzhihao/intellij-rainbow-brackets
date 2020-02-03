@@ -156,7 +156,7 @@ class RainbowOptionsPanel(
         rainbow.isSelected = rainbowOn
         gradientLabel.text = "Assign each ${rainbowName.toLowerCase()} its own color from the spectrum below:"
 
-        for (i in descriptions.indices) {
+        for (i in 0 until 5) {
             colors[i].isEnabled = rainbowOn
             colorLabels[i].isEnabled = rainbowOn
             colors[i].selectedColor = descriptions[i].rainbowColor
