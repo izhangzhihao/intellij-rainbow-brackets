@@ -175,7 +175,7 @@ class RainbowOptionsPanel(
             RainbowHighlighter.NAME_SQUIGGLY_BRACKETS -> {
                 RainbowHighlighter.setRainbowEnabled(rainbowName, rainbow.isSelected)
 
-                for (i in descriptions.indices) {
+                for (i in 0 until 5) {
                     colors[i].selectedColor?.let { color ->
                         descriptions[i].rainbowColor = color
                         descriptions[i].apply(scheme)
