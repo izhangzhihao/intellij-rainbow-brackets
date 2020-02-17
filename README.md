@@ -128,7 +128,7 @@ You can download the latest snapshot build from [here](https://circleci.com/gh/i
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > `Number of colors`: 10 or more
 
 NOTE: There are 10 default colors for both light and dark theme, if your number is bigger than 10, you can config them in the config file.
-Please fellow [the official guide](https://www.jetbrains.com/help/idea/configuring-colors-and-fonts.html#share-color-scheme): 
+Please follow [the official guide](https://www.jetbrains.com/help/idea/configuring-colors-and-fonts.html#share-color-scheme): 
 * `Export a color scheme as XML`
 * Edit the xml file, put `ROUND_BRACKETS_RAINBOW_COLOR10` to `ROUND_BRACKETS_RAINBOW_COLOR100` to match your number just like [the default color scheme](./src/main/resources/colorSchemes/rainbow-color-default-darcula.xml).
 * `Import a color scheme`
