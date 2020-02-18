@@ -58,8 +58,10 @@ import java.util.*
 
 private object AnonymousFeedback {
     private const val gitRepoUser = "izhangzhihao"
+
     //private const val gitRepoUser = "intellij-rainbow-brackets"
     private const val gitRepo = "intellij-rainbow-brackets"
+
     //private const val gitRepo = "bug"
     private const val issueLabel = "Auto generated"
 
@@ -125,9 +127,8 @@ private object AnonymousFeedback {
             result.append(value)
             result.append("\n")
         }
-        result.append("\n```\n")
+        result.append("- StackTrace:\n")
         result.append(stackTrace)
-        result.append("\n```\n")
         return result.toString()
     }
 }
@@ -229,10 +230,10 @@ private fun getKeyValuePairs(
             "App Build" to appInfo.build.asString(),
             "Last Action" to error.lastAction,
             "error.message" to error.javaClass.canonicalName,
-            "error.stacktrace" to error.stackTrace)
+            "error.stacktrace" to "\n```\n" + error.stackTrace + "\n```\n")
     for (attachment in error.attachments) {
-        params["attachment.name"] = attachment.path
-        params["attachment.value"] = attachment.displayText
+        params["attachment.${attachment.name}"] = attachment.path
+        params["attachment.${attachment.name}.value"] = "\n```\n" + attachment.displayText + "\n```\n"
     }
     return params
 }
