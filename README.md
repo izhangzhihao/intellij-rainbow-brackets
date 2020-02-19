@@ -55,6 +55,12 @@ This plugin is being sponsored by [CodeStream](https://sponsorlink.codestream.co
 
 Discussing code is now as easy as highlighting a block and typing a comment right from your IDE. Take the pain out of code reviews and improve code quality. [Try it free](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)!
 
+Development powered by [JetBrains](https://www.jetbrains.com/?from=IntelliJRainbowBrackets).
+
+[![https://www.jetbrains.com/?from=IntelliJRainbowBrackets](./screenshots/jetbrains.svg)](https://www.jetbrains.com/?from=IntelliJRainbowBrackets)
+
+Whichever technologies you use, there's a JetBrains tool to match.
+
 ## Screenshots
 
 * with Java
