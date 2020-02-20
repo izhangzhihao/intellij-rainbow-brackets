@@ -49,6 +49,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.33</p>
+        <ul>
+            <li>Fix ArrayIndexOutOfBoundsException</li>
+        </ul>
+        <br/>
+
         <p>5.32</p>
         <ul>
             <li>Feature #391: Support cycle color on all bracket types(new option `Cycle count on all bracket types`)</li>
