@@ -22,6 +22,8 @@ class CustomRainbowActivity : StartupActivity {
         private const val notifyContent = """
     Want to custom your own color scheme of Rainbow Brackets? Edit it under
     <a href="#">Settings > Editor > Color Scheme > Rainbow Brackets</a>
+    <br/>
+    Check out <b><a href="https://izhangzhihao.github.io/rainbow-brackets-document/">the document</a></b> for all features of this plugin.<br>
     """
 
         private fun notify(project: Project) {

@@ -1,6 +1,6 @@
 <div align="center">
     <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets">
-        <img src="./src/main/resources/META-INF/pluginIcon.svg" width="320" height="320" alt="logo"></img>
+        <img src="./src/main/resources/META-INF/pluginIcon.svg" width="320" height="320" alt="logo"/>
     </a>
 </div>
 <h1 align="center">Intellij rainbow brackets</h1>
