@@ -20,15 +20,15 @@ class CustomRainbowActivity : StartupActivity {
     companion object {
         private var channel = "izhangzhihao.rainbow.brackets"
         private const val notifyContent = """
-    Want to custom your own color scheme of Rainbow Brackets? Edit it under
+    Want to customize your own color scheme of Rainbow Brackets? Edit it under
     <a href="#">Settings > Editor > Color Scheme > Rainbow Brackets</a>
     <br/>
-    Check out <b><a href="https://izhangzhihao.github.io/rainbow-brackets-document/">the document</a></b> for all features of this plugin.<br>
+    Check out <b><a href="https://izhangzhihao.github.io/rainbow-brackets-document/">the document</a></b> for all the features of this plugin.<br>
     """
 
         private fun notify(project: Project) {
             val notification = createNotification(
-                    "Want to custom your own rainbow colors?",
+                    "Want to customize your own rainbow colors?",
                     notifyContent,
                     channel,
                     NotificationType.INFORMATION,
