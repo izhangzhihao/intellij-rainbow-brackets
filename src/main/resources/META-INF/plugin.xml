@@ -49,6 +49,13 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.34</p>
+        <ul>
+            <li>Compatible with Material Theme UI Plugin</li>
+            <li>Fix typo</li>
+        </ul>
+        <br/>
+
         <p>5.33</p>
         <ul>
             <li>Fix ArrayIndexOutOfBoundsException</li>
@@ -80,7 +87,7 @@
 
         <p>5.29</p>
         <ul>
-            <li>Compatible color schema with latest version of material-theme-jetbrains</li>
+            <li>Compatible color schema with the latest version of material-theme-jetbrains</li>
             <li>Fix some errors</li>
         </ul>
         <br/>
@@ -322,7 +329,7 @@
             <li>Check more info at <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/pull/25">here</a>
             </li>
             <li>From 5.x series we didn't need specific implementations like java/scala/kotlin specific implementations
-                in 3.x series any more!
+                in 3.x series anymore!
             </li>
             <br/>
             <li>#13 Add test for dart support & add `DartAngleBracketProvider` for support dart angle brackets</li>
@@ -380,13 +387,13 @@
 
         <p>5.0-RC0</p>
         <ul>
-            <li>This is the first RC release on 5.x series!</li>
+            <li>This is the first RC releases on 5.x series!</li>
             <li><b>Thanks for https://github.com/YiiGuxing, which helps move this plugin from `Annotator` to
                 `HighlightVisitor`!</b></li>
             <li>Check more info at https://github.com/izhangzhihao/intellij-rainbow-brackets/pull/25</li>
-            <li>This RC release has really good compatibility with previous release(3.x series).</li>
+            <li>This RC release has fantastic compatibility with previous release(3.x series).</li>
             <li>From 5.x series we didn't need specific implementations like java/scala/kotlin specific implementations
-                in 3.x series any more!
+                in 3.x series anymore!
             </li>
             <li>And with much more features not documented in release notes.</li>
         </ul>
@@ -394,7 +401,7 @@
 
         <p>3.1</p>
         <ul>
-            <li>Add specific implement for PHP language</li>
+            <li>Add a specific implementation for PHP language</li>
         </ul>
         <br/>
 
@@ -413,13 +420,13 @@
         </ul>
         <br/>
 
-        <p>3.0-RC5:</p>
+        <p>3.0-RC5</p>
         <ul>
             <li>Adjust colors for default light theme. Thanks to https://github.com/YiiGuxing</li>
         </ul>
         <br/>
 
-        <p>3.0-RC4:</p>
+        <p>3.0-RC4</p>
         <ul>
             <li>Add specific implement for java/kotlin/scala</li>
             <li>So now in java/kotlin/scala same level brackets should have same color.</li>
@@ -427,13 +434,13 @@
         </ul>
         <br/>
 
-        <p>3.0-RC2:</p>
+        <p>3.0-RC2</p>
         <ul>
             <li>Remove option for enable/disable rainbow for HTML/XML</li>
         </ul>
         <br/>
 
-        <p>3.0-RC1:</p>
+        <p>3.0-RC1</p>
         <ul>
             <li>Add new setting page to control what/how to colorify:</li>
             <li>1. Add option to Enable/disable rainbow</li>
@@ -446,55 +453,55 @@
         </ul>
         <br/>
 
-        <p>2.6:</p>
+        <p>2.6</p>
         <ul>
             <li>Add support for salesforce apex language, thanks for https://github.com/onisuly</li>
         </ul>
         <br/>
 
-        <p>2.5:</p>
+        <p>2.5</p>
         <ul>
             <li>Fix Rust support, thanks for https://github.com/fst3a</li>
         </ul>
         <br/>
 
-        <p>2.4:</p>
+        <p>2.4</p>
         <ul>
             <li>Add support for SQL</li>
         </ul>
         <br/>
 
-        <p>2.3:</p>
+        <p>2.3</p>
         <ul>
             <li>Add support for HTML/XML</li>
         </ul>
         <br/>
 
-        <p>2.2:</p>
+        <p>2.2</p>
         <ul>
             <li>Add support for C#</li>
         </ul>
         <br/>
 
-        <p>2.1:</p>
+        <p>2.1</p>
         <ul>
             <li>New identifiable colors</li>
         </ul>
         <br/>
 
-        <p>2.0:</p>
+        <p>2.0</p>
         <ul>
-            <li>Rainbowify brackets more faster !</li>
+            <li>Rainbowify brackets faster!</li>
         </ul>
         <br/>
 
-        <p>1.1:</p>
+        <p>1.1</p>
         <ul>
             <li>Support IntelliJ IDEA based IDEs version 14 and above</li>
         </ul>
         <br/>
 
-        <p>1.0:</p>
+        <p>1.0</p>
         <ul>
             <li>Initial release</li>
         </ul>
