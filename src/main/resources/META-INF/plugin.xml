@@ -538,18 +538,6 @@
 
         <additionalTextAttributes scheme="Default" file="colorSchemes/rainbow-color-default.xml"/>
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <additionalTextAttributes scheme="Arc Dark" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <additionalTextAttributes scheme="Atom One Dark" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <additionalTextAttributes scheme="Atom One Light" file="colorSchemes/rainbow-color-default.xml"/>
-        <additionalTextAttributes scheme="Github" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <additionalTextAttributes scheme="Light Owl" file="colorSchemes/rainbow-color-default.xml"/>
-        <additionalTextAttributes scheme="Material Darker" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <additionalTextAttributes scheme="Material Deep Ocean" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <additionalTextAttributes scheme="Material Lighter" file="colorSchemes/rainbow-color-default.xml"/>
-        <additionalTextAttributes scheme="Material Oceanic" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <additionalTextAttributes scheme="Material Pro" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <additionalTextAttributes scheme="Solarized Dark" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <additionalTextAttributes scheme="Solarized Light" file="colorSchemes/rainbow-color-default.xml"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowUpdateActivity"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.CustomRainbowActivity"/>
         <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.util.GitHubErrorReporter"/>
