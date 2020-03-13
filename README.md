@@ -135,7 +135,7 @@ You can download the latest snapshot build from [here](https://circleci.com/gh/i
 NOTE: There are 5 default colors, if your number is bigger than 5, you can config them in the config file.
 Please follow [the official guide](https://www.jetbrains.com/help/idea/configuring-colors-and-fonts.html#share-color-scheme):
 * `Export a color scheme as XML`
-* Edit the xml file, put `ROUND_BRACKETS_RAINBOW_COLOR10` to `ROUND_BRACKETS_RAINBOW_COLOR100` to match your number just like [the default color scheme](./src/main/resources/colorSchemes/rainbow-color-default-darcula.xml).
+* Edit the xml file, put `ROUND_BRACKETS_RAINBOW_COLOR5` to `ROUND_BRACKETS_RAINBOW_COLOR100` to match your number just like [the default color scheme](./src/main/resources/colorSchemes/rainbow-color-default-darcula.xml).
 * `Import a color scheme`
 
 ## Config file path
