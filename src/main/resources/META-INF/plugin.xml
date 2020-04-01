@@ -49,6 +49,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>5.35</p>
+        <ul>
+            <li>Final release of 2017.2 and Java 8! start from the next release, we will build against with 2020.1 and Java 11</li>
+        </ul>
+        <br/>
+
         <p>5.34</p>
         <ul>
             <li>Compatible with Material Theme UI Plugin</li>
@@ -547,7 +553,6 @@
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-default-darcula.xml"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowUpdateActivity"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.CustomRainbowActivity"/>
-        <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.util.GitHubErrorReporter"/>
     </extensions>
 
     <application-components>
