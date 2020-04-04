@@ -19,9 +19,9 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: ./gradlew buildPlugin -PdownloadIdeaSources=false
+      - run: ./gradlew buildPlugin
 
-      - run: ./gradlew check -PdownloadIdeaSources=false
+      - run: ./gradlew check
 
       - run: bash <(curl -s https://codecov.io/bash)
 
@@ -30,10 +30,10 @@ jobs:
         command: |
           if git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+\.[0-9]\+$";
           then
-            gradle publishPlugin -PdownloadIdeaSources=false
+            gradle publishPlugin
           elif git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+$";
           then
-            gradle publishPlugin -PdownloadIdeaSources=false
+            gradle publishPlugin
           else
             echo "Not a release, skipping"
           fi

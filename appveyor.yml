@@ -8,4 +8,4 @@ build_script:
   - cmd: SET PATH=%JAVA_HOME%\bin;%PATH%
   - cmd: java -version
   - cmd: .\gradlew.bat -v
-  - cmd: .\gradlew.bat test buildPlugin -PdownloadIdeaSources=false
+  - cmd: .\gradlew.bat test buildPlugin
