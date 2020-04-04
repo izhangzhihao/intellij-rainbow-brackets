@@ -16,7 +16,7 @@ plugins {
     id "org.jetbrains.intellij" version "0.4.18"
     id "com.adarshr.test-logger" version "2.0.0"
     id "de.undercouch.download" version "4.0.2"
-    id "org.jetbrains.kotlin.jvm" version "1.3.61"
+    id "org.jetbrains.kotlin.jvm" version "1.3.71"
     id "jacoco"
     id "idea"
 }
@@ -44,7 +44,7 @@ intellij {
     updateSinceUntilBuild = false
 
     sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"
-    plugins 'java', "org.jetbrains.kotlin:$kotlinVersion-release-IJ2019.3-1", 'org.intellij.scala:2019.3.17', 'JavaScriptLanguage', 'CSS', 'Dart:193.5731', 'Groovy', 'properties', 'org.jetbrains.plugins.ruby:193.5233.57', 'com.jetbrains.php:193.5233.102', 'java-i18n'
+    plugins 'java', "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.1-1", 'org.intellij.scala:2020.1.23', 'JavaScriptLanguage', 'CSS', 'Dart:201.6668.86', 'Groovy', 'properties', 'org.jetbrains.plugins.ruby:201.6668.60', 'com.jetbrains.php:201.6668.78', 'java-i18n'
 }
 
 publishPlugin {
@@ -106,8 +106,8 @@ jacocoTestReport {
 
 pluginVerifier {
     pluginFileName = "$rootProject.name-$version"
-    ides = ["IC-2019.3"]
-    verifierVersion = "1.222"
+    ides = ["IU-201.6668-EAP-CANDIDATE-SNAPSHOT"]
+    verifierVersion = "1.231"
 }
 
 check.dependsOn pluginVerifier
