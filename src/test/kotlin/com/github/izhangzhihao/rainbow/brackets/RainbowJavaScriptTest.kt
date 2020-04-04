@@ -1,14 +1,21 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.lang.ecmascript6.JSXHarmonyFileType
 import com.intellij.lang.javascript.JavaScriptFileType
 import com.intellij.lang.javascript.TypeScriptFileType
+import com.intellij.openapi.extensions.PluginId
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
 import org.intellij.lang.annotations.Language
 
 class RainbowJavaScriptTest : LightJavaCodeInsightFixtureTestCase() {
+    fun testJavaScriptPluginEnabled() {
+        assertTrue(PluginManagerCore.getPlugin(PluginId.getId("org.intellij.scala"))?.isEnabled!!)
+        assertTrue(PluginManagerCore.getPlugin(PluginId.getId("JavaScript"))?.isEnabled!!)
+    }
+
     fun testIssue11() {
         @Language("JavaScript") val code = """
 "use strict";
@@ -155,66 +162,65 @@ const element = ( <div> <h1>Hello, world!</h1> </div> );
                 )
     }
 
-    companion object {
-        fun testIssue39(rainbowJavaScriptTest: RainbowJavaScriptTest) {
-            @Language("JavaScript") val code = """
+    fun testIssue39() {
+        @Language("JavaScript") val code = """
     const html = '<div><div><div>Hello</div></div></div>'
                                 """.trimIndent()
-    
-            rainbowJavaScriptTest.myFixture.configureByText(JavaScriptFileType.INSTANCE, code)
-            PsiDocumentManager.getInstance(rainbowJavaScriptTest.project).commitAllDocuments()
-            val doHighlighting = rainbowJavaScriptTest.myFixture.doHighlighting()
-            assertFalse(doHighlighting.isEmpty())
-            doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                    .map { it.forcedTextAttributes.foregroundColor }
-                    .filterNot { it == null }
-                    .toTypedArray()
-                    .shouldBe(
-                            arrayOf(
-                                    angleLevel(0),
-                                    angleLevel(0),
-                                    angleLevel(1),
-                                    angleLevel(1),
-                                    angleLevel(2),
-                                    angleLevel(2),
-                                    angleLevel(2),
-                                    angleLevel(2),
-                                    angleLevel(1),
-                                    angleLevel(1),
-                                    angleLevel(0),
-                                    angleLevel(0)
-                            )
-                    )
-        }
 
-        fun testIssue31(rainbowJavaScriptTest: RainbowJavaScriptTest) {
-            @Language("JavaScript") val code = """
+        myFixture.configureByText(JavaScriptFileType.INSTANCE, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+        doHighlighting.filter { brackets.contains(it.text.toChar()) }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .filterNot { it == null }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                angleLevel(0),
+                                angleLevel(0),
+                                angleLevel(1),
+                                angleLevel(1),
+                                angleLevel(2),
+                                angleLevel(2),
+                                angleLevel(2),
+                                angleLevel(2),
+                                angleLevel(1),
+                                angleLevel(1),
+                                angleLevel(0),
+                                angleLevel(0)
+                        )
+                )
+    }
+
+    fun testIssue31() {
+        @Language("JavaScript") val code = """
     "use strict";
     const f = () => {}
     const a = [1,2,3]
     const s = `<ololo>`
                                 """.trimIndent()
 
-            rainbowJavaScriptTest.myFixture.configureByText(TypeScriptFileType.INSTANCE, code)
-            PsiDocumentManager.getInstance(rainbowJavaScriptTest.project).commitAllDocuments()
-            val doHighlighting = rainbowJavaScriptTest.myFixture.doHighlighting()
-            assertFalse(doHighlighting.isEmpty())
-            doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                    .map { it.forcedTextAttributes.foregroundColor }
-                    .filterNot { it == null }
-                    .toTypedArray()
-                    .shouldBe(
-                            arrayOf(
-                                    roundLevel(0),
-                                    roundLevel(0),
-                                    squigglyLevel(0),
-                                    squigglyLevel(0),
-                                    squareLevel(0),
-                                    squareLevel(0),
-                                    angleLevel(0),
-                                    angleLevel(0)
-                            )
-                    )
-        }
+        myFixture.configureByText(TypeScriptFileType.INSTANCE, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+        doHighlighting.filter { brackets.contains(it.text.toChar()) }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .filterNot { it == null }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                roundLevel(0),
+                                roundLevel(0),
+                                squigglyLevel(0),
+                                squigglyLevel(0),
+                                squareLevel(0),
+                                squareLevel(0),
+                                angleLevel(0),
+                                angleLevel(0)
+                        )
+                )
     }
+
 }

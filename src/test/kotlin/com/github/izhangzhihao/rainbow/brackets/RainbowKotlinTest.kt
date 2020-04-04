@@ -131,7 +131,7 @@ class AA {
     fun aa() {
         arrayOf(1, 2, 3).forEach {
                 it.let dd@{
-                    if (it > 0) a@ {
+                    if (it > 0) a@{
                         return@dd
                     }
                 }
@@ -183,8 +183,8 @@ fun t() {
                                 roundLevel(0),
                                 roundLevel(0),
                                 squigglyLevel(0),
-                                squigglyLevel(1),
-                                squigglyLevel(1),
+                                //squigglyLevel(1),
+                                //squigglyLevel(1),
                                 squigglyLevel(0)
                         )
                 )
