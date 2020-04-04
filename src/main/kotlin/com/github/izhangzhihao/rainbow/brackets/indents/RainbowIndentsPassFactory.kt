@@ -1,19 +1,18 @@
 package com.github.izhangzhihao.rainbow.brackets.indents
 
-import com.intellij.codeHighlighting.Pass
-import com.intellij.codeHighlighting.TextEditorHighlightingPass
-import com.intellij.codeHighlighting.TextEditorHighlightingPassFactory
-import com.intellij.codeHighlighting.TextEditorHighlightingPassRegistrar
-import com.intellij.openapi.components.ProjectComponent
+import com.intellij.codeHighlighting.*
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiFile
 
-class RainbowIndentsPassFactory(project: Project, registrar: TextEditorHighlightingPassRegistrar) :
-        ProjectComponent, TextEditorHighlightingPassFactory {
-    private val myProject: Project = project
+class RainbowIndentsPassFactory :
+        TextEditorHighlightingPassFactoryRegistrar, TextEditorHighlightingPassFactory {
 
-    init {
+    override fun createHighlightingPass(file: PsiFile, editor: Editor): TextEditorHighlightingPass {
+        return RainbowIndentsPass(file.project, editor, file)
+    }
+
+    override fun registerHighlightingPassFactory(registrar: TextEditorHighlightingPassRegistrar, project: Project) {
         registrar.registerTextEditorHighlightingPass(
                 this,
                 TextEditorHighlightingPassRegistrar.Anchor.LAST,
@@ -21,11 +20,5 @@ class RainbowIndentsPassFactory(project: Project, registrar: TextEditorHighlight
                 false,
                 false
         )
-    }
-
-    override fun getComponentName(): String = "RainbowIndentsPassFactory"
-
-    override fun createHighlightingPass(file: PsiFile, editor: Editor): TextEditorHighlightingPass {
-        return RainbowIndentsPass(myProject, editor, file)
     }
 }

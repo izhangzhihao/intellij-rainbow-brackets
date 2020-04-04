@@ -548,6 +548,7 @@
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowUpdateActivity"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.CustomRainbowActivity"/>
         <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.util.GitHubErrorReporter"/>
+        <highlightingPassFactory implementation="com.github.izhangzhihao.rainbow.brackets.indents.RainbowIndentsPassFactory"/>
     </extensions>
 
     <application-components>
@@ -557,14 +558,6 @@
             </implementation-class>
         </component>
     </application-components>
-
-    <project-components>
-        <component>
-            <implementation-class>com.github.izhangzhihao.rainbow.brackets.indents.RainbowIndentsPassFactory
-            </implementation-class>
-            <skipForDefaultProject/>
-        </component>
-    </project-components>
 
     <actions>
         <action class="com.github.izhangzhihao.rainbow.brackets.action.ScopeHighlightingAction"
