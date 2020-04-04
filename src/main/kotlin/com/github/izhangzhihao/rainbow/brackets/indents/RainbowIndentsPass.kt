@@ -5,14 +5,17 @@ import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.*
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
+import com.intellij.codeInsight.highlighting.CodeBlockSupportHandler
 import com.intellij.lang.Language
 import com.intellij.lang.LanguageParserDefinitions
 import com.intellij.openapi.editor.Document
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.IndentGuideDescriptor
-import com.intellij.openapi.editor.VisualPosition
+import com.intellij.openapi.editor.SoftWrap
 import com.intellij.openapi.editor.ex.EditorEx
 import com.intellij.openapi.editor.ex.util.EditorUtil
+import com.intellij.openapi.editor.impl.EditorImpl
+import com.intellij.openapi.editor.impl.view.VisualLinesIterator
 import com.intellij.openapi.editor.markup.CustomHighlighterRenderer
 import com.intellij.openapi.editor.markup.HighlighterTargetArea
 import com.intellij.openapi.editor.markup.MarkupModel
@@ -34,10 +37,13 @@ import com.intellij.psi.xml.XmlFile
 import com.intellij.psi.xml.XmlTag
 import com.intellij.psi.xml.XmlToken
 import com.intellij.psi.xml.XmlTokenType
+import com.intellij.ui.paint.LinePainter2D
 import com.intellij.util.DocumentUtil
 import com.intellij.util.containers.IntStack
 import com.intellij.util.text.CharArrayUtil
-import java.lang.StrictMath.*
+import java.awt.Graphics2D
+import java.lang.StrictMath.abs
+import java.lang.StrictMath.min
 import java.util.*
 
 /** From [com.intellij.codeInsight.daemon.impl.IndentsPass] */
@@ -77,7 +83,7 @@ class RainbowIndentsPass internal constructor(
         myRanges = ranges
     }
 
-    private fun nowStamp(): Long = if (isRainbowIndentGuidesShown()) checkNotNull(myDocument).modificationStamp else -1
+    private fun nowStamp(): Long = if (isRainbowIndentGuidesShown()) checkNotNull(myDocument).modificationStamp xor (EditorUtil.getTabSize(myEditor).toLong() shl 24) else -1
 
     override fun doApplyInformationToEditor() {
         val stamp = myEditor.getUserData(LAST_TIME_INDENTS_BUILT)
@@ -296,7 +302,10 @@ class RainbowIndentsPass internal constructor(
                         val lineEnd = document.getLineEndOffset(line)
                         val nonWhitespaceOffset = CharArrayUtil.shiftForward(myChars, lineStart, lineEnd, " \t")
                         val iterator = myEditor.highlighter.createIterator(nonWhitespaceOffset)
-                        if (BraceMatchingUtil.isRBraceToken(iterator, myChars, fileType)) {
+                        val tokenType = iterator.tokenType
+                        if (BraceMatchingUtil.isRBraceToken(iterator, myChars, fileType) ||
+                                tokenType != null &&
+                                CodeBlockSupportHandler.findMarkersRanges(myFile, tokenType.language, nonWhitespaceOffset).isNotEmpty()) {
                             indent = topIndent
                         }
                     }
@@ -359,11 +368,9 @@ class RainbowIndentsPass internal constructor(
             if (startOffset >= doc.textLength) return@renderer
 
             val endOffset = highlighter.endOffset
-            val endLine = doc.getLineNumber(endOffset)
 
             var off: Int
             var startLine = doc.getLineNumber(startOffset)
-            val descriptor = editor.indentsModel.getDescriptor(startLine, endLine)
 
             val chars = doc.charsSequence
             do {
@@ -374,16 +381,8 @@ class RainbowIndentsPass internal constructor(
             } while (startLine > 1 && off < doc.textLength && chars[off] == '\n')
 
             val startPosition = editor.offsetToVisualPosition(off)
-            var indentColumn = startPosition.column
+            val indentColumn = startPosition.column
 
-            // It's considered that indent guide can cross not only white space but comments, javadoc etc. Hence, there is a possible
-            // case that the first indent guide line is, say, single-line comment where comment symbols ('//') are located at the first
-            // visual column. We need to calculate correct indent guide column then.
-            var lineShift = 1
-            if (indentColumn <= 0 && descriptor != null) {
-                indentColumn = descriptor.indentLevel
-                lineShift = 0
-            }
             if (indentColumn <= 0) return@renderer
 
             val foldingModel = editor.foldingModel
@@ -401,12 +400,14 @@ class RainbowIndentsPass internal constructor(
                 caretOffset in off until endOffset && caretModel.logicalPosition.column == indentColumn
             } else false
 
-            val start = editor.visualPositionToXY(VisualPosition(startPosition.line + lineShift, indentColumn))
+            val lineHeight = editor.getLineHeight()
+            val start = editor.visualPositionToXY(startPosition)
+            start.y += lineHeight
             val endPosition = editor.offsetToVisualPosition(endOffset)
-            val end = editor.visualPositionToXY(VisualPosition(endPosition.line, endPosition.column))
+            val end = editor.visualPositionToXY(endPosition)
             var maxY = end.y
             if (endPosition.line == editor.offsetToVisualPosition(doc.textLength).line) {
-                maxY += editor.lineHeight
+                maxY += lineHeight
             }
 
             val clip = g.clipBounds
@@ -416,7 +417,7 @@ class RainbowIndentsPass internal constructor(
                 }
                 maxY = min(maxY, clip.y + clip.height)
             }
-
+            if (start.y >= maxY) return@renderer
             g.color = if (selected) {
                 rainbowInfo.color
             } else {
@@ -438,39 +439,35 @@ class RainbowIndentsPass internal constructor(
             // We want to use the following approach then:
             //     1. Show only active indent if it crosses soft wrap-introduced text;
             //     2. Show indent as is if it doesn't intersect with soft wrap-introduced text;
-            if (selected) {
-                g.drawLine(start.x + 2, start.y, start.x + 2, maxY - 1)
+            val softWraps = editor.softWrapModel.registeredSoftWraps
+            if (selected || softWraps.isEmpty()) {
+                LinePainter2D.paint(g as Graphics2D, start.x + 2.toDouble(), start.y.toDouble(), start.x + 2.toDouble(), maxY - 1.toDouble())
             } else {
-                var y = start.y
-                var newY = start.y
-                val softWrapModel = editor.softWrapModel
-                val lineHeight = editor.lineHeight
-                var i = max(0, startLine + lineShift)
-                while (i < endLine && newY < maxY) {
-                    val softWraps = softWrapModel.getSoftWrapsForLine(i)
-                    var logicalLineHeight = softWraps.size * lineHeight
-                    if (i > startLine + lineShift) {
-                        logicalLineHeight += lineHeight // We assume that initial 'y' value points just below the target line.
-                    }
-                    if (softWraps.isNotEmpty() && softWraps[0].indentInColumns < indentColumn) {
-                        if (y < newY || i > startLine + lineShift) { // There is a possible case that soft wrap is located on indent start line.
-                            g.drawLine(start.x + 2, y, start.x + 2, newY + lineHeight - 1)
-                        }
-                        newY += logicalLineHeight
-                        y = newY
-                    } else {
-                        newY += logicalLineHeight
-                    }
-
-                    val foldRegion = foldingModel.getCollapsedRegionAtOffset(doc.getLineEndOffset(i))
-                    if (foldRegion != null && foldRegion.endOffset < doc.textLength) {
-                        i = doc.getLineNumber(foldRegion.endOffset)
-                    }
-                    i++
+                var startY = start.y
+                var startVisualLine = startPosition.line + 1
+                if (clip != null && startY < clip.y) {
+                    startY = clip.y
+                    startVisualLine = editor.yToVisualLine(clip.y)
                 }
-
-                if (y < maxY) {
-                    g.drawLine(start.x + 2, y, start.x + 2, maxY - 1)
+                val it = VisualLinesIterator(editor as EditorImpl, startVisualLine)
+                while (!it.atEnd()) {
+                    val currY: Int = it.y
+                    if (currY >= startY) {
+                        if (currY >= maxY) break
+                        if (it.startsWithSoftWrap()) {
+                            val softWrap: SoftWrap = softWraps[it.startOrPrevWrapIndex]
+                            if (softWrap.indentInColumns < indentColumn) {
+                                if (startY < currY) {
+                                    LinePainter2D.paint((g as Graphics2D), start.x + 2.toDouble(), startY.toDouble(), start.x + 2.toDouble(), currY - 1.toDouble())
+                                }
+                                startY = currY + lineHeight
+                            }
+                        }
+                    }
+                    it.advance()
+                }
+                if (startY < maxY) {
+                    LinePainter2D.paint((g as Graphics2D), start.x + 2.toDouble(), startY.toDouble(), start.x + 2.toDouble(), maxY - 1.toDouble())
                 }
             }
         }
