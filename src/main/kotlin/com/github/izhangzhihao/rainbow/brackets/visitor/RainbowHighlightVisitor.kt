@@ -27,9 +27,6 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     private fun fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(fileType: String) =
             fileType != "Haskell" || !isIntelliJHaskellEnabled
 
-    @Suppress("OverridingDeprecatedMember")
-    final override fun order(): Int = 1
-
     final override fun analyze(file: PsiFile, updateWholeFile: Boolean, holder: HighlightInfoHolder, action: Runnable)
             : Boolean {
         highlightInfoHolder = holder

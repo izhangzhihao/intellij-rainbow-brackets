@@ -5,6 +5,7 @@ import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
+import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
@@ -64,8 +65,10 @@ class KotlinLabelAnnotator : Annotator {
         refElement
                 .let { RainbowInfo.RAINBOW_INFO_KEY[it]?.color ?: RainbowHighlighter.DEFAULT_KOTLIN_LABEL_COLOR }
                 .let {
-                    holder.createInfoAnnotation(target, null)
-                            .enforcedTextAttributes = TextAttributes(it, null, null, EffectType.BOXED, Font.PLAIN)
+                    holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+                            .range(target)
+                            .enforcedTextAttributes(TextAttributes(it, null, null, EffectType.BOXED, Font.PLAIN))
+                            .create()
                 }
     }
 

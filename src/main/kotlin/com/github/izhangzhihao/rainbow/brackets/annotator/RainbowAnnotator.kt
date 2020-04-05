@@ -10,6 +10,7 @@ import com.github.izhangzhihao.rainbow.brackets.annotator.RainbowUtils.settings
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
+import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
@@ -84,11 +85,17 @@ object RainbowUtils {
         val scheme = EditorColorsManager.getInstance().globalScheme
         if (RainbowSettings.instance.isDoNOTRainbowifyTheFirstLevel) {
             if (level >= 1) {
-                holder.createInfoAnnotation(element.psi, null).enforcedTextAttributes = getTextAttributes(scheme, rainbowName, level)
+                holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+                        .range(element.psi)
+                        .enforcedTextAttributes(getTextAttributes(scheme, rainbowName, level))
+                        .create()
             }
         } else {
             if (level >= 0) {
-                holder.createInfoAnnotation(element.psi, null).enforcedTextAttributes = getTextAttributes(scheme, rainbowName, level)
+                holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+                        .range(element.psi)
+                        .enforcedTextAttributes(getTextAttributes(scheme, rainbowName, level))
+                        .create()
             }
         }
     }

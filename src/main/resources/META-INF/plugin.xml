@@ -538,7 +538,6 @@
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable" dynamic="true"/>
         <applicationService
                 serviceImplementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"/>
-        <applicationService serviceImplementation="com.github.izhangzhihao.rainbow.brackets.util.RainbowBracketsPluginUpdater"/>
         <colorAndFontPanelFactory
                 implementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowColorsPageFactory"/>
         <colorAndFontDescriptorProvider

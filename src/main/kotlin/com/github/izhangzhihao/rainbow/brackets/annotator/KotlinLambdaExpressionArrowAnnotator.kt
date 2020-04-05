@@ -3,6 +3,7 @@ package com.github.izhangzhihao.rainbow.brackets.annotator
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
+import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
@@ -15,8 +16,10 @@ class KotlinLambdaExpressionArrowAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         if ((element as? LeafPsiElement)?.elementType == KtTokens.ARROW) {
             RainbowInfo.RAINBOW_INFO_KEY[element.parent]?.color?.let {
-                holder.createInfoAnnotation(element, null)
-                        .enforcedTextAttributes = TextAttributes(it, null, null, EffectType.BOXED, Font.PLAIN)
+                holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+                        .range(element)
+                        .enforcedTextAttributes(TextAttributes(it, null, null, EffectType.BOXED, Font.PLAIN))
+                        .create()
             }
         }
     }
