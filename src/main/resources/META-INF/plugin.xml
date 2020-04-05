@@ -549,11 +549,10 @@
         <backgroundPostStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.ShowCustomRainbowSchemeActivity"/>
         <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.util.GitHubErrorReporter"/>
         <highlightingPassFactory implementation="com.github.izhangzhihao.rainbow.brackets.indents.RainbowIndentsPassFactory"/>
-        <backgroundPostStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowStartupActivity"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.izhangzhihao.rainbow.brackets.activity.RainbowStartupActivity" topic="com.intellij.openapi.editor.colors.EditorColorsListener"/>
+        <listener class="com.github.izhangzhihao.rainbow.brackets.activity.RainbowColorsSchemeListener" topic="com.intellij.openapi.editor.colors.EditorColorsListener"/>
     </applicationListeners>
 
     <actions>

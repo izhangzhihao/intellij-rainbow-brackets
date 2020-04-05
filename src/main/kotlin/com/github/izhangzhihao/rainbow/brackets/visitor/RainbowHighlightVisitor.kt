@@ -2,11 +2,12 @@ package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getHighlightInfo
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
-import com.github.izhangzhihao.rainbow.brackets.activity.RainbowStartupActivity
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.memoizedFileExtension
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder
+import com.intellij.ide.plugins.PluginManagerCore
+import com.intellij.openapi.extensions.PluginId
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import java.awt.Color
@@ -24,7 +25,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     }
 
     private fun fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(fileType: String) =
-            fileType != "Haskell" || !RainbowStartupActivity.isIntelliJHaskellEnabled
+            fileType != "Haskell" || !isIntelliJHaskellEnabled
 
     @Suppress("OverridingDeprecatedMember")
     final override fun order(): Int = 1
@@ -73,5 +74,12 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 
         startElement?.let { rainbowInfo.startElement = it }
         endElement?.let { rainbowInfo.endElement = it }
+    }
+
+    companion object {
+        val isIntelliJHaskellEnabled: Boolean by lazy {
+            PluginManagerCore.getPlugin(
+                    PluginId.getId("intellij.haskell"))?.isEnabled ?: false
+        }
     }
 }
