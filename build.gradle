@@ -36,6 +36,13 @@ repositories {
     maven { url "https://repo.eclipse.org/content/groups/releases/" }
 }
 
+def pluginsDependencies = ['java', "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.1-1",
+//                           'org.intellij.scala:2020.1.23',
+                           'JavaScriptLanguage',
+                           'CSS', 'Dart:201.6668.86', 'Groovy', 'properties',
+                           'org.jetbrains.plugins.ruby:201.6668.60',
+                           'com.jetbrains.php:201.6668.78', 'java-i18n']
+
 intellij {
     pluginName name
 
@@ -43,7 +50,7 @@ intellij {
     updateSinceUntilBuild = false
 
     sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"
-    plugins 'java', "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.1-1", 'org.intellij.scala:2020.1.23', 'JavaScriptLanguage', 'CSS', 'Dart:201.6668.86', 'Groovy', 'properties', 'org.jetbrains.plugins.ruby:201.6668.60', 'com.jetbrains.php:201.6668.78', 'java-i18n'
+    setPlugins(*pluginsDependencies)
 }
 
 publishPlugin {
