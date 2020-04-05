@@ -21,13 +21,13 @@
 package com.github.izhangzhihao.rainbow.brackets.util
 
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
-import com.intellij.CommonBundle
-import com.intellij.diagnostic.IdeErrorsDialog
-import com.intellij.diagnostic.LogMessageEx
+import com.github.izhangzhihao.rainbow.brackets.util.ErrorContext.Companion.fromThrowable
+import com.intellij.AbstractBundle
+import com.intellij.diagnostic.LogMessage
 import com.intellij.diagnostic.ReportMessages
-import com.intellij.errorreport.bean.ErrorBean
 import com.intellij.ide.DataManager
-import com.intellij.ide.plugins.PluginManager
+import com.intellij.ide.plugins.PluginManagerCore
+import com.intellij.ide.plugins.PluginUtil
 import com.intellij.idea.IdeaLogger
 import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType
@@ -139,32 +139,32 @@ class GitHubErrorReporter : ErrorReportSubmitter() {
     override fun getReportActionText() = ErrorReportBundle.message("report.error.to.plugin.vendor")
     override fun submit(
             events: Array<IdeaLoggingEvent>, info: String?, parent: Component, consumer: Consumer<SubmittedReportInfo>) =
-            doSubmit(events[0], parent, consumer, ErrorBean(events[0].throwable, IdeaLogger.ourLastActionId), info)
+            doSubmit(events[0], parent, consumer, fromThrowable(events[0].throwable), info)
 
     private fun doSubmit(
             event: IdeaLoggingEvent,
             parent: Component,
             callback: Consumer<SubmittedReportInfo>,
-            bean: ErrorBean,
+            errorContext: ErrorContext,
             description: String?): Boolean {
         val dataContext = DataManager.getInstance().getDataContext(parent)
-        bean.description = description
-        bean.message = event.message
+        description?.let { errorContext.description = description }
+        errorContext.message = event.message
         event.throwable?.let { throwable ->
-            IdeErrorsDialog.findPluginId(throwable)?.let { pluginId ->
-                PluginManager.getPlugin(pluginId)?.let { ideaPluginDescriptor ->
+            PluginUtil.getInstance().findPluginId(throwable)?.let { pluginId ->
+                PluginManagerCore.getPlugin(pluginId)?.let { ideaPluginDescriptor ->
                     if (!ideaPluginDescriptor.isBundled) {
-                        bean.pluginName = ideaPluginDescriptor.name
-                        bean.pluginVersion = ideaPluginDescriptor.version
+                        errorContext.pluginName = ideaPluginDescriptor.name
+                        errorContext.pluginVersion = ideaPluginDescriptor.version
                     }
                 }
             }
         }
 
-        (event.data as? LogMessageEx)?.let { bean.attachments = it.includedAttachments }
+        (event.data as? LogMessage)?.let { errorContext.attachments = it.includedAttachments }
         val project = CommonDataKeys.PROJECT.getData(dataContext)
         val reportValues = getKeyValuePairs(
-                bean,
+                errorContext,
                 ApplicationInfoImpl.getShadowInstance() as ApplicationInfoImpl,
                 ApplicationNamesInfo.getInstance())
         val notifyingCallback = CallbackWithNotification(callback, project)
@@ -179,9 +179,9 @@ class GitHubErrorReporter : ErrorReportSubmitter() {
             private val project: Project?) : Consumer<SubmittedReportInfo> {
         override fun consume(reportInfo: SubmittedReportInfo) {
             consumer.consume(reportInfo)
-            if (reportInfo.status == SubmissionStatus.FAILED) ReportMessages.GROUP.createNotification(ReportMessages.ERROR_REPORT,
+            if (reportInfo.status == SubmissionStatus.FAILED) ReportMessages.GROUP.createNotification(ReportMessages.getErrorReport(),
                     reportInfo.linkText, NotificationType.ERROR, null).setImportant(false).notify(project)
-            else ReportMessages.GROUP.createNotification(ReportMessages.ERROR_REPORT, reportInfo.linkText,
+            else ReportMessages.GROUP.createNotification(ReportMessages.getErrorReport(), reportInfo.linkText,
                     NotificationType.INFORMATION, NotificationListener.URL_OPENING_LISTENER).setImportant(false).notify(project)
         }
     }
@@ -197,7 +197,7 @@ private object ErrorReportBundle {
 
     @JvmStatic
     internal fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
-            CommonBundle.message(bundle, key, *params)
+            AbstractBundle.message(bundle, key, *params)
 }
 
 private class AnonymousFeedbackTask(
@@ -213,13 +213,13 @@ private class AnonymousFeedbackTask(
  * Collects information about the running IDEA and the error
  */
 private fun getKeyValuePairs(
-        error: ErrorBean,
+        errorContext: ErrorContext,
         appInfo: ApplicationInfoEx,
         namesInfo: ApplicationNamesInfo): MutableMap<String, String> {
 
     val params = mutableMapOf(
-            "error.description" to error.description,
-            "Plugin Name" to error.pluginName,
+            "error.description" to errorContext.description,
+            "Plugin Name" to errorContext.pluginName,
             "Plugin Version" to RainbowSettings.instance.version,
             "OS Name" to SystemInfo.OS_NAME,
             "OS Version" to SystemInfo.OS_VERSION,
@@ -228,10 +228,9 @@ private fun getKeyValuePairs(
             "App Full Name" to namesInfo.fullProductName,
             "Is Snapshot" to java.lang.Boolean.toString(appInfo.build.isSnapshot),
             "App Build" to appInfo.build.asString(),
-            "Last Action" to error.lastAction,
-            "error.message" to error.javaClass.canonicalName,
-            "error.stacktrace" to "\n```\n" + error.stackTrace + "\n```\n")
-    for (attachment in error.attachments) {
+            "error.message" to errorContext.javaClass.canonicalName,
+            "error.stacktrace" to "\n```\n" + errorContext.stackTrace + "\n```\n")
+    for (attachment in errorContext.attachments) {
         params["attachment.${attachment.name}"] = attachment.path
         params["attachment.${attachment.name}.value"] = "\n```\n" + attachment.displayText + "\n```\n"
     }
