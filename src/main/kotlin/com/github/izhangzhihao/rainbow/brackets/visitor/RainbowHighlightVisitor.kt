@@ -2,7 +2,7 @@ package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getHighlightInfo
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
-import com.github.izhangzhihao.rainbow.brackets.component.RainbowComponent
+import com.github.izhangzhihao.rainbow.brackets.activity.RainbowStartupActivity
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.memoizedFileExtension
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
@@ -24,7 +24,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     }
 
     private fun fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(fileType: String) =
-            fileType != "Haskell" || !RainbowComponent.isIntelliJHaskellEnabled
+            fileType != "Haskell" || !RainbowStartupActivity.isIntelliJHaskellEnabled
 
     @Suppress("OverridingDeprecatedMember")
     final override fun order(): Int = 1

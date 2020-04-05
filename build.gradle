@@ -40,7 +40,6 @@ intellij {
     pluginName name
 
     version ideaVersion
-    downloadSources Boolean.valueOf(downloadIdeaSources)
     updateSinceUntilBuild = false
 
     sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"

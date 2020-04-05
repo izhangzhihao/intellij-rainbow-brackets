@@ -1,21 +1,26 @@
 package com.github.izhangzhihao.rainbow.brackets.activity
 
-import com.github.izhangzhihao.rainbow.brackets.component.RainbowComponent
 import com.github.izhangzhihao.rainbow.brackets.createNotification
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.showFullNotification
+import com.intellij.ide.plugins.IdeaPluginDescriptor
+import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType
+import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 
-class RainbowUpdateActivity : StartupActivity {
-    private val applicationComponent = RainbowComponent.instance
+class RainbowUpdateNotifyActivity : StartupActivity {
+    var updated: Boolean = false
 
     override fun runActivity(project: Project) {
-        if (applicationComponent.updated) {
+        val settings = RainbowSettings.instance
+        updated = getPlugin()?.version != settings.version
+        if (updated) {
+            settings.version = getPlugin()!!.version
             showUpdate(project)
-            applicationComponent.updated = false
+            updated = false
         }
     }
 
@@ -44,5 +49,9 @@ class RainbowUpdateActivity : StartupActivity {
     See <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases/tag/$version">changelog</a></b> for more details about this update.<br>
     Enjoy your colorful code🌈.
     """
+
+        fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(
+                PluginId.getId("izhangzhihao.rainbow.brackets"))
+
     }
 }

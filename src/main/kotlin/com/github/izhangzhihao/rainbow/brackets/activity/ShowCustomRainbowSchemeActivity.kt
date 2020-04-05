@@ -9,7 +9,7 @@ import com.intellij.notification.Notifications
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 
-class CustomRainbowActivity : StartupActivity {
+class ShowCustomRainbowSchemeActivity : StartupActivity {
 
     override fun runActivity(project: Project) {
         if (!RainbowSettings.instance.isCustomNotifyShowed) {

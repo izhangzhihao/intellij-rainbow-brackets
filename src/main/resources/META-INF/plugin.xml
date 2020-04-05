@@ -545,19 +545,16 @@
 
         <additionalTextAttributes scheme="Default" file="colorSchemes/rainbow-color-default.xml"/>
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowUpdateActivity"/>
-        <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.CustomRainbowActivity"/>
+        <backgroundPostStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowUpdateNotifyActivity"/>
+        <backgroundPostStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.ShowCustomRainbowSchemeActivity"/>
         <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.util.GitHubErrorReporter"/>
         <highlightingPassFactory implementation="com.github.izhangzhihao.rainbow.brackets.indents.RainbowIndentsPassFactory"/>
+        <backgroundPostStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowStartupActivity"/>
     </extensions>
 
-    <application-components>
-        <!-- Add your application components here -->
-        <component>
-            <implementation-class>com.github.izhangzhihao.rainbow.brackets.component.RainbowComponent
-            </implementation-class>
-        </component>
-    </application-components>
+    <applicationListeners>
+        <listener class="com.github.izhangzhihao.rainbow.brackets.activity.RainbowStartupActivity" topic="com.intellij.openapi.editor.colors.EditorColorsListener"/>
+    </applicationListeners>
 
     <actions>
         <action class="com.github.izhangzhihao.rainbow.brackets.action.ScopeHighlightingAction"
