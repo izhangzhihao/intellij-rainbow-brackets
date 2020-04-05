@@ -28,7 +28,6 @@ import com.intellij.diagnostic.ReportMessages
 import com.intellij.ide.DataManager
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.plugins.PluginUtil
-import com.intellij.idea.IdeaLogger
 import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -92,6 +91,7 @@ private object AnonymousFeedback {
                     if (isNewIssue) "git.issue.text" else "git.issue.duplicate.text", newGibHubIssue.htmlUrl, newGibHubIssue.number.toLong()),
                     if (isNewIssue) SubmissionStatus.NEW_ISSUE else SubmissionStatus.DUPLICATE)
         } catch (e: Exception) {
+            e.printStackTrace()
             return SubmittedReportInfo(null,
                     ErrorReportBundle.message("report.error.connection.failure"),
                     SubmissionStatus.FAILED)
@@ -133,7 +133,7 @@ private object AnonymousFeedback {
     }
 }
 
-private const val something = "0dc15c045662cb07366" + "c36903d05d7603e941456"
+private const val something = "29d22c9cf346c9a0d1" + "d11f1bf9dc6b7595a00e4a"
 
 class GitHubErrorReporter : ErrorReportSubmitter() {
     override fun getReportActionText() = ErrorReportBundle.message("report.error.to.plugin.vendor")
@@ -228,7 +228,7 @@ private fun getKeyValuePairs(
             "App Full Name" to namesInfo.fullProductName,
             "Is Snapshot" to java.lang.Boolean.toString(appInfo.build.isSnapshot),
             "App Build" to appInfo.build.asString(),
-            "error.message" to errorContext.javaClass.canonicalName,
+            "error.message" to errorContext.errorClass,
             "error.stacktrace" to "\n```\n" + errorContext.stackTrace + "\n```\n")
     for (attachment in errorContext.attachments) {
         params["attachment.${attachment.name}"] = attachment.path

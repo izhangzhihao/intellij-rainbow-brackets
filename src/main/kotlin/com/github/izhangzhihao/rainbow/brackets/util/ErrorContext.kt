@@ -5,6 +5,7 @@ import com.intellij.util.ExceptionUtil
 
 data class ErrorContext(val stackTrace: String) {
     var message: String? = null
+    var errorClass: String = ""
     var description: String = ""
     var pluginName: String = ""
     var pluginVersion: String = "Unknown"
@@ -12,8 +13,11 @@ data class ErrorContext(val stackTrace: String) {
 
     companion object {
         fun fromThrowable(throwable: Throwable): ErrorContext {
-            val errorContext = ErrorContext(ExceptionUtil.getThrowableText(throwable))
+            val throwableText = ExceptionUtil.getThrowableText(throwable)
+            val errorContext = ErrorContext(throwableText)
             errorContext.message = throwable.message
+            val firstLine = throwableText.lines()[0]
+            errorContext.errorClass = firstLine.substringBeforeLast(':')
             return errorContext
         }
     }
