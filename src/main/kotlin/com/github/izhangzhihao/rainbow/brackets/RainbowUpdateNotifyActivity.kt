@@ -1,15 +1,14 @@
-package com.github.izhangzhihao.rainbow.brackets.activity
+package com.github.izhangzhihao.rainbow.brackets
 
-import com.github.izhangzhihao.rainbow.brackets.createNotification
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
-import com.github.izhangzhihao.rainbow.brackets.showFullNotification
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManagerCore
-import com.intellij.notification.NotificationListener
+import com.intellij.notification.NotificationListener.UrlOpeningListener
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
+import org.intellij.lang.annotations.Language
 
 class RainbowUpdateNotifyActivity : StartupActivity {
     var updated: Boolean = false
@@ -30,7 +29,7 @@ class RainbowUpdateNotifyActivity : StartupActivity {
                 updateContent,
                 channel,
                 NotificationType.INFORMATION,
-                NotificationListener.URL_OPENING_LISTENER
+                UrlOpeningListener(false)
         )
         showFullNotification(project, notification)
     }
@@ -38,15 +37,21 @@ class RainbowUpdateNotifyActivity : StartupActivity {
     companion object {
         private val version = RainbowSettings.instance.version
         private var channel = "izhangzhihao.rainbow.brackets"
+
+        @Language("HTML")
         private val updateContent = """
     <br/>
-    Thank you for downloading 🌈<b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets">Rainbow Brackets</a></b>!<br>
-    Sponsored by <a href="https://codestream.com/?utm_source=jbmarket&utm_medium=banner&utm_campaign=jbrainbowbrackets">CodeStream</a>.<br>
-    If you find this plugin helpful, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#support-us">please support us!</a>.</b><br>
+    🌈Thank you for downloading <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets">Rainbow Brackets</a></b>!<br>
+    🎉Sponsored by <a href="https://codestream.com/?utm_source=jbmarket&utm_medium=banner&utm_campaign=jbrainbowbrackets">CodeStream</a>.<br>
+    👍If you find this plugin helpful, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#support-us">please support us!</a>.</b><br>
     <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#support-us">Donate</a></b> by <b><a href="https://opencollective.com/intellij-rainbow-brackets">OpenCollective</a></b> Or AliPay/WeChatPay to <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#sponsors">become a sponsor</a>!.</b><br>
-    Check out <b><a href="https://izhangzhihao.github.io/rainbow-brackets-document/">the document</a></b> for all features of this plugin.<br>
-    If you run into any problem, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues">feel free to raise a issue</a>.</b><br/><br>
-    See <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases/tag/$version">changelog</a></b> for more details about this update.<br>
+    📝Check out <b><a href="https://izhangzhihao.github.io/rainbow-brackets-document/">the document</a></b> for all features of this plugin.<br>
+    🐛If you run into any problem, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues">feel free to raise a issue</a>.</b><br>
+    🆕See <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases/tag/$version">changelog</a></b> for more details about this update.<br>
+    👉Want to customize your own color scheme of Rainbow Brackets? Edit it under
+    <b>Settings > Editor > Color Scheme > Rainbow Brackets</b><br>
+    👉Other additional feature under
+    <b>Settings > Other Settings > Rainbow Brackets</b><br/>
     Enjoy your colorful code🌈.
     """
 

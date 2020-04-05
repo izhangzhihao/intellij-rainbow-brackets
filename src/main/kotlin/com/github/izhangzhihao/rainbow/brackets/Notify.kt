@@ -2,14 +2,12 @@ package com.github.izhangzhihao.rainbow.brackets
 
 import com.intellij.notification.*
 import com.intellij.notification.impl.NotificationsManagerImpl
-import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.popup.Balloon
 import com.intellij.openapi.wm.WindowManager
 import com.intellij.ui.BalloonLayoutData
 import com.intellij.ui.awt.RelativePoint
 import java.awt.Point
-import javax.swing.event.HyperlinkEvent
 
 fun createNotification(title: String, content: String, displayId: String,
                        type: NotificationType, listener: NotificationListener): Notification {
@@ -39,13 +37,5 @@ fun showFullNotification(project: Project, notification: Notification) {
         balloon.show(target, Balloon.Position.atLeft)
     } catch (e: Exception) {
         notification.notify(project)
-    }
-}
-
-class SettingsOpeningListener(val project: Project, private val nameToSelect: String) : NotificationListener.Adapter() {
-    override fun hyperlinkActivated(notifi: Notification, event: HyperlinkEvent) {
-        if (!project.isDisposed) {
-            ShowSettingsUtil.getInstance().showSettingsDialog(project, nameToSelect)
-        }
     }
 }
