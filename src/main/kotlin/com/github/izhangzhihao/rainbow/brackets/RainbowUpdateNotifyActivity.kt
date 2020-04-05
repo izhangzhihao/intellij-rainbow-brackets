@@ -1,6 +1,7 @@
 package com.github.izhangzhihao.rainbow.brackets
 
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
+import com.github.izhangzhihao.rainbow.brackets.util.RainbowBracketsPluginUpdater
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.notification.NotificationListener.UrlOpeningListener
@@ -14,6 +15,8 @@ class RainbowUpdateNotifyActivity : StartupActivity {
     var updated: Boolean = false
 
     override fun runActivity(project: Project) {
+        RainbowBracketsPluginUpdater.getInstance().runCheckUpdate()
+
         val settings = RainbowSettings.instance
         updated = getPlugin()?.version != settings.version
         if (updated) {
@@ -25,7 +28,7 @@ class RainbowUpdateNotifyActivity : StartupActivity {
 
     private fun showUpdate(project: Project) {
         val notification = createNotification(
-                "Rainbow Brackets updated to $version",
+                "Rainbow Brackets updated to ${getPluginVersion()}",
                 updateContent,
                 channel,
                 NotificationType.INFORMATION,
@@ -35,7 +38,6 @@ class RainbowUpdateNotifyActivity : StartupActivity {
     }
 
     companion object {
-        private val version = RainbowSettings.instance.version
         private var channel = "izhangzhihao.rainbow.brackets"
 
         @Language("HTML")
@@ -47,7 +49,7 @@ class RainbowUpdateNotifyActivity : StartupActivity {
     <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#support-us">Donate</a></b> by <b><a href="https://opencollective.com/intellij-rainbow-brackets">OpenCollective</a></b> Or AliPay/WeChatPay to <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#sponsors">become a sponsor</a>!.</b><br>
     📝Check out <b><a href="https://izhangzhihao.github.io/rainbow-brackets-document/">the document</a></b> for all features of this plugin.<br>
     🐛If you run into any problem, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues">feel free to raise a issue</a>.</b><br>
-    🆕See <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases/tag/$version">changelog</a></b> for more details about this update.<br>
+    🆕See <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases/tag/${getPluginVersion()}">changelog</a></b> for more details about this update.<br>
     👉Want to customize your own color scheme of Rainbow Brackets? Edit it under
     <b>Settings > Editor > Color Scheme > Rainbow Brackets</b><br>
     👉Other additional feature under
@@ -55,8 +57,11 @@ class RainbowUpdateNotifyActivity : StartupActivity {
     Enjoy your colorful code🌈.
     """
 
-        fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(
-                PluginId.getId("izhangzhihao.rainbow.brackets"))
+        fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(getPluginId())
+
+        fun getPluginId(): PluginId = PluginId.getId("izhangzhihao.rainbow.brackets")
+
+        fun getPluginVersion(): String = getPlugin()!!.version
 
     }
 }
