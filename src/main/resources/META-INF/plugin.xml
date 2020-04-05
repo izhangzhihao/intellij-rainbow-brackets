@@ -522,7 +522,7 @@
     <depends optional="true" config-file="intellij-haskell-annotator.xml">intellij.haskell</depends>
 
     <extensionPoints>
-        <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint">
+        <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">
             <with attribute="implementationClass"
                   implements="com.github.izhangzhihao.rainbow.brackets.provider.PairedBraceProvider"/>
         </extensionPoint>
@@ -535,7 +535,7 @@
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.DefaultRainbowVisitor"/>
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.XmlRainbowVisitor"/>
 
-        <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
+        <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable" dynamic="true"/>
         <applicationService
                 serviceImplementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"/>
         <colorAndFontPanelFactory
