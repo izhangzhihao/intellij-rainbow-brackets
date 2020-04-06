@@ -47,6 +47,7 @@ intellij {
     pluginName name
 
     version ideaVersion
+    //localPath = '/Users/izhangzhihao/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/201.6668.60/IntelliJ IDEA 2020.1 EAP.app/Contents'
     updateSinceUntilBuild = false
 
     sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"
