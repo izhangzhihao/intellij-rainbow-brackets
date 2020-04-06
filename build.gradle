@@ -37,7 +37,7 @@ repositories {
 }
 
 def pluginsDependencies = ['java', "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.1-1",
-//                           'org.intellij.scala:2020.1.23',
+                           'org.intellij.scala:2020.1.25',
                            'JavaScriptLanguage',
                            'CSS', 'Dart:201.6668.86', 'Groovy', 'properties',
                            'org.jetbrains.plugins.ruby:201.6668.60',
