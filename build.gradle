@@ -114,7 +114,7 @@ jacocoTestReport {
 pluginVerifier {
     pluginFileName = "$rootProject.name-$version"
     ides = ["IU-201.6668-EAP-CANDIDATE-SNAPSHOT"]
-    verifierVersion = "1.231"
+    verifierVersion = "1.232"
 }
 
 check.dependsOn pluginVerifier

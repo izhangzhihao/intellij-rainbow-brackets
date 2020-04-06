@@ -40,7 +40,7 @@ class PluginVerifierRunner extends ConventionTask {
     /**
      * The version of the plugin verifier to use.
      */
-    private String verifierVersion = "1.222"
+    private String verifierVersion = "1.232"
 
 
     @Input
