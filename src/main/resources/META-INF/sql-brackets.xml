@@ -1,0 +1,6 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets">
+        <pairedBraceProvider language="SQL"
+                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.SqlProvider"/>
+    </extensions>
+</idea-plugin>

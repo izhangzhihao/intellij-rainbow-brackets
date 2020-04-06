@@ -520,6 +520,7 @@
     <depends optional="true" config-file="groovy-brackets.xml">org.intellij.groovy</depends>
     <depends optional="true" config-file="csharp-annotator.xml">com.intellij.modules.rider</depends>
     <depends optional="true" config-file="intellij-haskell-annotator.xml">intellij.haskell</depends>
+    <depends optional="true" config-file="sql-brackets.xml">com.intellij.modules.database</depends>
 
     <extensionPoints>
         <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">

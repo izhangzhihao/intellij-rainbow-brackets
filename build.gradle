@@ -36,12 +36,19 @@ repositories {
     maven { url "https://repo.eclipse.org/content/groups/releases/" }
 }
 
-def pluginsDependencies = ['java', "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.1-1",
-                           'org.intellij.scala:2020.1.25',
+def pluginsDependencies = ['java',
+                           'java-i18n',
                            'JavaScriptLanguage',
-                           'CSS', 'Dart:201.6668.86', 'Groovy', 'properties',
+                           'DatabaseTools',
+                           'CSS',
+                           'Groovy',
+                           'properties',
+                           "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.1-1",
+                           'org.intellij.scala:2020.1.25',
+                           'Dart:201.6668.86',
                            'org.jetbrains.plugins.ruby:201.6668.60',
-                           'com.jetbrains.php:201.6668.78', 'java-i18n']
+                           'com.jetbrains.php:201.6668.78'
+]
 
 intellij {
     pluginName name
