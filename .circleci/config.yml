@@ -23,8 +23,6 @@ jobs:
 
       - run: ./gradlew check
 
-      - run: bash <(curl -s https://codecov.io/bash)
-
       - type: shell
         name: Release
         command: |

@@ -34,16 +34,13 @@ Please provide code snippet for reproduce bugs.
 * NOTE: If you are going to report a bug but WITHOUT your env information, your issue will be closed directly.
 
 ```
-IntelliJ IDEA 2020.1 EAP (Ultimate Edition)
-Build #IU-201.5616.10, built on February 19, 2020
-IntelliJ IDEA EAP User
-Expiration date: March 20, 2020
-Runtime version: 11.0.6+8-b722.15 x86_64
+IntelliJ IDEA 2020.1 (Ultimate Edition)
+Build #IU-201.6668.121, built on April 8, 2020
+Runtime version: 11.0.6+8-b765.25 x86_64
 VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 macOS 10.15.2
 GC: ParNew, ConcurrentMarkSweep
 Memory: 4029M
 Cores: 8
-Registry: ide.tooltip.initialDelay=900
-Non-Bundled Plugins: izhangzhihao.rainbow.brackets
+Non-Bundled Plugins: com.chrisrm.idea.MaterialThemeUI, izhangzhihao.rainbow.brackets
 ```
