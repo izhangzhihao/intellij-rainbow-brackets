@@ -15,9 +15,7 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "build.gradle" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - 201-dependencies-{{ checksum "build.gradle" }}
 
       - run: ./gradlew -v
 
@@ -43,7 +41,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+          key: 201-dependencies-{{ checksum "build.gradle" }}
 
       - store_artifacts:
           path: ~/intellij-rainbow-brackets/build/distributions/
