@@ -8,6 +8,7 @@ import io.kotlintest.matchers.shouldBe
 import org.jetbrains.plugins.ruby.ruby.lang.RubyFileType
 import org.junit.Ignore
 
+@Ignore
 class RainbowRubyTest : LightJavaCodeInsightFixtureTestCase() {
 
     fun testRubyPluginEnabled() {

@@ -44,10 +44,10 @@ def pluginsDependencies = ['java',
                            'Groovy',
                            'properties',
                            "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.1-1",
-                           'org.intellij.scala:2020.1.25',
-                           'Dart:201.6668.86',
-                           'org.jetbrains.plugins.ruby:201.6668.60',
-                           'com.jetbrains.php:201.6668.78'
+                           'org.intellij.scala:2020.1.27',
+                           'Dart:201.6668.124',
+                           'org.jetbrains.plugins.ruby:201.6668.113',
+                           'com.jetbrains.php:201.6668.113'
 ]
 
 intellij {
@@ -120,7 +120,7 @@ jacocoTestReport {
 
 pluginVerifier {
     pluginFileName = "$rootProject.name-$version"
-    ides = ["IU-201.6668-EAP-CANDIDATE-SNAPSHOT"]
+    ides = ["IC-201.6668.121"]
     verifierVersion = "1.232"
 }
 

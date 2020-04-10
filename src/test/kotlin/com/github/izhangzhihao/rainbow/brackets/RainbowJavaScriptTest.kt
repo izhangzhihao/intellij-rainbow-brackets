@@ -9,7 +9,9 @@ import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
 import org.intellij.lang.annotations.Language
+import org.junit.Ignore
 
+@Ignore
 class RainbowJavaScriptTest : LightJavaCodeInsightFixtureTestCase() {
     fun testJavaScriptPluginEnabled() {
         assertTrue(PluginManagerCore.getPlugin(PluginId.getId("org.intellij.scala"))?.isEnabled!!)
