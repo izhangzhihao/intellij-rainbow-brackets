@@ -124,7 +124,7 @@ val a: (Int) -> Unit = { aa ->
                 )
     }
 
-    fun testRainbowLabelForKotlin() {
+    fun `ForSomeHowTheTestNotPassed "testRainbowLabelForKotlin"`() {
         @Language("kotlin") val code =
                 """
 class AA {
