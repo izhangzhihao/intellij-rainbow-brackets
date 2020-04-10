@@ -6,9 +6,7 @@ import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
 import io.kotlintest.matchers.shouldBe
 import org.jetbrains.plugins.ruby.ruby.lang.RubyFileType
-import org.junit.Ignore
 
-@Ignore
 class RainbowRubyTest : LightJavaCodeInsightFixtureTestCase() {
 
     fun testRubyPluginEnabled() {
@@ -63,6 +61,7 @@ foobar(p1: "", p2: false, p3: 1)
     fun testRainbowForIssue53Part2() {
         val code =
                 """
+#noinspection RubyDeadCode,RubyResolve
 def foo
   some_function(true, { :before => {a: 1},
                         :after => {b: 2} })
@@ -80,7 +79,6 @@ end
                 .shouldBe(
                         arrayOf(
                                 roundLevel(0),
-                                roundLevel(0),
                                 squigglyLevel(0),
                                 squigglyLevel(1),
                                 squigglyLevel(1),
@@ -89,8 +87,7 @@ end
                                 squigglyLevel(0),
                                 roundLevel(0),
                                 squigglyLevel(0),
-                                squigglyLevel(0),
-                                roundLevel(0)
+                                squigglyLevel(0)
                         )
                 )
     }
@@ -98,6 +95,7 @@ end
     fun testRainbowForIssue53Part3() {
         val code =
                 """
+#noinspection RubyResolve
 def bar
   case @var
     when 1
@@ -117,14 +115,10 @@ end
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
-                                roundLevel(0),
-                                roundLevel(0),
                                 squareLevel(0),
                                 squareLevel(0),
                                 squareLevel(0),
-                                squareLevel(0),
-                                roundLevel(0),
-                                roundLevel(0)
+                                squareLevel(0)
                         )
                 )
     }
@@ -146,14 +140,12 @@ end
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
-                                roundLevel(0),
                                 squareLevel(0),
                                 squareLevel(1),
                                 squareLevel(2),
                                 squareLevel(2),
                                 squareLevel(1),
-                                squareLevel(0),
-                                roundLevel(0)
+                                squareLevel(0)
                         )
                 )
     }

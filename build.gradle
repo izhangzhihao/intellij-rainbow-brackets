@@ -41,8 +41,10 @@ def pluginsDependencies = ['java',
                            'JavaScriptLanguage',
                            'DatabaseTools',
                            'CSS',
+                           'platform-images',
                            'Groovy',
                            'properties',
+                           'yaml',
                            "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.1-1",
                            'org.intellij.scala:2020.1.27',
                            'Dart:201.6668.124',
@@ -57,7 +59,6 @@ intellij {
     //localPath = '/Users/izhangzhihao/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/201.6668.121/IntelliJ IDEA 2020.1 EAP.app/Contents'
     updateSinceUntilBuild = false
 
-    sandboxDirectory project.rootDir.canonicalPath + "/.sandbox"
     setPlugins(*pluginsDependencies)
 }
 
@@ -71,9 +72,6 @@ idea {
     project {
         jdkName = javaVersion
         languageLevel = javaVersion
-    }
-    module {
-        excludeDirs += file(".sandbox")
     }
 }
 
