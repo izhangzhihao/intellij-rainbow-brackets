@@ -11,40 +11,17 @@ import com.intellij.openapi.startup.StartupActivity
 
 
 class RainbowUpdateNotifyActivity : StartupActivity {
-    var updated: Boolean = false
 
     override fun runActivity(project: Project) {
         val settings = RainbowSettings.instance
-        updated = getPlugin()?.version != settings.version
-        if (updated) {
+        if (getPlugin()?.version != settings.version) {
             settings.version = getPlugin()!!.version
             showUpdate(project)
-            updated = false
-        }
-    }
-
-    private fun showUpdate(project: Project) {
-        val notification = createNotification(
-                updateMsg(),
-                updateContent,
-                channel,
-                NotificationType.INFORMATION,
-                UrlOpeningListener(false)
-        )
-        showFullNotification(project, notification)
-    }
-
-    private fun updateMsg(): String {
-        val plugin = getPlugin()
-        return if (plugin == null) {
-            "Rainbow Brackets installed."
-        } else {
-            "Rainbow Brackets updated to ${plugin.version}"
         }
     }
 
     companion object {
-        private const val channel = "izhangzhihao.rainbow.brackets"
+        private const val pluginId = "izhangzhihao.rainbow.brackets"
 
 
         private val updateContent: String by lazy {
@@ -75,6 +52,26 @@ class RainbowUpdateNotifyActivity : StartupActivity {
 
         }
 
-        fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(PluginId.getId("izhangzhihao.rainbow.brackets"))
+        fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(PluginId.getId(pluginId))
+
+        private fun updateMsg(): String {
+            val plugin = getPlugin()
+            return if (plugin == null) {
+                "Rainbow Brackets installed."
+            } else {
+                "Rainbow Brackets updated to ${plugin.version}"
+            }
+        }
+
+        private fun showUpdate(project: Project) {
+            val notification = createNotification(
+                    updateMsg(),
+                    updateContent,
+                    pluginId,
+                    NotificationType.INFORMATION,
+                    UrlOpeningListener(false)
+            )
+            showFullNotification(project, notification)
+        }
     }
 }
