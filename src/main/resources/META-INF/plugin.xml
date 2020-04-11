@@ -49,6 +49,17 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.1</p>
+        <ul>
+            <li>First release of 2020.1 and Java 11!</li>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/235">#235: support SQL begin end colorization</a></li>
+            <li>Notification improved</li>
+            <li>Error report improved</li>
+            <li>Deprecated API usage removed</li>
+            <li>Initial support for <a href="https://www.jetbrains.org/intellij/sdk/docs/basics/plugin_structure/dynamic_plugins.html">dynamic plugin</a></li>
+        </ul>
+        <br/>
+
         <p>6.0</p>
         <ul>
             <li>First release of 2020.1 and Java 11!</li>
