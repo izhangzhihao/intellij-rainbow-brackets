@@ -1,6 +1,7 @@
 package com.github.izhangzhihao.rainbow.brackets.settings.form
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter
+import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.application.options.colors.*
 import com.intellij.ide.util.PropertiesComponent
 import com.intellij.ui.ColorPanel
@@ -142,7 +143,7 @@ class RainbowOptionsPanel(
         rainbow.isSelected = false
         gradientLabel.text = "Assign each brackets its own color from the spectrum below:"
 
-        for (i in 0 until 5) {
+        for (i in 0 until minRange()) {
             colors[i].isEnabled = false
             colors[i].selectedColor = null
             colorLabels[i].isEnabled = false
@@ -156,7 +157,7 @@ class RainbowOptionsPanel(
         rainbow.isSelected = rainbowOn
         gradientLabel.text = "Assign each ${rainbowName.toLowerCase()} its own color from the spectrum below:"
 
-        for (i in 0 until 5) {
+        for (i in 0 until minRange()) {
             colors[i].isEnabled = rainbowOn
             colorLabels[i].isEnabled = rainbowOn
             colors[i].selectedColor = descriptions[i].rainbowColor
@@ -175,7 +176,7 @@ class RainbowOptionsPanel(
             RainbowHighlighter.NAME_SQUIGGLY_BRACKETS -> {
                 RainbowHighlighter.setRainbowEnabled(rainbowName, rainbow.isSelected)
 
-                for (i in 0 until 5) {
+                for (i in 0 until minRange()) {
                     colors[i].selectedColor?.let { color ->
                         descriptions[i].rainbowColor = color
                         descriptions[i].apply(scheme)
@@ -184,6 +185,8 @@ class RainbowOptionsPanel(
             }
         }
     }
+
+    private fun minRange() = minOf(RainbowSettings.instance.numberOfColors, 5)
 
     override fun processListOptions(): MutableSet<String> = mutableSetOf(
             RainbowHighlighter.NAME_ROUND_BRACKETS,
