@@ -23,6 +23,8 @@ class RainbowSettingsForm {
 
     private var numberOfColors: JTextField? = null
 
+    private var disableRainbowIndentsInZenMode: JCheckBox? = null
+
     private val settings: RainbowSettings = RainbowSettings.instance
 
     fun component(): JComponent? = panel
@@ -51,6 +53,8 @@ class RainbowSettingsForm {
 
     fun numberOfColors() = numberOfColors?.text?.toIntOrNull()
 
+    fun disableRainbowIndentsInZenMode() = disableRainbowIndentsInZenMode?.isSelected
+
 
     val isModified: Boolean
         get() = (isRainbowEnabled() != settings.isRainbowEnabled
@@ -65,6 +69,7 @@ class RainbowSettingsForm {
                 || applyColorsOfRoundForAllBrackets() != settings.applyColorsOfRoundForAllBrackets
                 || cycleCountOnAllBrackets() != settings.cycleCountOnAllBrackets
                 || numberOfColors() != settings.numberOfColors
+                || disableRainbowIndentsInZenMode() != settings.disableRainbowIndentsInZenMode
                 )
 
     init {
@@ -84,5 +89,6 @@ class RainbowSettingsForm {
         applyColorsOfRoundForAllBrackets?.isSelected = settings.applyColorsOfRoundForAllBrackets
         cycleCountOnAllBrackets?.isSelected = settings.cycleCountOnAllBrackets
         numberOfColors?.text = settings.numberOfColors.toString()
+        disableRainbowIndentsInZenMode?.isSelected = settings.disableRainbowIndentsInZenMode
     }
 }

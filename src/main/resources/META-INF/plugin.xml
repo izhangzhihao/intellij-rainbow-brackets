@@ -586,7 +586,7 @@
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.izhangzhihao.rainbow.brackets.RainbowColorsSchemeListener" topic="com.intellij.openapi.editor.colors.EditorColorsListener"/>
+        <listener class="com.github.izhangzhihao.rainbow.brackets.listener.RainbowColorsSchemeListener" topic="com.intellij.openapi.editor.colors.EditorColorsListener"/>
     </applicationListeners>
 
     <actions>

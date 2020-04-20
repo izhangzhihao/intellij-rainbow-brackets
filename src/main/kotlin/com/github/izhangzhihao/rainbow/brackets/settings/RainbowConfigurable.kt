@@ -37,6 +37,7 @@ class RainbowConfigurable : Configurable {
         settings.cycleCountOnAllBrackets = settingsForm?.cycleCountOnAllBrackets()
                 ?: false
         settings.numberOfColors = settingsForm?.numberOfColors() ?: 5
+        settings.disableRainbowIndentsInZenMode = settingsForm?.disableRainbowIndentsInZenMode() ?: false
     }
 
     override fun reset() {

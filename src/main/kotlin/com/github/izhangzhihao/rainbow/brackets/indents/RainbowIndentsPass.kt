@@ -6,6 +6,7 @@ import com.github.izhangzhihao.rainbow.brackets.util.*
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.codeInsight.highlighting.CodeBlockSupportHandler
+import com.intellij.ide.actions.ToggleZenModeAction
 import com.intellij.lang.Language
 import com.intellij.lang.LanguageParserDefinitions
 import com.intellij.openapi.editor.Document
@@ -83,7 +84,7 @@ class RainbowIndentsPass internal constructor(
         myRanges = ranges
     }
 
-    private fun nowStamp(): Long = if (isRainbowIndentGuidesShown()) checkNotNull(myDocument).modificationStamp xor (EditorUtil.getTabSize(myEditor).toLong() shl 24) else -1
+    private fun nowStamp(): Long = if (isRainbowIndentGuidesShown(this.myProject)) checkNotNull(myDocument).modificationStamp xor (EditorUtil.getTabSize(myEditor).toLong() shl 24) else -1
 
     override fun doApplyInformationToEditor() {
         val stamp = myEditor.getUserData(LAST_TIME_INDENTS_BUILT)
@@ -158,7 +159,7 @@ class RainbowIndentsPass internal constructor(
     }
 
     private fun buildDescriptors(): List<IndentGuideDescriptor> {
-        if (!isRainbowIndentGuidesShown()) return emptyList()
+        if (!isRainbowIndentGuidesShown(this.myProject)) return emptyList()
 
         val calculator = IndentsCalculator()
         calculator.calculate()
@@ -246,6 +247,7 @@ class RainbowIndentsPass internal constructor(
     private inner class IndentsCalculator internal constructor() {
         internal val myComments: MutableMap<Language, TokenSet> = HashMap()
         internal val lineIndents: IntArray // negative value means the line is empty (or contains a comment) and indent
+
         // (denoted by absolute value) was deduced from enclosing non-empty lines
         internal val myChars: CharSequence
 
@@ -567,8 +569,15 @@ class RainbowIndentsPass internal constructor(
         private fun XmlTag.getEndTagStartLineNumber(document: Document): Int? =
                 lastChild?.findPrevSibling(XML_END_TAG_START_CONDITION)?.let { document.lineNumber(it.startOffset) }
 
-        private fun isRainbowIndentGuidesShown(): Boolean =
-                RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
+        private fun isRainbowIndentGuidesShown(project: Project): Boolean {
+            if (RainbowSettings.instance.disableRainbowIndentsInZenMode && isZenModeEnabled(project)) {
+                return false
+            }
+            return RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
+        }
+
+        private fun isZenModeEnabled(project: Project) =
+                ToggleZenModeAction.isZenModeEnabled(project)
 
         private fun createHighlighter(mm: MarkupModel, range: TextRange): RangeHighlighter {
             return mm.addRangeHighlighter(
