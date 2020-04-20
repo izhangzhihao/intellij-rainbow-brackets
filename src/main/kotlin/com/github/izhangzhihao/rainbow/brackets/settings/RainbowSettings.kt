@@ -30,7 +30,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var applyColorsOfRoundForAllBrackets = false
     var cycleCountOnAllBrackets = false
     var numberOfColors = 5
-    var disableRainbowIndentsInZenMode = false
+    var disableRainbowIndentsInZenMode = true
 
     @Suppress("MemberVisibilityCanBePrivate")
     var languageBlacklist: Array<String> = arrayOf()
