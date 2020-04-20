@@ -8,12 +8,19 @@
         <br/>
 
         <b>Sponsors</b>
+        <p>This plugin is sponsored by <b>CodeStream</b> and <b>Codota</b></p>
         <br/>
         <a href=https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner>
             <img src=https://alt-images.codestream.com/codestream_logo_jbrainbowbrackets.png>
         </a>
         <br>Discussing code is now as easy as highlighting a block and typing a comment right from your IDE. Take the pain out of code reviews and improve code quality.
         <a href=https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner>Try it free!</a>
+        <br/>
+        <a href="https://www.codota.com">
+            <img src="https://d3ftmdkezac6rp.cloudfront.net/plugins/assets/logo.b81d20edb7ae4d8ff43b886ae5cde1dd.svg" width="300"/>
+        </a>
+        <br>Code faster and smarter using code completions learned from millions of programs directly in IntelliJ, Android Studio or Eclipse.
+        <a href=https://www.codota.com>Get Codota</a>
         <br/>
 
         <p>Supported languages:</p>
