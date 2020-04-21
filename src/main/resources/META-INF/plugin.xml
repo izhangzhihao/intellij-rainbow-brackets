@@ -11,7 +11,7 @@
         <p>This plugin is sponsored by <b>Codota</b> and <b>CodeStream</b></p>
 
         <a href="https://www.codota.com?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner">
-            <img src="https://d3ftmdkezac6rp.cloudfront.net/plugins/assets/logo.b81d20edb7ae4d8ff43b886ae5cde1dd.svg" width="300"/>
+            <img src="https://blog.codota.com/wp-content/uploads/2018/11/cropped-Group-Copy-5-1.png" width="300"/>
         </a>
         <br>Code faster and smarter using code completions learned from millions of programs directly in IntelliJ, Android Studio or Eclipse.
         <a href=https://www.codota.com?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner>Get Codota</a>
@@ -563,6 +563,7 @@
     <depends optional="true" config-file="csharp-annotator.xml">com.intellij.modules.rider</depends>
     <depends optional="true" config-file="intellij-haskell-annotator.xml">intellij.haskell</depends>
     <depends optional="true" config-file="sql-brackets.xml">com.intellij.modules.database</depends>
+    <depends optional="true" config-file="oc-brackets.xml">com.intellij.modules.clion</depends>
 
     <extensionPoints>
         <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">

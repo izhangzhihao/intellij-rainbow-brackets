@@ -57,6 +57,7 @@ intellij {
 
     version ideaVersion
     //localPath = '/Users/izhangzhihao/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/201.6668.121/IntelliJ IDEA 2020.1 EAP.app/Contents'
+    //localPath = '/Users/izhangzhihao/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/CLion.app/Contents'
     updateSinceUntilBuild = false
 
     setPlugins(*pluginsDependencies)
@@ -75,10 +76,26 @@ idea {
     }
 }
 
+
+def gistFile = { url, name ->
+    File file = new File("libs/${name}.jar")
+    file.parentFile.mkdirs()
+    if (!file.exists()) {
+        new URL(url).withInputStream { downloadStream ->
+            file.withOutputStream { fileOut ->
+                fileOut << downloadStream
+            }
+        }
+    }
+    files(file.absolutePath)
+}
+
 dependencies {
     implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.5.0.201909110433-r") {
         exclude module: "gson"
     }
+    //compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly gistFile('https://gist.github.com/izhangzhihao/e9e775b9fccc621de58557a726d84339/raw/1e700b2a23eb4fa8d859f1062956dc08e860cb0b/clion.jar', 'clion')
     testImplementation("io.kotlintest:kotlintest:2.0.7")
 }
 
