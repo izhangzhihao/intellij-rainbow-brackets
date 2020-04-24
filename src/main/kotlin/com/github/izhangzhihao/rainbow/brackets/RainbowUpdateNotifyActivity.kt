@@ -10,7 +10,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 
 
-class RainbowUpdateNotifyActivity : StartupActivity.Background {
+class RainbowUpdateNotifyActivity : StartupActivity {
 
     override fun runActivity(project: Project) {
         val settings = RainbowSettings.instance

@@ -589,7 +589,7 @@
 
         <additionalTextAttributes scheme="Default" file="colorSchemes/rainbow-color-default.xml"/>
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <backgroundPostStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.RainbowUpdateNotifyActivity"/>
+        <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.RainbowUpdateNotifyActivity"/>
         <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.util.GitHubErrorReporter"/>
         <highlightingPassFactory implementation="com.github.izhangzhihao.rainbow.brackets.indents.RainbowIndentsPassFactory"/>
     </extensions>
