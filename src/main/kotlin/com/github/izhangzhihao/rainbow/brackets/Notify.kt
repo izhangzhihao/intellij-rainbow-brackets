@@ -33,7 +33,8 @@ fun showFullNotification(project: Project, notification: Notification) {
                 notification,
                 true, // showCallout
                 false, // hideOnClickOutside
-                BalloonLayoutData.fullContent()) { }
+                BalloonLayoutData.fullContent(),
+                project)
         balloon.show(target, Balloon.Position.atLeft)
     } catch (e: Exception) {
         notification.notify(project)
