@@ -7,6 +7,7 @@ import com.github.izhangzhihao.rainbow.brackets.util.memoizedFileExtension
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder
 import com.intellij.ide.plugins.PluginManagerCore
+import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
@@ -47,7 +48,8 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
                                               startElement: PsiElement?,
                                               endElement: PsiElement?) {
         val holder = highlightInfoHolder ?: return
-        getHighlightInfo(holder.colorsScheme, this, level)
+        @Suppress("USELESS_ELVIS") val schema = holder.colorsScheme?: EditorColorsManager.getInstance().globalScheme
+        getHighlightInfo(schema, this, level)
                 ?.also {
                     holder.add(it)
 

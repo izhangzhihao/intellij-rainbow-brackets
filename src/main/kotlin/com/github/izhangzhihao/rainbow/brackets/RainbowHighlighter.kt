@@ -110,14 +110,13 @@ object RainbowHighlighter {
         return getTextAttributes(EditorColorsManager.getInstance().globalScheme, rainbowName, level).foregroundColor
     }
 
-    private fun getTextAttributes(colorsScheme: TextAttributesScheme?,
+    private fun getTextAttributes(colorsScheme: TextAttributesScheme,
                                   element: PsiElement,
                                   level: Int): TextAttributes? {
         if (!settings.isRainbowEnabled) {
             return null
         }
 
-        val scheme = colorsScheme ?: EditorColorsManager.getInstance().globalScheme
         val rainbowName = when {
             settings.applyColorsOfRoundForAllBrackets -> NAME_ROUND_BRACKETS
             element.isRoundBracket -> if (settings.isEnableRainbowRoundBrackets) NAME_ROUND_BRACKETS else null
@@ -127,10 +126,10 @@ object RainbowHighlighter {
             else -> NAME_ROUND_BRACKETS
         } ?: return null
 
-        return getTextAttributes(scheme, rainbowName, level)
+        return getTextAttributes(colorsScheme, rainbowName, level)
     }
 
-    fun getHighlightInfo(colorsScheme: TextAttributesScheme?, element: PsiElement, level: Int)
+    fun getHighlightInfo(colorsScheme: TextAttributesScheme, element: PsiElement, level: Int)
             : HighlightInfo? = getTextAttributes(colorsScheme, element, level)
             ?.let { attr ->
                 HighlightInfo

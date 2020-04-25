@@ -38,10 +38,12 @@ class RainbowColorsPageFactory : ColorAndFontPanelFactory, ColorAndFontDescripto
 
     companion object {
         private const val RAINBOW_BRACKETS_GROUP = "Rainbow Brackets"
-        private val ATTRIBUTE_DESCRIPTORS = createDescriptors(RainbowHighlighter.NAME_ROUND_BRACKETS) +
-                createDescriptors(RainbowHighlighter.NAME_SQUARE_BRACKETS) +
-                createDescriptors(RainbowHighlighter.NAME_SQUIGGLY_BRACKETS) +
-                createDescriptors(RainbowHighlighter.NAME_ANGLE_BRACKETS)
+        private val ATTRIBUTE_DESCRIPTORS: Array<AttributesDescriptor> by lazy {
+            createDescriptors(RainbowHighlighter.NAME_ROUND_BRACKETS) +
+                    createDescriptors(RainbowHighlighter.NAME_SQUARE_BRACKETS) +
+                    createDescriptors(RainbowHighlighter.NAME_SQUIGGLY_BRACKETS) +
+                    createDescriptors(RainbowHighlighter.NAME_ANGLE_BRACKETS)
+        }
 
         private fun createDescriptors(name: String): Array<AttributesDescriptor> {
             return RainbowHighlighter.getRainbowAttributesKeys(name)
