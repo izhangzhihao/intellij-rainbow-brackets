@@ -25,6 +25,7 @@
 - [Screenshots](#screenshots)
 - [Install](#install)
 - [Customize colors](#customize-colors)
+- [Use color generator](#use-color-generator)
 - [Config file path](#config-file-path)
 - [HTML code in js](#html-code-in-js)
 - [Kotlin function literal braces and arrow](#kotlin-function-literal-braces-and-arrow)
@@ -133,6 +134,34 @@ You can download the latest snapshot build from [here](https://circleci.com/gh/i
 <kbd>Settings/Preferences</kbd> > <kbd>Editor</kbd> > <kbd>Color Scheme</kbd> > <kbd>Rainbow Brackets</kbd>:
 
 ![Customize colors](./screenshots/customize-colors.png)
+
+## Use color generator
+
+I didn't like the build-in colors, I want some new color but does want to try out and pick colors. Please use color generator.
+
+<kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > <kbd>Use color generator</kbd>
+
+If you turn on this option, we will auto generate some colors for you.
+
+If you need more control, you can decide the options of color generator by edit [the config file](#config-file-path), 
+
+The value of the option `customColorGeneratorOption` is a json object, available options are:
+
+```hue``` – Controls the hue of the generated color. You can pass a string representing a color name: ```red```, ```orange```, ```yellow```, ```green```, ```blue```, ```purple```, ```pink``` and ```monochrome``` are currently supported. If you pass a  hexidecimal color string such as ```#00FFFF```, color generator will extract its hue value and use that to generate colors.
+
+```luminosity``` – Controls the luminosity of the generated color. You can specify a string containing ```bright```, ```light``` or ```dark```.
+
+Please make sure the value of the option `customColorGeneratorOption` is escaped in xml format,
+you can use [this tool](https://www.freeformatter.com/xml-escape.html#ad-output) to do this.
+
+```xml
+<application>
+  <component name="RainbowSettings">
+    <option name="useColorGenerator" value="true" />
+    <option name="customColorGeneratorOption" value="{&quot;luminosity&quot;: &quot;light&quot;,&quot;hue&quot;: &quot;blue&quot;}"/>
+  </component>
+</application>
+```
 
 ### Want to config the number of colors?
 

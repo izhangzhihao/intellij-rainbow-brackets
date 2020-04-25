@@ -115,6 +115,9 @@ object RainbowHighlighter {
 
     @Suppress("UNUSED_PARAMETER") // we use parameter as cache key
     private fun generateColor(isDark: Boolean, rainbowName: String, level: Int): TextAttributes {
+        if (!settings.customColorGeneratorOption.isNullOrBlank()) {
+            return genByOption(settings.customColorGeneratorOption!!)
+        }
         if (isDark) {
             @Language("JSON") val darkOption = """{"luminosity": "light"}"""
             return genByOption(darkOption)

@@ -34,6 +34,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var numberOfColors = 5
     var disableRainbowIndentsInZenMode = true
     var useColorGenerator = false
+    var customColorGeneratorOption: String? = null
 
     @Suppress("MemberVisibilityCanBePrivate")
     var languageBlacklist: Array<String> = arrayOf()
