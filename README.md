@@ -152,7 +152,7 @@ The value of the option `customColorGeneratorOption` is a json object, available
 ```luminosity``` – Controls the luminosity of the generated color. You can specify a string containing ```bright```, ```light``` or ```dark```.
 
 Please make sure the value of the option `customColorGeneratorOption` is escaped in xml format,
-you can use [this tool](https://www.freeformatter.com/xml-escape.html#ad-output) to do this.
+you can use [this tool](https://www.freeformatter.com/xml-escape.html#ad-output) to do this. Please don't forget to restart your IDE after change the config file.
 
 ```xml
 <application>
