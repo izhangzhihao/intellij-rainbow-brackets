@@ -4,7 +4,7 @@ import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.NAME_ANGLE_BR
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.NAME_ROUND_BRACKETS
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.NAME_SQUARE_BRACKETS
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.NAME_SQUIGGLY_BRACKETS
-import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getTextAttributes
+import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getRainbowColorByLevel
 import com.github.izhangzhihao.rainbow.brackets.annotator.RainbowUtils.annotateUtil
 import com.github.izhangzhihao.rainbow.brackets.annotator.RainbowUtils.settings
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
@@ -87,14 +87,14 @@ object RainbowUtils {
             if (level >= 1) {
                 holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
                         .range(element.psi)
-                        .enforcedTextAttributes(getTextAttributes(scheme, rainbowName, level))
+                        .enforcedTextAttributes(getRainbowColorByLevel(scheme, rainbowName, level))
                         .create()
             }
         } else {
             if (level >= 0) {
                 holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
                         .range(element.psi)
-                        .enforcedTextAttributes(getTextAttributes(scheme, rainbowName, level))
+                        .enforcedTextAttributes(getRainbowColorByLevel(scheme, rainbowName, level))
                         .create()
             }
         }

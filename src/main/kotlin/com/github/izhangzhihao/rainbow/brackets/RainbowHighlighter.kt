@@ -1,6 +1,7 @@
 package com.github.izhangzhihao.rainbow.brackets
 
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
+import com.github.izhangzhihao.rainbow.brackets.util.memoize
 import com.intellij.codeInsight.daemon.impl.HighlightInfo
 import com.intellij.codeInsight.daemon.impl.HighlightInfoType
 import com.intellij.lang.annotation.HighlightSeverity
@@ -14,6 +15,7 @@ import com.intellij.openapi.editor.markup.EffectType
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiElement
 import com.intellij.ui.JBColor
+import org.intellij.lang.annotations.Language
 import org.jetbrains.annotations.TestOnly
 import java.awt.Color
 import java.awt.Font
@@ -27,10 +29,10 @@ object RainbowHighlighter {
     const val NAME_SQUIGGLY_BRACKETS = "Squiggly Brackets"
     const val NAME_ANGLE_BRACKETS = "Angle Brackets"
 
-    private const val KEY_ROUND_BRACKETS = "ROUND_BRACKETS_RAINBOW_COLOR"
-    private const val KEY_SQUARE_BRACKETS = "SQUARE_BRACKETS_RAINBOW_COLOR"
-    private const val KEY_SQUIGGLY_BRACKETS = "SQUIGGLY_BRACKETS_RAINBOW_COLOR"
-    private const val KEY_ANGLE_BRACKETS = "ANGLE_BRACKETS_RAINBOW_COLOR"
+    const val KEY_ROUND_BRACKETS = "ROUND_BRACKETS_RAINBOW_COLOR"
+    const val KEY_SQUARE_BRACKETS = "SQUARE_BRACKETS_RAINBOW_COLOR"
+    const val KEY_SQUIGGLY_BRACKETS = "SQUIGGLY_BRACKETS_RAINBOW_COLOR"
+    const val KEY_ANGLE_BRACKETS = "ANGLE_BRACKETS_RAINBOW_COLOR"
 
     private val roundBrackets: CharArray = charArrayOf('(', ')')
     private val squareBrackets: CharArray = charArrayOf('[', ']')
@@ -39,13 +41,13 @@ object RainbowHighlighter {
 
     private val settings = RainbowSettings.instance
 
-    private val roundBracketsRainbowColorKeys: List<TextAttributesKey> =
+    private val roundBracketsRainbowColorKeys: Array<TextAttributesKey> =
             createRainbowAttributesKeys(KEY_ROUND_BRACKETS, settings.numberOfColors)
-    private val squareBracketsRainbowColorKeys: List<TextAttributesKey> =
+    private val squareBracketsRainbowColorKeys: Array<TextAttributesKey> =
             createRainbowAttributesKeys(KEY_SQUARE_BRACKETS, settings.numberOfColors)
-    private val squigglyBracketsRainbowColorKeys: List<TextAttributesKey> =
+    private val squigglyBracketsRainbowColorKeys: Array<TextAttributesKey> =
             createRainbowAttributesKeys(KEY_SQUIGGLY_BRACKETS, settings.numberOfColors)
-    private val angleBracketsRainbowColorKeys: List<TextAttributesKey> =
+    private val angleBracketsRainbowColorKeys: Array<TextAttributesKey> =
             createRainbowAttributesKeys(KEY_ANGLE_BRACKETS, settings.numberOfColors)
 
     private val rainbowElement: HighlightInfoType = HighlightInfoType
@@ -56,14 +58,15 @@ object RainbowHighlighter {
     private val PsiElement.isSquigglyBracket get() = squigglyBrackets.any { textContains(it) }
     private val PsiElement.isAngleBracket get() = angleBrackets.any { textContains(it) }
 
-    private fun createRainbowAttributesKeys(keyName: String, size: Int): List<TextAttributesKey> {
+    private fun createRainbowAttributesKeys(keyName: String, size: Int): Array<TextAttributesKey> {
         return generateSequence(0) { it + 1 }
                 .map { TextAttributesKey.createTextAttributesKey("$keyName$it") }
                 .take(size)
                 .toList()
+                .toTypedArray()
     }
 
-    fun getRainbowAttributesKeys(rainbowName: String): List<TextAttributesKey> {
+    fun getRainbowAttributesKeys(rainbowName: String): Array<TextAttributesKey> {
         return when (rainbowName) {
             NAME_ROUND_BRACKETS -> roundBracketsRainbowColorKeys
             NAME_SQUARE_BRACKETS -> squareBracketsRainbowColorKeys
@@ -95,19 +98,42 @@ object RainbowHighlighter {
         }
     }
 
-    private fun List<TextAttributesKey>.getAttributesKey(level: Int) = this[level % size]
+    fun isDarkEditor() = EditorColorsManager.getInstance().isDarkEditor
 
-    fun getTextAttributes(colorsScheme: TextAttributesScheme, rainbowName: String, level: Int): TextAttributes {
-        val key = getRainbowAttributesKeys(rainbowName).getAttributesKey(level)
-        return colorsScheme.getAttributes(key)
+    fun getRainbowColorByLevel(colorsScheme: TextAttributesScheme, rainbowName: String, level: Int): TextAttributes {
+        val ind = level % settings.numberOfColors
+        if (settings.useColorGenerator) {
+            return memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
+        }
+        val key = getRainbowAttributesKeys(rainbowName)[ind]
+        val result = colorsScheme.getAttributes(key)
+        if (result == null || result.foregroundColor == null) {
+            return memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
+        }
+        return result
     }
+
+    @Suppress("UNUSED_PARAMETER") // we use parameter as cache key
+    private fun generateColor(isDark: Boolean, rainbowName: String, level: Int): TextAttributes {
+        if (isDark) {
+            @Language("JSON") val darkOption = """{"luminosity": "light"}"""
+            return genByOption(darkOption)
+        }
+        @Language("JSON") val lightOption = """{"luminosity": "dark"}"""
+        return genByOption(lightOption)
+    }
+
+    private fun genByOption(option: String) =
+            TextAttributes(Color.decode(RandomColorGenerator.randomColor(option)), null, null, null, 0)
+
+    val memGetRainbowColorByLevel = { isDark: Boolean, rainbowName: String, level: Int -> generateColor(isDark, rainbowName, level) }.memoize()
 
     @TestOnly
     fun getBrackets(): CharArray = roundBrackets + squareBrackets + squigglyBrackets + angleBrackets
 
     @TestOnly
     fun getRainbowColor(rainbowName: String, level: Int): Color? {
-        return getTextAttributes(EditorColorsManager.getInstance().globalScheme, rainbowName, level).foregroundColor
+        return getRainbowColorByLevel(EditorColorsManager.getInstance().globalScheme, rainbowName, level).foregroundColor
     }
 
     private fun getTextAttributes(colorsScheme: TextAttributesScheme,
@@ -126,7 +152,7 @@ object RainbowHighlighter {
             else -> NAME_ROUND_BRACKETS
         } ?: return null
 
-        return getTextAttributes(colorsScheme, rainbowName, level)
+        return getRainbowColorByLevel(colorsScheme, rainbowName, level)
     }
 
     fun getHighlightInfo(colorsScheme: TextAttributesScheme, element: PsiElement, level: Int)

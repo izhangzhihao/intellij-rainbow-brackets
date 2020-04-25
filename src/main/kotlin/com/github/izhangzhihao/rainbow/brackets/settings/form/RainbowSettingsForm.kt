@@ -25,6 +25,8 @@ class RainbowSettingsForm {
 
     private var disableRainbowIndentsInZenMode: JCheckBox? = null
 
+    private var useColorGenerator: JCheckBox? = null
+
     private val settings: RainbowSettings = RainbowSettings.instance
 
     fun component(): JComponent? = panel
@@ -56,6 +58,9 @@ class RainbowSettingsForm {
     fun disableRainbowIndentsInZenMode() = disableRainbowIndentsInZenMode?.isSelected
 
 
+    fun useColorGenerator() = useColorGenerator?.isSelected
+
+
     val isModified: Boolean
         get() = (isRainbowEnabled() != settings.isRainbowEnabled
                 || isRainbowAngleBracketsEnabled() != settings.isEnableRainbowAngleBrackets
@@ -70,6 +75,7 @@ class RainbowSettingsForm {
                 || cycleCountOnAllBrackets() != settings.cycleCountOnAllBrackets
                 || numberOfColors() != settings.numberOfColors
                 || disableRainbowIndentsInZenMode() != settings.disableRainbowIndentsInZenMode
+                || useColorGenerator() != settings.useColorGenerator
                 )
 
     init {
@@ -90,5 +96,6 @@ class RainbowSettingsForm {
         cycleCountOnAllBrackets?.isSelected = settings.cycleCountOnAllBrackets
         numberOfColors?.text = settings.numberOfColors.toString()
         disableRainbowIndentsInZenMode?.isSelected = settings.disableRainbowIndentsInZenMode
+        useColorGenerator?.isSelected = settings.useColorGenerator
     }
 }

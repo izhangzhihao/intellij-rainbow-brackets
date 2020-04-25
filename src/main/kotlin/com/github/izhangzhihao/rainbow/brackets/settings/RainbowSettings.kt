@@ -28,9 +28,12 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var isOverrideMatchedBraceAttributes = true
     var pressAnyKeyToRemoveTheHighlightingEffects = false
     var applyColorsOfRoundForAllBrackets = false
+
+    //https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/391
     var cycleCountOnAllBrackets = false
     var numberOfColors = 5
     var disableRainbowIndentsInZenMode = true
+    var useColorGenerator = false
 
     @Suppress("MemberVisibilityCanBePrivate")
     var languageBlacklist: Array<String> = arrayOf()
