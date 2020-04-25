@@ -29,10 +29,10 @@ object RainbowHighlighter {
     const val NAME_SQUIGGLY_BRACKETS = "Squiggly Brackets"
     const val NAME_ANGLE_BRACKETS = "Angle Brackets"
 
-    const val KEY_ROUND_BRACKETS = "ROUND_BRACKETS_RAINBOW_COLOR"
-    const val KEY_SQUARE_BRACKETS = "SQUARE_BRACKETS_RAINBOW_COLOR"
-    const val KEY_SQUIGGLY_BRACKETS = "SQUIGGLY_BRACKETS_RAINBOW_COLOR"
-    const val KEY_ANGLE_BRACKETS = "ANGLE_BRACKETS_RAINBOW_COLOR"
+    private const val KEY_ROUND_BRACKETS = "ROUND_BRACKETS_RAINBOW_COLOR"
+    private const val KEY_SQUARE_BRACKETS = "SQUARE_BRACKETS_RAINBOW_COLOR"
+    private const val KEY_SQUIGGLY_BRACKETS = "SQUIGGLY_BRACKETS_RAINBOW_COLOR"
+    private const val KEY_ANGLE_BRACKETS = "ANGLE_BRACKETS_RAINBOW_COLOR"
 
     private val roundBrackets: CharArray = charArrayOf('(', ')')
     private val squareBrackets: CharArray = charArrayOf('[', ']')
@@ -169,12 +169,14 @@ object RainbowHighlighter {
             }
 
 
-    private val KEY_HTML_CODE = TextAttributesKey.createTextAttributesKey("HTML_CODE")
-    private val KEY_KOTLIN_LABEL = TextAttributesKey.createTextAttributesKey("KOTLIN_LABEL")
-    private val KEY_MATCHED_BRACE_ATTRIBUTES =
-            TextAttributesKey.createTextAttributesKey("MATCHED_BRACE_ATTRIBUTES")
-    private val KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW =
-            TextAttributesKey.createTextAttributesKey("KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW")
+    private val KEY_HTML_CODE: TextAttributesKey by lazy { TextAttributesKey.createTextAttributesKey("HTML_CODE") }
+    private val KEY_KOTLIN_LABEL: TextAttributesKey by lazy { TextAttributesKey.createTextAttributesKey("KOTLIN_LABEL") }
+    private val KEY_MATCHED_BRACE_ATTRIBUTES: TextAttributesKey by lazy {
+        TextAttributesKey.createTextAttributesKey("MATCHED_BRACE_ATTRIBUTES")
+    }
+    private val KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW: TextAttributesKey by lazy {
+        TextAttributesKey.createTextAttributesKey("KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW")
+    }
 
 
     fun fixHighlighting(scheme: EditorColorsScheme = EditorColorsManager.getInstance().globalScheme) {

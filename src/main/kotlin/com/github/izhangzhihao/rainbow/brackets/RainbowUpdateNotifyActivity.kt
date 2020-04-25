@@ -37,7 +37,9 @@ class RainbowUpdateNotifyActivity : StartupActivity {
     🆕See <b><a href="${changelog()}">changelog</a></b> for more details about this update.<br>
     👉Want to customize your own color scheme of Rainbow Brackets? Edit it under
     <b>Settings > Editor > Color Scheme > Rainbow Brackets</b><br>
-    👉Other additional feature under
+    👉Tired of the bundled colors? Try out the new color generator!
+    <b>Settings > Other Settings > Rainbow Brackets > Use color generator</b><br>
+    👉Other additional features under
     <b>Settings > Other Settings > Rainbow Brackets</b><br/>
     Enjoy your colorful code🌈.
     """

@@ -57,6 +57,16 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.3</p>
+        <ul>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/417">#417: Disable Rainbow Indents in Zen mode</a></li>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/227">#227: Coloring for angle bracket for C++ code</a></li>
+            <li>Fix some exceptions and refactoring!</li>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/214">#214: New color generator to generate your color schema</a></li>
+        </ul>
+        <br/>
+
+
         <p>6.2</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/410">#410: ArrayIndexOutOfBoundsException when number of colors to less than 5</a></li>
@@ -579,7 +589,7 @@
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.DefaultRainbowVisitor"/>
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.XmlRainbowVisitor"/>
 
-        <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable" dynamic="true"/>
+        <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
         <applicationService
                 serviceImplementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"/>
         <colorAndFontPanelFactory
