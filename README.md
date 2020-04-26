@@ -258,7 +258,7 @@ You can support us by the following actions:
 * Tell us your ideas
 * Become a sponsor by donating on [Open Collective](https://opencollective.com/intellij-rainbow-brackets)
 * Become a sponsor by donating with AliPay or WeChatPay
-* Don't want to use AliPay's mobile App? If you could read Chinese, please use [the official website](https://shenghuo.alipay.com/send/payment/fill.htm) to transfer your donation to my Alipay account(izhangzhihao@hotmail.com). Otherwise, you can try the English version of Alipay(https://global.alipay.com/) to transfer your donation to me.
+* Don't want to use AliPay's mobile App? If you could read Chinese, please use [the official website](https://shenghuo.alipay.com/send/payment/fill.htm) to transfer your donation to my Alipay account(izhangzhihao@hotmail.com). Otherwise, you can try [the English version of Alipay](https://global.alipay.com/) to transfer your donation.
 
 <table>
   <tr>
