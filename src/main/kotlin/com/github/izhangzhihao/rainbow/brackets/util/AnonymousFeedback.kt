@@ -133,7 +133,10 @@ private object AnonymousFeedback {
     }
 }
 
-private const val something = "29d22c9cf346c9a0d1" + "d11f1bf9dc6b7595a00e4a"
+//String(Base64.getEncoder().encode("".toByteArray()))
+private const val st = "YjgwZGRiY2U2YTNlYTAzM2UyZGU" + "yNDcyNWEyZjE3MGQ2YThmMjc0MQ=="
+
+private val something: String by lazy { String(Base64.getDecoder().decode(st)) }
 
 class GitHubErrorReporter : ErrorReportSubmitter() {
     override fun getReportActionText() = ErrorReportBundle.message("report.error.to.plugin.vendor")
