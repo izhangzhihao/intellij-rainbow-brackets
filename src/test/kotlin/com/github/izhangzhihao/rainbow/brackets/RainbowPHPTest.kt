@@ -27,8 +27,6 @@ function padZero(string data): string
         PsiDocumentManager.getInstance(project).commitAllDocuments()
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
-        doHighlighting.removeAt(0)// remove '<?php'
-        doHighlighting.removeAt(doHighlighting.size - 1)// remove '?>'
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
                 .map { it.forcedTextAttributes.foregroundColor }
                 .toTypedArray()

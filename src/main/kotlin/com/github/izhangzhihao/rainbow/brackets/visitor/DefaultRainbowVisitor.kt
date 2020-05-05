@@ -16,9 +16,10 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
     override fun clone(): HighlightVisitor = DefaultRainbowVisitor()
 
     override fun visit(element: PsiElement) {
-        if (element.javaClass.simpleName == "OCMacroForeignLeafElement") return
         val type = (element as? LeafPsiElement)?.elementType ?: return
-
+        //https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/198
+        if (element.javaClass.simpleName == "OCMacroForeignLeafElement") return
+        if (blackTokenTypes.contains(element.elementType.toString())) return
         val matching = filterPairs(type, element) ?: return
 
         val pair =
@@ -47,6 +48,14 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
     }
 
     companion object {
+
+        private val blackTokenTypes: Set<String> = setOf(
+                //https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/423
+                "php opening tag",
+                "php closing tag",
+                "php echo opening tag"
+        )
+
         private fun LeafPsiElement.getBracketLevel(pair: BracePair): Int = iterateBracketParents(parent, pair, -1)
 
         private tailrec fun iterateBracketParents(element: PsiElement?, pair: BracePair, count: Int): Int {
