@@ -71,7 +71,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             return iterateBracketParents(element.parent, pair, nextCount)
         }
 
-        private fun PsiElement.haveBrackets(checkLeft: (PsiElement) -> Boolean, checkRight: (PsiElement) -> Boolean): Boolean {
+        private inline fun PsiElement.haveBrackets(checkLeft: (PsiElement) -> Boolean, checkRight: (PsiElement) -> Boolean): Boolean {
             if (this is LeafPsiElement) {
                 return false
             }
@@ -138,15 +138,19 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
         private fun filterPairs(type: IElementType, element: LeafPsiElement): List<BracePair>? {
             val pairs = element.language.bracePairs ?: return null
-            val filterBraceType = pairs[type.toString()] ?: return null
-            return if (filterBraceType.isEmpty()) {
-                null
-            } else if (!RainbowSettings.instance.isDoNOTRainbowifyBracketsWithoutContent) {
-                filterBraceType
-            } else {
-                filterBraceType
-                        .filterNot { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
-                        .filterNot { it.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
+            val filterBraceType = pairs[type.toString()]
+            return when {
+                filterBraceType == null || filterBraceType.isEmpty() -> {
+                    null
+                }
+                RainbowSettings.instance.isDoNOTRainbowifyBracketsWithoutContent -> {
+                    filterBraceType
+                            .filterNot { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
+                            .filterNot { it.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
+                }
+                else -> {
+                    filterBraceType
+                }
             }
         }
     }
