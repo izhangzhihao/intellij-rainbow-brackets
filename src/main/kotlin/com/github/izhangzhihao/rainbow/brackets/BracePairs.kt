@@ -40,6 +40,7 @@ object BracePairs {
                         val braceMap: MutableMap<String, MutableList<BracePair>> = mutableMapOf()
 
                         pairsList
+                                ?.filter { !blackTokenTypes.contains(it.leftBraceType.toString()) }
                                 ?.map { listOf(Pair(it.leftBraceType.toString(), it), Pair(it.rightBraceType.toString(), it)) }
                                 ?.flatten()
                                 ?.forEach { it ->
@@ -67,3 +68,10 @@ inline val Language.bracePairs: MutableMap<String, MutableList<BracePair>>?
 
 inline val Language.braceTypeSet: Set<IElementType>
     get() = BracePairs.braceTypeSet(this) ?: emptySet()
+
+val blackTokenTypes: Set<String> = setOf(
+        // https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/423
+        "php opening tag",
+        "php closing tag",
+        "php echo opening tag"
+)
