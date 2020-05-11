@@ -57,6 +57,15 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.4</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/420">#420: Exceptions in random color generator</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/423">#423: Don't rainbow php and echo tag</a></li>
+            <li>Fix anonymous feedback</li>
+            <li>Some refactoring!</li>
+        </ul>
+        <br/>
+
         <p>6.3</p>
         <ul>
             <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/417">#417: Disable Rainbow Indents in Zen mode</a></li>
