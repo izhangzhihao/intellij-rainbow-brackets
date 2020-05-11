@@ -54,7 +54,6 @@ def pluginsDependencies = ['java',
 
 intellij {
     pluginName name
-    jbrVersion '11_0_6b765.25'
 
     version ideaVersion
     //localPath = '/Users/izhangzhihao/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/201.6668.121/IntelliJ IDEA 2020.1 EAP.app/Contents'
