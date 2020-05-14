@@ -223,4 +223,25 @@ const element = ( <div> <h1>Hello, world!</h1> </div> );
                 )
     }
 
+    fun testIssue427() {
+        @Language("TypeScript") val code = """let example: Array<Map<string,string>>;""".trimIndent()
+
+        myFixture.configureByText(TypeScriptFileType.INSTANCE, code)
+        PsiDocumentManager.getInstance(project).commitAllDocuments()
+        val doHighlighting = myFixture.doHighlighting()
+        assertFalse(doHighlighting.isEmpty())
+        doHighlighting.filter { brackets.contains(it.text.toChar()) }
+                .map { it.forcedTextAttributes.foregroundColor }
+                .filterNot { it == null }
+                .toTypedArray()
+                .shouldBe(
+                        arrayOf(
+                                angleLevel(0),
+                                angleLevel(1),
+                                angleLevel(1),
+                                angleLevel(0)
+                        )
+                )
+    }
+
 }
