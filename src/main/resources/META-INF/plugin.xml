@@ -57,6 +57,15 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.5</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/410">#410: ArrayIndexOutOfBoundsException</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/429">#429: NullPointerException</a></li>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/427">#427: Colorizing angle brackets for Typescript generics</a></li>
+            <li>Some refactoring!</li>
+        </ul>
+        <br/>
+
         <p>6.4</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/420">#420: Exceptions in random color generator</a></li>
