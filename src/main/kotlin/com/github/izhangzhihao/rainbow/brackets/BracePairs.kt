@@ -58,16 +58,16 @@ object BracePairs {
 
     fun getBracePairs(language: Language): MutableMap<String, MutableList<BracePair>>? = bracePairs[language]
 
-    private fun getBraceTypeSetOf(language: Language): Set<IElementType>? = getBracePairs(language)?.values?.flatten()?.map { it -> listOf(it.leftBraceType, it.rightBraceType) }?.flatten()?.toSet()
+    private fun getBraceTypeSetOf(language: Language): Set<IElementType> = getBracePairs(language)?.values?.flatten()?.map { it -> listOf(it.leftBraceType, it.rightBraceType) }?.flatten()?.toSet() ?: emptySet()
 
-    val braceTypeSet: (Language) -> Set<IElementType>? = { language: Language -> getBraceTypeSetOf(language) }.memoize()
+    val braceTypeSet: (Language) -> Set<IElementType> = { language: Language -> getBraceTypeSetOf(language) }.memoize()
 }
 
 inline val Language.bracePairs: MutableMap<String, MutableList<BracePair>>?
     get() = BracePairs.getBracePairs(this)
 
 inline val Language.braceTypeSet: Set<IElementType>
-    get() = BracePairs.braceTypeSet(this) ?: emptySet()
+    get() = BracePairs.braceTypeSet(this)
 
 val blackTokenTypes: Set<String> = setOf(
         // https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/423
