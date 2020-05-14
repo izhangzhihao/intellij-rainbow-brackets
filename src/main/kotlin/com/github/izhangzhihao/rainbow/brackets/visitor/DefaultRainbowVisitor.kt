@@ -17,8 +17,6 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun visit(element: PsiElement) {
         val type = (element as? LeafPsiElement)?.elementType ?: return
-        // https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/198
-        if (element.javaClass.simpleName == "OCMacroForeignLeafElement") return
         val matching = filterPairs(type, element) ?: return
 
         val pair =
@@ -141,6 +139,10 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             val filterBraceType = pairs[type.toString()]
             return when {
                 filterBraceType == null || filterBraceType.isEmpty() -> {
+                    null
+                }
+                // https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/198
+                element.javaClass.simpleName == "OCMacroForeignLeafElement" -> {
                     null
                 }
                 RainbowSettings.instance.isDoNOTRainbowifyBracketsWithoutContent -> {
