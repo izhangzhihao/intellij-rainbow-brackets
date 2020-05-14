@@ -105,7 +105,7 @@ object RainbowHighlighter {
         if (settings.useColorGenerator) {
             return memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
         }
-        val key = getRainbowAttributesKeys(rainbowName)[ind]
+        val key = getRainbowAttributesKeys(rainbowName).getOrNull(ind)
         val result = colorsScheme.getAttributes(key)
         if (result == null || result.foregroundColor == null) {
             return memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
