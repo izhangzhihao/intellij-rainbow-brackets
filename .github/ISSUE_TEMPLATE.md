@@ -29,6 +29,7 @@ Please provide code snippet for reproduce bugs.
 
 ## Your Environment
 
+- [ ] I'm using java11, NOT java8.
 * Plugin version:
 * IDE & Operating System version, comment your env as below(go to "About IntelliJ IDEA" -> click the "copy" icon):
 * NOTE: If you are going to report a bug but WITHOUT your env information, your issue will be closed directly.
