@@ -13,7 +13,7 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.4.20"
+    id "org.jetbrains.intellij" version "0.4.21"
     id "com.adarshr.test-logger" version "2.0.0"
     id "de.undercouch.download" version "4.0.2"
     id "org.jetbrains.kotlin.jvm" version "1.3.71"
@@ -135,7 +135,7 @@ jacocoTestReport {
 
 pluginVerifier {
     pluginFileName = "$rootProject.name-$version"
-    ides = ["IC-202-EAP-SNAPSHOT"]
+    ides = ["202.5103-EAP-CANDIDATE-SNAPSHOT"]
     verifierVersion = "1.241"
 }
 
