@@ -139,4 +139,4 @@ pluginVerifier {
     verifierVersion = "1.241"
 }
 
-check.dependsOn pluginVerifier
+check.dependsOn
