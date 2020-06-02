@@ -16,6 +16,7 @@ import com.intellij.openapi.editor.SoftWrap
 import com.intellij.openapi.editor.ex.EditorEx
 import com.intellij.openapi.editor.ex.util.EditorUtil
 import com.intellij.openapi.editor.impl.EditorImpl
+import com.intellij.openapi.editor.impl.view.EditorPainter
 import com.intellij.openapi.editor.impl.view.VisualLinesIterator
 import com.intellij.openapi.editor.markup.CustomHighlighterRenderer
 import com.intellij.openapi.editor.markup.HighlighterTargetArea
@@ -420,6 +421,7 @@ class RainbowIndentsPass internal constructor(
                 maxY = min(maxY, clip.y + clip.height)
             }
             if (start.y >= maxY) return@renderer
+            val targetX = Math.max(0, start.x + EditorPainter.getIndentGuideShift(editor))
             g.color = if (selected) {
                 rainbowInfo.color
             } else {
@@ -443,7 +445,7 @@ class RainbowIndentsPass internal constructor(
             //     2. Show indent as is if it doesn't intersect with soft wrap-introduced text;
             val softWraps = editor.softWrapModel.registeredSoftWraps
             if (selected || softWraps.isEmpty()) {
-                LinePainter2D.paint(g as Graphics2D, start.x + 2.toDouble(), start.y.toDouble(), start.x + 2.toDouble(), maxY - 1.toDouble())
+                LinePainter2D.paint(g as Graphics2D, targetX.toDouble(), start.y.toDouble(), targetX.toDouble(), maxY - 1.toDouble())
             } else {
                 var startY = start.y
                 var startVisualLine = startPosition.line + 1
@@ -460,7 +462,7 @@ class RainbowIndentsPass internal constructor(
                             val softWrap: SoftWrap = softWraps[it.startOrPrevWrapIndex]
                             if (softWrap.indentInColumns < indentColumn) {
                                 if (startY < currY) {
-                                    LinePainter2D.paint((g as Graphics2D), start.x + 2.toDouble(), startY.toDouble(), start.x + 2.toDouble(), currY - 1.toDouble())
+                                    LinePainter2D.paint((g as Graphics2D), targetX.toDouble(), startY.toDouble(), targetX.toDouble(), currY - 1.toDouble())
                                 }
                                 startY = currY + lineHeight
                             }
@@ -469,7 +471,7 @@ class RainbowIndentsPass internal constructor(
                     it.advance()
                 }
                 if (startY < maxY) {
-                    LinePainter2D.paint((g as Graphics2D), start.x + 2.toDouble(), startY.toDouble(), start.x + 2.toDouble(), maxY - 1.toDouble())
+                    LinePainter2D.paint((g as Graphics2D), targetX.toDouble(), startY.toDouble(), targetX.toDouble(), maxY - 1.toDouble())
                 }
             }
         }
