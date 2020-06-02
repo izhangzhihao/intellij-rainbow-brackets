@@ -135,7 +135,7 @@ jacocoTestReport {
 
 pluginVerifier {
     pluginFileName = "$rootProject.name-$version"
-    ides = ["IC-202.5103-EAP-CANDIDATE-SNAPSHOT"]
+    ides = []
     verifierVersion = "1.241"
 }
 
