@@ -46,10 +46,10 @@ def pluginsDependencies = ['java',
                            'properties',
                            'yaml',
                            "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.1-1",
-                           'org.intellij.scala:2020.2.5',
-                           'Dart:202.4357.23',
-                           'org.jetbrains.plugins.ruby:202.4357.23',
-                           'com.jetbrains.php:202.4357.23'
+                           'org.intellij.scala:2020.2.7',
+                           'Dart:202.5103.5',
+                           'org.jetbrains.plugins.ruby:202.5103.13',
+                           'com.jetbrains.php:202.5103.13'
 ]
 
 intellij {
