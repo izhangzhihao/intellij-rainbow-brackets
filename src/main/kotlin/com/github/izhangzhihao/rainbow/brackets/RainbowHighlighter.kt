@@ -106,11 +106,16 @@ object RainbowHighlighter {
             return memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
         }
         val key = getRainbowAttributesKeys(rainbowName).getOrNull(ind)
-        val result = colorsScheme.getAttributes(key)
-        if (result == null || result.foregroundColor == null) {
-            return memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
+        return try {
+            val result = colorsScheme.getAttributes(key)
+            if (result == null || result.foregroundColor == null) {
+                memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
+            } else {
+                result
+            }
+        } catch (e: Exception) {
+            memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
         }
-        return result
     }
 
     @Suppress("UNUSED_PARAMETER") // we use parameter as cache key
