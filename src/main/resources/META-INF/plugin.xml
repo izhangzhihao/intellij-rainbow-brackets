@@ -57,6 +57,18 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.7</p>
+        <ul>
+            <li>Fix NPE</li>
+        </ul>
+        <br/>
+
+        <p>6.6</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/436">#436: Duplicated indent guides in 2020.2 EAP</a></li>
+        </ul>
+        <br/>
+
         <p>6.5</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/410">#410: ArrayIndexOutOfBoundsException</a></li>
