@@ -57,6 +57,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.7</p>
+        <ul>
+            <li>Fix NPE</li>
+        </ul>
+        <br/>
+        
         <p>6.6</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/436">#436: Duplicated indent guides in 2020.2 EAP</a></li>
@@ -586,6 +592,8 @@
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="202.4357.23"/>
+
+    <incompatible-with>com.intellij.modules.androidstudio</incompatible-with>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
          on how to target different products -->
