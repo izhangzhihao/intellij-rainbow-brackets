@@ -269,8 +269,8 @@ You can support us by the following actions:
   </tr>
   <tr></tr>
   <tr align="center">
-    <td><img width="70%" src="./screenshots/alipay.jpg"></td>
-    <td><img width="70%" src="./screenshots/wechat.jpg"></td>
+    <td><img width="70%" src="https://user-images.githubusercontent.com/12044174/85197261-77dd5a80-b312-11ea-9630-51caf7d634f2.jpg"></td>
+    <td><img width="70%" src="https://user-images.githubusercontent.com/12044174/85197263-7b70e180-b312-11ea-917a-35eab2ea08ae.jpg"></td>
   </tr>
 </table>
 
