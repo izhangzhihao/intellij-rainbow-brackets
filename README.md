@@ -68,7 +68,7 @@ Development powered by [JetBrains](https://www.jetbrains.com/?from=IntelliJRainb
 
 Whichever technologies you use, there's a JetBrains tool to match.
 
-[![https://www.gitads.io?utm_source=intellij_rainbow_brackets&utm_medium=display&utm_campaign=izhangzhihao](https://images.gitads.io/intellij-rainbow-brackets)](https://www.gitads.io?utm_source=intellij_rainbow_brackets&utm_medium=display&utm_campaign=izhangzhihao)
+[![https://tracking.gitads.io/?repo=intellij-rainbow-brackets](https://images.gitads.io/intellij-rainbow-brackets)](https://tracking.gitads.io/?repo=intellij-rainbow-brackets)
 
 ## Screenshots
 
