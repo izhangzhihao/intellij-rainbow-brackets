@@ -106,7 +106,7 @@ targetCompatibility = javaVersion
     languageVersion = kotlinLanguageVersion
     apiVersion = kotlinTargetVersion
     jvmTarget = javaVersion
-    freeCompilerArgs = ["-Xskip-runtime-version-check"]
+    freeCompilerArgs = ["-Xskip-runtime-version-check", "-Xjsr305=strict"]
 }
 
 pluginVerifier {
