@@ -31,7 +31,7 @@ class RainbowUpdateNotifyActivity : StartupActivity {
             val pluginDescriptor = PluginManagerCore.getPlugin(pluginId)
             if (pluginDescriptor != null) {
                 //disablePlugin(pluginId)
-                StartupActionScriptManager.addActionCommand(DeleteCommand(pluginDescriptor.path))
+                StartupActionScriptManager.addActionCommand(DeleteCommand(pluginDescriptor.pluginPath.toFile()))
             }
         }
     }
