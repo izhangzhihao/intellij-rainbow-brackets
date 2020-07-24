@@ -3,6 +3,9 @@ package com.github.izhangzhihao.rainbow.brackets
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManagerCore
+import com.intellij.ide.plugins.PluginManagerCore.isPluginInstalled
+import com.intellij.ide.startup.StartupActionScriptManager
+import com.intellij.ide.startup.StartupActionScriptManager.DeleteCommand
 import com.intellij.notification.NotificationListener.UrlOpeningListener
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.extensions.PluginId
@@ -13,10 +16,23 @@ import com.intellij.openapi.startup.StartupActivity
 class RainbowUpdateNotifyActivity : StartupActivity {
 
     override fun runActivity(project: Project) {
+        removeIfInstalled()
         val settings = RainbowSettings.instance
         if (getPlugin()?.version != settings.version) {
             settings.version = getPlugin()!!.version
             showUpdate(project)
+        }
+    }
+
+    private fun removeIfInstalled() {
+        val pluginId = PluginId.getId("com.github.jadepeng.rainbowfart")
+        val isInstalled = isPluginInstalled(pluginId)
+        if (isInstalled) {
+            val pluginDescriptor = PluginManagerCore.getPlugin(pluginId)
+            if (pluginDescriptor != null) {
+                //disablePlugin(pluginId)
+                StartupActionScriptManager.addActionCommand(DeleteCommand(pluginDescriptor.path))
+            }
         }
     }
 
