@@ -7,7 +7,7 @@
 <p align="center">Rainbow Brackets / Rainbow Parentheses for IntelliJ based IDEs.</p>
 
 <p align="center"> 
-<a href="https://circleci.com/gh/izhangzhihao/intellij-rainbow-brackets"><img src="https://img.shields.io/circleci/project/github/izhangzhihao/intellij-rainbow-brackets/2020.1.svg?style=flat-square"></a>
+<a href="https://circleci.com/gh/izhangzhihao/intellij-rainbow-brackets"><img src="https://img.shields.io/circleci/project/github/izhangzhihao/intellij-rainbow-brackets/2020.2.svg?style=flat-square"></a>
 <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases"><img src="https://img.shields.io/github/release/izhangzhihao/intellij-rainbow-brackets.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/v/10080-rainbow-brackets.svg?style=flat-square"></a>
@@ -182,13 +182,13 @@ Please follow [the official guide](https://www.jetbrains.com/help/idea/configuri
 If you want to customize the advanced configuration, you could edit the config file then restart your IDE. 
 Config file path in `APP_CONFIG/rainbow_brackets.xml`. 
 
-In MAC OS env maybe like `~/Library/Preferences/IntelliJIdea2020.1/options/rainbow_brackets.xml`.
+In MAC OS env maybe like `~/Library/Preferences/IntelliJIdea2020.2/options/rainbow_brackets.xml`.
 
-If you are using the ToolBox, then it will be like `~/Library/ApplicationSupport/JetBrains/IntelliJIdea2020.1/options/rainbow_brackets.xml`
+If you are using the ToolBox, then it will be like `~/Library/ApplicationSupport/JetBrains/IntelliJIdea2020.2/options/rainbow_brackets.xml`
 
 In Linux env maybe like `~/.IntelliJIdea/config/options/rainbow_brackets.xml`.
 
-In Windows env maybe like `C:\Users\izhangzhihao\.IntelliJIdea2020.1\config\options\rainbow_brackets.xml`.
+In Windows env maybe like `C:\Users\izhangzhihao\.IntelliJIdea2020.2\config\options\rainbow_brackets.xml`.
 
 ## HTML code in js
 
