@@ -8,7 +8,6 @@ jobs:
 
     environment:
       JVM_OPTS: -Xmx3200m
-      TERM: dumb
 
     steps:
       - checkout
