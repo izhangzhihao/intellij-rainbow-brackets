@@ -57,7 +57,7 @@
         ]]></description>
 
     <change-notes><![CDATA[
-        <p>6.8</p>
+        <p>6.9</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/445">#445: No working on Android Studio canary 4.2</a></li>
             <li>Some bug fixs and code refactorings</li>
