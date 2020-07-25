@@ -360,7 +360,7 @@ class RainbowIndentsPass internal constructor(
         private val XML_TAG_END_CONDITION: (PsiElement) -> Boolean = { element ->
             element is XmlToken && element.tokenType == XmlTokenType.XML_TAG_END
         }
-        private val is201 = ApplicationInfo.getInstance().fullVersion.contains("2020.1")
+        private val is201 = ApplicationInfo.getInstance().apiVersion.contains("-201.")
 
         private val RENDERER: CustomHighlighterRenderer = CustomHighlighterRenderer renderer@{ editor, highlighter, g ->
             if (editor !is EditorEx) return@renderer
