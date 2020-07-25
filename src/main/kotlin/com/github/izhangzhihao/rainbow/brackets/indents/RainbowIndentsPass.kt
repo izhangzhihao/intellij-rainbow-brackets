@@ -360,7 +360,7 @@ class RainbowIndentsPass internal constructor(
         private val XML_TAG_END_CONDITION: (PsiElement) -> Boolean = { element ->
             element is XmlToken && element.tokenType == XmlTokenType.XML_TAG_END
         }
-        private val BUILD = ApplicationInfo.getInstance().fullVersion
+        private val is201 = ApplicationInfo.getInstance().fullVersion.contains("2020.1")
 
         private val RENDERER: CustomHighlighterRenderer = CustomHighlighterRenderer renderer@{ editor, highlighter, g ->
             if (editor !is EditorEx) return@renderer
@@ -422,7 +422,7 @@ class RainbowIndentsPass internal constructor(
                 maxY = min(maxY, clip.y + clip.height)
             }
             if (start.y >= maxY) return@renderer
-            val targetX = if (BUILD.contains("2020.1")) {
+            val targetX = if (is201) {
                 start.x + 2.toDouble()
             } else {
                 Math.max(0, start.x + com.intellij.openapi.editor.impl.view.EditorPainter.getIndentGuideShift(editor)).toDouble()
