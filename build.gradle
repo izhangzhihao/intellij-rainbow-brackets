@@ -48,7 +48,7 @@ def pluginsDependencies = ['java',
                            'org.intellij.scala:2020.2.17',
                            'Dart:202.6397.47',
                            'org.jetbrains.plugins.ruby:202.6397.59',
-                           'com.jetbrains.php:202.6397.59'
+                           'com.jetbrains.php:202.6397.94'
 
 ]
 
