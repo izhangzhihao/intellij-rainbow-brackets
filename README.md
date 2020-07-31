@@ -76,6 +76,12 @@ Whichever technologies you use, there's a JetBrains tool to match.
     <img src="https://user-images.githubusercontent.com/12044174/89017261-99d3ef00-d34c-11ea-9b6b-12f1d3c22a26.png" width="300"/>
 </a>
 
+Or you could install it inside your IDE:
+
+For Windows & Linux - <kbd>File</kbd> > <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd> > <kbd>Restart IntelliJ IDEA</kbd>
+
+For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd>  > <kbd>Restart IntelliJ IDEA</kbd>
+
 ### Install snapshot build
 
 You can download the latest snapshot build from [here](https://circleci.com/gh/izhangzhihao/intellij-rainbow-brackets), just click in the latest build and click the 'Artifacts' tab.(You must logged in via github) After the snapshot build downloaded, just drag the zip file into your IDE and done.
