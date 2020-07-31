@@ -123,7 +123,9 @@ NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)"
 
 ## Install
 
-Install it from your browser: just click [this link](https://plugins.jetbrains.com/embeddable/install/10080), and you will see "Install to ...", click it! Finally you will see your IDE poped up and click "Ok", and you got it!
+<a href="https://plugins.jetbrains.com/embeddable/install/10080">
+    <img src="https://user-images.githubusercontent.com/12044174/89017261-99d3ef00-d34c-11ea-9b6b-12f1d3c22a26.png" width="300"/>
+</a>
 
 For Windows & Linux - <kbd>File</kbd> > <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd> > <kbd>Restart IntelliJ IDEA</kbd>
 
