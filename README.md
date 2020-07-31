@@ -12,7 +12,6 @@
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/r/stars/10080?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/embeddable/install/10080"><img src="https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/v/10080-rainbow-brackets.svg?style=flat-square"></a>
-<a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square"></a>
 <a href="https://opencollective.com/intellij-rainbow-brackets#backer"><img src="https://img.shields.io/opencollective/backers/intellij-rainbow-brackets?style=flat-square"></a>
 <a href="https://opencollective.com/intellij-rainbow-brackets#sponsor"><img src="https://img.shields.io/opencollective/sponsors/intellij-rainbow-brackets?style=flat-square"></a>
 </p>
@@ -23,8 +22,8 @@
 - [Supported languages](#supported-languages)
 - [Author's choice](#authors-choice)
 - [Sponsored By](#sponsored-by)
-- [Screenshots](#screenshots)
 - [Install](#install)
+- [Screenshots](#screenshots)
 - [Customize colors](#customize-colors)
 - [Use color generator](#use-color-generator)
 - [Config file path](#config-file-path)
@@ -70,6 +69,16 @@ Development powered by [JetBrains](https://www.jetbrains.com/?from=IntelliJRainb
 Whichever technologies you use, there's a JetBrains tool to match.
 
 [![https://tracking.gitads.io/?repo=intellij-rainbow-brackets](https://images.gitads.io/intellij-rainbow-brackets)](https://tracking.gitads.io/?repo=intellij-rainbow-brackets)
+
+## Install
+
+<a href="https://plugins.jetbrains.com/embeddable/install/10080">
+    <img src="https://user-images.githubusercontent.com/12044174/89017261-99d3ef00-d34c-11ea-9b6b-12f1d3c22a26.png" width="300"/>
+</a>
+
+### Install snapshot build
+
+You can download the latest snapshot build from [here](https://circleci.com/gh/izhangzhihao/intellij-rainbow-brackets), just click in the latest build and click the 'Artifacts' tab.(You must logged in via github) After the snapshot build downloaded, just drag the zip file into your IDE and done.
 
 ## Screenshots
 
@@ -121,20 +130,6 @@ NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)"
 ![](https://github.com/xdrop/night-owl-jetbrains/raw/2018.2/screenshot.png)
 
 * looking forward to your screenshots(PR welcome!)
-
-## Install
-
-<a href="https://plugins.jetbrains.com/embeddable/install/10080">
-    <img src="https://user-images.githubusercontent.com/12044174/89017261-99d3ef00-d34c-11ea-9b6b-12f1d3c22a26.png" width="300"/>
-</a>
-
-For Windows & Linux - <kbd>File</kbd> > <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd> > <kbd>Restart IntelliJ IDEA</kbd>
-
-For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd>  > <kbd>Restart IntelliJ IDEA</kbd>
-
-### Install snapshot build
-
-You can download the latest snapshot build from [here](https://circleci.com/gh/izhangzhihao/intellij-rainbow-brackets), just click in the latest build and click the 'Artifacts' tab.(You must logged in via github)
 
 ## Customize colors
 
