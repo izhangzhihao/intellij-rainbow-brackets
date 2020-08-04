@@ -95,7 +95,6 @@
             <properties>
               <selected value="false"/>
               <text value="Apply colors of round for all brackets"/>
-              <toolTipText value="233"/>
             </properties>
           </component>
           <component id="9d54" class="javax.swing.JLabel">
