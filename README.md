@@ -250,9 +250,9 @@ NOTE: You can use **name** of language or **extension** of file name(The names s
 
 ## Contribute
 
-NOTE: To view the PSI tree and explore the internal structure of source code, you need to setup your IDE follow [this](https://www.jetbrains.com/help/idea/psi-viewer.html).
+NOTE: To view the PSI tree and explore the internal structure of source code, you need to setup your IDE by follow [this](https://www.jetbrains.com/help/idea/psi-viewer.html).
 
-For small changes, [Gitpod](https://gitpod.io/#https://github.com/izhangzhihao/intellij-rainbow-brackets) are recommended. [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/izhangzhihao/intellij-rainbow-brackets)
+For small changes, [Gitpod](https://gitpod.io/#https://github.com/izhangzhihao/intellij-rainbow-brackets) is recommended. [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/izhangzhihao/intellij-rainbow-brackets)
 
 * `gradle test`
 * `gradle runIde`
