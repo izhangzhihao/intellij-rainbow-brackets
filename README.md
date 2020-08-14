@@ -68,8 +68,6 @@ Development powered by [JetBrains](https://www.jetbrains.com/?from=IntelliJRainb
 
 Whichever technologies you use, there's a JetBrains tool to match.
 
-[![https://tracking.gitads.io/?repo=intellij-rainbow-brackets](https://images.gitads.io/intellij-rainbow-brackets)](https://tracking.gitads.io/?repo=intellij-rainbow-brackets)
-
 ## Install
 
 <a href="https://plugins.jetbrains.com/embeddable/install/10080">
@@ -84,7 +82,7 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ### Install snapshot build
 
-You can download the latest snapshot build from [here](https://circleci.com/gh/izhangzhihao/intellij-rainbow-brackets), just click in the latest build and click the 'Artifacts' tab.(You must logged in via github) After the snapshot build downloaded, just drag the zip file into your IDE and done.
+You can download the latest snapshot build from [here](https://circleci.com/gh/izhangzhihao/intellij-rainbow-brackets), just click in the latest build and click the 'Artifacts' tab.(You need logged in via github) After the snapshot build downloaded, just drag the zip file into your IDE and done.
 
 ## Screenshots
 
@@ -145,11 +143,13 @@ NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)"
 
 ## Use color generator
 
-I didn't like the build-in colors, I want some new color but does want to try out and pick colors. Please use color generator.
+If you didn't like the build-in colors, or want some new color but don't want to try out and pick colors. Please use color generator.
 
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > <kbd>Use color generator</kbd>
 
 If you turn on this option, we will auto generate some colors for you.
+
+### Advanced options of color generator
 
 If you need more control, you can decide the options of color generator by edit [the config file](#config-file-path), 
 
@@ -174,6 +174,8 @@ you can use [this tool](https://www.freeformatter.com/xml-escape.html#ad-output)
 ### Want to config the number of colors?
 
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > `Number of colors`: 5 or more
+
+And you can use the color generator and config you number of colors at the same time.
 
 NOTE: For default and darcula color scheme(`Editor -> Color Scheme -> Rainbow Brackets -> Scheme`) the color number is 10, for the other scheme the number is 5, if your number is bigger than the number, you can config them in the config file.
 If the color is not exist, we will use color generator to generator it for you.
@@ -250,6 +252,8 @@ NOTE: You can use **name** of language or **extension** of file name(The names s
 
 NOTE: To view the PSI tree and explore the internal structure of source code, you need to setup your IDE follow [this](https://www.jetbrains.com/help/idea/psi-viewer.html).
 
+For small changes, [Gitpod](https://gitpod.io/#https://github.com/izhangzhihao/intellij-rainbow-brackets) are recommended. [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/izhangzhihao/intellij-rainbow-brackets)
+
 * `gradle test`
 * `gradle runIde`
 * `gradle buildPlugin`
@@ -258,8 +262,8 @@ NOTE: To view the PSI tree and explore the internal structure of source code, yo
 
 You can support us by the following actions:
 
-* Star this project on GitHub
-* Share this plugin with your friends/colleagues
+* Star this project
+* Share this plugin with your friends
 * Rate this plugin on [JetBrains plugin repository](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
 * Make pull requests
 * Report bugs

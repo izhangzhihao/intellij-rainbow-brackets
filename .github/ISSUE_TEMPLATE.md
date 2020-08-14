@@ -25,23 +25,25 @@ Or what have you tried to resolve this issue.
 
 ## Code snippet for reproduce (for bugs)
 Please provide code snippet for reproduce bugs.
-*NOTE: If you are going to report a bug but WITHOUT your env information, your issue will be closed directly.*
 
 ## Your Environment
 
-- [ ] I'm using java11, NOT java8.
 * Plugin version:
 * IDE & Operating System version, comment your env as below(go to "About IntelliJ IDEA" -> click the "copy" icon):
-* NOTE: If you are going to report a bug but WITHOUT your env information, your issue will be closed directly.
+* NOTE: If you are going to report a bug but WITHOUT your env information, your issue might be closed directly.
 
 ```
-IntelliJ IDEA 2020.1 (Ultimate Edition)
-Build #IU-201.6668.121, built on April 8, 2020
-Runtime version: 11.0.6+8-b765.25 x86_64
-VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
-macOS 10.15.2
+IntelliJ IDEA 2020.2 (Ultimate Edition)
+Build #IU-202.6397.94, built on July 27, 2020
+Licensed to IntelliJ Rainbow Brackets / Zhang Zhihao
+Subscription is active until February 19, 2021
+For non-commercial open source development only.
+Runtime version: 11.0.7+10-b944.20 x86_64
+VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o.
+macOS 10.15.5
 GC: ParNew, ConcurrentMarkSweep
 Memory: 4029M
 Cores: 8
+Registry: ide.tooltip.initialDelay=900, ide.balloon.shadow.size=0
 Non-Bundled Plugins: com.chrisrm.idea.MaterialThemeUI, izhangzhihao.rainbow.brackets
 ```

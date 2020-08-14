@@ -4,5 +4,5 @@ tasks:
   - init: gradle compileKotlin
 vscode:
   extensions:
-    - mathiasfrohlich.Kotlin@1.7.0:9xQZtwTUg4bdXHCMyxM7vQ==
+    - mathiasfrohlich.Kotlin@1.7.1:zRxka5i+6/G9r7KC3xmyXQ==
     - fwcd.kotlin@0.2.11:moh8IDanzsIlhtK2IeiLmQ==
