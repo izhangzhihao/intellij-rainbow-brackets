@@ -128,11 +128,6 @@ NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)"
 
 ![](https://user-images.githubusercontent.com/10737066/65765792-c41cb500-e15b-11e9-8877-2239c6afa7bf.gif)
 
-
-* [night-owl-jetbrains](https://github.com/xdrop/night-owl-jetbrains)
-
-![](https://github.com/xdrop/night-owl-jetbrains/raw/2018.2/screenshot.png)
-
 * looking forward to your screenshots(PR welcome!)
 
 ## Customize colors
