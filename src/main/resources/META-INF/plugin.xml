@@ -57,6 +57,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.10</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/480">#480: Plugin Incompatibility: Android Studio 4.2 Alpha 8</a></li>
+        </ul>
+        <br/>
+
         <p>6.9.1</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/445">#445: No working on Android Studio canary 4.2</a></li>

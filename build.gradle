@@ -63,6 +63,10 @@ intellij {
     setPlugins(*pluginsDependencies)
 }
 
+runIde {
+    systemProperty "idea.auto.reload.plugins", false
+}
+
 publishPlugin {
     def authenticationToken = "$System.env.token"
     token authenticationToken
