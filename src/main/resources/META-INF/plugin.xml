@@ -600,8 +600,6 @@
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="201.6668"/>
 
-    <incompatible-with>com.intellij.modules.androidstudio</incompatible-with>
-
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
          on how to target different products -->
     <depends>com.intellij.modules.lang</depends>
