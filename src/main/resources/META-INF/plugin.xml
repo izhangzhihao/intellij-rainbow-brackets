@@ -618,6 +618,7 @@
     <depends optional="true" config-file="sql-brackets.xml">com.intellij.modules.database</depends>
     <depends optional="true" config-file="oc-brackets.xml">com.intellij.modules.clion</depends>
     <depends optional="true" config-file="sh-brackets.xml">com.jetbrains.sh</depends>
+    <depends optional="true" config-file="php-brackets.xml">com.jetbrains.php</depends>
 
     <extensionPoints>
         <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">

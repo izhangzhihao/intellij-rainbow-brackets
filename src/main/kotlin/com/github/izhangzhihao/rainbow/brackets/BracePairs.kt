@@ -42,7 +42,6 @@ object BracePairs {
                         val blackSet = providers.forLanguage(language)?.blackList?.map { it.toString() }?.toSet()
 
                         pairsList
-                                ?.filter { !blackTokenTypes.contains(it.leftBraceType.toString()) }
                                 ?.filter {
                                     if (blackSet != null) {
                                         !blackSet.contains(it.toString())
@@ -77,10 +76,3 @@ inline val Language.bracePairs: MutableMap<String, MutableList<BracePair>>?
 
 inline val Language.braceTypeSet: Set<IElementType>
     get() = BracePairs.braceTypeSet(this)
-
-val blackTokenTypes: Set<String> = setOf(
-        // https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/423
-        "php opening tag",
-        "php closing tag",
-        "php echo opening tag"
-)
