@@ -1,0 +1,6 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets">
+        <pairedBraceProvider language="PHP"
+                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.PHPBracketProvider"/>
+    </extensions>
+</idea-plugin>
