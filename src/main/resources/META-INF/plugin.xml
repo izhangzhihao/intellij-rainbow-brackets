@@ -617,6 +617,7 @@
     <depends optional="true" config-file="intellij-haskell-annotator.xml">intellij.haskell</depends>
     <depends optional="true" config-file="sql-brackets.xml">com.intellij.modules.database</depends>
     <depends optional="true" config-file="oc-brackets.xml">com.intellij.modules.clion</depends>
+    <depends optional="true" config-file="sh-brackets.xml">com.jetbrains.sh</depends>
 
     <extensionPoints>
         <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">

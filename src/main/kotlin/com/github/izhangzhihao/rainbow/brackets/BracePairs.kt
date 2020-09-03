@@ -39,8 +39,17 @@ object BracePairs {
 
                         val braceMap: MutableMap<String, MutableList<BracePair>> = mutableMapOf()
 
+                        val blackSet = providers.forLanguage(language)?.blackList?.map { it.toString() }?.toSet()
+
                         pairsList
                                 ?.filter { !blackTokenTypes.contains(it.leftBraceType.toString()) }
+                                ?.filter {
+                                    if (blackSet != null) {
+                                        !blackSet.contains(it.toString())
+                                    } else {
+                                        true
+                                    }
+                                }
                                 ?.map { listOf(Pair(it.leftBraceType.toString(), it), Pair(it.rightBraceType.toString(), it)) }
                                 ?.flatten()
                                 ?.forEach { it ->

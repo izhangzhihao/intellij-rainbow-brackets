@@ -6,4 +6,5 @@ import com.intellij.lang.javascript.JSTokenTypes.LT
 
 class TSAngleBracketProvider : PairedBraceProvider {
     override val pairs: List<BracePair> = listOf(BracePair(LT, GT, false))
+    override val blackList: List<BracePair> = emptyList()
 }
