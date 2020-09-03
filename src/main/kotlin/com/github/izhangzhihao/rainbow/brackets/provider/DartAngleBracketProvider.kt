@@ -6,4 +6,5 @@ import com.jetbrains.lang.dart.DartTokenTypes.LT
 
 class DartAngleBracketProvider : PairedBraceProvider {
     override val pairs: List<BracePair> = listOf(BracePair(LT, GT, false))
+    override val blackList: List<BracePair> = emptyList()
 }

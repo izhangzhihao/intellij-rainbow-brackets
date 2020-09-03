@@ -6,4 +6,5 @@ import org.jetbrains.plugins.groovy.lang.lexer.GroovyTokenTypes.mLT
 
 class GroovyAngleBracketProvider : PairedBraceProvider {
     override val pairs: List<BracePair> = listOf(BracePair(mLT, mGT, false))
+    override val blackList: List<BracePair> = emptyList()
 }
