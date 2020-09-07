@@ -29,7 +29,7 @@ object BracePairs {
                                     }
                                 }
 
-                        val pairsList = providers.forLanguage(language)?.pairs?.let {
+                        val pairsList = providers.forLanguage(language)?.pairs()?.let {
                             if (pairs != null && pairs.isNotEmpty()) {
                                 it.toMutableSet().apply { addAll(pairs) }
                             } else {
@@ -39,7 +39,7 @@ object BracePairs {
 
                         val braceMap: MutableMap<String, MutableList<BracePair>> = mutableMapOf()
 
-                        val blackSet = providers.forLanguage(language)?.blackList?.map { it.toString() }?.toSet()
+                        val blackSet = providers.forLanguage(language)?.blackList()?.map { it.toString() }?.toSet()
 
                         pairsList
                                 ?.filter {
