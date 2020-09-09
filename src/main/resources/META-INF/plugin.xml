@@ -615,7 +615,7 @@
     <depends optional="true" config-file="groovy-brackets.xml">org.intellij.groovy</depends>
     <depends optional="true" config-file="csharp-annotator.xml">com.intellij.modules.rider</depends>
     <depends optional="true" config-file="intellij-haskell-annotator.xml">intellij.haskell</depends>
-    <depends optional="true" config-file="sql-brackets.xml">com.intellij.modules.database</depends>
+    <depends optional="true" config-file="sql-brackets.xml">com.intellij.database</depends>
     <depends optional="true" config-file="oc-brackets.xml">com.intellij.modules.clion</depends>
     <depends optional="true" config-file="sh-brackets.xml">com.jetbrains.sh</depends>
     <depends optional="true" config-file="php-brackets.xml">com.jetbrains.php</depends>
