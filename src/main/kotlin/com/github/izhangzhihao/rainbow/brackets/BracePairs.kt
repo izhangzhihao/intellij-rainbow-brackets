@@ -1,6 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets
 
-import com.github.izhangzhihao.rainbow.brackets.provider.PairedBraceProvider
+import com.github.izhangzhihao.rainbow.brackets.provider.BracePairProvider
 import com.github.izhangzhihao.rainbow.brackets.util.memoize
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
 import com.intellij.lang.*
@@ -9,7 +9,7 @@ import com.intellij.psi.tree.IElementType
 object BracePairs {
 
     @Suppress("MemberVisibilityCanBePrivate")
-    val providers = LanguageExtension<PairedBraceProvider>("izhangzhihao.rainbow.brackets.pairedBraceProvider")
+    val providers = LanguageExtension<BracePairProvider>("izhangzhihao.rainbow.brackets.bracePairProvider")
 
     private val bracePairs =
             Language.getRegisteredLanguages()

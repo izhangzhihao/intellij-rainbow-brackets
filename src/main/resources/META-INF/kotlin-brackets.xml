@@ -1,7 +1,7 @@
 <idea-plugin>
     <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets">
-        <pairedBraceProvider language="kotlin"
-                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.KotlinAngleBracketProvider"/>
+        <bracePairProvider language="kotlin"
+                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.KotlinBracePairProvider"/>
     </extensions>
     <extensions defaultExtensionNs="com.intellij">
         <annotator language="kotlin"

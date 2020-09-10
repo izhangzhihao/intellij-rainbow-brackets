@@ -1,6 +1,6 @@
 <idea-plugin>
     <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets">
-        <pairedBraceProvider language="Shell Script"
-                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.SHBracketProvider"/>
+        <bracePairProvider language="Shell Script"
+                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.SHBracePairProvider"/>
     </extensions>
 </idea-plugin>
