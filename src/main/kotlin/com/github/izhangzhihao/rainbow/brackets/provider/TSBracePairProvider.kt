@@ -1,9 +1,9 @@
 package com.github.izhangzhihao.rainbow.brackets.provider
 
 import com.intellij.lang.BracePair
-import com.jetbrains.lang.dart.DartTokenTypes.GT
-import com.jetbrains.lang.dart.DartTokenTypes.LT
+import com.intellij.lang.javascript.JSTokenTypes.GT
+import com.intellij.lang.javascript.JSTokenTypes.LT
 
-class DartAngleBracketProvider : PairedBraceProvider {
+class TSBracePairProvider : BracePairProvider {
     override fun pairs(): List<BracePair> = listOf(BracePair(LT, GT, false))
 }

@@ -608,9 +608,9 @@
     <depends optional="true" config-file="php-brackets.xml">com.jetbrains.php</depends>
 
     <extensionPoints>
-        <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">
+        <extensionPoint name="bracePairProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">
             <with attribute="implementationClass"
-                  implements="com.github.izhangzhihao.rainbow.brackets.provider.PairedBraceProvider"/>
+                  implements="com.github.izhangzhihao.rainbow.brackets.provider.BracePairProvider"/>
         </extensionPoint>
     </extensionPoints>
 

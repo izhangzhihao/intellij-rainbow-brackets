@@ -3,7 +3,7 @@
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.ReactJSXRainbowVisitor"/>
     </extensions>
     <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets">
-        <pairedBraceProvider language="JavaScript"
-                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.TSAngleBracketProvider"/>
+        <bracePairProvider language="JavaScript"
+                             implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.TSBracePairProvider"/>
     </extensions>
 </idea-plugin>

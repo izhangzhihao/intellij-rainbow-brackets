@@ -1,10 +1,9 @@
 package com.github.izhangzhihao.rainbow.brackets.provider
 
 import com.intellij.lang.BracePair
-import org.jetbrains.kotlin.lexer.KtTokens.GT
-import org.jetbrains.kotlin.lexer.KtTokens.LT
+import com.jetbrains.lang.dart.DartTokenTypes.GT
+import com.jetbrains.lang.dart.DartTokenTypes.LT
 
-
-class KotlinAngleBracketProvider : PairedBraceProvider {
+class DartBracePairProvider : BracePairProvider {
     override fun pairs(): List<BracePair> = listOf(BracePair(LT, GT, false))
 }
