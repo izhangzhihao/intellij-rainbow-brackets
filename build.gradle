@@ -16,7 +16,7 @@ plugins {
     id "org.jetbrains.intellij" version "0.4.21"
     id "com.adarshr.test-logger" version "2.0.0"
     id "de.undercouch.download" version "4.0.2"
-    id "org.jetbrains.kotlin.jvm" version "1.4.10"
+    id "org.jetbrains.kotlin.jvm" version "1.3.71"
     id "idea"
 }
 
@@ -44,7 +44,7 @@ def pluginsDependencies = ['java',
                            'Groovy',
                            'properties',
                            'yaml',
-                           "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.2-1",
+                           "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.1-5",
                            'org.intellij.scala:2020.2.17',
                            'Dart:202.6397.47',
                            'org.jetbrains.plugins.ruby:202.6397.59',
@@ -111,7 +111,7 @@ targetCompatibility = javaVersion
     languageVersion = kotlinLanguageVersion
     apiVersion = kotlinTargetVersion
     jvmTarget = javaVersion
-    freeCompilerArgs = ["-Xskip-runtime-version-check", "-Xjsr305=strict", "-Xjvm-default=all"]
+    freeCompilerArgs = ["-Xskip-runtime-version-check", "-Xjsr305=strict"]
 }
 
 pluginVerifier {
