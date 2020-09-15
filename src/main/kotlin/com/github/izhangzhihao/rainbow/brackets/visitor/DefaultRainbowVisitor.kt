@@ -9,6 +9,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import com.intellij.psi.tree.IElementType
+import com.jetbrains.rider.ideaInterop.fileTypes.csharp.CSharpLanguage
 
 
 class DefaultRainbowVisitor : RainbowHighlightVisitor() {
@@ -34,6 +35,8 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
         } else {
             if (level >= 0) {
                 rainbowPairs(element, pair, level)
+            } else if (element.language is CSharpLanguage) {
+                rainbowPairs(element, pair, 0)
             }
         }
     }
