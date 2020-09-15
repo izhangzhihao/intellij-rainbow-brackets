@@ -600,7 +600,8 @@
     <depends optional="true" config-file="JSX.xml">JavaScript</depends>
     <depends optional="true" config-file="dart-brackets.xml">Dart</depends>
     <depends optional="true" config-file="groovy-brackets.xml">org.intellij.groovy</depends>
-    <depends optional="true" config-file="csharp-annotator.xml">com.intellij.modules.rider</depends>
+    <!--<depends optional="true" config-file="csharp-annotator.xml">com.intellij.modules.rider</depends>-->
+    <depends optional="true" config-file="csharp-brackets.xml">com.intellij.modules.rider</depends>
     <depends optional="true" config-file="intellij-haskell-annotator.xml">intellij.haskell</depends>
     <depends optional="true" config-file="sql-brackets.xml">com.intellij.database</depends>
     <depends optional="true" config-file="oc-brackets.xml">com.intellij.modules.clion</depends>

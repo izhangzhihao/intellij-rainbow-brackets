@@ -95,7 +95,6 @@ dependencies {
     implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.5.0.201909110433-r") {
         exclude module: "gson"
     }
-    compileOnly gistFile('https://gist.github.com/izhangzhihao/e9e775b9fccc621de58557a726d84339/raw/1e700b2a23eb4fa8d859f1062956dc08e860cb0b/clion.jar', 'clion')
     compileOnly fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation("io.kotlintest:kotlintest:2.0.7")
 }
