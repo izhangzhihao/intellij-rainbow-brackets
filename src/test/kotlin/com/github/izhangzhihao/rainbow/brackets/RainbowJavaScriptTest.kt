@@ -41,8 +41,7 @@ const moment = require('moment')
                 )
     }
 
-    //java.lang.ClassNotFoundException: com.jetbrains.rider.ideaInterop.fileTypes.csharp.CSharpLanguage
-    fun `for somehow, it just don't work "testIssue12"`() {
+    fun testIssue12() {
         @Language("JavaScript") val code = """
 "use strict";
 console.log(a > b)
