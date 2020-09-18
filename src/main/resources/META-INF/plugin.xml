@@ -635,6 +635,7 @@
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.RainbowUpdateNotifyActivity"/>
         <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.util.GitHubErrorReporter"/>
         <highlightingPassFactory implementation="com.github.izhangzhihao.rainbow.brackets.indents.RainbowIndentsPassFactory"/>
+        <applicationService serviceImplementation="com.github.izhangzhihao.rainbow.brackets.ApplicationServicePlaceholder" id="ApplicationServicePlaceholder"/>
     </extensions>
 
     <applicationListeners>

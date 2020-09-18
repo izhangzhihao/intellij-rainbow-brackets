@@ -2,12 +2,22 @@ package com.github.izhangzhihao.rainbow.brackets
 
 import com.intellij.notification.*
 import com.intellij.notification.impl.NotificationsManagerImpl
+import com.intellij.openapi.Disposable
+import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.popup.Balloon
 import com.intellij.openapi.wm.WindowManager
 import com.intellij.ui.BalloonLayoutData
 import com.intellij.ui.awt.RelativePoint
 import java.awt.Point
+
+class ApplicationServicePlaceholder : Disposable {
+    override fun dispose() = Unit
+
+    companion object {
+        val INSTANCE: ApplicationServicePlaceholder = ServiceManager.getService(ApplicationServicePlaceholder::class.java)
+    }
+}
 
 fun createNotification(title: String, content: String, displayId: String,
                        type: NotificationType, listener: NotificationListener): Notification {
@@ -32,9 +42,9 @@ fun showFullNotification(project: Project, notification: Notification) {
         val balloon = NotificationsManagerImpl.createBalloon(frame,
                 notification,
                 true, // showCallout
-                false, // hideOnClickOutside
+                true, // hideOnClickOutside
                 BalloonLayoutData.fullContent(),
-                project)
+                ApplicationServicePlaceholder.INSTANCE)
         balloon.show(target, Balloon.Position.atLeft)
     } catch (e: Exception) {
         notification.notify(project)
