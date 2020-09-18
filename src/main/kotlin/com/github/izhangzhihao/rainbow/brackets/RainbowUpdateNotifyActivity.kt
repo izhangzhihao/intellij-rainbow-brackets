@@ -20,7 +20,9 @@ class RainbowUpdateNotifyActivity : StartupActivity {
         val settings = RainbowSettings.instance
         if (getPlugin()?.version != settings.version) {
             settings.version = getPlugin()!!.version
-            showUpdate(project)
+            if (settings.showNotificationOnUpdate) {
+                showUpdate(project)
+            }
         }
     }
 
