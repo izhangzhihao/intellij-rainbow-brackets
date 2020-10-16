@@ -37,33 +37,44 @@ class RainbowXMLTest : LightJavaCodeInsightFixtureTestCase() {
                                 angleLevel(0),
 
                                 angleLevel(0),
+                                angleLevel(0),//idea-plugin
                                 angleLevel(0),
 
                                 angleLevel(1),
+                                angleLevel(1),//name
                                 angleLevel(1),
                                 angleLevel(1),
+                                angleLevel(1),//name
                                 angleLevel(1),
 
                                 angleLevel(1),
+                                angleLevel(1),//description
                                 angleLevel(1),
 
                                 angleLevel(2),
+                                angleLevel(2),//p
                                 angleLevel(2),
                                 angleLevel(2),
-                                angleLevel(2),
-
-                                angleLevel(2),
-                                angleLevel(2),
-                                angleLevel(2),
+                                angleLevel(2),//p
                                 angleLevel(2),
 
                                 angleLevel(2),
+                                angleLevel(2),//p
+                                angleLevel(2),
+                                angleLevel(2),
+                                angleLevel(2),//p
+                                angleLevel(2),
+
+                                angleLevel(2),
+                                angleLevel(2),//br
                                 angleLevel(2),
 
                                 angleLevel(1),
+                                angleLevel(1),//description
                                 angleLevel(1),
 
                                 angleLevel(0),
+                                angleLevel(0),//idea-plugin
                                 angleLevel(0)
                         )
                 )
