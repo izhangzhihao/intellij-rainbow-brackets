@@ -8,6 +8,7 @@ import com.intellij.psi.xml.XmlFile
 import com.intellij.psi.xml.XmlTag
 import com.intellij.psi.xml.XmlToken
 import com.intellij.psi.xml.XmlTokenType
+import com.intellij.util.xml.XmlName
 
 
 open class XmlRainbowVisitor : RainbowHighlightVisitor() {
@@ -55,6 +56,13 @@ open class XmlRainbowVisitor : RainbowHighlightVisitor() {
                 val startElement = element.takeIf { tokenType == XmlTokenType.XML_CDATA_START }
                 val endElement = element.takeIf { tokenType == XmlTokenType.XML_CDATA_END }
                 element.level?.let { element.setHighlightInfo(element.parent, it + 1, startElement, endElement) }
+            }
+
+            XmlTokenType.XML_NAME -> {
+                val prevSibling = element.prevSibling
+                if (prevSibling != null && prevSibling is XmlToken) {
+                    prevSibling.level?.let { element.setHighlightInfo(element.xmlParent, it, element, null) }
+                }
             }
         }
     }
