@@ -20,7 +20,19 @@ jobs:
 
       - run: ./gradlew buildPlugin
 
-      - run: ./gradlew check
+      - run:
+          name: Run test
+          command: ./gradlew test
+
+      - run:
+          name: Run test
+          command: ./gradlew test
+          when: on_fail
+
+      - run:
+          name: Run pluginVerifier for compatibility check
+          command: ./gradlew pluginVerifier
+          when: always
 
       - type: shell
         name: Release
