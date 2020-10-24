@@ -57,6 +57,14 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.12</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/279">#279: Hide update notification on any click & Disable update notification support</a></li>
+            <li>Feature: Rainbowify XML/HTML tag name.</li>
+            <li>Feature: Upgrade to kotlin 1.4.10.</li>
+        </ul>
+        <br/>
+
         <p>6.11</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/481">#481: rainbow-brackets does not support bash shell properly(for BashSupport Pro and Shell Script)</a></li>
