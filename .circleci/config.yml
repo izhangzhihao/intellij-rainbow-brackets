@@ -21,6 +21,10 @@ jobs:
       - run: ./gradlew buildPlugin
 
       - run:
+          name: Run RainbowXMLTest first
+          command: ./gradlew test --tests *RainbowXMLTest
+
+      - run:
           name: Run test
           command: ./gradlew test
 
