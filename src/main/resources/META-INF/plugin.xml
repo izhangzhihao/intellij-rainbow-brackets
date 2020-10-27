@@ -57,6 +57,15 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.12.1</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/516">#516: Add option to raibowify tag name of XML/HTML(disabled by default)</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/279">#279: Hide update notification on any click & Disable update notification support</a></li>
+            <li>Feature: Rainbowify XML/HTML tag name.</li>
+            <li>Feature: Upgrade to kotlin 1.4.10.</li>
+        </ul>
+        <br/>
+
         <p>6.12</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/279">#279: Hide update notification on any click & Disable update notification support</a></li>
