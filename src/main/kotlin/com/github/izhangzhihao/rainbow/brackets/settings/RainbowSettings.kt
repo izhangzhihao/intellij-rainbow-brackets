@@ -36,6 +36,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var useColorGenerator = false
     var customColorGeneratorOption: String? = null
     var showNotificationOnUpdate = true
+    var rainbowifyTagNameInXML = false
 
     @Suppress("MemberVisibilityCanBePrivate")
     var languageBlacklist: Array<String> = arrayOf()

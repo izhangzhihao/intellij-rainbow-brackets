@@ -38,8 +38,8 @@ class RainbowConfigurable : Configurable {
                 ?: false
         settings.numberOfColors = settingsForm?.numberOfColors() ?: 5
         settings.disableRainbowIndentsInZenMode = settingsForm?.disableRainbowIndentsInZenMode() ?: true
-        settings.useColorGenerator = settingsForm?.useColorGenerator()
-                ?: false
+        settings.useColorGenerator = settingsForm?.useColorGenerator() ?: false
+        settings.rainbowifyTagNameInXML = settingsForm?.rainbowifyTagNameInXML() ?: false
     }
 
     override fun reset() {
