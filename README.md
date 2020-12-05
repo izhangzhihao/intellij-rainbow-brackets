@@ -270,13 +270,19 @@ You can support us by the following actions:
 
 <table>
   <tr>
-    <th width="50%">AliPay</th>
-    <th width="50%">WeChatPay</th>
+    <th width="33%">Open Collective</th>
+    <th width="33%">AliPay</th>
+    <th width="33%">WeChatPay</th>
   </tr>
   <tr></tr>
   <tr align="center">
-    <td><img width="70%" src="https://user-images.githubusercontent.com/12044174/85197261-77dd5a80-b312-11ea-9630-51caf7d634f2.jpg"></td>
-    <td><img width="70%" src="https://user-images.githubusercontent.com/12044174/85197263-7b70e180-b312-11ea-917a-35eab2ea08ae.jpg"></td>
+    <td>
+        <a href="https://opencollective.com/intellij-rainbow-brackets" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/YiiGuxing/TranslationPlugin@master/images/open-collective.svg" width="171px" alt="OpenCollective">
+        </a>
+      </td>
+    <td><img src="https://user-images.githubusercontent.com/12044174/85197261-77dd5a80-b312-11ea-9630-51caf7d634f2.jpg"></td>
+    <td><img src="https://user-images.githubusercontent.com/12044174/85197263-7b70e180-b312-11ea-917a-35eab2ea08ae.jpg"></td>
   </tr>
 </table>
 
