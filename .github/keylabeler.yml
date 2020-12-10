@@ -1,0 +1,8 @@
+matchTitle: true
+
+matchBody: true
+
+caseSensitive: false
+
+labelMappings:
+  "[Auto Generated Report]": auto generated
