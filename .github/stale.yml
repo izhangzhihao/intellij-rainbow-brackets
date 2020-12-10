@@ -1,8 +1,0 @@
-daysUntilStale: 0
-daysUntilClose: 0
-onlyLabels: [auto generated]
-staleLabel: wontfix
-markComment: >
-  This auto generated issue has been automatically marked as stale because it's nothing wrong here. 
-  If you think there are something really wrong, please reply this issue. Thanks for your cooperation.
-only: issues
