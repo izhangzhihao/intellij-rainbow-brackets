@@ -22,17 +22,8 @@ jobs:
       - run: ./gradlew buildPlugin
 
       - run:
-          name: Run RainbowXMLTest first
-          command: ./gradlew test --tests *RainbowXMLTest
-
-      - run:
           name: Run test
           command: ./gradlew test
-
-      - run:
-          name: Run test
-          command: ./gradlew test
-          when: on_fail
 
       - run:
           name: Run pluginVerifier for compatibility check
