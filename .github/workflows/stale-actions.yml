@@ -1,11 +1,12 @@
-name: "Mark or close stale issues and PRs"
+name: "Close wontfix issues"
 
 on:
-  schedule:
-  - cron: "00 * * * *"
+  label:
+    types: [created]
 
 jobs:
   stale:
+    if: github.event.label.name == 'auto generated'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/stale@v3.0.14
