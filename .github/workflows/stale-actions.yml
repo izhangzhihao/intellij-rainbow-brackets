@@ -1,8 +1,8 @@
 name: "Close wontfix issues"
 
 on:
-  label:
-    types: [created]
+  issues:
+    types: [labeled]
 
 jobs:
   stale:
