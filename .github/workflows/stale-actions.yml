@@ -14,6 +14,6 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-stale: 0
         days-before-close: 0
-        stale-issue-message: "This auto generated issue has been automatically marked as stale because it's nothing wrong here. If you think there are something really wrong, please reply this issue. Thanks for your cooperation."
+        stale-issue-message: "This auto generated issue has been automatically marked as wontfix because it's nothing wrong here. If you think there are something really wrong, please reply this issue. Thanks for your cooperation."
         stale-issue-label: "wontfix"
         only-labels: "auto generated"
