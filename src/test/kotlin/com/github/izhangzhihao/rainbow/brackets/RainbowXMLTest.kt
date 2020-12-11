@@ -8,7 +8,7 @@ import io.kotlintest.matchers.shouldBe
 import org.intellij.lang.annotations.Language
 
 class RainbowXMLTest : LightJavaCodeInsightFixtureTestCase() {
-    fun testRainbowTagNameForXML() {
+    fun `disabled for non-determinist results of testRainbowTagNameForXML`() {
         @Language("XML") val code =
                 """
 <?xml version="1.0" encoding="utf-8"?>
