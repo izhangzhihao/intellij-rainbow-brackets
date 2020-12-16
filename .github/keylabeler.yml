@@ -6,3 +6,4 @@ caseSensitive: false
 
 labelMappings:
   "[Auto Generated Report]": auto generated
+  "RainbowHighlightVisitor.kt:35": invalid
