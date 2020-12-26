@@ -18,7 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/stale@v3.0.14
-      if: contains(github.event.issue.labels.*.name, 'invalid')
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-stale: 0
