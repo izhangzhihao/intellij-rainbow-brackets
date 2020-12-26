@@ -1,8 +1,0 @@
-matchTitle: true
-
-matchBody: true
-
-caseSensitive: false
-
-labelMappings:
-  "RainbowHighlightVisitor.kt:35": invalid

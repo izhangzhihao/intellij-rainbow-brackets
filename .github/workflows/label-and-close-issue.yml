@@ -1,11 +1,19 @@
-name: "Close wontfix issues"
+name: "Label and close wontfix issues"
 
 on:
   issues:
-    types: [labeled]
+    types: [opened]
 
 jobs:
-  stale:
+  Label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Naturalclar/issue-action@v2.0.2
+        with:
+          title-or-body: "both"
+          parameters: '[ {"keywords": ["RainbowHighlightVisitor.kt:35"], "labels": ["invalid"]} ]'
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+  Close:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/stale@v3.0.14
