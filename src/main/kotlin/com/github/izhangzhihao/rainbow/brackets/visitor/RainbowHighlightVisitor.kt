@@ -2,15 +2,20 @@ package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.RainbowHighlighter.getHighlightInfo
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
+import com.github.izhangzhihao.rainbow.brackets.RainbowUpdateNotifyActivity.Companion.pluginId
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.memoizedFileExtension
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder
 import com.intellij.ide.plugins.PluginManagerCore
+import com.intellij.notification.NotificationDisplayType
+import com.intellij.notification.NotificationGroup
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
+import org.jetbrains.kotlin.idea.core.util.getLineCount
 import java.awt.Color
 
 
@@ -20,9 +25,31 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 
     override fun suitableForFile(file: PsiFile): Boolean {
         return RainbowSettings.instance.isRainbowEnabled &&
+                checkForBigFile(file) &&
                 !RainbowSettings.instance.getLanguageBlacklist.contains(file.fileType.name) &&
                 !RainbowSettings.instance.getLanguageBlacklist.contains(memoizedFileExtension(file.name)) &&
                 fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(file.fileType.name)
+    }
+
+    private fun checkForBigFile(file: PsiFile): Boolean {
+        if (RainbowSettings.instance.doNOTRainbowifyBigFiles && file.getLineCount() > 1000) {
+            val group = NotificationGroup(
+                pluginId,
+                NotificationDisplayType.BALLOON,
+                true
+            )
+
+            val notification = group.createNotification(
+                "Rainbowify big files is disabled by default",
+                "File with line count > 1000 will not rainbowify be default. If you still want to rainbowify it, please config it in <b>Settings > Other Settings > Rainbow Brackets > Do NOT rainbowify big files</b>",
+                NotificationType.INFORMATION
+            )
+
+            notification.notify(file.project)
+
+            return false
+        }
+        return true
     }
 
     private fun fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(fileType: String) =

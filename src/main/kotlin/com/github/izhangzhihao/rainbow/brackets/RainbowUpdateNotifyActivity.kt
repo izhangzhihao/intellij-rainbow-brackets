@@ -39,7 +39,7 @@ class RainbowUpdateNotifyActivity : StartupActivity {
     }
 
     companion object {
-        private const val pluginId = "izhangzhihao.rainbow.brackets"
+        const val pluginId = "izhangzhihao.rainbow.brackets"
 
 
         private val updateContent: String by lazy {
