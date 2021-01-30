@@ -160,8 +160,8 @@ class RainbowOptionsPanel(
         for (i in 0 until minRange()) {
             colors[i].isEnabled = rainbowOn
             colorLabels[i].isEnabled = rainbowOn
-            colors[i].selectedColor = descriptions[i].rainbowColor
-            eventDispatcher.multicaster.selectedOptionChanged(descriptions[i])
+            colors[i].selectedColor = descriptions.indexOfOrNull(i)?.rainbowColor
+            descriptions.indexOfOrNull(i)?.let { eventDispatcher.multicaster.selectedOptionChanged(it) }
         }
     }
 
@@ -258,3 +258,5 @@ class RainbowOptionsPanel(
         }
     }
 }
+
+private fun <E> List<E>.indexOfOrNull(idx: Int): E? = if (idx < this.size) this[idx] else null
