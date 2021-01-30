@@ -69,7 +69,7 @@ open class XmlRainbowVisitor : RainbowHighlightVisitor() {
     }
 
     companion object {
-        private val PsiElement.xmlParent: PsiElement?
+        val PsiElement.xmlParent: PsiElement?
             get() {
                 var pElement = parent
                 while (pElement != null && pElement !is XmlTag && pElement !is PsiFile) {
