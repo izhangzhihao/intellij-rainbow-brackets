@@ -112,6 +112,6 @@ targetCompatibility = javaVersion
     freeCompilerArgs = ["-Xskip-runtime-version-check", "-Xjsr305=strict"]
 }
 
-runPluginVerifier {
-    intellij.version = ["IC-201.6668.121"]
-}
+// runPluginVerifier {
+//     ideVersions = ["IC-2020.2.1"]
+// }
