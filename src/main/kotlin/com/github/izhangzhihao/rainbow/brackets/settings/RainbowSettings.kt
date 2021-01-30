@@ -38,6 +38,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var showNotificationOnUpdate = true
     var rainbowifyTagNameInXML = false
     var doNOTRainbowifyTemplateString = false
+    var doNOTRainbowifyBigFiles = true
 
     @Suppress("MemberVisibilityCanBePrivate")
     var languageBlacklist: Array<String> = arrayOf()

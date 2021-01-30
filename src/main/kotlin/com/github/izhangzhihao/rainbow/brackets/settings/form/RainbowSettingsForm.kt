@@ -31,6 +31,8 @@ class RainbowSettingsForm {
 
     private var doNOTRainbowifyTemplateString: JCheckBox? = null
 
+    private var doNOTRainbowifyBigFiles: JCheckBox? = null
+
     private val settings: RainbowSettings = RainbowSettings.instance
 
     fun component(): JComponent? = panel
@@ -67,6 +69,8 @@ class RainbowSettingsForm {
 
     fun doNOTRainbowifyTemplateString() = doNOTRainbowifyTemplateString?.isSelected
 
+    fun doNOTRainbowifyBigFiles() = doNOTRainbowifyBigFiles?.isSelected
+
     val isModified: Boolean
         get() = (isRainbowEnabled() != settings.isRainbowEnabled
                 || isRainbowAngleBracketsEnabled() != settings.isEnableRainbowAngleBrackets
@@ -84,6 +88,7 @@ class RainbowSettingsForm {
                 || useColorGenerator() != settings.useColorGenerator
                 || rainbowifyTagNameInXML() != settings.rainbowifyTagNameInXML
                 || doNOTRainbowifyTemplateString() != settings.doNOTRainbowifyTemplateString
+                || doNOTRainbowifyBigFiles() != settings.doNOTRainbowifyBigFiles
                 )
 
     init {
@@ -107,5 +112,6 @@ class RainbowSettingsForm {
         useColorGenerator?.isSelected = settings.useColorGenerator
         rainbowifyTagNameInXML?.isSelected = settings.rainbowifyTagNameInXML
         doNOTRainbowifyTemplateString?.isSelected = settings.doNOTRainbowifyTemplateString
+        doNOTRainbowifyBigFiles?.isSelected = settings.doNOTRainbowifyBigFiles
     }
 }

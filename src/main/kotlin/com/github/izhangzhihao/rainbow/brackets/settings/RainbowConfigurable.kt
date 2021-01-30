@@ -41,6 +41,7 @@ class RainbowConfigurable : Configurable {
         settings.useColorGenerator = settingsForm?.useColorGenerator() ?: false
         settings.rainbowifyTagNameInXML = settingsForm?.rainbowifyTagNameInXML() ?: false
         settings.doNOTRainbowifyTemplateString = settingsForm?.doNOTRainbowifyTemplateString() ?: false
+        settings.doNOTRainbowifyBigFiles = settingsForm?.doNOTRainbowifyBigFiles() ?: true
     }
 
     override fun reset() {
