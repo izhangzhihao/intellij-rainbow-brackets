@@ -57,6 +57,7 @@ open class XmlRainbowVisitor : RainbowHighlightVisitor() {
                 element.level?.let { element.setHighlightInfo(element.parent, it + 1, startElement, endElement) }
             }
 
+            XmlTokenType.XML_TAG_NAME,
             XmlTokenType.XML_NAME -> {
                 if (RainbowSettings.instance.rainbowifyTagNameInXML) {
                     val prevSibling = element.prevSibling
