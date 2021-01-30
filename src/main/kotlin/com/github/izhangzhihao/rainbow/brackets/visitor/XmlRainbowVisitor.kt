@@ -80,7 +80,7 @@ open class XmlRainbowVisitor : RainbowHighlightVisitor() {
                 return pElement
             }
 
-        private tailrec fun iterateXmlTagParents(element: PsiElement?, count: Int): Int {
+        tailrec fun iterateXmlTagParents(element: PsiElement?, count: Int): Int {
             if (element == null || element is PsiFile) {
                 return count
             }
