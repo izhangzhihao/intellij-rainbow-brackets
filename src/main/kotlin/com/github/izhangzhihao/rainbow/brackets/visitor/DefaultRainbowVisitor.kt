@@ -99,6 +99,11 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
                 }
             }
 
+            //For https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/830
+            if (RainbowSettings.instance.doNOTRainbowifyTemplateString) {
+                if (left?.prevSibling?.text == "$") return false
+            }
+
             return findLeftBracket && findRightBracket
         }
 
