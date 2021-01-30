@@ -1,6 +1,7 @@
 package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
+import com.github.izhangzhihao.rainbow.brackets.visitor.XmlRainbowVisitor.Companion.iterateXmlTagParents
 import com.github.izhangzhihao.rainbow.brackets.visitor.XmlRainbowVisitor.Companion.xmlParent
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.psi.PsiElement
@@ -33,20 +34,7 @@ class PugRainbowVisitor : RainbowHighlightVisitor() {
     }
 
     companion object {
-        private tailrec fun iterateXmlTagParents(element: PsiElement?, count: Int, name: String): Int {
-            if (element == null || element is PsiFile || (element is XmlTag && element.name != name)) {
-                return count
-            }
-
-            var nextCount = count
-            if (element is XmlTag && element.name == name) {
-                nextCount++
-            }
-
-            return iterateXmlTagParents(element.parent, nextCount, name)
-        }
-
         private val XmlTag.level: Int
-            get() = iterateXmlTagParents(parent, 0, this.name)
+            get() = iterateXmlTagParents(parent, 0)
     }
 }
