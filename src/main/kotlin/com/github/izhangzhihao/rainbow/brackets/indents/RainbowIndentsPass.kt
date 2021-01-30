@@ -479,7 +479,11 @@ class RainbowIndentsPass internal constructor(
             val document = editor.document
             val project = editor.project ?: return null
             val psiFile = PsiManager.getInstance(project).findFile(virtualFile) ?: return null
-            var element = psiFile.findElementAt(highlighter.endOffset)?.parent ?: return null
+            var element = try {
+                psiFile.findElementAt(highlighter.endOffset)?.parent ?: return null
+            } catch (e: Throwable) {
+                return null
+            }
 
             var rainbowInfo = RainbowInfo.RAINBOW_INFO_KEY[element]
             if (rainbowInfo == null && psiFile is XmlFile && element !is XmlTag) {
