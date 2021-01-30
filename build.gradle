@@ -13,14 +13,12 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.5.0"
+    id "org.jetbrains.intellij" version "0.6.5"
     id "com.adarshr.test-logger" version "2.0.0"
     id "de.undercouch.download" version "4.0.2"
     id "org.jetbrains.kotlin.jvm" version "1.4.10"
     id "idea"
 }
-
-apply from: "$rootDir/verifier.gradle"
 
 testlogger {
     theme 'mocha'
@@ -114,10 +112,6 @@ targetCompatibility = javaVersion
     freeCompilerArgs = ["-Xskip-runtime-version-check", "-Xjsr305=strict"]
 }
 
-pluginVerifier {
-    pluginFileName = "$rootProject.name-$version"
-    ides = ["IC-201.6668.121"]
-    verifierVersion = "1.244"
+runPluginVerifier {
+    intellij.version = ["IC-201.6668.121"]
 }
-
-check.dependsOn pluginVerifier
