@@ -149,6 +149,14 @@
               <text value="Rainbowify tag name in XML/HTML"/>
             </properties>
           </component>
+          <component id="6e2d5" class="javax.swing.JCheckBox" binding="doNOTRainbowifyTemplateString">
+            <constraints>
+              <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Do NOT rainbowify template string"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <vspacer id="9e387">

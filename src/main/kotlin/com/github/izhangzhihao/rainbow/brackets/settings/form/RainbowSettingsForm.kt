@@ -29,6 +29,8 @@ class RainbowSettingsForm {
 
     private var rainbowifyTagNameInXML: JCheckBox? = null
 
+    private var doNOTRainbowifyTemplateString: JCheckBox? = null
+
     private val settings: RainbowSettings = RainbowSettings.instance
 
     fun component(): JComponent? = panel
@@ -63,6 +65,8 @@ class RainbowSettingsForm {
 
     fun rainbowifyTagNameInXML() = rainbowifyTagNameInXML?.isSelected
 
+    fun doNOTRainbowifyTemplateString() = doNOTRainbowifyTemplateString?.isSelected
+
     val isModified: Boolean
         get() = (isRainbowEnabled() != settings.isRainbowEnabled
                 || isRainbowAngleBracketsEnabled() != settings.isEnableRainbowAngleBrackets
@@ -79,6 +83,7 @@ class RainbowSettingsForm {
                 || disableRainbowIndentsInZenMode() != settings.disableRainbowIndentsInZenMode
                 || useColorGenerator() != settings.useColorGenerator
                 || rainbowifyTagNameInXML() != settings.rainbowifyTagNameInXML
+                || doNOTRainbowifyTemplateString() != settings.doNOTRainbowifyTemplateString
                 )
 
     init {
@@ -101,5 +106,6 @@ class RainbowSettingsForm {
         disableRainbowIndentsInZenMode?.isSelected = settings.disableRainbowIndentsInZenMode
         useColorGenerator?.isSelected = settings.useColorGenerator
         rainbowifyTagNameInXML?.isSelected = settings.rainbowifyTagNameInXML
+        doNOTRainbowifyTemplateString?.isSelected = settings.doNOTRainbowifyTemplateString
     }
 }
