@@ -57,7 +57,18 @@
         ]]></description>
 
     <change-notes><![CDATA[
-        <p>6.12.1</p>
+        <p>6.14</p>
+        <ul>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/897">#897: Initial support for Pug/Jade Language</a></li>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/830">#830: New option "Do NOT rainbowify template string"</a></li>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/784">#784: Disable rainbowify on big files(>1000 lines for now)</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/851">#851: Rainbowify tag name doesn't works in JSX</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/875">#875: cannot create configurable component</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/799">#799 #817: Wrong element created by ASTFactory</a></li>
+        </ul>
+        <br/>
+
+        <p>6.13</p>
         <ul>
             <li>Make as a non-dynamic plugin, so it now requires restart.</li>
         </ul>
