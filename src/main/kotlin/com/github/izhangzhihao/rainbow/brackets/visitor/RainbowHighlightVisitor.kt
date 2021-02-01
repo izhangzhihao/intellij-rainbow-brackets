@@ -32,20 +32,24 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     }
 
     private fun checkForBigFile(file: PsiFile): Boolean {
-        if (RainbowSettings.instance.doNOTRainbowifyBigFiles && file.getLineCount() > 1000) {
-            val group = NotificationGroup(
-                pluginId,
-                NotificationDisplayType.BALLOON,
-                true
-            )
+        if (RainbowSettings.instance.doNOTRainbowifyBigFiles && file.getLineCount() > 10) {
 
-            val notification = group.createNotification(
-                "Rainbowify big files is disabled by default",
-                "File with line count > 1000 will not rainbowify be default. If you still want to rainbowify it, please config it in <b>Settings > Other Settings > Rainbow Brackets > Do NOT rainbowify big files</b>",
-                NotificationType.INFORMATION
-            )
+            if (!bigFilesNotified) {
+                bigFilesNotified = true
+                val group = NotificationGroup(
+                    pluginId,
+                    NotificationDisplayType.BALLOON,
+                    true
+                )
 
-            notification.notify(file.project)
+                val notification = group.createNotification(
+                    "Rainbowify big files is disabled by default",
+                    "File with line count > 1000 will not rainbowify be default. If you still want to rainbowify it, please config it in <b>Settings > Other Settings > Rainbow Brackets > Do NOT rainbowify big files</b>",
+                    NotificationType.INFORMATION
+                )
+
+                notification.notify(file.project)
+            }
 
             return false
         }
@@ -109,3 +113,5 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
         }
     }
 }
+
+private var bigFilesNotified = false
