@@ -32,7 +32,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     }
 
     private fun checkForBigFile(file: PsiFile): Boolean {
-        if (RainbowSettings.instance.doNOTRainbowifyBigFiles && file.getLineCount() > 10) {
+        if (RainbowSettings.instance.doNOTRainbowifyBigFiles && file.getLineCount() > 1000) {
 
             if (!bigFilesNotified) {
                 bigFilesNotified = true
