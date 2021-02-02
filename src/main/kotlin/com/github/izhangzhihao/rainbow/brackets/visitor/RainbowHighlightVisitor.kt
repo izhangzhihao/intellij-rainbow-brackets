@@ -13,9 +13,11 @@ import com.intellij.notification.NotificationGroup
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.extensions.PluginId
+import com.intellij.openapi.util.TextRange
+import com.intellij.openapi.util.text.StringUtil
+import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
-import org.jetbrains.kotlin.idea.core.util.getLineCount
 import java.awt.Color
 
 
@@ -115,3 +117,19 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 }
 
 private var bigFilesNotified = false
+
+fun PsiElement.getLineCount(): Int {
+    val doc = containingFile?.let { PsiDocumentManager.getInstance(project).getDocument(it) }
+    if (doc != null) {
+        val spaceRange = textRange ?: TextRange.EMPTY_RANGE
+
+        if (spaceRange.endOffset <= doc.textLength && spaceRange.startOffset < spaceRange.endOffset) {
+            val startLine = doc.getLineNumber(spaceRange.startOffset)
+            val endLine = doc.getLineNumber(spaceRange.endOffset - 1)
+
+            return endLine - startLine + 1
+        }
+    }
+
+    return StringUtil.getLineBreakCount(text ?: "") + 1
+}
