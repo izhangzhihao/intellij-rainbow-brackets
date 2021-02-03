@@ -16,7 +16,10 @@ class PugRainbowVisitor : RainbowHighlightVisitor() {
     override fun suitableForFile(file: PsiFile)
             : Boolean = super.suitableForFile(file) &&
             RainbowSettings.instance.isEnableRainbowAngleBrackets &&
-            (file.language.id == "Jade")
+            (file.language.id == "Jade" ||
+                    file.viewProvider.allFiles.any { it.language.id == "Jade" } ||
+                    file.name.endsWith(".vue")
+                    )
 
     override fun clone(): HighlightVisitor = PugRainbowVisitor()
 
