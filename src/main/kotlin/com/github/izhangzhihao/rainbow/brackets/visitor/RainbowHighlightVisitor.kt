@@ -46,7 +46,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 
                 val notification = group.createNotification(
                     "Rainbowify big files is disabled by default",
-                    "File with line count > 1000 will not rainbowify be default. If you still want to rainbowify it, please config it in <b>Settings > Other Settings > Rainbow Brackets > Do NOT rainbowify big files</b>",
+                    "File with line count > 1000 will not rainbowify by default. If you still want to rainbowify it, please config it in <b>Settings > Other Settings > Rainbow Brackets > Do NOT rainbowify big files</b>",
                     NotificationType.INFORMATION
                 )
 
