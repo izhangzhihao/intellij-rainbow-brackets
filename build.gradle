@@ -97,7 +97,7 @@ def gistFile = { url, name ->
 }
 
 dependencies {
-    implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.5.0.201909110433-r") {
+    implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.10.0.202012080955-r") {
         exclude module: "gson"
     }
     compileOnly fileTree(dir: 'libs', include: ['*.jar'])
