@@ -10,14 +10,14 @@ buildscript {
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "de.undercouch:gradle-download-task:4.0.2"
+        classpath "de.undercouch:gradle-download-task:4.1.1"
     }
 }
 
 plugins {
     id "org.jetbrains.intellij" version "0.6.5"
-    id "com.adarshr.test-logger" version "2.0.0"
-    id "de.undercouch.download" version "4.0.2"
+    id "com.adarshr.test-logger" version "2.1.1"
+    id "de.undercouch.download" version "4.1.1"
     id "org.jetbrains.kotlin.jvm" version "1.4.30"
     id "idea"
 }
@@ -97,7 +97,7 @@ def gistFile = { url, name ->
 }
 
 dependencies {
-    implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.5.0.201909110433-r") {
+    implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.10.0.202012080955-r") {
         exclude module: "gson"
     }
     compileOnly fileTree(dir: 'libs', include: ['*.jar'])
