@@ -50,14 +50,14 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.os }}-${{ github.head_ref }}-gradle-caches-${{ hashFiles('**/*.gradle', '**/*.gradle.kts') }}
+          key: ${{ runner.os }}-gradle-caches-${{ hashFiles('**/*.gradle', '**/*.gradle.kts') }}
 
       # Cache Gradle Wrapper
       - name: Setup Gradle Wrapper Cache
         uses: actions/cache@v2
         with:
           path: ~/.gradle/wrapper
-          key: ${{ runner.os }}-${{ github.head_ref }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
 
       # Run detekt, ktlint and tests
       - name: Run Linters and Test
@@ -93,14 +93,14 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.os }}-${{ github.head_ref }}-gradle-caches-${{ hashFiles('**/*.gradle', '**/*.gradle.kts') }}
+          key: ${{ runner.os }}-gradle-caches-${{ hashFiles('**/*.gradle', '**/*.gradle.kts') }}
 
       # Cache Gradle Wrapper
       - name: Setup Gradle Wrapper Cache
         uses: actions/cache@v2
         with:
           path: ~/.gradle/wrapper
-          key: ${{ runner.os }}-${{ github.head_ref }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
 
       # Set environment variables
       - name: Export Properties
@@ -149,14 +149,14 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.os }}-${{ github.head_ref }}-gradle-caches-${{ hashFiles('**/*.gradle', '**/*.gradle.kts') }}
+          key: ${{ runner.os }}-gradle-caches-${{ hashFiles('**/*.gradle', '**/*.gradle.kts') }}
 
       # Cache Gradle Wrapper
       - name: Setup Gradle Wrapper Cache
         uses: actions/cache@v2
         with:
           path: ~/.gradle/wrapper
-          key: ${{ runner.os }}-${{ github.head_ref }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
 
       # Set environment variables
       - name: Export Properties
