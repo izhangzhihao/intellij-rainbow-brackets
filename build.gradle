@@ -115,6 +115,6 @@ targetCompatibility = javaVersion
 }
 
 runPluginVerifier {
-    ideVersions = ["PCP-2020.2", "WS-2020.3", "IIC-2021.1"]
+    ideVersions = "$pluginVerifierIdeVersions"
     failureLevel = COMPATIBILITY_PROBLEMS
 }
