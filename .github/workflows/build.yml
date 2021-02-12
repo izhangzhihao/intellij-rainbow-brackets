@@ -37,10 +37,6 @@ jobs:
       - name: Verify Plugin
         run: ./gradlew verifyPlugin
 
-      # Build artifact using buildPlugin Gradle task
-      - name: Build Plugin
-        run: ./gradlew buildPlugin
-
       # Set environment variables
       - name: Export Properties
         id: properties
