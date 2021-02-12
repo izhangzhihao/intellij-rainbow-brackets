@@ -16,7 +16,7 @@ buildscript {
 
 plugins {
     id "org.jetbrains.intellij" version "0.6.5"
-    id "com.adarshr.test-logger" version "2.0.0"
+    id "com.adarshr.test-logger" version "2.1.1"
     id "de.undercouch.download" version "4.1.1"
     id "org.jetbrains.kotlin.jvm" version "1.4.10"
     id "idea"
