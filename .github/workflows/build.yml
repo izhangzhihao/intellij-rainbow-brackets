@@ -124,7 +124,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
-          name: plugin-artifact
+          name: intellij-rainbow-brackets
           path: ./build/distributions/${{ steps.properties.outputs.artifact }}
 
   # Verify built plugin using IntelliJ Plugin Verifier tool
@@ -219,7 +219,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: plugin-artifact
+          name: intellij-rainbow-brackets
 
       # Upload artifact as a release asset
       - name: Upload Release Asset
