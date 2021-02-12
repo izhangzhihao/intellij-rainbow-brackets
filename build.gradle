@@ -1,3 +1,5 @@
+import static org.jetbrains.intellij.tasks.RunPluginVerifierTask.FailureLevel.*
+
 buildscript {
     repositories {
         mavenLocal()
