@@ -45,6 +45,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
+            - ~/.pluginVerifier
           key: 202-dependencies-{{ checksum "build.gradle" }}
 
       - store_artifacts:
