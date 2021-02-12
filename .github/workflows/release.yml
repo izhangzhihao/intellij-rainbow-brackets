@@ -12,11 +12,11 @@ jobs:
     name: Publish Plugin
     runs-on: ubuntu-latest
     steps:
-      # Setup Java 1.8 environment for the next steps
+      # Setup Java 11 environment for the next steps
       - name: Setup Java
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 11
 
       # Check out current repository
       - name: Fetch Sources
