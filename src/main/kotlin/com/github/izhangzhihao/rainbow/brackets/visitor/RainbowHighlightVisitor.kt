@@ -119,17 +119,20 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
 private var bigFilesNotified = false
 
 fun PsiElement.getLineCount(): Int {
-    val doc = containingFile?.let { PsiDocumentManager.getInstance(project).getDocument(it) }
-    if (doc != null) {
-        val spaceRange = textRange ?: TextRange.EMPTY_RANGE
+    try {
+        val doc = containingFile?.let { PsiDocumentManager.getInstance(project).getDocument(it) }
+        if (doc != null) {
+            val spaceRange = textRange ?: TextRange.EMPTY_RANGE
 
-        if (spaceRange.endOffset <= doc.textLength && spaceRange.startOffset < spaceRange.endOffset) {
-            val startLine = doc.getLineNumber(spaceRange.startOffset)
-            val endLine = doc.getLineNumber(spaceRange.endOffset - 1)
+            if (spaceRange.endOffset <= doc.textLength && spaceRange.startOffset < spaceRange.endOffset) {
+                val startLine = doc.getLineNumber(spaceRange.startOffset)
+                val endLine = doc.getLineNumber(spaceRange.endOffset - 1)
 
-            return endLine - startLine + 1
+                return endLine - startLine + 1
+            }
         }
+        return StringUtil.getLineBreakCount(text ?: "") + 1
+    } catch (e: Throwable) {
+        return 0
     }
-
-    return StringUtil.getLineBreakCount(text ?: "") + 1
 }
