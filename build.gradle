@@ -1,3 +1,5 @@
+import static org.jetbrains.intellij.tasks.RunPluginVerifierTask.FailureLevel.*
+
 buildscript {
     repositories {
         mavenLocal()
@@ -112,6 +114,7 @@ targetCompatibility = javaVersion
     freeCompilerArgs = ["-Xskip-runtime-version-check", "-Xjsr305=strict"]
 }
 
-// runPluginVerifier {
-//     ideVersions = ["IC-2020.2.1"]
-// }
+runPluginVerifier {
+    ideVersions = ["PCP-2020.2", "WS-2020.3", "IIC-2021.1"]
+    failureLevel = COMPATIBILITY_PROBLEMS
+}
