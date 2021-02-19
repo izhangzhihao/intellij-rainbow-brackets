@@ -1,4 +1,7 @@
-.idea/
+/.idea/*
+!/.idea/icon.png
+!/.idea/icon_dark.png
+!/.idea/vcs.xml
 .sandbox/
 .gradle/
 build/
