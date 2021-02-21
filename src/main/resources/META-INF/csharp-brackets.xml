@@ -3,4 +3,8 @@
         <bracePairProvider language="C#"
                            implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.CSharpBracePairProvider"/>
     </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.CSharpRainbowVisitor"/>
+    </extensions>
 </idea-plugin>
