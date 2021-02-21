@@ -64,7 +64,7 @@ jobs:
         run: ./gradlew runPluginVerifier -Pplugin.verifier.home.dir=${{ steps.properties.outputs.pluginVerifierHomeDir }}
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.properties.outputs.artifact }}
+          name: UnZipMe
           path: ./build/distributions/${{ steps.properties.outputs.artifact }}
