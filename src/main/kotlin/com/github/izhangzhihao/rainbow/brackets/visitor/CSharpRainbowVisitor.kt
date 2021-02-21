@@ -55,6 +55,14 @@ class CSharpRainbowVisitor : RainbowHighlightVisitor() {
                 return count
             }
 
+            if (element is LeafPsiElement && type == LPARENTH && element.elementType == RPARENTH) {
+                return count
+            }
+
+            if (element is LeafPsiElement && type == RPARENTH && element.elementType == LPARENTH) {
+                return count
+            }
+
             var nextCount = count
 
             if (element is LeafPsiElement && element.elementType == type) {
