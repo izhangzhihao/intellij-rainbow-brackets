@@ -44,9 +44,13 @@ jobs:
         run: |
           PROPERTIES="$(./gradlew properties --console=plain -q)"
           IDE_VERSIONS="$(echo "$PROPERTIES" | grep "^pluginVerifierIdeVersions:" | base64)"
+          VERSION="$(echo "$PROPERTIES" | grep "^version:" | cut -f2- -d ' ')"
+          NAME="intellij-rainbow-brackets"
+          ARTIFACT="${NAME}-${VERSION}.zip"
 
           echo "::set-output name=ideVersions::$IDE_VERSIONS"
           echo "::set-output name=pluginVerifierHomeDir::~/.pluginVerifier"
+          echo "::set-output name=artifact::$ARTIFACT"
 
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache
@@ -62,5 +66,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
-          name: plugin-artifact
-          path: ./build/distributions/
+          name: ${{ steps.properties.outputs.artifact }}
+          path: ./build/distributions/${{ steps.properties.outputs.artifact }}
