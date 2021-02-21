@@ -11,7 +11,7 @@ import com.jetbrains.rider.ideaInterop.fileTypes.csharp.lexer.CSharpTokenType.RP
 
 class CSharpBracePairProvider : BracePairProvider {
     override fun pairs(): List<BracePair> = listOf(
-            BracePair(LPARENTH, RPARENTH, false),
+            //BracePair(LPARENTH, RPARENTH, false),
             BracePair(LBRACE, RBRACE, false),
             BracePair(LBRACKET, RBRACKET, false)
     )

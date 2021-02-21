@@ -34,8 +34,6 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
         } else {
             if (level >= 0) {
                 rainbowPairs(element, pair, level)
-            } else if (element.language.id == "C#") {
-                rainbowPairs(element, pair, 0)
             }
         }
     }
@@ -107,7 +105,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             return findLeftBracket && findRightBracket
         }
 
-        private fun PsiElement.elementType(): IElementType? {
+        fun PsiElement.elementType(): IElementType? {
             return (this as? LeafPsiElement)?.elementType
         }
 
