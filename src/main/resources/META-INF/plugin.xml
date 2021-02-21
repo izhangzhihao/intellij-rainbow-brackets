@@ -57,7 +57,15 @@
         ]]></description>
 
     <change-notes><![CDATA[
-        <p>6.14</p>
+        <p>6.16</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/988">#988: (@Grandmother) minor: fix mispell in notification message</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/973">#973: File text mismatch</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/497">#497: C# in Rider - only squiggly brackets are rainbowified </a></li>
+        </ul>
+        <br/>
+
+        <p>6.15</p>
         <ul>
             <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/897">#897: Initial support for Pug/Jade Language</a></li>
             <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/830">#830: New option "Do NOT rainbowify template string"</a></li>
