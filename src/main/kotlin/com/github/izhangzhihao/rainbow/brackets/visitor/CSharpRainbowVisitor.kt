@@ -7,7 +7,9 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 import com.intellij.psi.tree.IElementType
+import com.jetbrains.rider.ideaInterop.fileTypes.csharp.lexer.CSharpTokenType.GT
 import com.jetbrains.rider.ideaInterop.fileTypes.csharp.lexer.CSharpTokenType.LPARENTH
+import com.jetbrains.rider.ideaInterop.fileTypes.csharp.lexer.CSharpTokenType.LT
 import com.jetbrains.rider.ideaInterop.fileTypes.csharp.lexer.CSharpTokenType.RPARENTH
 import com.jetbrains.rider.ideaInterop.fileTypes.csharp.psi.CSharpDummyNode
 
@@ -25,7 +27,8 @@ class CSharpRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun visit(element: PsiElement) {
         val type = (element as? LeafPsiElement)?.elementType ?: return
-        if (type == LPARENTH || type == RPARENTH) {
+        val pair = map[type]
+        if (pair != null) {
             val level = element.getBracketLevel(pair, type)
             if (RainbowSettings.instance.isDoNOTRainbowifyTheFirstLevel) {
                 if (level >= 1) {
@@ -46,7 +49,12 @@ class CSharpRainbowVisitor : RainbowHighlightVisitor() {
     }
 
     companion object {
-        val pair = BracePair(LPARENTH, RPARENTH, true)
+        val map = mapOf(
+                LPARENTH to BracePair(LPARENTH, RPARENTH, true),
+                RPARENTH to BracePair(LPARENTH, RPARENTH, true),
+                LT to BracePair(LT, GT, true),
+                GT to BracePair(LT, GT, true)
+        )
 
         private fun LeafPsiElement.getBracketLevel(pair: BracePair, type: IElementType): Int = iterateBracketParents(this, pair, -1, type)
 
@@ -55,21 +63,21 @@ class CSharpRainbowVisitor : RainbowHighlightVisitor() {
                 return count
             }
 
-            if (element is LeafPsiElement && type == LPARENTH && element.elementType == RPARENTH) {
-                return count
-            }
-
-            if (element is LeafPsiElement && type == RPARENTH && element.elementType == LPARENTH) {
-                return count
-            }
-
             var nextCount = count
+
+            if (element is LeafPsiElement && type == pair.leftBraceType && element.elementType == pair.rightBraceType) {
+                nextCount --
+            }
+
+            if (element is LeafPsiElement && type == pair.rightBraceType && element.elementType == pair.leftBraceType) {
+                nextCount --
+            }
 
             if (element is LeafPsiElement && element.elementType == type) {
                 nextCount ++
             }
 
-            return if (type == LPARENTH) {
+            return if (type == pair.leftBraceType) {
                 iterateBracketParents(element.prevSibling, pair, nextCount, type)
             } else {
                 iterateBracketParents(element.nextSibling, pair, nextCount, type)
