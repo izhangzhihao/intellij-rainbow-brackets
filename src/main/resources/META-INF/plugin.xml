@@ -59,6 +59,7 @@
     <change-notes><![CDATA[
         <p>6.16</p>
         <ul>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/458">#458: Color Parentheses In Go Template</a></li>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/988">#988: (@Grandmother) minor: fix mispell in notification message</a></li>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/973">#973: File text mismatch</a></li>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/497">#497: C# in Rider - only squiggly brackets are rainbowified </a></li>
