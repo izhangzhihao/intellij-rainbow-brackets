@@ -51,7 +51,7 @@ def pluginsDependencies = ['java',
                            'com.jetbrains.php:202.6397.94',
                            'com.jetbrains.sh:202.6397.21',
                            'com.jetbrains.plugins.jade:202.6397.47',
-
+                           'org.jetbrains.plugins.go-template:202.6397.21',
 ]
 
 intellij {

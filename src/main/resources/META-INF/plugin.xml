@@ -26,7 +26,7 @@
 
         <p>Supported languages:</p>
         <p>Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby,
-            Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language, C#, Dart, Pug/Jade, Bash, Vue.js, C# Razor Pages, GLSL(the OpenGL Shading Language)...</p>
+            Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language, C#, Dart, Pug/Jade, Bash, Vue.js, C# Razor Pages, GLSL(the OpenGL Shading Language), Go Template...</p>
         <br/>
         <p>Author's choice：Rainbow Brackets + Material Theme UI(Oceanic theme) + Nyan Progress Bar + Fira Code(Font)</p>
         <br/>
@@ -672,6 +672,7 @@
     <depends optional="true" config-file="oc-brackets.xml">com.intellij.modules.clion</depends>
     <depends optional="true" config-file="sh-brackets.xml">com.jetbrains.sh</depends>
     <depends optional="true" config-file="php-brackets.xml">com.jetbrains.php</depends>
+    <depends optional="true" config-file="go-template-brackets.xml">org.jetbrains.plugins.go-template</depends>
 
     <extensionPoints>
         <extensionPoint name="bracePairProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">
