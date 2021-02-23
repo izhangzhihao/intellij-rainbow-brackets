@@ -673,6 +673,7 @@
     <depends optional="true" config-file="sh-brackets.xml">com.jetbrains.sh</depends>
     <depends optional="true" config-file="php-brackets.xml">com.jetbrains.php</depends>
     <depends optional="true" config-file="go-template-brackets.xml">org.jetbrains.plugins.go-template</depends>
+    <depends optional="true" config-file="jade-rainbow-visitor.xml">com.jetbrains.plugins.jade</depends>
 
     <extensionPoints>
         <extensionPoint name="bracePairProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">
@@ -687,7 +688,6 @@
 
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.DefaultRainbowVisitor"/>
         <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.XmlRainbowVisitor"/>
-        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.PugRainbowVisitor"/>
 
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
         <applicationService
