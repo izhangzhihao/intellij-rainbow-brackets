@@ -8,5 +8,5 @@ updates:
     timezone: "Asia/Shanghai"
     day: "sunday"
   open-pull-requests-limit: 5
-  rebase-strategy:: "auto"
+  rebase-strategy: "auto"
   
