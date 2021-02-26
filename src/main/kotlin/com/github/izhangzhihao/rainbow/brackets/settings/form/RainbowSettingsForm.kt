@@ -23,6 +23,8 @@ class RainbowSettingsForm {
 
     private var numberOfColors: JTextField? = null
 
+    private var languagesToExclude: JTextField? = null
+
     private var disableRainbowIndentsInZenMode: JCheckBox? = null
 
     private var useColorGenerator: JCheckBox? = null
@@ -60,6 +62,8 @@ class RainbowSettingsForm {
     fun cycleCountOnAllBrackets() = cycleCountOnAllBrackets?.isSelected
 
     fun numberOfColors() = numberOfColors?.text?.toIntOrNull()
+
+    fun languagesToExclude() = languagesToExclude?.text
 
     fun disableRainbowIndentsInZenMode() = disableRainbowIndentsInZenMode?.isSelected
 

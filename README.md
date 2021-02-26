@@ -243,6 +243,12 @@ If you want to disable rainbow brackets for javascript languages and java langua
 
 NOTE: You can use **name** of language or **extension** of file name(The names should be **lowercase**).
 
+This is also available in the settings.
+
+TODO: capture screenshot
+
+Note: `languageBlacklist` takes priority over settings (if present).
+
 ## Contribute
 
 NOTE: To view the PSI tree and explore the internal structure of source code, you need to set up your IDE by follow [this](https://www.jetbrains.com/help/idea/psi-viewer.html).

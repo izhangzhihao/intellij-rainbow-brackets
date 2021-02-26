@@ -37,6 +37,7 @@ class RainbowConfigurable : Configurable {
         settings.cycleCountOnAllBrackets = settingsForm?.cycleCountOnAllBrackets()
                 ?: false
         settings.numberOfColors = settingsForm?.numberOfColors() ?: 5
+        settings.languagesToExclude = settingsForm?.languagesToExclude()
         settings.disableRainbowIndentsInZenMode = settingsForm?.disableRainbowIndentsInZenMode() ?: true
         settings.useColorGenerator = settingsForm?.useColorGenerator() ?: false
         settings.rainbowifyTagNameInXML = settingsForm?.rainbowifyTagNameInXML() ?: false
