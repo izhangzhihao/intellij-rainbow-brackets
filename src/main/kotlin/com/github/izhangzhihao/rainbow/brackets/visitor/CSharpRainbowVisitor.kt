@@ -59,28 +59,67 @@ class CSharpRainbowVisitor : RainbowHighlightVisitor() {
         private fun LeafPsiElement.getBracketLevel(pair: BracePair, type: IElementType): Int = iterateBracketParents(this, pair, -1, type)
 
         private tailrec fun iterateBracketParents(element: PsiElement?, pair: BracePair, count: Int, type: IElementType): Int {
-            if (element == null || element is CSharpDummyNode || element is PsiFile) {
+            if (element == null || element is PsiFile) {
                 return count
             }
 
             var nextCount = count
 
             if (element is LeafPsiElement && type == pair.leftBraceType && element.elementType == pair.rightBraceType) {
-                nextCount --
+                nextCount--
             }
 
             if (element is LeafPsiElement && type == pair.rightBraceType && element.elementType == pair.leftBraceType) {
-                nextCount --
+                nextCount--
             }
 
             if (element is LeafPsiElement && element.elementType == type) {
-                nextCount ++
+                nextCount++
             }
 
             return if (type == pair.leftBraceType) {
-                iterateBracketParents(element.prevSibling, pair, nextCount, type)
+                val prev = element.prevSibling
+                if (prev == null) {
+                    iterateBracketParents(element.parent.prevSibling.iterForPreDummyNode()?.lastChild, pair, nextCount, type)
+                } else {
+                    iterateBracketParents(prev, pair, nextCount, type)
+                }
             } else {
-                iterateBracketParents(element.nextSibling, pair, nextCount, type)
+                val next = element.nextSibling
+                if (next == null) {
+                    iterateBracketParents(element.parent.nextSibling.iterForNextDummyNode()?.firstChild, pair, nextCount, type)
+                } else {
+                    iterateBracketParents(next, pair, nextCount, type)
+                }
+            }
+        }
+
+        private tailrec fun PsiElement?.iterForNextDummyNode(): PsiElement? {
+            return if (this == null) {
+                null
+            } else if (this is CSharpDummyNode) {
+                this
+            } else {
+                if (this.nextSibling == null) {
+                    null
+                } else {
+                    this.nextSibling.iterForNextDummyNode()
+                }
+            }
+        }
+
+
+        private tailrec fun PsiElement?.iterForPreDummyNode(): PsiElement? {
+            return if (this == null) {
+                null
+            } else if (this is CSharpDummyNode) {
+                this
+            } else {
+                if (this.prevSibling == null) {
+                    null
+                } else {
+                    this.prevSibling.iterForPreDummyNode()
+                }
             }
         }
     }
