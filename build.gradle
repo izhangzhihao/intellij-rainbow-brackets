@@ -6,6 +6,7 @@ buildscript {
         gradlePluginPortal()
         maven { url "https://maven-central.storage-download.googleapis.com/repos/central/data/" }
         maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url 'https://www.jetbrains.com/intellij-repository/releases'}
     }
 
     dependencies {
@@ -35,31 +36,15 @@ repositories {
     maven { url "https://www.jetbrains.com/intellij-repository/snapshots" }
 }
 
-def pluginsDependencies = ['java',
-                           'java-i18n',
-                           'JavaScriptLanguage',
-                           'DatabaseTools',
-                           'CSS',
-                           'platform-images',
-                           'Groovy',
-                           'properties',
-                           'yaml',
-                           "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.2-1",
-                           'org.intellij.scala:2020.2.17',
-                           'Dart:202.6397.47',
-                           'org.jetbrains.plugins.ruby:202.6397.59',
-                           'com.jetbrains.php:202.6397.94',
-                           'com.jetbrains.sh:202.6397.21',
-                           'com.jetbrains.plugins.jade:202.6397.47',
-                           'org.jetbrains.plugins.go-template:202.6397.21',
-]
+def pluginsDependencies = []
 
 intellij {
     pluginName name
 
-    version ideaVersion
+    //version ideaVersion
     //localPath = '/Users/izhangzhihao/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/201.6668.121/IntelliJ IDEA 2020.1 EAP.app/Contents'
     //localPath = '/Users/izhangzhihao/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/201.6668.126/CLion.app/Contents'
+    localPath = '/Users/izhangzhihao/Library/Application Support/JetBrains/Toolbox/apps/Rider/ch-0/203.6682.21/Rider.app/Contents'
     updateSinceUntilBuild = false
 
     setPlugins(*pluginsDependencies)
@@ -73,6 +58,10 @@ publishPlugin {
     def authenticationToken = "$System.env.token"
     token authenticationToken
     channels publishChannels
+}
+
+instrumentCode {
+    compilerVersion = "203.7148.70" // latest build of com.jetbrains.intellij.java from https://www.jetbrains.com/intellij-repository/releases/
 }
 
 idea {
