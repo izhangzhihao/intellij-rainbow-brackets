@@ -23,7 +23,7 @@ class RainbowSettingsForm {
 
     private var numberOfColors: JTextField? = null
 
-    private var languagesToExclude: JTextField? = null
+    private var languageBlacklist: JTextField? = null
 
     private var disableRainbowIndentsInZenMode: JCheckBox? = null
 
@@ -63,7 +63,7 @@ class RainbowSettingsForm {
 
     fun numberOfColors() = numberOfColors?.text?.toIntOrNull()
 
-    fun languagesToExclude() = languagesToExclude?.text
+    fun languageBlacklist() = languageBlacklist?.text?.split(",")?.map { it.trim() }?.filterNot { it.isEmpty() }?.toSet()
 
     fun disableRainbowIndentsInZenMode() = disableRainbowIndentsInZenMode?.isSelected
 
@@ -93,6 +93,7 @@ class RainbowSettingsForm {
                 || rainbowifyTagNameInXML() != settings.rainbowifyTagNameInXML
                 || doNOTRainbowifyTemplateString() != settings.doNOTRainbowifyTemplateString
                 || doNOTRainbowifyBigFiles() != settings.doNOTRainbowifyBigFiles
+                || languageBlacklist() != settings.languageBlacklist
                 )
 
     init {
@@ -117,5 +118,6 @@ class RainbowSettingsForm {
         rainbowifyTagNameInXML?.isSelected = settings.rainbowifyTagNameInXML
         doNOTRainbowifyTemplateString?.isSelected = settings.doNOTRainbowifyTemplateString
         doNOTRainbowifyBigFiles?.isSelected = settings.doNOTRainbowifyBigFiles
+        languageBlacklist?.text = settings.languageBlacklist.joinToString(",")
     }
 }

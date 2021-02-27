@@ -19,7 +19,7 @@ class RainbowJavaTest : LightJavaCodeInsightFixtureTestCase() {
         rainbowSettings.isDoNOTRainbowifyBracketsWithoutContent = false
         rainbowSettings.cycleCountOnAllBrackets = false
         rainbowSettings.applyColorsOfRoundForAllBrackets = false
-        rainbowSettings.getLanguagesToExclude = setOf()
+        rainbowSettings.languageBlacklist = setOf()
     }
 
     fun testRainbowForJava() {
@@ -226,7 +226,7 @@ public class Test<T> {
     fun testDoNOTRainbowifyBracketsWhenJavaInBlacklist() {
         val rainbowSettings = RainbowSettings.instance
         rainbowSettings.isDoNOTRainbowifyBracketsWithoutContent = true
-        rainbowSettings.getLanguagesToExclude = setOf("java")
+        rainbowSettings.languageBlacklist = setOf("java")
         @Language("Java") val code =
                 """
 public class Test<T> {
