@@ -226,28 +226,9 @@ You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow
 
 ## Disable rainbow brackets for specific languages
 
-If you want to disable rainbow brackets for javascript languages and java languages, you could set `languageBlacklist` property in config file just like: 
-
-```xml
-<application>
-  <component name="RainbowSettings">
-    <option name="languageBlacklist">
-      <array>
-        <option value="java" />
-        <option value="javascript" />
-      </array>
-    </option>
-  </component>
-</application>
-```
+<kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > `Do NOT rainbowify these languages (name or extension, comma separated)`: 
 
 NOTE: You can use **name** of language or **extension** of file name(The names should be **lowercase**).
-
-This is also available in the settings.
-
-TODO: capture screenshot
-
-Note: `languageBlacklist` takes priority over settings (if present).
 
 ## Contribute
 
