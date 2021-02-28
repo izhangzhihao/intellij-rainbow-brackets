@@ -32,6 +32,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     //https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/391
     var cycleCountOnAllBrackets = false
     var numberOfColors = 5
+
     var disableRainbowIndentsInZenMode = true
     var useColorGenerator = false
     var customColorGeneratorOption: String? = null
@@ -40,11 +41,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var doNOTRainbowifyTemplateString = false
     var doNOTRainbowifyBigFiles = true
 
-    @Suppress("MemberVisibilityCanBePrivate")
-    var languageBlacklist: Array<String> = arrayOf()
-
-    @Transient
-    var getLanguageBlacklist: Set<String> = languageBlacklist.toSet().plus(arrayOf("hocon", "mxml"))
+    var languageBlacklist: Set<String> = setOf("hocon", "mxml")
 
     @Nullable
     override fun getState() = this

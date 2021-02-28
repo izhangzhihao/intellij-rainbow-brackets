@@ -28,8 +28,8 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     override fun suitableForFile(file: PsiFile): Boolean {
         return RainbowSettings.instance.isRainbowEnabled &&
                 checkForBigFile(file) &&
-                !RainbowSettings.instance.getLanguageBlacklist.contains(file.fileType.name) &&
-                !RainbowSettings.instance.getLanguageBlacklist.contains(memoizedFileExtension(file.name)) &&
+                !RainbowSettings.instance.languageBlacklist.contains(file.fileType.name) &&
+                !RainbowSettings.instance.languageBlacklist.contains(memoizedFileExtension(file.name)) &&
                 fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(file.fileType.name)
     }
 
