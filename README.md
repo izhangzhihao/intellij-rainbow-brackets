@@ -82,7 +82,7 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ### Install snapshot build
 
-You can download the latest snapshot build from [here](https://github.com/izhangzhihao/intellij-rainbow-brackets/actions?query=workflow%3ABuild), just click the latest build and click the 'Artifacts' tab.(You need logged in via github) After the snapshot build downloaded, just drag the zip file into your IDE and done.
+You can download the latest snapshot build from [here](https://github.com/izhangzhihao/intellij-rainbow-brackets/actions/workflows/build.yml?query=workflow%3ABuild), just click the latest build and click the 'Artifacts' tab.(You need logged in via github) After the snapshot build downloaded, unzip it, and install the zip file by `Install Plugin from Disk...`.
 
 ## Screenshots
 
