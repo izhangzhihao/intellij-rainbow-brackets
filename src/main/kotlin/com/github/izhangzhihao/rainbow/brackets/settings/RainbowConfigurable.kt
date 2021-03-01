@@ -1,12 +1,12 @@
 package com.github.izhangzhihao.rainbow.brackets.settings
 
 import com.github.izhangzhihao.rainbow.brackets.settings.form.RainbowSettingsForm
-import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.options.ConfigurationException
+import com.intellij.openapi.options.SearchableConfigurable
 import org.jetbrains.annotations.Nls
 import javax.swing.JComponent
 
-class RainbowConfigurable : Configurable {
+class RainbowConfigurable : SearchableConfigurable {
     var settingsForm: RainbowSettingsForm? = null
 
     override fun createComponent(): JComponent? {
@@ -55,4 +55,10 @@ class RainbowConfigurable : Configurable {
 
     @Nls
     override fun getDisplayName() = "Rainbow Brackets"
+
+    override fun getId(): String = ID
+
+    companion object {
+        val ID = "preferences.rainbow.brackets"
+    }
 }

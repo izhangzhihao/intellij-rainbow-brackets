@@ -43,6 +43,10 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
 
     var languageBlacklist: Set<String> = setOf("hocon", "mxml")
 
+    var suppressDisabledCheck = false
+    var suppressBigFileCheck = false
+    var suppressBlackListCheck = false
+
     @Nullable
     override fun getState() = this
 
