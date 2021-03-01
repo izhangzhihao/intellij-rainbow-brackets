@@ -3,17 +3,18 @@ package com.github.izhangzhihao.rainbow.brackets
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.memoizedFileExtension
+import com.github.izhangzhihao.rainbow.brackets.util.toPsiFile
 import com.github.izhangzhihao.rainbow.brackets.visitor.RainbowHighlightVisitor.Companion.checkForBigFile
 import com.intellij.icons.AllIcons
 import com.intellij.ide.actions.ShowSettingsUtilImpl
 import com.intellij.openapi.fileEditor.FileEditor
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.Key
+import com.intellij.openapi.util.Ref
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.EditorNotificationPanel
 import com.intellij.ui.EditorNotifications
-import org.jetbrains.kotlin.idea.core.util.toPsiFile
-import org.jetbrains.kotlin.idea.versions.createComponentActionLabel
+import com.intellij.ui.HyperlinkLabel
 
 class RainbowifyBanner(private val project: Project) : EditorNotifications.Provider<EditorNotificationPanel>() {
     override fun getKey(): Key<EditorNotificationPanel> = KEY
@@ -81,5 +82,12 @@ class RainbowifyBanner(private val project: Project) : EditorNotifications.Provi
 
     companion object {
         private val KEY = Key.create<EditorNotificationPanel>("RainbowifyBanner")
+
+        fun EditorNotificationPanel.createComponentActionLabel(labelText: String, callback: (HyperlinkLabel) -> Unit) {
+            val label: Ref<HyperlinkLabel> = Ref.create()
+            label.set(createActionLabel(labelText) {
+                callback(label.get())
+            })
+        }
     }
 }
