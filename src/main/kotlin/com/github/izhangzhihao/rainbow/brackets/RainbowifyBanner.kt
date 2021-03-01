@@ -31,8 +31,8 @@ class RainbowifyBanner(private val project: Project) : EditorNotifications.Provi
                     EditorNotifications.getInstance(project).updateAllNotifications()
                 }
 
-                createComponentActionLabel("open setting") {
-                    ShowSettingsUtilImpl.showSettingsDialog(project, RainbowConfigurable.ID, "")
+                createComponentActionLabel("enable Rainbow Brackets") {
+                    RainbowSettings.instance.isRainbowEnabled = true
                     EditorNotifications.getInstance(project).updateAllNotifications()
                 }
             }
@@ -42,15 +42,15 @@ class RainbowifyBanner(private val project: Project) : EditorNotifications.Provi
         if (psiFile != null && !checkForBigFile(psiFile)) {
             if (RainbowSettings.instance.suppressBigFileCheck) return null
             return EditorNotificationPanel().apply {
-                text("Rainbowify is disabled by default for files > 1000 lines.")
+                text("Rainbowify is disabled by default for files > 1000 lines")
                 icon(AllIcons.General.Information)
                 createComponentActionLabel("got it, don't show again") {
                     RainbowSettings.instance.suppressBigFileCheck = true
                     EditorNotifications.getInstance(project).updateAllNotifications()
                 }
 
-                createComponentActionLabel("open setting") {
-                    ShowSettingsUtilImpl.showSettingsDialog(project, RainbowConfigurable.ID, "")
+                createComponentActionLabel("enable rainbowify for big files") {
+                    RainbowSettings.instance.doNOTRainbowifyBigFiles = false
                     EditorNotifications.getInstance(project).updateAllNotifications()
                 }
             }
