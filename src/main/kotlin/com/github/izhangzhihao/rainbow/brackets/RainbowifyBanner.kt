@@ -25,7 +25,7 @@ class RainbowifyBanner(private val project: Project) : EditorNotifications.Provi
             if (RainbowSettings.instance.suppressDisabledCheck) return null
             return EditorNotificationPanel().apply {
                 text("Rainbow Brackets is now disabled.")
-                icon(AllIcons.General.Warning)
+                icon(AllIcons.General.GearPlain)
                 createComponentActionLabel("got it, don't show again") {
                     RainbowSettings.instance.suppressDisabledCheck = true
                     EditorNotifications.getInstance(project).updateAllNotifications()
@@ -43,7 +43,7 @@ class RainbowifyBanner(private val project: Project) : EditorNotifications.Provi
             if (RainbowSettings.instance.suppressBigFileCheck) return null
             return EditorNotificationPanel().apply {
                 text("Rainbowify is disabled by default for files > 1000 lines")
-                icon(AllIcons.General.Information)
+                icon(AllIcons.General.InspectionsEye)
                 createComponentActionLabel("got it, don't show again") {
                     RainbowSettings.instance.suppressBigFileCheck = true
                     EditorNotifications.getInstance(project).updateAllNotifications()
@@ -63,7 +63,7 @@ class RainbowifyBanner(private val project: Project) : EditorNotifications.Provi
             if (RainbowSettings.instance.suppressBlackListCheck) return null
             return EditorNotificationPanel().apply {
                 text("This language/file extensions is in the black list, will not be rainbowify")
-                icon(AllIcons.General.Information)
+                icon(AllIcons.General.InspectionsEye)
 
                 createComponentActionLabel("got it, don't show again") {
                     RainbowSettings.instance.suppressBlackListCheck = true
