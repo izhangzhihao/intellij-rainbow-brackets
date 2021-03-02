@@ -24,7 +24,7 @@ class RainbowifyBanner(private val project: Project) : EditorNotifications.Provi
         if (!RainbowSettings.instance.isRainbowEnabled) {
             if (RainbowSettings.instance.suppressDisabledCheck) return null
             return EditorNotificationPanel().apply {
-                text("Rainbow Brackets is now disabled.")
+                text("Rainbow Brackets is now disabled")
                 icon(AllIcons.General.GearPlain)
                 createComponentActionLabel("got it, don't show again") {
                     RainbowSettings.instance.suppressDisabledCheck = true
@@ -62,7 +62,7 @@ class RainbowifyBanner(private val project: Project) : EditorNotifications.Provi
         ) {
             if (RainbowSettings.instance.suppressBlackListCheck) return null
             return EditorNotificationPanel().apply {
-                text("This language/file extensions is in the black list, will not be rainbowify")
+                text("Rainbowify is disabled because the language/file extension is in the black list")
                 icon(AllIcons.General.InspectionsEye)
 
                 createComponentActionLabel("got it, don't show again") {
