@@ -42,7 +42,7 @@ class RainbowifyBanner(private val project: Project) : EditorNotifications.Provi
         if (psiFile != null && !checkForBigFile(psiFile)) {
             if (RainbowSettings.instance.suppressBigFileCheck) return null
             return EditorNotificationPanel().apply {
-                text("Rainbowify is disabled by default for files > 1000 lines")
+                text("Rainbowify is disabled for files > 1000 lines by default")
                 icon(AllIcons.General.InspectionsEye)
                 createComponentActionLabel("got it, don't show again") {
                     RainbowSettings.instance.suppressBigFileCheck = true
