@@ -3,7 +3,6 @@ package com.github.izhangzhihao.rainbow.brackets.action
 import com.github.izhangzhihao.rainbow.brackets.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.alphaBlend
-import com.github.izhangzhihao.rainbow.brackets.util.create
 import com.intellij.codeInsight.highlighting.HighlightManager
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.colors.EditorColorsManager
@@ -25,7 +24,7 @@ class ScopeHighlightingAction : AbstractScopeHighlightingAction() {
         highlightManager.addRangeHighlight(this,
                 rainbowInfo.startOffset,
                 rainbowInfo.endOffset,
-                create("ScopeHighlightingAction", attributes),
+                attributes,
                 false, //hideByTextChange
                 RainbowSettings.instance.pressAnyKeyToRemoveTheHighlightingEffects, //hideByAnyKey
                 highlighters)
