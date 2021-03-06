@@ -23,6 +23,7 @@ package com.github.izhangzhihao.rainbow.brackets.util
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.ErrorContext.Companion.fromThrowable
 import com.intellij.AbstractBundle
+import com.intellij.diagnostic.DiagnosticBundle
 import com.intellij.diagnostic.LogMessage
 import com.intellij.diagnostic.ReportMessages
 import com.intellij.ide.DataManager
@@ -182,9 +183,10 @@ class GitHubErrorReporter : ErrorReportSubmitter() {
             private val project: Project?) : Consumer<SubmittedReportInfo> {
         override fun consume(reportInfo: SubmittedReportInfo) {
             consumer.consume(reportInfo)
-            if (reportInfo.status == SubmissionStatus.FAILED) ReportMessages.GROUP.createNotification(ReportMessages.getErrorReport(),
+            // NotificationGroupManager.getInstance().getNotificationGroup("Error Report")
+            if (reportInfo.status == SubmissionStatus.FAILED) ReportMessages.GROUP.createNotification(DiagnosticBundle.message("error.report.title"),
                     reportInfo.linkText, NotificationType.ERROR, null).setImportant(false).notify(project)
-            else ReportMessages.GROUP.createNotification(ReportMessages.getErrorReport(), reportInfo.linkText,
+            else ReportMessages.GROUP.createNotification(DiagnosticBundle.message("error.report.title"), reportInfo.linkText,
                     NotificationType.INFORMATION, NotificationListener.URL_OPENING_LISTENER).setImportant(false).notify(project)
         }
     }
