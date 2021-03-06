@@ -57,6 +57,17 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.17</p>
+        <ul>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/pull/1068">#1068: @keeganwitt Add language exclusions to settings (closes #1046) (#1068) </a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/1067">#1067: Don't rainbowify big files notification annoying</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/1057">#1057: Wrong coloring in lambda expressions with braces</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/497">#497: Add `<` & `>` support for C# </a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/191">#191: C# Razor Pages (.cshtml) Support </a></li>
+            <li>Deprecated API usage removed.</li>
+        </ul>
+        <br/>
+
         <p>6.16</p>
         <ul>
             <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/458">#458: Color Parentheses In Go Template</a></li>
