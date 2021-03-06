@@ -16,10 +16,10 @@ import com.intellij.ui.EditorNotificationPanel
 import com.intellij.ui.EditorNotifications
 import com.intellij.ui.HyperlinkLabel
 
-class RainbowifyBanner(private val project: Project) : EditorNotifications.Provider<EditorNotificationPanel>() {
+class RainbowifyBanner : EditorNotifications.Provider<EditorNotificationPanel>() {
     override fun getKey(): Key<EditorNotificationPanel> = KEY
 
-    override fun createNotificationPanel(file: VirtualFile, fileEditor: FileEditor): EditorNotificationPanel? {
+    override fun createNotificationPanel(file: VirtualFile, fileEditor: FileEditor, project: Project): EditorNotificationPanel? {
 
         if (!RainbowSettings.instance.isRainbowEnabled) {
             if (RainbowSettings.instance.suppressDisabledCheck) return null
