@@ -44,14 +44,14 @@ def pluginsDependencies = ['java',
                            'Groovy',
                            'properties',
                            'yaml',
-                           "org.jetbrains.kotlin:$kotlinVersion-release-IJ2020.2-1",
-                           'org.intellij.scala:2020.2.17',
-                           'Dart:202.6397.47',
-                           'org.jetbrains.plugins.ruby:202.6397.59',
-                           'com.jetbrains.php:202.6397.94',
-                           'com.jetbrains.sh:202.6397.21',
-                           'com.jetbrains.plugins.jade:202.6397.47',
-                           'org.jetbrains.plugins.go-template:202.6397.21',
+                           "org.jetbrains.kotlin:203-$kotlinVersion-release-IJ5981.133-1",
+                           'org.intellij.scala:2020.3.21',
+                           'Dart:203.5981.155',
+                           'org.jetbrains.plugins.ruby:203.5981.155',
+                           'com.jetbrains.php:203.5981.155',
+                           'com.jetbrains.sh:203.5981.37',
+                           'com.jetbrains.plugins.jade:203.5981.155',
+                           'org.jetbrains.plugins.go-template:203.5981.155',
 ]
 
 intellij {
@@ -80,20 +80,6 @@ idea {
         jdkName = javaVersion
         languageLevel = javaVersion
     }
-}
-
-
-def gistFile = { url, name ->
-    File file = new File("libs/${name}.jar")
-    file.parentFile.mkdirs()
-    if (!file.exists()) {
-        new URL(url).withInputStream { downloadStream ->
-            file.withOutputStream { fileOut ->
-                fileOut << downloadStream
-            }
-        }
-    }
-    files(file.absolutePath)
 }
 
 dependencies {

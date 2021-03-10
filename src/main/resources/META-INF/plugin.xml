@@ -668,7 +668,7 @@
     </change-notes>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-    <idea-version since-build="201.6668"/>
+    <idea-version since-build="203"/>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
          on how to target different products -->
@@ -716,6 +716,7 @@
         <highlightingPassFactory implementation="com.github.izhangzhihao.rainbow.brackets.indents.RainbowIndentsPassFactory"/>
         <applicationService serviceImplementation="com.github.izhangzhihao.rainbow.brackets.ApplicationServicePlaceholder" id="ApplicationServicePlaceholder"/>
         <editorNotificationProvider implementation="com.github.izhangzhihao.rainbow.brackets.RainbowifyBanner"/>
+        <notificationGroup id="Rainbow Brackets Notification Group" displayType="STICKY_BALLOON" key="rainbow.brackets.notification.group"/>
     </extensions>
 
     <applicationListeners>

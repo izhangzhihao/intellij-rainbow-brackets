@@ -19,14 +19,10 @@ class ApplicationServicePlaceholder : Disposable {
     }
 }
 
-fun createNotification(title: String, content: String, displayId: String,
-                       type: NotificationType, listener: NotificationListener): Notification {
-    val group = NotificationGroup(
-            displayId,
-            NotificationDisplayType.STICKY_BALLOON,
-            true
-    )
-    return group.createNotification(title, content, type, listener)
+fun createNotification(title: String, content: String, type: NotificationType,
+                       listener: NotificationListener): Notification {
+    return NotificationGroupManager.getInstance().getNotificationGroup("Rainbow Brackets Notification Group")
+            .createNotification(title, content, type, listener)
 }
 
 fun showFullNotification(project: Project, notification: Notification) {

@@ -23,12 +23,12 @@ package com.github.izhangzhihao.rainbow.brackets.util
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.ErrorContext.Companion.fromThrowable
 import com.intellij.AbstractBundle
-import com.intellij.diagnostic.DiagnosticBundle
-import com.intellij.diagnostic.LogMessage
-import com.intellij.diagnostic.ReportMessages
+import com.intellij.diagnostic.*
 import com.intellij.ide.DataManager
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.plugins.PluginUtil
+import com.intellij.idea.IdeaLogger
+import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -52,6 +52,8 @@ import org.eclipse.egit.github.core.RepositoryId
 import org.eclipse.egit.github.core.client.GitHubClient
 import org.eclipse.egit.github.core.service.IssueService
 import org.jetbrains.annotations.NonNls
+import org.jetbrains.annotations.NotNull
+import org.jetbrains.annotations.Nullable
 import org.jetbrains.annotations.PropertyKey
 import java.awt.Component
 import java.util.*
@@ -141,14 +143,15 @@ private val something: String by lazy { String(Base64.getDecoder().decode(st)) }
 
 class GitHubErrorReporter : ErrorReportSubmitter() {
     override fun getReportActionText() = ErrorReportBundle.message("report.error.to.plugin.vendor")
-    override fun submit(
-            events: Array<IdeaLoggingEvent>, info: String?, parent: Component, consumer: Consumer<SubmittedReportInfo>) =
-            doSubmit(events[0], parent, consumer, fromThrowable(events[0].throwable), info)
+
+    override fun submit(events: Array<out IdeaLoggingEvent>?, info: @Nullable String?, parent: @NotNull Component, consumer: @NotNull Consumer<in SubmittedReportInfo>): Boolean {
+        return doSubmit(events!![0], parent, consumer, fromThrowable(events[0].throwable), info)
+    }
 
     private fun doSubmit(
             event: IdeaLoggingEvent,
             parent: Component,
-            callback: Consumer<SubmittedReportInfo>,
+            callback: Consumer<in SubmittedReportInfo>,
             errorContext: ErrorContext,
             description: String?): Boolean {
         val dataContext = DataManager.getInstance().getDataContext(parent)
@@ -179,14 +182,14 @@ class GitHubErrorReporter : ErrorReportSubmitter() {
     }
 
     internal class CallbackWithNotification(
-            private val consumer: Consumer<SubmittedReportInfo>,
+            private val consumer: Consumer<in SubmittedReportInfo>,
             private val project: Project?) : Consumer<SubmittedReportInfo> {
         override fun consume(reportInfo: SubmittedReportInfo) {
             consumer.consume(reportInfo)
-            // NotificationGroupManager.getInstance().getNotificationGroup("Error Report")
-            if (reportInfo.status == SubmissionStatus.FAILED) ReportMessages.GROUP.createNotification(DiagnosticBundle.message("error.report.title"),
+            val GROUP = NotificationGroupManager.getInstance().getNotificationGroup("Error Report")
+            if (reportInfo.status == SubmissionStatus.FAILED) GROUP.createNotification(DiagnosticBundle.message("error.report.title"),
                     reportInfo.linkText, NotificationType.ERROR, null).setImportant(false).notify(project)
-            else ReportMessages.GROUP.createNotification(DiagnosticBundle.message("error.report.title"), reportInfo.linkText,
+            else GROUP.createNotification(DiagnosticBundle.message("error.report.title"), reportInfo.linkText,
                     NotificationType.INFORMATION, NotificationListener.URL_OPENING_LISTENER).setImportant(false).notify(project)
         }
     }
