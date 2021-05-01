@@ -83,7 +83,7 @@ idea {
 }
 
 dependencies {
-    implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.10.0.202012080955-r") {
+    implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.11.0.202103091610-r") {
         exclude module: "gson"
     }
     compileOnly fileTree(dir: 'libs', include: ['*.jar'])
