@@ -2,7 +2,7 @@ name: Build
 on: [push, pull_request]
 jobs:
   test:
-    name: Test
+    name: test
     runs-on: ubuntu-latest
     steps:
       # Setup Java 11 environment for the next steps
@@ -68,3 +68,21 @@ jobs:
         with:
           name: UnZipMe
           path: ./build/distributions/${{ steps.properties.outputs.artifact }}
+  auto_merge:
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'pull_request' &&
+      (github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]')
+    steps:
+      - name: "@dependabot merge"
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.ACTIONS_TOKEN}}
+          script: |
+            github.issues.createComment({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              issue_number: context.payload.pull_request.number,
+              body: '@dependabot merge'
+            })
