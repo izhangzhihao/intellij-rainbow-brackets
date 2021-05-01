@@ -78,7 +78,7 @@ jobs:
       - name: "@dependabot merge"
         uses: actions/github-script@v3
         with:
-          github-token: ${{secrets.ACTIONS_TOKEN}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             github.issues.createComment({
               owner: context.payload.repository.owner.login,
