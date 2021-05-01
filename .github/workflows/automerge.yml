@@ -1,0 +1,32 @@
+name: "Dependabot Automerge - Action"
+
+on:
+  - pull_request_target
+
+jobs:
+  worker:
+    runs-on: ubuntu-latest
+
+    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
+    steps:
+      - name: 'Wait for status checks'
+        id: waitforstatuschecks
+        uses: WyriHaximus/github-action-wait-for-status@v1.2.0
+        with:
+          ignoreActions: worker,WIP
+          checkInterval: 60
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "@dependabot merge"
+        uses: actions/github-script@v3
+        if: steps.waitforstatuschecks.outputs.status == 'success'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.issues.createComment({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              issue_number: context.payload.pull_request.number,
+              body: '@dependabot merge'
+            })
