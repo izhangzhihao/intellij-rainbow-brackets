@@ -1,3 +1,4 @@
+
 <div align="center">
     <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets">
         <img src="./src/main/resources/META-INF/pluginIcon.svg" width="320" height="320" alt="logo"/>
@@ -82,29 +83,29 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ### Install snapshot build
 
-You can download the latest snapshot build from [here](https://github.com/izhangzhihao/intellij-rainbow-brackets/actions/workflows/build.yml?query=workflow%3ABuild), just click the latest build and click the 'Artifacts' tab.(You need logged in via github) After the snapshot build downloaded, unzip it, and install the zip file by `Install Plugin from Disk...`.
+You can download the latest snapshot build from [here](https://github.com/izhangzhihao/intellij-rainbow-brackets/actions/workflows/build.yml?query=workflow%3ABuild), just click the latest build and click the 'Artifacts' tab.(You need logged in via github) After the snapshot build downloaded, unzip it(via `unzip UnZipMe.zip`), and install the zip file(intellij-rainbow-brackets.zip[]()) by `Install Plugin from Disk...`.
 
 ## Screenshots
 
-* with Java
+* Java
 
 ![](./screenshots/with-java.png)
 
 ![](./screenshots/with-material-theme-ui.png)
 
-* with Scala
+* Scala
 
 ![](./screenshots/with-scala.png)
 
-* with Clojure
+* Clojure
 
 ![](./screenshots/with-Clojure.png)
 
-* with Kotlin
+* Kotlin
 
 ![](./screenshots/with-kotlin.png)
 
-* with HTML/XML
+* HTML/XML
 
 ![](./screenshots/with-HTML.png)
 
