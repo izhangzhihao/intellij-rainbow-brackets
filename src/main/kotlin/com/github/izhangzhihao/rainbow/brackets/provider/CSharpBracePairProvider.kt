@@ -15,7 +15,7 @@ class CSharpBracePairProvider : BracePairProvider {
     override fun pairs(): List<BracePair> = listOf(
             //BracePair(LPARENTH, RPARENTH, false),
             BracePair(LBRACE, RBRACE, false),
-            BracePair(LBRACKET, RBRACKET, false)
-            //BracePair(LT, GT, false)
+            BracePair(LBRACKET, RBRACKET, false),
+            BracePair(LT, GT, false),
     )
 }

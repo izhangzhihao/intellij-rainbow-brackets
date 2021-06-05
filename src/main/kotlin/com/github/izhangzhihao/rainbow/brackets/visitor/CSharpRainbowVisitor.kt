@@ -52,8 +52,8 @@ class CSharpRainbowVisitor : RainbowHighlightVisitor() {
         val map = mapOf(
                 LPARENTH to BracePair(LPARENTH, RPARENTH, true),
                 RPARENTH to BracePair(LPARENTH, RPARENTH, true),
-                LT to BracePair(LT, GT, true),
-                GT to BracePair(LT, GT, true)
+                //LT to BracePair(LT, GT, true),
+                //GT to BracePair(LT, GT, true),
         )
 
         private fun LeafPsiElement.getBracketLevel(pair: BracePair, type: IElementType): Int = iterateBracketParents(this, pair, -1, type)
