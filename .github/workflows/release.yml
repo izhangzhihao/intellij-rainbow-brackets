@@ -16,6 +16,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
+          distribution: "adopt"
           java-version: 11
 
       # Check out current repository
