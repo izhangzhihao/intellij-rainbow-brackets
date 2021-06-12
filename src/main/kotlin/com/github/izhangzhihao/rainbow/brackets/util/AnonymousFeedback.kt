@@ -188,9 +188,9 @@ class GitHubErrorReporter : ErrorReportSubmitter() {
             consumer.consume(reportInfo)
             val GROUP = NotificationGroupManager.getInstance().getNotificationGroup("Error Report")
             if (reportInfo.status == SubmissionStatus.FAILED) GROUP.createNotification(DiagnosticBundle.message("error.report.title"),
-                    reportInfo.linkText, NotificationType.ERROR, null).setImportant(false).notify(project)
+                    reportInfo.linkText, NotificationType.ERROR).setImportant(false).notify(project)
             else GROUP.createNotification(DiagnosticBundle.message("error.report.title"), reportInfo.linkText,
-                    NotificationType.INFORMATION, NotificationListener.URL_OPENING_LISTENER).setImportant(false).notify(project)
+                    NotificationType.INFORMATION).setListener(NotificationListener.URL_OPENING_LISTENER).setImportant(false).notify(project)
         }
     }
 }

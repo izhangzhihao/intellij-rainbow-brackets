@@ -3,7 +3,7 @@ package com.github.izhangzhihao.rainbow.brackets
 import com.intellij.notification.*
 import com.intellij.notification.impl.NotificationsManagerImpl
 import com.intellij.openapi.Disposable
-import com.intellij.openapi.components.ServiceManager
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.popup.Balloon
 import com.intellij.openapi.wm.WindowManager
@@ -15,14 +15,14 @@ class ApplicationServicePlaceholder : Disposable {
     override fun dispose() = Unit
 
     companion object {
-        val INSTANCE: ApplicationServicePlaceholder = ServiceManager.getService(ApplicationServicePlaceholder::class.java)
+        val INSTANCE: ApplicationServicePlaceholder = ApplicationManager.getApplication().getService(ApplicationServicePlaceholder::class.java)
     }
 }
 
 fun createNotification(title: String, content: String, type: NotificationType,
                        listener: NotificationListener): Notification {
     return NotificationGroupManager.getInstance().getNotificationGroup("Rainbow Brackets Notification Group")
-            .createNotification(title, content, type, listener)
+            .createNotification(title, content, type).setListener(listener)
 }
 
 fun showFullNotification(project: Project, notification: Notification) {

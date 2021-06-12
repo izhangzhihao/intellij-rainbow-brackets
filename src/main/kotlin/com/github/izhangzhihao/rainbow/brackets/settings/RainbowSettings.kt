@@ -1,7 +1,7 @@
 package com.github.izhangzhihao.rainbow.brackets.settings
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
-import com.intellij.openapi.components.ServiceManager.getService
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil.copyBean
@@ -56,6 +56,6 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
 
     companion object {
         val instance: RainbowSettings
-            get() = getService(RainbowSettings::class.java)
+            get() = ApplicationManager.getApplication().getService(RainbowSettings::class.java)
     }
 }
