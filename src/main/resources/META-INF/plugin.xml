@@ -719,7 +719,7 @@
         <additionalTextAttributes scheme="Default" file="colorSchemes/rainbow-color-default.xml"/>
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-default-darcula.xml"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.RainbowUpdateNotifyActivity"/>
-        <errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.util.GitHubErrorReporter"/>
+        <!--<errorHandler implementation="com.github.izhangzhihao.rainbow.brackets.util.GitHubErrorReporter"/>-->
         <highlightingPassFactory implementation="com.github.izhangzhihao.rainbow.brackets.indents.RainbowIndentsPassFactory"/>
         <applicationService serviceImplementation="com.github.izhangzhihao.rainbow.brackets.ApplicationServicePlaceholder" id="ApplicationServicePlaceholder"/>
         <editorNotificationProvider implementation="com.github.izhangzhihao.rainbow.brackets.RainbowifyBanner"/>

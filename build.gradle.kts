@@ -78,9 +78,9 @@ tasks {
 }
 
 dependencies {
-    implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.11.0.202103091610-r") {
-        exclude("gson")
-    }
+    //implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.11.0.202103091610-r") {
+    //    exclude("gson")
+    //}
     compileOnly(fileTree("libs"))
     testImplementation("io.kotlintest:kotlintest:2.0.7")
 }
