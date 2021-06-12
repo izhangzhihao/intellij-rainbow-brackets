@@ -57,6 +57,13 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.18</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2037">#2037: Wrong coloring in generic `<` after comparison operator `<`.</a></li>
+            <li>Error report removed.</li>
+        </ul>
+        <br/>
+
         <p>6.17</p>
         <ul>
             <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/pull/1068">#1068: @keeganwitt Add language exclusions to settings (closes #1046) (#1068) </a></li>
@@ -668,7 +675,7 @@
     </change-notes>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-    <idea-version since-build="201.6668"/>
+    <idea-version since-build="201.6668" until-build="212.*"/>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
          on how to target different products -->
