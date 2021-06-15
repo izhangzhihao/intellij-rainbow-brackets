@@ -5,7 +5,7 @@
     </a>
 </div>
 <h1 align="center">Intellij rainbow brackets</h1>
-<p align="center">Rainbow Brackets / Rainbow Parentheses for IntelliJ based IDEs.</p>
+<p align="center">🌈Rainbow Brackets for IntelliJ based IDEs/Android Studio/HUAWEI DevEco Studio.</p>
 
 <p align="center"> 
 <a href="https://actions-badge.atrox.dev/izhangzhihao/intellij-rainbow-brackets/goto?ref=2020.2"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fizhangzhihao%2Fintellij-rainbow-brackets%2Fbadge%3Fref%3D2020.2&style=flat-square" /></a>
@@ -39,7 +39,7 @@
 
 ## Compatibility
 
-IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, DataGrip, Rider, MPS, Android Studio
+IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, DataGrip, Rider, MPS, Android Studio, HUAWEI DevEco Studio
 
 ## Supported languages
 
