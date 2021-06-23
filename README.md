@@ -43,7 +43,7 @@ IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, D
 
 ## Supported languages
 
-Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language, C#, Dart, Pug/Jade, Bash, Vue.js, C# Razor Pages, GLSL(the OpenGL Shading Language), Go Template...
+Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language, C#, Dart, Pug/Jade, Bash, Vue.js, C# Razor Pages, GLSL(the OpenGL Shading Language), Go Template, C++, C...
 
 ## Author's choice
 
@@ -72,7 +72,7 @@ Whichever technologies you use, there's a JetBrains tool to match.
 ## Install
 
 <a href="https://plugins.jetbrains.com/embeddable/install/10080">
-    <img src="https://user-images.githubusercontent.com/12044174/89017261-99d3ef00-d34c-11ea-9b6b-12f1d3c22a26.png" width="300"/>
+    <img src="https://user-images.githubusercontent.com/12044174/123105697-94066100-d46a-11eb-9832-338cdf4e0612.png" width="300"/>
 </a>
 
 Or you could install it inside your IDE:
@@ -233,7 +233,7 @@ NOTE: You can use **name** of language or **extension** of file name(The names s
 
 ## Contribute
 
-NOTE: To view the PSI tree and explore the internal structure of source code, you need to set up your IDE by follow [this](https://www.jetbrains.com/help/idea/psi-viewer.html).
+NOTE: To view the PSI tree and explore the internal PSI structure of source code, you need to set up your IDE by following [this](https://www.jetbrains.com/help/idea/psi-viewer.html).
 For the Rider IDE, please follow: [this](https://rider-support.jetbrains.com/hc/en-us/articles/207327910-How-to-run-JetBrains-Rider-in-Internal-Mode)
 
 For small changes, [Gitpod](https://gitpod.io/#https://github.com/izhangzhihao/intellij-rainbow-brackets) is recommended. [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/izhangzhihao/intellij-rainbow-brackets)
