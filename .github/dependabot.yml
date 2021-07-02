@@ -3,7 +3,7 @@ updates:
 - package-ecosystem: gradle
   directory: "/"
   schedule:
-    interval: monthly
+    interval: weekly
     time: "08:00"
     timezone: "Asia/Shanghai"
     day: "sunday"
