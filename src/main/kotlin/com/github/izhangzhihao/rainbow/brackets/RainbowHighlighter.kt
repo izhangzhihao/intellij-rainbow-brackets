@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets
 
+import com.github.izhangzhihao.rainbow.brackets.fromRGBstr
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.github.izhangzhihao.rainbow.brackets.util.memoize
 import com.intellij.codeInsight.daemon.impl.HighlightInfo
@@ -132,7 +133,7 @@ object RainbowHighlighter {
     }
 
     private fun genByOption(option: String) =
-            TextAttributes(Color.decode(RandomColorGenerator.randomColor(option)), null, null, null, 0)
+            TextAttributes(fromRGBstr(randomColor(option)), null, null, null, 0)
 
     val memGetRainbowColorByLevel = { isDark: Boolean, rainbowName: String, level: Int -> generateColor(isDark, rainbowName, level) }.memoize()
 
