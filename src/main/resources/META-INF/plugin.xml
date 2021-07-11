@@ -57,6 +57,15 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.19</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2280">#2280: [SQL] the END keyword is improperly detected as closing a BEGIN scope when the END actually closes a CASE.</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/1993">#1993: Change the default color schema in light theme.</a></li>
+            <li>Nashorn Engine removed, compatible with JDK15+, tested with OpenJDK 17-ea+24 on MacBook Pro (16-inch, 2019) & IntelliJ IDEA 2021.2 Build #IU-212.4638.7</li>
+            <li>Compatible with HUAWEI DevEco Studio</li>
+        </ul>
+        <br/>
+
         <p>6.18</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2037">#2037: Wrong coloring in generic `<` after comparison operator `<`.</a></li>
