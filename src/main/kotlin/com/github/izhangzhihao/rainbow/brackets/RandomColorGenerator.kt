@@ -5,7 +5,7 @@ import com.github.izhangzhihao.rainbow.brackets.color.fromString
 import org.json.JSONObject
 import java.awt.Color
 
-fun randomColor(options: String): String {
+fun randomColor(options: String): Color {
     val options = JSONObject(options)
     return com.github.izhangzhihao.rainbow.brackets.color.randomColor(
         fromString(options.getStringOrDefault("hue", "random")),
@@ -19,9 +19,4 @@ fun org.json.JSONObject.getStringOrDefault(key: String, default: String): String
     } catch (e: Exception) {
         default
     }
-}
-
-fun fromRGBstr(str: String): Color {
-    val split = str.trimStart('(').trimEnd(')').split(", ")
-    return Color(split[0].toInt(), split[1].toInt(), split[2].toInt())
 }

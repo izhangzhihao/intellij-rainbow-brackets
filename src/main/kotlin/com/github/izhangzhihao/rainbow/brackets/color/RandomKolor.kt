@@ -10,8 +10,7 @@ import kotlin.random.Random
 fun randomColor(
     hue: Hue = RandomHue,
     luminosity: Luminosity = Luminosity.random,
-    format: Format = Format.RGB
-): String {
+): java.awt.Color {
 
     // First we pick a hue (H)
     val hueValue = pickHue(hue)
@@ -22,8 +21,7 @@ fun randomColor(
     // Then use S and H to determine brightness (B)
     val brightness = pickBrightness(hueValue, hue, saturation, luminosity)
 
-    // Then we return the HSB color in the desired format
-    return setFormat(hueValue, saturation, brightness, format)
+    return toColor(hueValue, saturation, brightness)
 }
 
 private fun pickHue(hue: Hue): Int {
@@ -69,12 +67,9 @@ private fun pickBrightness(hueValue: Int, hue: Hue, saturation: Int, luminosity:
     }
 }
 
-private fun setFormat(hueValue: Int, saturation: Int, brightness: Int, format: Format): String {
-    return when (format) {
-        Format.HSL -> TODO()
-        Format.RGB -> HSVtoRGB(hueValue, saturation, brightness).toString()
-        Format.HEX -> TODO()
-    }
+private fun toColor(hueValue: Int, saturation: Int, brightness: Int): java.awt.Color {
+    val rgb = HSVtoRGB(hueValue, saturation, brightness)
+    return java.awt.Color(rgb.first, rgb.second, rgb.third)
 }
 
 

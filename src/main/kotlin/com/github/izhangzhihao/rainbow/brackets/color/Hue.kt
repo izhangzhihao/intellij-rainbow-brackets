@@ -15,9 +15,9 @@ fun Hue.getHueRange(): Pair<Int, Int> {
 }
 
 fun fromString(str: String): Hue {
-    return when (str) {
-        "random" -> RandomHue
-        is String -> ColorHue(Color.valueOf(str))
-        else -> TODO()
+    return when {
+        str == "random" -> RandomHue
+        str.startsWith("#") -> NumberHue(Integer.parseInt(str.replaceFirst("#", ""), 16))
+        else -> ColorHue(Color.valueOf(str))
     }
 }
