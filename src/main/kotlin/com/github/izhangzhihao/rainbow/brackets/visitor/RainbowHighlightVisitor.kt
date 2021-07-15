@@ -32,8 +32,12 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     final override fun analyze(file: PsiFile, updateWholeFile: Boolean, holder: HighlightInfoHolder, action: Runnable): Boolean {
         highlightInfoHolder = holder
         onBeforeAnalyze(file, updateWholeFile)
-        action.run()
-        onAfterAnalyze()
+        try {
+            action.run()
+        } catch (e: Throwable) {
+        } finally {
+            onAfterAnalyze()
+        }
         return true
     }
 
