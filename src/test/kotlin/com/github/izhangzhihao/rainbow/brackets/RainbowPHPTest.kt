@@ -3,7 +3,7 @@ package com.github.izhangzhihao.rainbow.brackets
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
 import com.jetbrains.php.lang.PhpFileType
-import io.kotlintest.matchers.shouldBe
+import io.kotest.matchers.shouldBe
 
 class RainbowPHPTest : LightJavaCodeInsightFixtureTestCase() {
     fun testRainbowForPHP() {

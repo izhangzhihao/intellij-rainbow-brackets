@@ -7,7 +7,7 @@ import com.intellij.lang.javascript.TypeScriptFileType
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
-import io.kotlintest.matchers.shouldBe
+import io.kotest.matchers.shouldBe
 import org.intellij.lang.annotations.Language
 
 class RainbowJavaScriptTest : LightJavaCodeInsightFixtureTestCase() {

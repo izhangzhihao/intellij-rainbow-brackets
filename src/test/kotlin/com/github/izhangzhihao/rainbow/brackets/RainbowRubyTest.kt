@@ -4,7 +4,7 @@ import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
-import io.kotlintest.matchers.shouldBe
+import io.kotest.matchers.shouldBe
 import org.jetbrains.plugins.ruby.ruby.lang.RubyFileType
 
 class RainbowRubyTest : LightJavaCodeInsightFixtureTestCase() {

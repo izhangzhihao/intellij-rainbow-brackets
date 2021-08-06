@@ -4,7 +4,7 @@ import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase
-import io.kotlintest.matchers.shouldBe
+import io.kotest.matchers.shouldBe
 import org.intellij.lang.annotations.Language
 
 class RainbowXMLTest : LightJavaCodeInsightFixtureTestCase() {
