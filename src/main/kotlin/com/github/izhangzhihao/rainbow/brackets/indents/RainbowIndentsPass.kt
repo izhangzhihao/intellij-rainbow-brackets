@@ -17,6 +17,7 @@ import com.intellij.openapi.editor.SoftWrap
 import com.intellij.openapi.editor.ex.EditorEx
 import com.intellij.openapi.editor.ex.util.EditorUtil
 import com.intellij.openapi.editor.impl.EditorImpl
+import com.intellij.openapi.editor.impl.view.EditorPainter
 import com.intellij.openapi.editor.impl.view.VisualLinesIterator
 import com.intellij.openapi.editor.markup.CustomHighlighterRenderer
 import com.intellij.openapi.editor.markup.HighlighterTargetArea
@@ -360,7 +361,6 @@ class RainbowIndentsPass internal constructor(
         private val XML_TAG_END_CONDITION: (PsiElement) -> Boolean = { element ->
             element is XmlToken && element.tokenType == XmlTokenType.XML_TAG_END
         }
-        private val is201 = ApplicationInfo.getInstance().apiVersion.contains("-201.")
 
         private val RENDERER: CustomHighlighterRenderer = CustomHighlighterRenderer renderer@{ editor, highlighter, g ->
             if (editor !is EditorEx) return@renderer
@@ -422,11 +422,7 @@ class RainbowIndentsPass internal constructor(
                 maxY = min(maxY, clip.y + clip.height)
             }
             if (start.y >= maxY) return@renderer
-            val targetX = if (is201) {
-                start.x + 2.toDouble()
-            } else {
-                Math.max(0, start.x + com.intellij.openapi.editor.impl.view.EditorPainter.getIndentGuideShift(editor)).toDouble()
-            }
+            val targetX = Math.max(0, start.x + EditorPainter.getIndentGuideShift(editor)).toDouble()
             g.color = if (selected) {
                 rainbowInfo.color
             } else {
