@@ -24,8 +24,7 @@ open class XmlRainbowVisitor : RainbowHighlightVisitor() {
             return
         }
 
-        val tokenType = element.tokenType
-        when (tokenType) {
+        when (val tokenType = element.tokenType) {
             XmlTokenType.XML_DOCTYPE_START,
             XmlTokenType.XML_DOCTYPE_END,
             XmlTokenType.XML_PI_START,

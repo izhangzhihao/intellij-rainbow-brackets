@@ -8,14 +8,13 @@ import com.intellij.psi.tree.IElementType
 
 object BracePairs {
 
-    @Suppress("MemberVisibilityCanBePrivate")
-    val providers = LanguageExtension<BracePairProvider>("izhangzhihao.rainbow.brackets.bracePairProvider")
+    private val providers = LanguageExtension<BracePairProvider>("izhangzhihao.rainbow.brackets.bracePairProvider")
 
     private val bracePairs =
             Language.getRegisteredLanguages()
                     .map { language ->
                         if (language is CompositeLanguage) {
-                            return@map language to null
+                            return@map language.displayName to null
                         }
 
                         val pairs =
@@ -60,11 +59,11 @@ object BracePairs {
                                     }
                                 }
 
-                        language to braceMap
+                        language.displayName to braceMap
                     }
                     .toMap()
 
-    fun getBracePairs(language: Language): MutableMap<String, MutableList<BracePair>>? = bracePairs[language]
+    fun getBracePairs(language: Language): MutableMap<String, MutableList<BracePair>>? = bracePairs[language.displayName]
 
     private fun getBraceTypeSetOf(language: Language): Set<IElementType> = getBracePairs(language)?.values?.flatten()?.map { it -> listOf(it.leftBraceType, it.rightBraceType) }?.flatten()?.toSet() ?: emptySet()
 

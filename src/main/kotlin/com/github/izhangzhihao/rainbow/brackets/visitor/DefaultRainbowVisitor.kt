@@ -105,7 +105,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             return findLeftBracket && findRightBracket
         }
 
-        fun PsiElement.elementType(): IElementType? {
+        private fun PsiElement.elementType(): IElementType? {
             return (this as? LeafPsiElement)?.elementType
         }
 

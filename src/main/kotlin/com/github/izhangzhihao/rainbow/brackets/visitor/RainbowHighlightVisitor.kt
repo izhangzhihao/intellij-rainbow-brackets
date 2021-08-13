@@ -80,7 +80,7 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
     }
 
     companion object {
-        val isIntelliJHaskellEnabled: Boolean by lazy {
+        private val isIntelliJHaskellEnabled: Boolean by lazy {
             PluginManagerCore.getPlugin(
                     PluginId.getId("intellij.haskell"))?.isEnabled ?: false
         }
