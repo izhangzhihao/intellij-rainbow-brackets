@@ -65,7 +65,6 @@ class RainbowIndentsPass internal constructor(
     private var myDescriptors = emptyList<IndentGuideDescriptor>()
 
     override fun doCollectInformation(progress: ProgressIndicator) {
-        val document = checkNotNull(myDocument)
         val stamp = myEditor.getUserData(LAST_TIME_INDENTS_BUILT)
         if (stamp != null && stamp.toLong() == nowStamp()) return
 
@@ -86,7 +85,7 @@ class RainbowIndentsPass internal constructor(
         myRanges = ranges
     }
 
-    private fun nowStamp(): Long = if (isRainbowIndentGuidesShown(this.myProject)) checkNotNull(myDocument).modificationStamp xor (EditorUtil.getTabSize(myEditor).toLong() shl 24) else -1
+    private fun nowStamp(): Long = if (isRainbowIndentGuidesShown(this.myProject)) document.modificationStamp xor (EditorUtil.getTabSize(myEditor).toLong() shl 24) else -1
 
     override fun doApplyInformationToEditor() {
         val stamp = myEditor.getUserData(LAST_TIME_INDENTS_BUILT)
@@ -149,7 +148,6 @@ class RainbowIndentsPass internal constructor(
         }
 
         val startRangeIndex = curRange
-        val document = checkNotNull(myDocument)
         DocumentUtil.executeInBulk(document, myRanges.size > 10000) {
             for (i in startRangeIndex until myRanges.size) {
                 newHighlighters.add(createHighlighter(mm, myRanges[i]))
@@ -200,7 +198,6 @@ class RainbowIndentsPass internal constructor(
             }
         }
 
-        val document = checkNotNull(myDocument)
         while (!indents.empty()) {
             ProgressManager.checkCanceled()
             val level = indents.pop()
@@ -254,7 +251,6 @@ class RainbowIndentsPass internal constructor(
         internal val myChars: CharSequence
 
         init {
-            val document = checkNotNull(myDocument)
             lineIndents = IntArray(document.lineCount)
             myChars = document.charsSequence
         }
@@ -263,7 +259,6 @@ class RainbowIndentsPass internal constructor(
          * Calculates line indents for the [target document][.myDocument].
          */
         internal fun calculate() {
-            val document = checkNotNull(myDocument)
             val fileType = myFile.fileType
             val tabSize = EditorUtil.getTabSize(myEditor)
 
