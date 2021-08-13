@@ -24,6 +24,9 @@ import com.intellij.util.text.CharArrayUtil
 import java.awt.Graphics
 import java.awt.Graphics2D
 
+/** From [com.intellij.codeInsight.daemon.impl.IndentGuideRenderer]
+ *  Commit history : https://sourcegraph.com/github.com/JetBrains/intellij-community/-/blob/platform/lang-impl/src/com/intellij/codeInsight/daemon/impl/IndentGuideRenderer.java#tab=history
+ * */
 class RainbowIndentGuideRenderer: CustomHighlighterRenderer {
     override fun paint(editor: Editor, highlighter: RangeHighlighter, g: Graphics) {
         if (editor !is EditorEx) return

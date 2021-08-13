@@ -30,7 +30,10 @@ import java.lang.StrictMath.abs
 import java.lang.StrictMath.min
 import java.util.*
 
-/** From [com.intellij.codeInsight.daemon.impl.IndentsPass] */
+/** From [com.intellij.codeInsight.daemon.impl.IndentsPass]
+ * Commit history: https://sourcegraph.com/github.com/JetBrains/intellij-community/-/blob/platform/lang-impl/src/com/intellij/codeInsight/daemon/impl/IndentsPass.java#tab=history
+ * mirror changes start from `Make it possible to ignore indent guides more granularly and do so for C#`
+ * */
 class RainbowIndentsPass internal constructor(
         project: Project,
         editor: Editor,
@@ -224,12 +227,12 @@ class RainbowIndentsPass internal constructor(
     }
     */
 
-    private inner class IndentsCalculator internal constructor() {
-        internal val myComments: MutableMap<Language, TokenSet> = HashMap()
-        internal val lineIndents: IntArray // negative value means the line is empty (or contains a comment) and indent
+    private inner class IndentsCalculator() {
+        val myComments: MutableMap<Language, TokenSet> = HashMap()
+        val lineIndents: IntArray // negative value means the line is empty (or contains a comment) and indent
 
         // (denoted by absolute value) was deduced from enclosing non-empty lines
-        internal val myChars: CharSequence
+        val myChars: CharSequence
 
         init {
             lineIndents = IntArray(document.lineCount)
@@ -239,7 +242,7 @@ class RainbowIndentsPass internal constructor(
         /**
          * Calculates line indents for the [target document][.myDocument].
          */
-        internal fun calculate() {
+        fun calculate() {
             val fileType = myFile.fileType
             val tabSize = EditorUtil.getTabSize(myEditor)
 
