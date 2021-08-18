@@ -176,6 +176,9 @@ class RainbowIndentGuideRenderer: CustomHighlighterRenderer {
             return rainbowInfo
         }
 
+        /***
+         * introduced from https://github.com/izhangzhihao/intellij-rainbow-brackets/commit/d9d40e6910e9c15fbdcba12280df18019ea170b5
+         */
         private fun checkBoundary(document: Document, element: PsiElement, highlighter: RangeHighlighter): Boolean {
             val elementStartLine = document.lineNumber(element.startOffset) ?: return false
             val highlighterStartLine = document.lineNumber(highlighter.startOffset) ?: return false

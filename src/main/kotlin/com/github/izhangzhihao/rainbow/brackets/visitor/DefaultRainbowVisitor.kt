@@ -20,11 +20,11 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
         val matching = filterPairs(type, element) ?: return
 
         val pair =
-                if (matching.size == 1) {
-                    matching[0]
-                } else {
-                    matching.find { element.isValidBracket(it) }
-                } ?: return
+            if (matching.size == 1) {
+                matching[0]
+            } else {
+                matching.find { element.isValidBracket(it) }
+            } ?: return
 
         val level = element.getBracketLevel(pair)
         if (RainbowSettings.instance.isDoNOTRainbowifyTheFirstLevel) {
@@ -56,12 +56,14 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             var nextCount = count
             if (!RainbowSettings.instance.cycleCountOnAllBrackets) {
                 if (element.haveBrackets({ it.elementType() == pair.leftBraceType },
-                                { it.elementType() == pair.rightBraceType })) {
+                        { it.elementType() == pair.rightBraceType })
+                ) {
                     nextCount++
                 }
             } else {
                 if (element.haveBrackets({ element.language.braceTypeSet.contains(it.elementType()) },
-                                { element.language.braceTypeSet.contains(it.elementType()) })) {
+                        { element.language.braceTypeSet.contains(it.elementType()) })
+                ) {
                     nextCount++
                 }
             }
@@ -69,7 +71,10 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             return iterateBracketParents(element.parent, pair, nextCount)
         }
 
-        private inline fun PsiElement.haveBrackets(checkLeft: (PsiElement) -> Boolean, checkRight: (PsiElement) -> Boolean): Boolean {
+        private inline fun PsiElement.haveBrackets(
+            checkLeft: (PsiElement) -> Boolean,
+            checkRight: (PsiElement) -> Boolean
+        ): Boolean {
             if (this is LeafPsiElement) {
                 return false
             }
@@ -99,7 +104,7 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
 
             //For https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/830
             if (RainbowSettings.instance.doNOTRainbowifyTemplateString) {
-                if (left?.prevSibling?.text == "$") return false
+                if (left?.prevSibling?.textMatches("$") == true) return false
             }
 
             return findLeftBracket && findRightBracket
@@ -123,10 +128,12 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
             }
         }
 
-        private fun checkBracePair(brace: PsiElement,
-                                   start: PsiElement,
-                                   type: IElementType,
-                                   next: PsiElement.() -> PsiElement?): Boolean {
+        private fun checkBracePair(
+            brace: PsiElement,
+            start: PsiElement,
+            type: IElementType,
+            next: PsiElement.() -> PsiElement?
+        ): Boolean {
             var element: PsiElement? = start
             while (element != null && element != brace) {
                 if (element is LeafPsiElement && element.elementType == type) {
@@ -152,8 +159,8 @@ class DefaultRainbowVisitor : RainbowHighlightVisitor() {
                 }
                 RainbowSettings.instance.isDoNOTRainbowifyBracketsWithoutContent -> {
                     filterBraceType
-                            .filterNot { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
-                            .filterNot { it.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
+                        .filterNot { it.leftBraceType == type && element.nextSibling?.elementType() == it.rightBraceType }
+                        .filterNot { it.rightBraceType == type && element.prevSibling?.elementType() == it.leftBraceType }
                 }
                 else -> {
                     filterBraceType
