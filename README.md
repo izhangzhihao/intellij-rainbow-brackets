@@ -39,7 +39,7 @@
 
 ## Compatibility
 
-IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, DataGrip, Rider, MPS, Android Studio, HUAWEI DevEco Studio
+IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, DataGrip, Rider, MPS, Android Studio, HUAWEI DevEco Studio, DataSpell
 
 ## Supported languages
 
@@ -203,7 +203,7 @@ var html = '<div><div><div>Hello</div></div></div>';
 ```
 
 This plugin will automatically override color scheme property "HTML_CODE" [cause our rainbow color been covered by intellij built-in functionality](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360000117450-My-HighlightVisitor-been-covered-by-intellij-built-in-functionality).
-You still could set `<option name="rainbowifyHTMLInsideJS" value="false" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
+You still could set `<option name="rainbowifyHTMLInsideJS" value="false" />` in config file to disable.
 
 ## Kotlin function literal braces and arrow
 
@@ -223,7 +223,7 @@ event.throwable?.let { throwable ->
 ```
 
 This plugin will automatically override color scheme property "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color is being covered by kotlin plugin built-in functionality.
-You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow" value="false" />` in config file to disable just like [Config brackets colors](#config-brackets-colors).
+You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow" value="false" />` in config file to disable.
 
 ## Disable rainbow brackets for specific languages
 
