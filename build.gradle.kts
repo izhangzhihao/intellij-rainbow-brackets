@@ -61,6 +61,10 @@ intellij {
 tasks {
     runIde {
         systemProperties["idea.auto.reload.plugins"] = false
+        jvmArgs = listOf(
+            "-Xms512m",
+            "-Xmx2048m",
+        )
     }
 
     publishPlugin {
