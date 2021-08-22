@@ -35,25 +35,26 @@ intellij {
     updateSinceUntilBuild.set(false)
 
     plugins.set(
-            listOf(
-                    "java",
-                    "java-i18n",
-                    "JavaScriptLanguage",
-                    "DatabaseTools",
-                    "CSS",
-                    "platform-images",
-                    "Groovy",
-                    "properties",
-                    "yaml",
-                    "org.jetbrains.kotlin:203-$kotlinVersion-release-IJ5981.133-1",
-                    "org.intellij.scala:2020.3.21",
-                    "Dart:203.5981.155",
-                    "org.jetbrains.plugins.ruby:203.5981.155",
-                    "com.jetbrains.php:203.5981.155",
-                    "com.jetbrains.sh:203.5981.37",
-                    "com.jetbrains.plugins.jade:203.5981.155",
-                    "org.jetbrains.plugins.go-template:203.5981.155"
-            )
+        listOf(
+            "java",
+            "java-i18n",
+            "JavaScriptLanguage",
+            "DatabaseTools",
+            "CSS",
+            "platform-images",
+            "Groovy",
+            "properties",
+            "yaml",
+            "org.jetbrains.kotlin:203-$kotlinVersion-release-IJ5981.133-1",
+            "org.intellij.scala:2020.3.21",
+            "Dart:203.5981.155",
+            "org.jetbrains.plugins.ruby:203.5981.155",
+            "com.jetbrains.php:203.5981.155",
+            "com.jetbrains.sh:203.5981.37",
+            "com.jetbrains.plugins.jade:203.5981.155",
+            "org.jetbrains.plugins.go-template:203.5981.155",
+            "Pythonid:203.5981.155",
+        )
     )
 }
 

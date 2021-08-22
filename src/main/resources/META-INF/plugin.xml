@@ -686,7 +686,7 @@
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="203"/>
 
-    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.lang</depends>
     <depends optional="true" config-file="kotlin-brackets.xml">org.jetbrains.kotlin</depends>
@@ -702,6 +702,7 @@
     <depends optional="true" config-file="php-brackets.xml">com.jetbrains.php</depends>
     <depends optional="true" config-file="go-template-brackets.xml">org.jetbrains.plugins.go-template</depends>
     <depends optional="true" config-file="jade-rainbow-visitor.xml">com.jetbrains.plugins.jade</depends>
+    <depends optional="true" config-file="python-brackets.xml">com.intellij.modules.python</depends>
 
     <extensionPoints>
         <extensionPoint name="bracePairProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">
