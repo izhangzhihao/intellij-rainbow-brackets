@@ -46,6 +46,19 @@ class PythonRainbowVisitor : RainbowHighlightVisitor() {
             IF_KEYWORD,
             ELSE_KEYWORD,
             ELIF_KEYWORD,
+            BREAK_KEYWORD,
+            CONTINUE_KEYWORD,
+            CLASS_KEYWORD,
+            DEF_KEYWORD,
+            EXCEPT_KEYWORD,
+            FINALLY_KEYWORD,
+            FOR_KEYWORD,
+            RAISE_KEYWORD,
+            RETURN_KEYWORD,
+            TRY_KEYWORD,
+            WITH_KEYWORD,
+            WHILE_KEYWORD,
+            YIELD_KEYWORD,
         )
 
         private fun LeafPsiElement.getBracketLevel(): Int =
