@@ -2,7 +2,6 @@ package com.github.izhangzhihao.rainbow.brackets.visitor
 
 import com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor
-import com.intellij.lang.BracePair
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.impl.source.tree.LeafPsiElement
@@ -23,40 +22,37 @@ class PythonRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun visit(element: PsiElement) {
         val type = (element as? LeafPsiElement)?.elementType ?: return
-        val pair = statementKeywords[type]
-        if (pair != null) {
-            val level = element.getBracketLevel(pair)
+        val exists = statementKeywords.contains(type)
+        if (exists) {
+            val level = element.getBracketLevel()
             if (RainbowSettings.instance.isDoNOTRainbowifyTheFirstLevel) {
                 if (level >= 1) {
-                    rainbowPairs(element, pair, level)
+                    rainbowPairs(element, level)
                 }
             } else {
                 if (level >= 0) {
-                    rainbowPairs(element, pair, level)
+                    rainbowPairs(element, level)
                 }
             }
         }
     }
 
-    private fun rainbowPairs(element: LeafPsiElement, pair: BracePair, level: Int) {
-        val startElement = element.takeIf { it.elementType == pair.leftBraceType }
-        val endElement = element.takeIf { it.elementType == pair.rightBraceType }
-        element.setHighlightInfo(element.parent, level, startElement, endElement)
+    private fun rainbowPairs(element: LeafPsiElement, level: Int) {
+        element.setHighlightInfo(element.parent, level, element, element)
     }
 
     companion object {
-        val statementKeywords = mapOf(
-            IF_KEYWORD to BracePair(IF_KEYWORD, ELSE_KEYWORD, true),
-            ELSE_KEYWORD to BracePair(IF_KEYWORD, ELSE_KEYWORD, true),
-            ELIF_KEYWORD to BracePair(ELIF_KEYWORD, ELSE_KEYWORD, true),
+        val statementKeywords = setOf(
+            IF_KEYWORD,
+            ELSE_KEYWORD,
+            ELIF_KEYWORD,
         )
 
-        private fun LeafPsiElement.getBracketLevel(pair: BracePair): Int =
-            iterateBracketParents(this, pair, -1)
+        private fun LeafPsiElement.getBracketLevel(): Int =
+            iterateBracketParents(this, -1)
 
         private tailrec fun iterateBracketParents(
             element: PsiElement?,
-            pair: BracePair,
             count: Int
         ): Int {
             if (element == null || element is PsiFile) {
@@ -71,7 +67,6 @@ class PythonRainbowVisitor : RainbowHighlightVisitor() {
 
             return iterateBracketParents(
                 element.parent,
-                pair,
                 nextCount,
             )
         }
