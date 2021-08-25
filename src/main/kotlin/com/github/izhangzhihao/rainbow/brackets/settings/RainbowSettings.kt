@@ -46,6 +46,7 @@ class RainbowSettings : PersistentStateComponent<RainbowSettings> {
     var suppressDisabledCheck = false
     var suppressBigFileCheck = false
     var suppressBlackListCheck = false
+    var rainbowifyPythonKeywords = false
 
     @Nullable
     override fun getState() = this

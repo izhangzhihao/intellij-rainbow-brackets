@@ -13,7 +13,7 @@ class PythonRainbowVisitor : RainbowHighlightVisitor() {
 
     override fun suitableForFile(file: PsiFile)
             : Boolean = super.suitableForFile(file) &&
-            RainbowSettings.instance.isEnableRainbowAngleBrackets &&
+            RainbowSettings.instance.rainbowifyPythonKeywords &&
             (file.language.id == "Python" ||
                     file.viewProvider.allFiles.any { it.language.id == "Python" }
                     )

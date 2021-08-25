@@ -35,6 +35,8 @@ class RainbowSettingsForm {
 
     private var doNOTRainbowifyBigFiles: JCheckBox? = null
 
+    private var rainbowifyPythonKeywords: JCheckBox? = null
+
     private val settings: RainbowSettings = RainbowSettings.instance
 
     fun component(): JComponent? = panel
@@ -63,7 +65,8 @@ class RainbowSettingsForm {
 
     fun numberOfColors() = numberOfColors?.text?.toIntOrNull()
 
-    fun languageBlacklist() = languageBlacklist?.text?.split(",")?.map { it.trim() }?.filterNot { it.isEmpty() }?.toSet()
+    fun languageBlacklist() =
+        languageBlacklist?.text?.split(",")?.map { it.trim() }?.filterNot { it.isEmpty() }?.toSet()
 
     fun disableRainbowIndentsInZenMode() = disableRainbowIndentsInZenMode?.isSelected
 
@@ -74,6 +77,8 @@ class RainbowSettingsForm {
     fun doNOTRainbowifyTemplateString() = doNOTRainbowifyTemplateString?.isSelected
 
     fun doNOTRainbowifyBigFiles() = doNOTRainbowifyBigFiles?.isSelected
+
+    fun rainbowifyPythonKeywords() = rainbowifyPythonKeywords?.isSelected
 
     val isModified: Boolean
         get() = (isRainbowEnabled() != settings.isRainbowEnabled
@@ -94,6 +99,7 @@ class RainbowSettingsForm {
                 || doNOTRainbowifyTemplateString() != settings.doNOTRainbowifyTemplateString
                 || doNOTRainbowifyBigFiles() != settings.doNOTRainbowifyBigFiles
                 || languageBlacklist() != settings.languageBlacklist
+                || rainbowifyPythonKeywords() != settings.rainbowifyPythonKeywords
                 )
 
     init {
@@ -119,5 +125,6 @@ class RainbowSettingsForm {
         doNOTRainbowifyTemplateString?.isSelected = settings.doNOTRainbowifyTemplateString
         doNOTRainbowifyBigFiles?.isSelected = settings.doNOTRainbowifyBigFiles
         languageBlacklist?.text = settings.languageBlacklist.joinToString(",")
+        rainbowifyPythonKeywords?.isSelected = settings.rainbowifyPythonKeywords
     }
 }

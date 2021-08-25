@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nls
 import javax.swing.JComponent
 
 class RainbowConfigurable : SearchableConfigurable {
-    var settingsForm: RainbowSettingsForm? = null
+    private var settingsForm: RainbowSettingsForm? = null
 
     override fun createComponent(): JComponent? {
         settingsForm = settingsForm ?: RainbowSettingsForm()
@@ -43,6 +43,7 @@ class RainbowConfigurable : SearchableConfigurable {
         settings.rainbowifyTagNameInXML = settingsForm?.rainbowifyTagNameInXML() ?: false
         settings.doNOTRainbowifyTemplateString = settingsForm?.doNOTRainbowifyTemplateString() ?: false
         settings.doNOTRainbowifyBigFiles = settingsForm?.doNOTRainbowifyBigFiles() ?: true
+        settings.rainbowifyPythonKeywords = settingsForm?.rainbowifyPythonKeywords() ?: false
     }
 
     override fun reset() {
