@@ -13,7 +13,7 @@ val publishChannels: String by project
 plugins {
     id("org.jetbrains.intellij") version "1.2.1"
     id("com.adarshr.test-logger") version "3.1.0"
-    id("org.jetbrains.kotlin.jvm") version "1.5.30"
+    id("org.jetbrains.kotlin.jvm") version "1.6.0"
     id("idea")
 }
 
