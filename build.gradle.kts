@@ -19,6 +19,7 @@ plugins {
 
 repositories {
     mavenLocal()
+    mavenCentral()
     maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
     maven(url = "https://maven.aliyun.com/nexus/content/groups/public/")
     maven(url = "https://repo.eclipse.org/content/groups/releases/")
@@ -87,7 +88,7 @@ dependencies {
     //    exclude("gson")
     //}
     compileOnly(fileTree("libs"))
-    testImplementation("io.kotest:kotest-assertions-core:4.6.1")
+    testImplementation("io.kotest:kotest-assertions-core:5.0.0")
 }
 
 java {
