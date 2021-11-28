@@ -19,6 +19,7 @@ plugins {
 
 repositories {
     mavenLocal()
+    mavenCentral()
     maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
     maven(url = "https://maven.aliyun.com/nexus/content/groups/public/")
     maven(url = "https://repo.eclipse.org/content/groups/releases/")
