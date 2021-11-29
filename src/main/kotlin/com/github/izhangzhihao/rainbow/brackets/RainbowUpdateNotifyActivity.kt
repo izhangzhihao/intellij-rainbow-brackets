@@ -47,7 +47,7 @@ class RainbowUpdateNotifyActivity : StartupActivity {
             """
     <br/>
     🌈Thank you for downloading <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets">Rainbow Brackets</a></b>!<br>
-    🎉Sponsored by <a href="https://www.codota.com/?utm_source=jbmarket&utm_medium=banner&utm_campaign=jbrainbowbrackets">Codota</a> and <a href="https://codestream.com/?utm_source=jbmarket&utm_medium=banner&utm_campaign=jbrainbowbrackets">CodeStream</a>.<br>
+    🎉Sponsored by <a href="https://www.tabnine.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner">Tabnine</a> and <a href="https://codestream.com/?utm_source=jbmarket&utm_medium=banner&utm_campaign=jbrainbowbrackets">CodeStream</a>.<br>
     👍If you find this plugin helpful, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#support-us">please support us!</a>.</b><br>
     <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#support-us">Donate</a></b> by <b><a href="https://opencollective.com/intellij-rainbow-brackets">OpenCollective</a></b> Or AliPay/WeChatPay to <b><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#sponsors">become a sponsor</a>!.</b><br>
     📝Check out <b><a href="https://izhangzhihao.github.io/rainbow-brackets-document/">the document</a></b> for all features of this plugin.<br>

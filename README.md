@@ -51,13 +51,13 @@ Rainbow Brackets + One Dark Theme + Nyan Progress Bar + [Fira Code](https://gith
 
 ## Sponsored By
 
-This plugin is being sponsored by [Codota](https://www.codota.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner) and [CodeStream](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner).
+This plugin is being sponsored by [Tabnine](https://www.tabnine.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner) and [CodeStream](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner).
 
-<a href="https://www.codota.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner">
-    <img src="https://d3ftmdkezac6rp.cloudfront.net/plugins/assets/logo.b81d20edb7ae4d8ff43b886ae5cde1dd.svg" width="300"/>
+<a href="https://www.tabnine.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner">
+    <img src="https://raw.githubusercontent.com/codota/tabnine-vscode/master/logo.svg" width="300"/>
 </a>
 
-Code faster and smarter using code completions learned from millions of programs directly in IntelliJ, Android Studio or Eclipse. [Get Codota](https://www.codota.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
+AI Assistant for Developers & Teams. Boost your productivity with the power of Tabnine’s all-language code completion. [Get Tabnine](https://www.tabnine.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
 
 [![https://codestream.com](https://alt-images.codestream.com/codestream_logo_jbrainbowbrackets.png)](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
 
