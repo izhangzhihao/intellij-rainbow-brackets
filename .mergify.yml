@@ -1,0 +1,15 @@
+pull_request_rules:
+  - name: Automatic merge on approval
+    conditions:
+      - "#approved-reviews-by>=1"
+      - status-success=Test
+    actions:
+      merge:
+        method: merge
+  - name: automatically merge dependabot's PRs
+    conditions:
+      - author~=^dependabot(|-preview)\[bot\]$
+      - status-success=Test
+    actions:
+      merge:
+        method: merge
