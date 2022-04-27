@@ -87,14 +87,14 @@ object RainbowUtils {
             if (level >= 1) {
                 holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
                         .range(element.psi)
-                        .enforcedTextAttributes(getRainbowColorByLevel(scheme, rainbowName, level))
+                        .textAttributes(getRainbowColorByLevel(scheme, rainbowName, level))
                         .create()
             }
         } else {
             if (level >= 0) {
                 holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
                         .range(element.psi)
-                        .enforcedTextAttributes(getRainbowColorByLevel(scheme, rainbowName, level))
+                        .textAttributes(getRainbowColorByLevel(scheme, rainbowName, level))
                         .create()
             }
         }

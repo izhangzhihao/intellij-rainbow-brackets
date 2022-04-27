@@ -19,6 +19,7 @@ import org.intellij.lang.annotations.Language
 import org.jetbrains.annotations.TestOnly
 import java.awt.Color
 import java.awt.Font
+import java.util.UUID
 
 object RainbowHighlighter {
 
@@ -100,7 +101,7 @@ object RainbowHighlighter {
 
     fun isDarkEditor() = EditorColorsManager.getInstance().isDarkEditor
 
-    fun getRainbowColorByLevel(colorsScheme: TextAttributesScheme, rainbowName: String, level: Int): TextAttributes {
+    fun getRainbowColorByLevel(colorsScheme: TextAttributesScheme, rainbowName: String, level: Int): TextAttributesKey {
         val ind = level % settings.numberOfColors
         if (settings.useColorGenerator) {
             return memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
@@ -108,10 +109,10 @@ object RainbowHighlighter {
         val key = getRainbowAttributesKeys(rainbowName).getOrNull(ind)
         return try {
             val result = colorsScheme.getAttributes(key)
-            if (result == null || result.foregroundColor == null) {
+            if (key == null || result == null || result.foregroundColor == null) {
                 memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
             } else {
-                result
+                key
             }
         } catch (e: Exception) {
             memGetRainbowColorByLevel(isDarkEditor(), rainbowName, ind)
@@ -119,20 +120,21 @@ object RainbowHighlighter {
     }
 
     @Suppress("UNUSED_PARAMETER") // we use parameter as cache key
-    private fun generateColor(isDark: Boolean, rainbowName: String, level: Int): TextAttributes {
+    private fun generateColor(isDark: Boolean, rainbowName: String, level: Int): TextAttributesKey {
         if (!settings.customColorGeneratorOption.isNullOrBlank()) {
-            return genByOption(settings.customColorGeneratorOption!!)
+            return genByOption(settings.customColorGeneratorOption!!, rainbowName, level)
         }
         if (isDark) {
             @Language("JSON") val darkOption = """{"luminosity": "light"}"""
-            return genByOption(darkOption)
+            return genByOption(darkOption, rainbowName, level)
         }
         @Language("JSON") val lightOption = """{"luminosity": "dark"}"""
-        return genByOption(lightOption)
+        return genByOption(lightOption, rainbowName, level)
     }
 
-    private fun genByOption(option: String) =
-            TextAttributes(randomColor(option), null, null, null, 0)
+    private fun genByOption(option: String, rainbowName: String, level: Int) =
+        com.github.izhangzhihao.rainbow.brackets.util.create("$rainbowName-$level",
+            TextAttributes(randomColor(option), null, null, null, 0))
 
     val memGetRainbowColorByLevel = { isDark: Boolean, rainbowName: String, level: Int -> generateColor(isDark, rainbowName, level) }.memoize()
 
@@ -141,12 +143,12 @@ object RainbowHighlighter {
 
     @TestOnly
     fun getRainbowColor(rainbowName: String, level: Int): Color? {
-        return getRainbowColorByLevel(EditorColorsManager.getInstance().globalScheme, rainbowName, level).foregroundColor
+        return getRainbowColorByLevel(EditorColorsManager.getInstance().globalScheme, rainbowName, level).defaultAttributes.foregroundColor
     }
 
     private fun getTextAttributes(colorsScheme: TextAttributesScheme,
                                   element: PsiElement,
-                                  level: Int): TextAttributes? {
+                                  level: Int): TextAttributesKey? {
         if (!settings.isRainbowEnabled) {
             return null
         }
