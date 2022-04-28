@@ -17,9 +17,14 @@ class KotlinLambdaExpressionArrowAnnotator : Annotator {
         if ((element as? LeafPsiElement)?.elementType == KtTokens.ARROW) {
             RainbowInfo.RAINBOW_INFO_KEY[element.parent]?.color?.let {
                 holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
-                        .range(element)
-                        .enforcedTextAttributes(TextAttributes(it, null, null, EffectType.BOXED, Font.PLAIN))
-                        .create()
+                    .range(element)
+                    .textAttributes(
+                        com.github.izhangzhihao.rainbow.brackets.util.create(
+                            "rainbow-kotlin-arrow",
+                            TextAttributes(it, null, null, EffectType.BOXED, Font.PLAIN)
+                        )
+                    )
+                    .create()
             }
         }
     }

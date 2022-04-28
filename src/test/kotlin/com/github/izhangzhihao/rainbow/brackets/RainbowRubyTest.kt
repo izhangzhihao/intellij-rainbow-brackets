@@ -26,7 +26,7 @@ end
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -48,7 +48,7 @@ foobar(p1: "", p2: false, p3: 1)
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -72,9 +72,10 @@ end
         PsiDocumentManager.getInstance(project).commitAllDocuments()
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
-        doHighlighting//.filter { brackets.contains(it.text.toChar()) }
-                .filterNot { it.forcedTextAttributes == null }
-                .map { it.forcedTextAttributes.foregroundColor }
+        doHighlighting
+                .filter { brackets.contains(it.text.toChar()) }
+                .filterNot { it?.forcedTextAttributesKey?.defaultAttributes == null }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -109,9 +110,10 @@ end
         PsiDocumentManager.getInstance(project).commitAllDocuments()
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
-        doHighlighting//.filter { brackets.contains(it.text.toChar()) }
-                .filterNot { it.forcedTextAttributes == null }
-                .map { it.forcedTextAttributes.foregroundColor }
+        doHighlighting
+                .filter { brackets.contains(it.text.toChar()) }
+                .filterNot { it?.forcedTextAttributesKey?.defaultAttributes == null }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -134,9 +136,10 @@ end
         PsiDocumentManager.getInstance(project).commitAllDocuments()
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
-        doHighlighting//.filter { brackets.contains(it.text.toChar()) }
-                .filterNot { it.forcedTextAttributes == null }
-                .map { it.forcedTextAttributes.foregroundColor }
+        doHighlighting
+                .filter { brackets.contains(it.text.toChar()) }
+                .filterNot { it?.forcedTextAttributesKey?.defaultAttributes == null }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(

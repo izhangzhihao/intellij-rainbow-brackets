@@ -26,8 +26,8 @@ public class Test<T> {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         val highlightSize = doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .filter { it.forcedTextAttributes.foregroundColor != null }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .filter { it.forcedTextAttributesKey.defaultAttributes.foregroundColor != null }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .size
         assert(highlightSize == 16)

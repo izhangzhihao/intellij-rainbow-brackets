@@ -67,7 +67,10 @@ class KotlinLabelAnnotator : Annotator {
                 .let {
                     holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
                             .range(target)
-                            .enforcedTextAttributes(TextAttributes(it, null, null, EffectType.BOXED, Font.PLAIN))
+                            .textAttributes(com.github.izhangzhihao.rainbow.brackets.util.create(
+                                "rainbow-kotlin-label",
+                                TextAttributes(it, null, null, EffectType.BOXED, Font.PLAIN)
+                            ))
                             .create()
                 }
     }
