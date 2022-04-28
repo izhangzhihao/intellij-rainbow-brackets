@@ -29,7 +29,7 @@ const moment = require('moment')
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -52,7 +52,7 @@ console.log(a == b)
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -73,7 +73,7 @@ console.log(a == b)
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -107,7 +107,7 @@ if ((a.field_detail && a.is) ||
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -141,7 +141,7 @@ const element = ( <div> <h1>Hello, world!</h1> </div> );
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .filterNot { it == null }
                 .toTypedArray()
                 .shouldBe(
@@ -172,7 +172,7 @@ const element = ( <div> <h1>Hello, world!</h1> </div> );
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .filterNot { it == null }
                 .toTypedArray()
                 .shouldBe(
@@ -206,7 +206,7 @@ const element = ( <div> <h1>Hello, world!</h1> </div> );
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .filterNot { it == null }
                 .toTypedArray()
                 .shouldBe(
@@ -231,7 +231,7 @@ const element = ( <div> <h1>Hello, world!</h1> </div> );
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .filterNot { it == null }
                 .toTypedArray()
                 .shouldBe(

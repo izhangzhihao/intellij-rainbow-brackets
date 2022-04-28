@@ -21,7 +21,7 @@ fun <T> filter(l: List<T>, f: (T) -> Boolean): MutableList<T> {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -81,8 +81,9 @@ val a: (Int) -> Unit = { aa ->
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting
-                .filter { it.forcedTextAttributes != null }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .filter { brackets.contains(it.text.toChar()) || it.text.contains("->") }
+                .filter { it?.forcedTextAttributesKey?.defaultAttributes != null }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -147,7 +148,7 @@ class AA {
 
         doHighlighting
                 .filter { it.forcedTextAttributes != null && it.text.contains("@") }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -175,8 +176,9 @@ fun t() {
         assertFalse(doHighlighting.isEmpty())
 
         doHighlighting
-                .filter { it.forcedTextAttributes != null }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .filter { brackets.contains(it.text.toChar()) }
+                .filter { it?.forcedTextAttributesKey?.defaultAttributes != null }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(

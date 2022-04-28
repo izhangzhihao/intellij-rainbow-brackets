@@ -36,7 +36,7 @@ public class Test<T> {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -76,7 +76,7 @@ public class Test<T> {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf()
@@ -99,7 +99,7 @@ public class Test<T> {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -137,7 +137,7 @@ public class Test<T> {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -167,7 +167,7 @@ public class Test<T> {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -203,7 +203,7 @@ public class Test<T> {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -240,7 +240,7 @@ public class Test<T> {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .size
                 .shouldBe(0)
@@ -263,7 +263,7 @@ public class Test {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(

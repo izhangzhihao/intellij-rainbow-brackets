@@ -37,8 +37,8 @@ import scala.annotation.tailrec
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .filter { it?.forcedTextAttributes != null }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .filter { it?.forcedTextAttributesKey != null }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
@@ -79,8 +79,8 @@ import scala.annotation.tailrec
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .filter { it?.forcedTextAttributes != null }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .filter { it?.forcedTextAttributesKey != null }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(

@@ -23,7 +23,7 @@ void main() {
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(

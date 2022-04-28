@@ -28,7 +28,7 @@ function padZero(string data): string
         val doHighlighting = myFixture.doHighlighting()
         assertFalse(doHighlighting.isEmpty())
         doHighlighting.filter { brackets.contains(it.text.toChar()) }
-                .map { it.forcedTextAttributes.foregroundColor }
+                .map { it.forcedTextAttributesKey.defaultAttributes.foregroundColor }
                 .toTypedArray()
                 .shouldBe(
                         arrayOf(
