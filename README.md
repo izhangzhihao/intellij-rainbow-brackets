@@ -39,7 +39,7 @@
 
 ## Compatibility
 
-IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, DataGrip, Rider, MPS, Android Studio, HUAWEI DevEco Studio, DataSpell
+IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, DataGrip, Rider, MPS, Android Studio, HUAWEI DevEco Studio, DataSpell, Code With Me
 
 ## Supported languages
 
@@ -235,8 +235,6 @@ NOTE: You can use **name** of language or **extension** of file name(The names s
 
 NOTE: To view the PSI tree and explore the internal PSI structure of source code, you need to set up your IDE by following [this](https://www.jetbrains.com/help/idea/psi-viewer.html).
 For the Rider IDE, please follow: [this](https://rider-support.jetbrains.com/hc/en-us/articles/207327910-How-to-run-JetBrains-Rider-in-Internal-Mode)
-
-For small changes, [Gitpod](https://gitpod.io/#https://github.com/izhangzhihao/intellij-rainbow-brackets) is recommended. [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/izhangzhihao/intellij-rainbow-brackets)
 
 * `gradle test`
 * `gradle runIde`
