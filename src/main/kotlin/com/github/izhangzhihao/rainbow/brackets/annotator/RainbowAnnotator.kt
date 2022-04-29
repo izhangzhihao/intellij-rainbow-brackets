@@ -42,37 +42,50 @@ object RainbowUtils {
 
     val settings = RainbowSettings.instance
 
+    private tailrec fun iterateChildren(
+        LEFT: String,
+        RIGHT: String,
+        currentNode: PsiElement,
+        currentLevel: Int,
+        currentChild: PsiElement
+    ): Int {
+        val calculatedLevel = if (currentChild is LeafPsiElement) {
+            //Using `currentChild.elementType.toString()` if we didn't want add more dependencies.
+            if (!settings.cycleCountOnAllBrackets) {
+                when (currentChild.text) {
+                    LEFT -> currentLevel + 1
+                    RIGHT -> currentLevel - 1
+                    else -> currentLevel
+                }
+            } else {
+                when {
+                    leftBracketsSet.contains(currentChild.text) -> currentLevel + 1
+                    rightBracketsSet.contains(currentChild.text) -> currentLevel - 1
+                    else -> currentLevel
+                }
+            }
+        } else currentLevel
+
+        return if ((currentChild != currentNode) && (currentChild != currentNode.parent.lastChild))
+            iterateChildren(LEFT, RIGHT, currentNode, calculatedLevel, currentChild.nextSibling)
+        else
+            calculatedLevel
+    }
+
+    private tailrec fun iterateParents(
+        LEFT: String,
+        RIGHT: String,
+        currentNode: PsiElement,
+        currentLevel: Int
+    ): Int = if (currentNode.parent !is PsiFile) {
+        val calculatedLevel = iterateChildren(LEFT, RIGHT, currentNode, currentLevel, currentNode.parent.firstChild)
+        iterateParents(LEFT, RIGHT, currentNode.parent, calculatedLevel)
+    } else currentLevel
+
     private fun getBracketLevel(element: LeafPsiElement, LEFT: String, RIGHT: String): Int {
         //Using `element.elementType.toString()` if we didn't want add more dependencies.
-        var level = if (element.text == RIGHT) 0 else -1
-        tailrec fun iterateParents(currentNode: PsiElement) {
-            tailrec fun iterateChildren(currentChild: PsiElement) {
-                if (currentChild is LeafPsiElement) {
-                    //Using `currentChild.elementType.toString()` if we didn't want add more dependencies.
-                    if (!settings.cycleCountOnAllBrackets) {
-                        when (currentChild.text) {
-                            LEFT -> level++
-                            RIGHT -> level--
-                        }
-                    } else {
-                        if (leftBracketsSet.contains(currentChild.text)) {
-                            level++
-                        } else if (rightBracketsSet.contains(currentChild.text)) {
-                            level--
-                        }
-                    }
-                }
-                if ((currentChild != currentNode) && (currentChild != currentNode.parent.lastChild)) {
-                    iterateChildren(currentChild.nextSibling)
-                }
-            }
-            if (currentNode.parent !is PsiFile) {
-                iterateChildren(currentNode.parent.firstChild)
-                iterateParents(currentNode.parent)
-            }
-        }
-        iterateParents(element)
-        return level
+        val startLevel = if (element.text == RIGHT) 0 else -1
+        return iterateParents(LEFT, RIGHT, element, startLevel)
     }
 
     fun annotateUtil(element: LeafPsiElement, holder: AnnotationHolder,
