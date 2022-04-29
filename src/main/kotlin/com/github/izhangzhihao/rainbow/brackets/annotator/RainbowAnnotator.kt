@@ -42,44 +42,44 @@ object RainbowUtils {
 
     val settings = RainbowSettings.instance
 
-    fun annotateUtil(element: LeafPsiElement, holder: AnnotationHolder,
-                     LEFT: String, RIGHT: String, rainbowName: String) {
-        fun getBracketLevel(element: LeafPsiElement): Int {
-            //Using `element.elementType.toString()` if we didn't want add more dependencies.
-            var level = if (element.text == RIGHT) 0 else -1
-            tailrec fun iterateParents(currentNode: PsiElement) {
-                tailrec fun iterateChildren(currentChild: PsiElement) {
-                    if (currentChild is LeafPsiElement) {
-                        //Using `currentChild.elementType.toString()` if we didn't want add more dependencies.
-                        if (!settings.cycleCountOnAllBrackets) {
-                            when (currentChild.text) {
-                                LEFT -> level++
-                                RIGHT -> level--
-                            }
-                        } else {
-                            if (leftBracketsSet.contains(currentChild.text)) {
-                                level++
-                            } else if (rightBracketsSet.contains(currentChild.text)) {
-                                level--
-                            }
+    private fun getBracketLevel(element: LeafPsiElement, LEFT: String, RIGHT: String): Int {
+        //Using `element.elementType.toString()` if we didn't want add more dependencies.
+        var level = if (element.text == RIGHT) 0 else -1
+        tailrec fun iterateParents(currentNode: PsiElement) {
+            tailrec fun iterateChildren(currentChild: PsiElement) {
+                if (currentChild is LeafPsiElement) {
+                    //Using `currentChild.elementType.toString()` if we didn't want add more dependencies.
+                    if (!settings.cycleCountOnAllBrackets) {
+                        when (currentChild.text) {
+                            LEFT -> level++
+                            RIGHT -> level--
+                        }
+                    } else {
+                        if (leftBracketsSet.contains(currentChild.text)) {
+                            level++
+                        } else if (rightBracketsSet.contains(currentChild.text)) {
+                            level--
                         }
                     }
-                    if ((currentChild != currentNode) && (currentChild != currentNode.parent.lastChild)) {
-                        iterateChildren(currentChild.nextSibling)
-                    }
                 }
-                if (currentNode.parent !is PsiFile) {
-                    iterateChildren(currentNode.parent.firstChild)
-                    iterateParents(currentNode.parent)
+                if ((currentChild != currentNode) && (currentChild != currentNode.parent.lastChild)) {
+                    iterateChildren(currentChild.nextSibling)
                 }
             }
-            iterateParents(element)
-            return level
+            if (currentNode.parent !is PsiFile) {
+                iterateChildren(currentNode.parent.firstChild)
+                iterateParents(currentNode.parent)
+            }
         }
+        iterateParents(element)
+        return level
+    }
 
+    fun annotateUtil(element: LeafPsiElement, holder: AnnotationHolder,
+                     LEFT: String, RIGHT: String, rainbowName: String) {
         //Using `element.elementType.toString()` if we didn't want add more dependencies.
         val level = when (element.text) {
-            LEFT, RIGHT -> getBracketLevel(element)
+            LEFT, RIGHT -> getBracketLevel(element, LEFT, RIGHT)
             else -> -1
         }
         val scheme = EditorColorsManager.getInstance().globalScheme
