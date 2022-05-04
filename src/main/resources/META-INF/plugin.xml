@@ -57,6 +57,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.23</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2465">#2465 Improved performance of `annotateUtil`.</a></li>
+        </ul>
+        <br/>
+
         <p>6.22</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2408">#2408 Support Code With Me client(Doesn't even need to be installed on the client side)</a></li>
