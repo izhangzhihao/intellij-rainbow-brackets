@@ -52,13 +52,13 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
                                               startElement: PsiElement?,
                                               endElement: PsiElement?) {
         val holder = highlightInfoHolder ?: return
-        @Suppress("USELESS_ELVIS") val schema = holder.colorsScheme ?: EditorColorsManager.getInstance().globalScheme
-        getHighlightInfo(schema, this, level)
+        val globalScheme = EditorColorsManager.getInstance().globalScheme
+        getHighlightInfo(globalScheme, this, level)
                 ?.also {
                     holder.add(it)
 
                     if (startElement != null || endElement != null) {
-                        val color: Color? = it.forcedTextAttributesKey?.defaultAttributes?.foregroundColor
+                        val color: Color? = globalScheme.getAttributes(it.forcedTextAttributesKey)?.foregroundColor
                         color?.let {
                             parent?.saveRainbowInfo(level, color, startElement, endElement)
                         }
