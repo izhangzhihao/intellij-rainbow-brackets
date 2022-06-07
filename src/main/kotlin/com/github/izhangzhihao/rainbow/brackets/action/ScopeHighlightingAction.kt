@@ -25,7 +25,7 @@ class ScopeHighlightingAction : AbstractScopeHighlightingAction() {
         highlightManager.addRangeHighlight(this,
                 rainbowInfo.startOffset,
                 rainbowInfo.endOffset,
-                create("ScopeHighlightingAction", attributes),
+                attributes, //create("ScopeHighlightingAction", attributes),
                 false, //hideByTextChange
                 RainbowSettings.instance.pressAnyKeyToRemoveTheHighlightingEffects, //hideByAnyKey
                 highlighters)

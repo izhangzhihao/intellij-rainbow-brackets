@@ -29,7 +29,7 @@ class ScopeOutsideHighlightingRestrainAction : AbstractScopeHighlightingAction()
             highlightManager.addRangeHighlight(this,
                     0,
                     startOffset,
-                    create("ScopeOutsideHighlightingRestrainAction", attributes),
+                    attributes, //create("ScopeOutsideHighlightingRestrainAction", attributes),
                     false, //hideByTextChange
                     RainbowSettings.instance.pressAnyKeyToRemoveTheHighlightingEffects, //hideByAnyKey
                     highlighters)
@@ -41,7 +41,7 @@ class ScopeOutsideHighlightingRestrainAction : AbstractScopeHighlightingAction()
             highlightManager.addRangeHighlight(this,
                     endOffset,
                     lastOffset,
-                    create("ScopeOutsideHighlightingRestrainAction", attributes),
+                    attributes, //create("ScopeOutsideHighlightingRestrainAction", attributes),
                     false, //hideByTextChange
                     RainbowSettings.instance.pressAnyKeyToRemoveTheHighlightingEffects, //hideByAnyKey
                     highlighters)
