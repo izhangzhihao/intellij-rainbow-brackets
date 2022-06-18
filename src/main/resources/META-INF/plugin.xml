@@ -57,6 +57,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.25</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/pull/2484">#2484 Add configurable threshold for number of lines for big files.</a></li>
+        </ul>
+        <br/>
+
         <p>6.24</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2478">#2478 Scope highlighting not working with Hiberbee Theme(and other themes).</a></li>
