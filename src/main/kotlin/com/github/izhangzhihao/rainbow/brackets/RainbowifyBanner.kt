@@ -42,15 +42,15 @@ class RainbowifyBanner : EditorNotifications.Provider<EditorNotificationPanel>()
         if (psiFile != null && !checkForBigFile(psiFile)) {
             if (RainbowSettings.instance.suppressBigFileCheck) return null
             return EditorNotificationPanel().apply {
-                text("Rainbowify is disabled for files > 1000 lines by default")
+                text("Rainbowify is disabled for files > " + RainbowSettings.instance.bigFilesLinesThreshold + " lines")
                 icon(AllIcons.General.InspectionsEye)
                 createComponentActionLabel("got it, don't show again") {
                     RainbowSettings.instance.suppressBigFileCheck = true
                     EditorNotifications.getInstance(project).updateAllNotifications()
                 }
 
-                createComponentActionLabel("enable rainbowify for big files") {
-                    RainbowSettings.instance.doNOTRainbowifyBigFiles = false
+                createComponentActionLabel("open settings") {
+                    ShowSettingsUtilImpl.showSettingsDialog(project, RainbowConfigurable.ID, "")
                     EditorNotifications.getInstance(project).updateAllNotifications()
                 }
             }

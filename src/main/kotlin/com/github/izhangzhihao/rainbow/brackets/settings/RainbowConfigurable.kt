@@ -43,6 +43,7 @@ class RainbowConfigurable : SearchableConfigurable {
         settings.rainbowifyTagNameInXML = settingsForm?.rainbowifyTagNameInXML() ?: false
         settings.doNOTRainbowifyTemplateString = settingsForm?.doNOTRainbowifyTemplateString() ?: false
         settings.doNOTRainbowifyBigFiles = settingsForm?.doNOTRainbowifyBigFiles() ?: true
+        settings.bigFilesLinesThreshold = settingsForm?.bigFilesLinesThreshold() ?: 1000
         settings.rainbowifyPythonKeywords = settingsForm?.rainbowifyPythonKeywords() ?: false
     }
 
