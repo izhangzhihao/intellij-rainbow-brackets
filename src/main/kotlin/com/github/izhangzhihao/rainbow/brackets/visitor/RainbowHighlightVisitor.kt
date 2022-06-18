@@ -86,7 +86,8 @@ abstract class RainbowHighlightVisitor : HighlightVisitor {
         }
 
         fun checkForBigFile(file: PsiFile): Boolean =
-                !(RainbowSettings.instance.doNOTRainbowifyBigFiles && file.getLineCount() > 1000)
+                !(RainbowSettings.instance.doNOTRainbowifyBigFiles &&
+                        file.getLineCount() > RainbowSettings.instance.bigFilesLinesThreshold)
 
         private fun fileIsNotHaskellOrIntelliJHaskellPluginNotEnabled(fileType: String) =
                 fileType != "Haskell" || !isIntelliJHaskellEnabled

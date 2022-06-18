@@ -35,6 +35,8 @@ class RainbowSettingsForm {
 
     private var doNOTRainbowifyBigFiles: JCheckBox? = null
 
+    private var bigFilesLinesThreshold: JTextField? = null
+
     private var rainbowifyPythonKeywords: JCheckBox? = null
 
     private val settings: RainbowSettings = RainbowSettings.instance
@@ -78,6 +80,8 @@ class RainbowSettingsForm {
 
     fun doNOTRainbowifyBigFiles() = doNOTRainbowifyBigFiles?.isSelected
 
+    fun bigFilesLinesThreshold() = bigFilesLinesThreshold?.text?.toIntOrNull()
+
     fun rainbowifyPythonKeywords() = rainbowifyPythonKeywords?.isSelected
 
     val isModified: Boolean
@@ -98,12 +102,14 @@ class RainbowSettingsForm {
                 || rainbowifyTagNameInXML() != settings.rainbowifyTagNameInXML
                 || doNOTRainbowifyTemplateString() != settings.doNOTRainbowifyTemplateString
                 || doNOTRainbowifyBigFiles() != settings.doNOTRainbowifyBigFiles
+                || bigFilesLinesThreshold() != settings.bigFilesLinesThreshold
                 || languageBlacklist() != settings.languageBlacklist
                 || rainbowifyPythonKeywords() != settings.rainbowifyPythonKeywords
                 )
 
     init {
         loadSettings()
+        doNOTRainbowifyBigFiles?.addActionListener({e -> bigFilesLinesThreshold?.setEnabled(doNOTRainbowifyBigFiles() ?: false)})
     }
 
     fun loadSettings() {
@@ -124,6 +130,7 @@ class RainbowSettingsForm {
         rainbowifyTagNameInXML?.isSelected = settings.rainbowifyTagNameInXML
         doNOTRainbowifyTemplateString?.isSelected = settings.doNOTRainbowifyTemplateString
         doNOTRainbowifyBigFiles?.isSelected = settings.doNOTRainbowifyBigFiles
+        bigFilesLinesThreshold?.text = settings.bigFilesLinesThreshold.toString()
         languageBlacklist?.text = settings.languageBlacklist.joinToString(",")
         rainbowifyPythonKeywords?.isSelected = settings.rainbowifyPythonKeywords
     }
