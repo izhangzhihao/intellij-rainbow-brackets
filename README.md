@@ -264,7 +264,7 @@ You can support us by the following actions:
   <tr align="center">
     <td>
         <a href="https://opencollective.com/intellij-rainbow-brackets" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/YiiGuxing/TranslationPlugin@master/images/open-collective.svg" width="171px" alt="OpenCollective">
+            <img src="https://opencollective.com/static/images/opencollectivelogo-footer-n.svg" width="171px" alt="OpenCollective">
         </a>
       </td>
     <td><img src="https://user-images.githubusercontent.com/12044174/85197261-77dd5a80-b312-11ea-9630-51caf7d634f2.jpg"></td>
