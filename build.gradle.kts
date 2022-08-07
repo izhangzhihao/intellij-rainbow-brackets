@@ -11,7 +11,7 @@ val pluginVerifierIdeVersions: String by project
 val publishChannels: String by project
 
 plugins {
-    id("org.jetbrains.intellij") version "1.7.0"
+    id("org.jetbrains.intellij") version "1.8.0"
     id("com.adarshr.test-logger") version "3.2.0"
     id("org.jetbrains.kotlin.jvm") version "1.7.10"
     id("idea")
@@ -22,7 +22,6 @@ repositories {
     mavenCentral()
     maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
     maven(url = "https://maven.aliyun.com/nexus/content/groups/public/")
-    maven(url = "https://repo.eclipse.org/content/groups/releases/")
     maven(url = "https://www.jetbrains.com/intellij-repository/releases")
     maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
 }
