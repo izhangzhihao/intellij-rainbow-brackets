@@ -1,5 +1,9 @@
 name: Build
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - '2020.3'
+  pull_request:
 jobs:
   test:
     name: Test
