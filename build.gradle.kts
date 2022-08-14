@@ -87,7 +87,7 @@ dependencies {
     //    exclude("gson")
     //}
     compileOnly(fileTree("libs"))
-    testImplementation("io.kotest:kotest-assertions-core:5.4.1")
+    testImplementation("io.kotest:kotest-assertions-core:5.4.2")
 }
 
 java {
