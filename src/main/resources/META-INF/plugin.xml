@@ -50,6 +50,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>6.26</p>
+        <ul>
+            <li>Bump dependencies.</li>
+        </ul>
+        <br/>
+
         <p>6.25</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/pull/2484">#2484 Add configurable threshold for number of lines for big files.</a></li>
