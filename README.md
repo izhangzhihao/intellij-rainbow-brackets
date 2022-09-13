@@ -22,7 +22,7 @@
 - [Compatibility](#compatibility)
 - [Supported languages](#supported-languages)
 - [Author's choice](#authors-choice)
-- [Sponsored By](#sponsored-by)
+- [Sponsored By CodeStream](#sponsored-by-codestream)
 - [Install](#install)
 - [Screenshots](#screenshots)
 - [Customize colors](#customize-colors)
@@ -49,9 +49,7 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 Rainbow Brackets + One Dark Theme + Nyan Progress Bar + [Fira Code](https://github.com/tonsky/FiraCode) (Font)
 
-## Sponsored By
-
-[CodeStream](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner).
+## Sponsored By [CodeStream](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
 
 [![https://codestream.com](https://alt-images.codestream.com/codestream_logo_jbrainbowbrackets.png)](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
 
