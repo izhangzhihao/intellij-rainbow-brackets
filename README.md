@@ -8,7 +8,7 @@
 <p align="center">🌈Rainbow Brackets for IntelliJ based IDEs/Android Studio/HUAWEI DevEco Studio.</p>
 
 <p align="center"> 
-<a href="https://actions-badge.atrox.dev/izhangzhihao/intellij-rainbow-brackets/goto?ref=2020.2"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fizhangzhihao%2Fintellij-rainbow-brackets%2Fbadge%3Fref%3D2020.2&style=flat-square" /></a>
+<a href="https://actions-badge.atrox.dev/izhangzhihao/intellij-rainbow-brackets/goto?ref=2020.3"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fizhangzhihao%2Fintellij-rainbow-brackets%2Fbadge%3Fref%3D2020.3&style=flat-square" /></a>
 <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases"><img src="https://img.shields.io/github/release/izhangzhihao/intellij-rainbow-brackets.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/r/stars/10080?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/embeddable/install/10080"><img src="https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg?style=flat-square"></a>
