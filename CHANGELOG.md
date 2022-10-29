@@ -1,8 +1,12 @@
 <p>2022.3.1</p>
 <ul>
-    <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2529">#2529: [paid][C#] fix
+    <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2529">#2529: [paid][C#] fix:
             compatibility issues with Rider 2022.3.</a></li>
-    <li>Fix multiple compatibility issues with IntelliJ platform 2022.3.</li>
+    <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2533">#2533: [paid][C#] fix:
+            colours incorrect when using "Cycle count on all brackets".</a></li>
+    <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2354">#2354: [paid][C#] fix:
+            colours incorrect when using "Cycle count on all brackets".</a></li>
+    <li>Fix many compatibility issues with IntelliJ platform 2022.3.</li>
 </ul>
 <br />
 
