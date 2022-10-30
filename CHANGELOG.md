@@ -1,3 +1,5 @@
+## Change log
+
 <p>2022.3.1</p>
 <ul>
     <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2529">#2529: [paid][C#] fix:
