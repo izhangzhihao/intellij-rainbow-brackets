@@ -1,3 +1,5 @@
+*Please check out [our plans for paid plugin](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2538)*
+
 ## Change log
 
 <p>2022.3.1</p>
