@@ -1,4 +1,29 @@
-*Please check out [our plans for paid plugin](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2538)*
+## What happened?
+
+Since IntelliJ platform 2022.3, Rainbow Brackets has marked a "Freemium".
+
+All features which are inside GitHub are free to use unless it needs lots of time to develop(e.g. Supporting new languages, Supporting old frameworks, etc.).
+Non-free features are flagged with [paid] inside the changelog.
+A license can be bought at JetBrains Marketplace. And everyone has a 30 days trial license. Please try it before you buy it.
+**If you already contributed to this project(by writing PR or financial contribution), you can get a free license by contacting me at izhangzhihao@hotmail.com**
+
+## Paid features
+
+| features                              | since  |
+|---------------------------------------|--------|
+| C# related files support              | 2022.3 |
+| Indent highlighting advanced features | 2022.3 |
+
+
+## What effect on me?
+
+If your daily features are not in the Paid features list, you don't need to worry about it.
+Otherwise, you can get a notification when you open a file that is not freely supported by this plugin.
+You can try to get a 30 days trial license, which has all same features as the paid license.
+
+## Future plans
+
+Please check out [our plans for paid plugin](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2538)
 
 ## Change log
 
