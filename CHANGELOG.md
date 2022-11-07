@@ -27,6 +27,17 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
 
 ## Change log
 
+<p>2022.3.2</p>
+<ul>
+  <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/380">#380: [paid][feature]
+      Highlighted current rainbow indent guide lines.</a></li>
+  <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2536">#2536: [paid][feature]
+      Highlighted current rainbow indent guide lines.</a></li>
+  <li>Feature: enable rainbow variables by default(Config the colors here: Editor -> Scheme -> Language Defaults ->
+    Semantic Highlighting)</li>
+</ul>
+<br />
+
 <p>2022.3.1</p>
 <ul>
     <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2529">#2529: [paid][C#] fix:
