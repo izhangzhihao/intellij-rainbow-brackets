@@ -1,6 +1,6 @@
 ## What happened?
 
-Since IntelliJ platform 2022.3, Rainbow Brackets has marked a "Freemium". Exsiting features before version 2022.3.1 still FREE.
+Since IntelliJ platform 2022.3, Rainbow Brackets has marked a "Freemium". Existing features before version 2022.3.1 are still FREE.
 
 之前的功能仍然免费！只有新增加的高阶功能是付费的，不付费仍然可以使用。
 
