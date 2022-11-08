@@ -2,6 +2,8 @@
 
 Since IntelliJ platform 2022.3, Rainbow Brackets has marked a "Freemium". Exsiting features before version 2022.3.1 still FREE.
 
+之前的功能仍然免费！只有新增加的高阶功能是付费的，不付费仍然可以使用。
+
 All features which are inside GitHub are free to use unless it needs lots of time to develop(e.g. Supporting new languages, Supporting old frameworks, etc.).
 Non-free features are flagged with [paid] inside the changelog.
 A license can be bought at JetBrains Marketplace. And everyone has a 30 days trial license. Please try it before you buy it.
