@@ -13,7 +13,7 @@ Please search on the [issues](https://github.com/izhangzhihao/intellij-rainbow-b
 ## Please check
 
 - [ ] I already support this project.
-- [ ] If you are submitting a feature request, please do consider donating us on [Open Collective](https://opencollective.com/intellij-rainbow-brackets) Or by AliPay/WeChatPay.
+- [ ] If you are submitting a feature request, please do consider buy this plugin [here](https://www.jetbrains.com/shop/buy?item=P:N:PRAINBOWBRACKET:M) or donating us on [Open Collective](https://opencollective.com/intellij-rainbow-brackets) Or by AliPay/WeChatPay.
 - [ ] This issue/feature request is not reported before.
 
 ## Your programming languages
