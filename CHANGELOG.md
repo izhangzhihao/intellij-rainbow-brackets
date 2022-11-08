@@ -27,6 +27,15 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
 
 ## Change log
 
+<p>2022.3.3</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2541">#2541: [Rainbow variables] Ask to enable rainbow variables before turn it on.</a></li>
+        </ul>
+        <br/>
+
+<img width="383" alt="image" src="https://user-images.githubusercontent.com/12044174/200470979-3c507d0c-c838-4753-8435-a7cf879120a7.png">
+
+
 <p>2022.3.2</p>
 <ul>
   <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/380">#380: [paid][feature]
@@ -37,6 +46,12 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
     Semantic Highlighting)</li>
 </ul>
 <br />
+
+<img width="825" alt="image" src="https://user-images.githubusercontent.com/12044174/198984655-aedcec69-58c3-465f-b06a-279fd35068bd.png">
+
+<img width="1108" alt="image" src="https://user-images.githubusercontent.com/12044174/198995710-a7956ae3-b008-41f0-a391-caf5a39cd8dd.png">
+
+<img width="733" alt="image" src="https://user-images.githubusercontent.com/12044174/199013321-331a5597-5a8b-45c4-91c8-382e0ad7bbf6.png">
 
 <p>2022.3.1</p>
 <ul>
@@ -49,6 +64,8 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
     <li>Fix many compatibility issues with IntelliJ platform 2022.3.</li>
 </ul>
 <br />
+
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/12044174/197786778-9d07ea50-154d-4efd-a70a-f454951b4ea6.png">
 
 <p>6.26</p>
 <ul>
