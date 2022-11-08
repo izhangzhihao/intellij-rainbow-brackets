@@ -1,6 +1,6 @@
 ## What happened?
 
-Since IntelliJ platform 2022.3, Rainbow Brackets has marked a "Freemium".
+Since IntelliJ platform 2022.3, Rainbow Brackets has marked a "Freemium". Exsiting features before version 2022.3.1 still FREE.
 
 All features which are inside GitHub are free to use unless it needs lots of time to develop(e.g. Supporting new languages, Supporting old frameworks, etc.).
 Non-free features are flagged with [paid] inside the changelog.
