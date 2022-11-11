@@ -29,6 +29,14 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
 
 ## Change log
 
+
+<p>2022.3.4</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2551">#2551: [Rainbow variables] rainbow variable does not take effect after IDEA is restarted.</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2549">#2549: Make 'enable rainbow variables' and 'rainbowify python keywords' can be checked both.</a></li>
+        </ul>
+        <br/>
+
 <p>2022.3.3</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2541">#2541: [Rainbow variables] Ask to enable rainbow variables before turn it on.</a></li>
