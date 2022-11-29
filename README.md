@@ -23,7 +23,7 @@
 - [Compatibility](#compatibility)
 - [Supported languages](#supported-languages)
 - [Author's choice](#authors-choice)
-- [Sponsored By CodeStream](#sponsored-by-codestream)
+- [Free features are Sponsored By CodeStream](#free-features-are-sponsored-by-codestream)
 - [Install](#install)
 - [Screenshots](#screenshots)
 - [Customize colors](#customize-colors)
@@ -50,7 +50,7 @@ Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScrip
 
 Rainbow Brackets + One Dark Theme + Nyan Progress Bar + [Fira Code](https://github.com/tonsky/FiraCode) (Font)
 
-## Sponsored By [CodeStream](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
+## Free features are Sponsored By [CodeStream](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
 
 [![https://codestream.com](https://alt-images.codestream.com/codestream_logo_jbrainbowbrackets.png)](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
 
@@ -140,25 +140,11 @@ If you turn on this option, we will auto generate some colors for you.
 
 ### Advanced options of color generator
 
-If you need more control, you can decide the options of color generator by edit [the config file](#config-file-path), 
-
-The value of the option `customColorGeneratorOption` is a json object, available options are:
+<img width="749" alt="image" src="https://user-images.githubusercontent.com/12044174/202852094-2da6945b-598e-4def-ab0c-331abdd6d3f8.png">
 
 ```hue``` – Controls the hue of the generated color. You can pass a string representing a color name: ```red```, ```orange```, ```yellow```, ```green```, ```blue```, ```purple```, ```pink``` and ```monochrome``` are currently supported. If you pass a  hexidecimal color string such as ```#00FFFF```, color generator will extract its hue value and use that to generate colors.
 
 ```luminosity``` – Controls the luminosity of the generated color. You can specify a string containing ```bright```, ```light``` or ```dark```.
-
-Please make sure the value of the option `customColorGeneratorOption` is escaped in xml format,
-you can use [this tool](https://www.freeformatter.com/xml-escape.html#ad-output) to do this. Please don't forget to restart your IDE after change the config file.
-
-```xml
-<application>
-  <component name="RainbowSettings">
-    <option name="useColorGenerator" value="true" />
-    <option name="customColorGeneratorOption" value="{&quot;luminosity&quot;: &quot;light&quot;,&quot;hue&quot;: &quot;blue&quot;}"/>
-  </component>
-</application>
-```
 
 ### Want to config the number of colors?
 
@@ -169,10 +155,7 @@ And you can use the color generator and config you number of colors at the same 
 NOTE: For default and darcula color scheme(`Editor -> Color Scheme -> Rainbow Brackets -> Scheme`) the color number is 10, for the other scheme the number is 5, if your number is bigger than the number, you can config them in the config file.
 If the color is not exist, we will use color generator to generator it for you.
 
-Please follow [the official guide](https://www.jetbrains.com/help/idea/configuring-colors-and-fonts.html#share-color-scheme):
-* `Export a color scheme as XML`
-* Edit the xml file, put `ROUND_BRACKETS_RAINBOW_COLOR5` to `ROUND_BRACKETS_RAINBOW_COLOR100` to match your number just like [the default color scheme](./src/main/resources/colorSchemes/rainbow-color-default-darcula.xml).
-* `Import a color scheme`
+<img width="680" alt="image" src="https://user-images.githubusercontent.com/12044174/202893817-4a88d0c8-1c9d-4442-86f1-235c2653cf60.png">
 
 ## Config file path
 
