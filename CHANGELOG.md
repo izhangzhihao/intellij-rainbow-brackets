@@ -15,6 +15,9 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30 days tri
 |---------------------------------------|--------|
 | C# related files support              | 2022.3 |
 | Indent highlighting advanced features | 2022.3 |
+| Color generator options               | 2022.3 |
+| Config up to 10 colors in config panel| 2022.3 |
+| Color generator for rainbow varibeles | 2022.3 |
 
 
 ## What effect on me?
@@ -29,6 +32,16 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
 
 ## Change log
 
+<p>2022.3.5</p>
+        <ul>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2548">#2548: [Rainbow variables] Rainbow variables settings are not reflected.</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2555">#2555: [Rainbow variables] Variables colors contrast too low for light theme.</a></li>
+            <li>Add new options for color generator</li>
+            <li>Color config panel support up to 10 colors</li>
+        </ul>
+        <br/>
+<img width="749" alt="image" src="https://user-images.githubusercontent.com/12044174/202852094-2da6945b-598e-4def-ab0c-331abdd6d3f8.png">
+<img width="680" alt="image" src="https://user-images.githubusercontent.com/12044174/202893817-4a88d0c8-1c9d-4442-86f1-235c2653cf60.png">
 
 <p>2022.3.4</p>
         <ul>
