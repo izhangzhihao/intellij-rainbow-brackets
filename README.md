@@ -74,10 +74,6 @@ For Windows & Linux - <kbd>File</kbd> > <kbd>Settings</kbd> > <kbd>Plugins</kbd>
 
 For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Rainbow Brackets"</kbd> > <kbd>Install Plugin</kbd>  > <kbd>Restart IntelliJ IDEA</kbd>
 
-### Install snapshot build
-
-You can download the latest snapshot build from [here](https://github.com/izhangzhihao/intellij-rainbow-brackets/actions/workflows/build.yml?query=workflow%3ABuild), just click the latest build and click the 'Artifacts' tab.(You need logged in via github) After the snapshot build downloaded, unzip it(via `unzip UnZipMe.zip`), and install the zip file(intellij-rainbow-brackets.zip[]()) by `Install Plugin from Disk...`.
-
 ## Screenshots
 
 * Java
