@@ -11,8 +11,7 @@ assignees: ''
 
 ## Please check
 
-- [ ] I already support this project.
-- [ ] If you are submitting a feature request, please do consider buy this plugin [here](https://www.jetbrains.com/shop/buy?item=P:N:PRAINBOWBRACKET:M) or donating us on [Open Collective](https://opencollective.com/intellij-rainbow-brackets) Or by AliPay/WeChatPay.
+- [ ] please do consider buy this plugin [here](https://www.jetbrains.com/shop/buy?item=P:N:PRAINBOWBRACKET:M) or donating us on [Open Collective](https://opencollective.com/intellij-rainbow-brackets) Or by AliPay/WeChatPay.
 - [ ] This issue/feature request is not reported before.
 
 ## Your programming languages
@@ -22,3 +21,7 @@ assignees: ''
 
 ## Current Behavior
 * explain the difference from current behavior
+
+## Code examples
+* provide your code examples so I could start doing faster
+
