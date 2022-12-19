@@ -1,5 +1,5 @@
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij">
-        <annotator language="Haskell" implementationClass="com.github.izhangzhihao.rainbow.brackets.annotator.RainbowAnnotator"/>
+        <annotator language="Haskell" implementationClass="com.github.izhangzhihao.rainbow.brackets.lite.annotator.RainbowAnnotator"/>
     </extensions>
 </idea-plugin>

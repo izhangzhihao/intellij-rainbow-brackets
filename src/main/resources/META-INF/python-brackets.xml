@@ -1,5 +1,0 @@
-<idea-plugin>
-    <extensions defaultExtensionNs="com.intellij">
-        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.PythonRainbowVisitor"/>
-    </extensions>
-</idea-plugin>

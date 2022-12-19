@@ -1,8 +1,8 @@
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij">
-        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.ReactJSXRainbowVisitor"/>
+        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.lite.visitor.ReactJSXRainbowVisitor"/>
     </extensions>
-    <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets">
+    <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets.lite">
         <bracePairProvider language="JavaScript"
                              implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.TSBracePairProvider"/>
     </extensions>

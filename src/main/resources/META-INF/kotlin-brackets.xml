@@ -1,12 +1,6 @@
 <idea-plugin>
-    <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets">
+    <extensions defaultExtensionNs="izhangzhihao.rainbow.brackets.lite">
         <bracePairProvider language="kotlin"
                              implementationClass="com.github.izhangzhihao.rainbow.brackets.provider.KotlinBracePairProvider"/>
-    </extensions>
-    <extensions defaultExtensionNs="com.intellij">
-        <annotator language="kotlin"
-                   implementationClass="com.github.izhangzhihao.rainbow.brackets.annotator.KotlinLambdaExpressionArrowAnnotator"/>
-        <annotator language="kotlin"
-                   implementationClass="com.github.izhangzhihao.rainbow.brackets.annotator.KotlinLabelAnnotator"/>
     </extensions>
 </idea-plugin>
