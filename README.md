@@ -38,6 +38,12 @@
 - [Sponsors](#sponsors)
 - [Acknowledgements](#acknowledgements)
 
+## Rainbow Brackets Lite
+
+This repo is using to compile a fully free version of our product for the community to use. This is because some users do not need the paid features and do not want to constantly update their software. An open-source, fully free, and stable version is a good option for these users.
+
+I believe this will benefit both the community and our team. The community will have access to a free version of our software, and our team will continue to receive support from those who appreciate and value the paid features.
+
 ## Compatibility
 
 IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, DataGrip, Rider, MPS, Android Studio, HUAWEI DevEco Studio, DataSpell, Code With Me
