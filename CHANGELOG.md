@@ -32,6 +32,13 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
 
 ## Change log
 
+<p>2023.1.0</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2570">#2570: [Rainbow variables] Rainbow variables support for C# lang.</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2563">#2563: Incompatibility with Semantic highlighting.</a></li>
+        </ul>
+        <br/>
+
 <p>2022.3.5</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2548">#2548: [Rainbow variables] Rainbow variables settings are not reflected.</a></li>
