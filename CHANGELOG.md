@@ -18,6 +18,7 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30 days tri
 | Color generator options               | 2022.3 |
 | Config up to 10 colors in config panel| 2022.3 |
 | Color generator for rainbow varibeles | 2022.3 |
+| C++ related files support in Rider IDE| 2022.3 |
 
 
 ## What effect on me?
