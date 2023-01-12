@@ -33,6 +33,25 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
 
 ## Change log
 
+<p>2023.1.1</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424">#424: Support C++ in Rider IDE.</a></li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/478">#478: Support for files with .shader .cginc .hlsl extensions in Rider IDE.</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2579">#2579: Rainbow Variables code coloring reappears after uninstalling/disabling plugin.</a></li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2576">#2576: Add Rainbow Variables option to Editor -> Color Scheme -> Rainbow Brackets.</a></li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2576">#2576: Add Indent Guides option to Editor -> Color Scheme -> Rainbow Brackets.</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2578">#2578: Rainbow Variables for C Sharp.</a></li>
+            <li>No "Enable rainbow variables?" popup for default.</li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2582">#2582: can't enable color generator option for rainbw variables.</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/248">#248: Put Twig to blacklist, so we could ignore twig brackets.</a></li>
+        </ul>
+        <br/>
+
+<img width="681" alt="image" src="https://user-images.githubusercontent.com/12044174/211297244-a3d9d431-e10d-4ab4-9b40-71b2128b37f3.png">
+<img width="716" alt="image" src="https://user-images.githubusercontent.com/12044174/211297286-43b9592c-10c1-4fc7-9efa-cebaa7ca27f7.png">
+<img width="613" alt="image" src="https://user-images.githubusercontent.com/12044174/211549414-65eeaae2-9d73-4358-b09c-78de46aca843.png">
+<img width="1012" alt="image" src="https://user-images.githubusercontent.com/12044174/211548705-036be735-ec3f-483b-8e5c-be790bc5b9f3.png">
+
 <p>2023.1.0</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2570">#2570: [Rainbow variables] Rainbow variables support for C# lang.</a></li>
