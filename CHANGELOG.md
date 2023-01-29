@@ -31,7 +31,7 @@ You can try to get a 30 days trial license, which has all same features as the p
 
 ## Future plans
 
-Please check out [our plans for paid plugin](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2538)
+Please check out [our plans for paid plugin](https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2586)
 
 ## Change log
 
