@@ -35,6 +35,18 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
 
 ## Change log
 
+<p>2023.1.3</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2583">#2583 #2339: Better Indent guides for Python</a></li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/943">#943: Better Indent guides for Pug/Jade</a></li>
+            <li>Support intellij platform 2023.1.*</li>
+        </ul>
+        <br/>
+
+<img width="296" alt="image" src="https://user-images.githubusercontent.com/12044174/215311750-2fd3ee22-8d3d-45d6-b4d7-6fd7916f7909.png">
+<img width="418" alt="image" src="https://user-images.githubusercontent.com/12044174/215311763-e7f36cbe-f61d-4b87-9bca-6450c4d7e511.png">
+<img width="678" alt="image" src="https://user-images.githubusercontent.com/12044174/215313563-aaa0ba97-986e-41fc-a7cc-736fdce4fb17.png">
+
 <p>2023.1.1</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424">#424: Support C++ in Rider IDE.</a></li>
