@@ -82,29 +82,50 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ## Screenshots
 
-* Java
+### Java
 
-![](./screenshots/with-java.png)
+<img width="640" alt="java" src="https://user-images.githubusercontent.com/12044174/218252098-d73f3be1-849f-4193-a095-105b639d1955.png">
 
-![](./screenshots/with-material-theme-ui.png)
 
-* Scala
+### Scala
 
-![](./screenshots/with-scala.png)
+<img width="640" alt="scala" src="https://user-images.githubusercontent.com/12044174/218252110-409c8dc0-3893-42c0-97f8-5855f88728bf.png">
 
-* Clojure
 
-![](./screenshots/with-Clojure.png)
+### Clojure
 
-* Kotlin
+<img width="640" alt="Clojure" src="https://user-images.githubusercontent.com/12044174/218252123-b2c2ae55-0501-46d5-81c0-4208f19958b3.png">
 
-![](./screenshots/with-kotlin.png)
+### Kotlin
 
-* HTML/XML
+<img width="640" alt="kotlin" src="https://user-images.githubusercontent.com/12044174/218252132-f6b0d17a-9d3b-47bc-be0c-918531ffb050.png">
 
-![](./screenshots/with-HTML.png)
+### HTML/XML
 
-* Scope highlighting
+<img width="640" alt="HTML" src="https://user-images.githubusercontent.com/12044174/218252140-926fb1cc-5836-4e9e-9a23-5d0a4d956c3c.png">
+
+### Javascript & Typescript
+
+<img width="640" alt="js" src="https://user-images.githubusercontent.com/12044174/218252159-06337dbb-ee7a-47a6-92f7-64e29f7419da.png">
+<img width="640" alt="ts" src="https://user-images.githubusercontent.com/12044174/218252164-1a0547a6-a423-4a07-aa80-5200a5660aa6.png">
+
+### Pug/Jade
+
+<img width="640" alt="pug" src="https://user-images.githubusercontent.com/12044174/218252187-1d581616-1b4a-4654-8d97-5fe9e9a505cf.png">
+
+### C#
+
+<img width="640" alt="CSharp" src="https://user-images.githubusercontent.com/12044174/218252203-24057a01-79ba-44e5-834d-ac4414472583.png">
+
+### Dart
+
+<img width="640" alt="dart" src="https://user-images.githubusercontent.com/12044174/218252217-e526703d-d644-4e51-bb17-1273f3591dc4.png">
+
+### Python
+
+<img width="640" alt="python" src="https://user-images.githubusercontent.com/12044174/218252230-5e21ef7c-acc4-49be-80ff-8c8ed11538ad.png">
+
+### Scope highlighting
 
 **The highlight effects will not remove after release the shortcuts, but press `ESC` key can do this. You could also config `Press any key to remove the highlighting effect` in setting page.**
 
@@ -113,25 +134,26 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)" on Mac os, "Right click" for Windows or Linux.
 NOTE: <kbd>Meta</kbd> means <kbd>command</kbd> on Mac os.
 
+<img width="1000" alt="current-scope" src="https://user-images.githubusercontent.com/12044174/218252269-52373432-4054-4449-91f9-a968337b81ab.png">
+
 ![](https://user-images.githubusercontent.com/10737066/40234968-46593fe2-5adb-11e8-8ea8-0026fad86ca9.gif)
 
-<kbd>Alt + Button3</kbd>:
+<kbd>Alt + Button3</kbd>(Windows & Linux) or <kbd>option + Button3</kbd>(Mac):
 
 NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)" on Mac os, "Right click" for Windows or Linux.
 
+<img width="1000" alt="rh" src="https://user-images.githubusercontent.com/12044174/218252282-305ece2c-e78a-453a-8558-e500d8d35c7d.png">
+
 ![](https://user-images.githubusercontent.com/10737066/40235004-642dfe54-5adb-11e8-9fd7-648b92fab8f5.gif)
 
-* Rainbow indent guide lines
-
-![](https://user-images.githubusercontent.com/10737066/65765792-c41cb500-e15b-11e9-8877-2239c6afa7bf.gif)
-
-* looking forward to your screenshots(PR welcome!)
+### looking forward to your screenshots(PR welcome!)
 
 ## Customize colors
 
 <kbd>Settings/Preferences</kbd> > <kbd>Editor</kbd> > <kbd>Color Scheme</kbd> > <kbd>Rainbow Brackets</kbd>:
 
-![Customize colors](./screenshots/customize-colors.png)
+<img width="849" alt="scheme" src="https://user-images.githubusercontent.com/12044174/218252304-5e22918f-5ab9-4bc2-8bfa-65d4614fc303.png">
+
 
 ## Use color generator
 
@@ -157,8 +179,6 @@ And you can use the color generator and config you number of colors at the same 
 
 NOTE: For default and darcula color scheme(`Editor -> Color Scheme -> Rainbow Brackets -> Scheme`) the color number is 10, for the other scheme the number is 5, if your number is bigger than the number, you can config them in the config file.
 If the color is not exist, we will use color generator to generator it for you.
-
-<img width="680" alt="image" src="https://user-images.githubusercontent.com/12044174/202893817-4a88d0c8-1c9d-4442-86f1-235c2653cf60.png">
 
 ## Config file path
 
