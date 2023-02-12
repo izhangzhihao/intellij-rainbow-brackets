@@ -47,9 +47,8 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
         </ul>
         <br/>
 
-<img width="296" alt="image" src="https://user-images.githubusercontent.com/12044174/215311750-2fd3ee22-8d3d-45d6-b4d7-6fd7916f7909.png">
-<img width="418" alt="image" src="https://user-images.githubusercontent.com/12044174/215311763-e7f36cbe-f61d-4b87-9bca-6450c4d7e511.png">
-<img width="678" alt="image" src="https://user-images.githubusercontent.com/12044174/215313563-aaa0ba97-986e-41fc-a7cc-736fdce4fb17.png">
+<img width="640" alt="python" src="https://user-images.githubusercontent.com/12044174/218252230-5e21ef7c-acc4-49be-80ff-8c8ed11538ad.png">
+<img width="640" alt="pug" src="https://user-images.githubusercontent.com/12044174/218252187-1d581616-1b4a-4654-8d97-5fe9e9a505cf.png">
 
 <p>2023.1.1</p>
         <ul>
