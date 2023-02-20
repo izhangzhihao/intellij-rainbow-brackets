@@ -102,6 +102,8 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ### HTML/XML
 
+**NOTE: need rurn on 'Rainbowify tag name' option**
+
 <img width="640" alt="HTML" src="https://user-images.githubusercontent.com/12044174/218252140-926fb1cc-5836-4e9e-9a23-5d0a4d956c3c.png">
 
 ### Javascript & Typescript
@@ -118,6 +120,8 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 <img width="640" alt="dart" src="https://user-images.githubusercontent.com/12044174/218252217-e526703d-d644-4e51-bb17-1273f3591dc4.png">
 
 ### Python
+
+**NOTE: need rurn on 'Rainbowify Python keywords' option**
 
 <img width="640" alt="python" src="https://user-images.githubusercontent.com/12044174/218252230-5e21ef7c-acc4-49be-80ff-8c8ed11538ad.png">
 
