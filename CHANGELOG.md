@@ -39,6 +39,17 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2023.2.5</p>
+        <ul>
+            <li>Add changelog page on plugin update</li>
+            <li>Add suggestion banner for JSX/XML/HTML</li>
+            <li>Fix suggestion banner for Jade/Python</li>
+            <li>Advanced indent guides line highlighting for Python with-out highlight keywords</li>
+        </ul>
+        <br/>
+<img width="623" alt="image" src="https://user-images.githubusercontent.com/12044174/220900164-db6476ed-e4e8-4547-966a-2db89fe82651.png">
+
+
 <p>2023.1.3</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2583">#2583 #2339: Better Indent guides for Python</a></li>
