@@ -8,12 +8,13 @@ assignees: ''
 ---
 
 Your issue may already be reported!
-Please search on the [issues](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues) and the [document](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md) before creating one.
+Please search on the [issues](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues) and the [document](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md) and [discussions](https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions) before creating one.
 
 ## Please check
 
 - [ ] I already support this project.
-- [ ] If you are submitting a feature request, please do consider buy this plugin [here](https://www.jetbrains.com/shop/buy?item=P:N:PRAINBOWBRACKET:M) or donating us on [Open Collective](https://opencollective.com/intellij-rainbow-brackets) Or by AliPay/WeChatPay.
+- [ ] I already paid for this plugin.
+- [ ] I'm on a trial of this plugin.
 - [ ] This issue/feature request is not reported before.
 
 ## Your programming languages
