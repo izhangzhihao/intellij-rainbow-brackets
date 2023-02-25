@@ -123,7 +123,7 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ### Python
 
-**NOTE: need rurn on 'Rainbowify Python keywords' option**
+<img width="623" alt="image" src="https://user-images.githubusercontent.com/12044174/220900164-db6476ed-e4e8-4547-966a-2db89fe82651.png">
 
 <img width="640" alt="python" src="https://user-images.githubusercontent.com/12044174/218252230-5e21ef7c-acc4-49be-80ff-8c8ed11538ad.png">
 
