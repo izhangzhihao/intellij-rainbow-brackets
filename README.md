@@ -102,13 +102,13 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ### HTML/XML
 
-**NOTE: need rurn on 'Rainbowify tag name' option**
+**NOTE: need turn on 'Rainbowify tag name' option**
 
 <img width="640" alt="HTML" src="https://user-images.githubusercontent.com/12044174/218252140-926fb1cc-5836-4e9e-9a23-5d0a4d956c3c.png">
 
 ### Javascript & Typescript
 
-**NOTE: need rurn on 'Rainbowify tag name' option**
+**NOTE: need turn on 'Rainbowify tag name' option**
 
 <img width="640" alt="js" src="https://user-images.githubusercontent.com/12044174/218252159-06337dbb-ee7a-47a6-92f7-64e29f7419da.png">
 <img width="640" alt="ts" src="https://user-images.githubusercontent.com/12044174/218252164-1a0547a6-a423-4a07-aa80-5200a5660aa6.png">
