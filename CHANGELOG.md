@@ -14,13 +14,13 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30 days tri
 | features                              | since  |
 |---------------------------------------|--------|
 | C# related files support              | 2022.3 |
-| Indent highlighting advanced features | 2022.3 |
-| Color generator options               | 2022.3 |
-| Config up to 10 colors in the config panel| 2022.3 |
+| [Indent highlighting advanced features](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#indent-highlighting) | 2022.3 |
+| [Color generator options](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#advanced-options-of-color-generator)               | 2022.3 |
+| [Config up to 10 colors in the config panel](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#customize-colors)| 2022.3 |
 | Color generator for rainbow variables | 2022.3 |
 | C++ related files support in Rider IDE| 2022.3 |
-| Better indent guides support for Python| 2022.3 |
-| Better indent guides support for Pug/Jade| 2022.3 |
+| [Better indent guides for Python](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#python)| 2022.3 |
+| [Better indent guides support for Pug/Jade](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#pugjade)| 2022.3 |
 
 
 ## What effect on me?
