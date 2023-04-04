@@ -131,6 +131,23 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 <img width="640" alt="pug" src="https://user-images.githubusercontent.com/12044174/218252187-1d581616-1b4a-4654-8d97-5fe9e9a505cf.png">
 
+### Indent highlighting
+
+* Only selected indent guide(free)
+
+highlighting indent guide line only when you select this indent line
+<img width="919" alt="image" src="https://user-images.githubusercontent.com/12044174/229687079-6b66e842-7d60-426e-9741-9685f8d078aa.png">
+
+* Only current indent guide
+
+highlighting indent guide lines for current lines
+<img width="1108" alt="image" src="https://user-images.githubusercontent.com/12044174/198995710-a7956ae3-b008-41f0-a391-caf5a39cd8dd.png">
+
+* All indent guide related
+
+highlighting **all** indent guide lines for current lines
+<img width="825" alt="image" src="https://user-images.githubusercontent.com/12044174/198984655-aedcec69-58c3-465f-b06a-279fd35068bd.png">
+
 ### Scope highlighting
 
 **The highlight effects will not remove after release the shortcuts, but press `ESC` key can do this. You could also config `Press any key to remove the highlighting effect` in setting page.**
