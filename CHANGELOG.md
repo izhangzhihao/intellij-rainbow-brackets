@@ -11,16 +11,18 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30 days tri
 
 ## Paid features
 
-| features                              | since  |
-|---------------------------------------|--------|
-| C# related files support              | 2022.3 |
-| [Indent highlighting advanced features](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#indent-highlighting) | 2022.3 |
-| [Color generator options](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#advanced-options-of-color-generator)               | 2022.3 |
-| [Config up to 10 colors in the config panel](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#customize-colors)| 2022.3 |
-| [Color generator for rainbow variables](https://user-images.githubusercontent.com/12044174/202852094-2da6945b-598e-4def-ab0c-331abdd6d3f8.png) | 2022.3 |
-| [C++ related files support in Rider IDE](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424#issuecomment-1377176193)| 2022.3 |
-| [Better indent guides for Python](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#python)| 2022.3 |
-| [Better indent guides support for Pug/Jade](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#pugjade)| 2022.3 |
+
+| features                              |
+|---------------------------------------|
+| C# related files support              |
+| [Indent highlighting advanced features](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#indent-highlighting) |
+| [Color generator options](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#advanced-options-of-color-generator)               |
+| [Config up to 10 colors in the config panel](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#customize-colors)|
+| [Color generator for rainbow variables](https://user-images.githubusercontent.com/12044174/202852094-2da6945b-598e-4def-ab0c-331abdd6d3f8.png) |
+| [C++ related files support in Rider IDE](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424#issuecomment-1377176193)|
+| [Better indent guides for Python](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#python)|
+| [Better indent guides support for Pug/Jade](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#pugjade)|
+
 
 
 ## What effect on me?
