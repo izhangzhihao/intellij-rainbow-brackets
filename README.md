@@ -266,6 +266,7 @@ For the Rider IDE, please follow: [this](https://rider-support.jetbrains.com/hc/
 
 You can support us by the following actions:
 
+* Buy a license [here](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets/pricing#tabs)
 * Star this project
 * Share this plugin with your friends
 * Rate this plugin on [JetBrains plugin repository](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
