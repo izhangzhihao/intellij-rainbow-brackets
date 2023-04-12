@@ -13,6 +13,7 @@ For small changes, [Gitpod](https://gitpod.io/#https://github.com/izhangzhihao/i
 
 You can support us by the following actions:
 
+* Buy a license [here](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets/pricing#tabs)
 * Star this project
 * Share this plugin with your friends
 * Rate this plugin on [JetBrains plugin repository](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
@@ -25,17 +26,23 @@ You can support us by the following actions:
 
 <table>
   <tr>
-    <th width="33%">Open Collective</th>
-    <th width="33%">AliPay</th>
-    <th width="33%">WeChatPay</th>
+    <th width="25%">JetBrains MarketPlace</th>
+    <th width="25%">Open Collective</th>
+    <th width="25%">AliPay</th>
+    <th width="25%">WeChatPay</th>
   </tr>
   <tr></tr>
   <tr align="center">
     <td>
-        <a href="https://opencollective.com/intellij-rainbow-brackets" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/YiiGuxing/TranslationPlugin@master/images/open-collective.svg" width="171px" alt="OpenCollective">
+        <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets/pricing#tabs" target="_blank">
+            <img src="https://plugins.jetbrains.com/static/versions/26575/jetbrains-simple.svg" width="171px" alt="JetBrains MarketPlace">
         </a>
-      </td>
+    </td>
+    <td>
+        <a href="https://opencollective.com/intellij-rainbow-brackets" target="_blank">
+            <img src="https://opencollective.com/static/images/opencollectivelogo-footer-n.svg" width="171px" alt="OpenCollective">
+        </a>
+    </td>
     <td><img src="https://user-images.githubusercontent.com/12044174/85197261-77dd5a80-b312-11ea-9630-51caf7d634f2.jpg"></td>
     <td><img src="https://user-images.githubusercontent.com/12044174/85197263-7b70e180-b312-11ea-917a-35eab2ea08ae.jpg"></td>
   </tr>
