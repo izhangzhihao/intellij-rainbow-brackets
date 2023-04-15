@@ -41,6 +41,15 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2023.2.7</p>
+        <ul>
+            <li>Adjustment colors in both the light and dark themes, enhancing the contrast when selecting brackets.</li>
+            <li>Adjustment icons in suggestion banner.</li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2612">#2612: Fix rainbow variables support for C# not working in some case.</a></li>
+        </ul>
+        <br/>
+
+
 <p>2023.2.6</p>
         <ul>
             <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2597">#2597: Indent Guide highlighting options: selection doesn't persist between restarts.</a></li>
