@@ -171,6 +171,12 @@ NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)"
 
 ### looking forward to your screenshots(PR welcome!)
 
+## Customize colors
+
+<kbd>Settings/Preferences</kbd> > <kbd>Editor</kbd> > <kbd>Color Scheme</kbd> > <kbd>Rainbow Brackets</kbd>:
+
+<img width="849" alt="scheme" src="https://user-images.githubusercontent.com/12044174/218252304-5e22918f-5ab9-4bc2-8bfa-65d4614fc303.png">
+
 ## Config the number of colors?
 
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > `Number of colors`: 5 or more
@@ -179,12 +185,6 @@ And you can use the color generator and config you number of colors at the same 
 
 NOTE: For default and darcula color scheme(`Editor -> Color Scheme -> Rainbow Brackets -> Scheme`) the color number is 10, for the other scheme the number is 5, if your number is bigger than the number, you can config them in the config file.
 If the color is not exist, we will use color generator to generator it for you.
-
-## Customize colors
-
-<kbd>Settings/Preferences</kbd> > <kbd>Editor</kbd> > <kbd>Color Scheme</kbd> > <kbd>Rainbow Brackets</kbd>:
-
-<img width="849" alt="scheme" src="https://user-images.githubusercontent.com/12044174/218252304-5e22918f-5ab9-4bc2-8bfa-65d4614fc303.png">
 
 ## Use color generator
 
