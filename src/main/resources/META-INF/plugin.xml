@@ -1,6 +1,6 @@
 <idea-plugin require-restart="true">
     <id>izhangzhihao.rainbow.brackets.lite</id>
-    <name>Rainbow Brackets Lite</name>
+    <name>Rainbow Brackets Lite - Free and OpenSource</name>
     <vendor email="izhangzhihao@hotmail.com" url="https://github.com/izhangzhihao">izhangzhihao</vendor>
 
     <description><![CDATA[
@@ -19,9 +19,9 @@
 
         <p>Supported languages:</p>
         <p>Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby,
-            Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language, C#, Dart, Pug/Jade, Bash, Vue.js, C# Razor Pages, GLSL(the OpenGL Shading Language), Go Template, C++, C...</p>
+            Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language, Dart, Pug/Jade, Bash, Vue.js, GLSL(the OpenGL Shading Language), Go Template, C++, C...</p>
         <br/>
-        <p>Author's choice：Rainbow Brackets + One Dark Theme + Nyan Progress Bar + Fira Code(Font)</p>
+        <p>NOTE: this plugin does NOT support rainbowify C# lang and NOT support C++ in Rider IDE</p>
         <br/>
         <p>
             <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/2020.2/screenshots/with-java.png"
@@ -50,6 +50,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.0.1</p>
+        <ul>
+            <li>Bug fix and code refactor</li>
+        </ul>
         <p>1.0.0</p>
         <ul>
             <li>Initial release for completely free lite version</li>
@@ -95,9 +99,9 @@
 
         <additionalTextAttributes scheme="Default" file="colorSchemes/rainbow-color-default.xml"/>
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-<!--        <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.lite.RainbowCheckActivity"/>-->
         <highlightingPassFactory implementation="com.github.izhangzhihao.rainbow.brackets.lite.indents.RainbowIndentsPassFactory"/>
         <editorNotificationProvider implementation="com.github.izhangzhihao.rainbow.brackets.lite.RainbowifyBanner"/>
+        <editorNotificationProvider implementation="com.github.izhangzhihao.rainbow.brackets.lite.LiteBanner"/>
         <notificationGroup id="Rainbow Brackets Lite Notification Group" displayType="STICKY_BALLOON"/>
     </extensions>
 
