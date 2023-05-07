@@ -7,9 +7,7 @@
 <h1 align="center">Intellij rainbow brackets</h1>
 <p align="center">🌈Rainbow Brackets for IntelliJ based IDEs/Android Studio/HUAWEI DevEco Studio.</p>
 
-<p align="center"> 
-<!-- <a href="https://actions-badge.atrox.dev/izhangzhihao/intellij-rainbow-brackets/goto?ref=2020.3"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fizhangzhihao%2Fintellij-rainbow-brackets%2Fbadge%3Fref%3D2020.3&style=flat-square" /></a> -->
-<!-- <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/releases"><img src="https://img.shields.io/github/release/izhangzhihao/intellij-rainbow-brackets.svg?style=flat-square"></a> -->
+<p align="center">
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/r/stars/10080?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/embeddable/install/10080"><img src="https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/v/10080-rainbow-brackets.svg?style=flat-square"></a>
@@ -24,6 +22,7 @@
 - [Supported languages](#supported-languages)
 - [Author's choice](#authors-choice)
 - [Free features are Sponsored By CodeStream](#free-features-are-sponsored-by-codestream)
+- [Rainbow Brackets Lite](#rainbow-brackets-lite)
 - [Install](#install)
 - [Screenshots](#screenshots)
 - [Customize colors](#customize-colors)
@@ -37,12 +36,6 @@
 - [Backers](#backers)
 - [Sponsors](#sponsors)
 - [Acknowledgements](#acknowledgements)
-
-## Rainbow Brackets Lite
-
-This repo is using to compile a fully free version of our product for the community to use. This is because some users do not need the paid features and do not want to constantly update their software. An open-source, fully free, and stable version is a good option for these users.
-
-I believe this will benefit both the community and our team. The community will have access to a free version of our software, and our team will continue to receive support from those who appreciate and value the paid features.
 
 ## Compatibility
 
@@ -67,6 +60,17 @@ Development powered by [JetBrains](https://www.jetbrains.com/?from=IntelliJRainb
 [![https://www.jetbrains.com/?from=IntelliJRainbowBrackets](./screenshots/jetbrains.svg)](https://www.jetbrains.com/?from=IntelliJRainbowBrackets)
 
 Whichever technologies you use, there's a JetBrains tool to match.
+
+
+## Rainbow Brackets Lite
+
+This repo is using to compile a fully free version of our product for the community to use. This is because some users do not need the paid features and do not want to constantly update their software. An open-source, fully free, and stable version is a good option for these users.
+
+I believe this will benefit both the community and our team. The community will have access to a free version of our software, and our team will continue to receive support from those who appreciate and value the paid features.
+
+Please download the Lite version [here](https://plugins.jetbrains.com/plugin/20710).
+
+**NOTE: the lite version does NOT support C# lang and NOT support C++ in the Rider IDE**
 
 ## Install
 
