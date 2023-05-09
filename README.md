@@ -31,7 +31,6 @@
 - [HTML code in js](#html-code-in-js)
 - [Kotlin function literal braces and arrow](#kotlin-function-literal-braces-and-arrow)
 - [Disable rainbow brackets for specific languages](#disable-rainbow-brackets-for-specific-languages)
-- [Contribute](#contribute)
 - [Support Us](#support-us)
 - [Backers](#backers)
 - [Sponsors](#sponsors)
@@ -54,12 +53,6 @@ Rainbow Brackets + One Dark Theme + Nyan Progress Bar + [Fira Code](https://gith
 [![https://codestream.com](https://alt-images.codestream.com/codestream_logo_jbrainbowbrackets.png)](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
 
 Eliminate context switching and costly distractions. Create and merge PRs and perform code reviews from inside your IDE while using jump-to-definition, your keybindings, and other IDE favorites. [Learn more](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)!
-
-Development powered by [JetBrains](https://www.jetbrains.com/?from=IntelliJRainbowBrackets).
-
-[![https://www.jetbrains.com/?from=IntelliJRainbowBrackets](./screenshots/jetbrains.svg)](https://www.jetbrains.com/?from=IntelliJRainbowBrackets)
-
-Whichever technologies you use, there's a JetBrains tool to match.
 
 
 ## Rainbow Brackets Lite
@@ -255,15 +248,6 @@ You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > `Do NOT rainbowify these languages (name or extension, comma separated)`: 
 
 NOTE: You can use **name** of language or **extension** of file name(The names should be **lowercase**).
-
-## Contribute
-
-NOTE: To view the PSI tree and explore the internal PSI structure of source code, you need to set up your IDE by following [this](https://www.jetbrains.com/help/idea/psi-viewer.html).
-For the Rider IDE, please follow: [this](https://rider-support.jetbrains.com/hc/en-us/articles/207327910-How-to-run-JetBrains-Rider-in-Internal-Mode)
-
-* `gradle test`
-* `gradle runIde`
-* `gradle buildPlugin`
 
 ## Support Us
 
