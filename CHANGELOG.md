@@ -45,7 +45,7 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 <p>2023.2.8</p>
         <ul>
-            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/186">F# support(requires Rider 2023.2 or above)</a></li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/186">F# support(Rainbow Brackets and variables, requires Rider 2023.2 or above)</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2526">View and save generated colors</a></li>
             <li>Support config black list for color generator: Editor -> Color Scheme -> Rainbow Brackets -> Color generator black list</li>
             <li>Now rainbow options are searchable in config panel and SearchEverywhere</li>
