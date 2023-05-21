@@ -14,7 +14,8 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30 days tri
 
 | features                              |
 |---------------------------------------|
-| C# related files support              |
+| C# related files support(Rainbow Brackets and variables)              |
+| [F# related files support(Rainbow Brackets and variables, requires Rider 2023.2 or above)](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/186)              |
 | [Indent highlighting advanced features](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#indent-highlighting) |
 | [Color generator options](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#advanced-options-of-color-generator)               |
 | [Config up to 10 colors in the config panel](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#customize-colors)|
@@ -22,6 +23,7 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30 days tri
 | [C++ related files support in Rider IDE](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424#issuecomment-1377176193)|
 | [Better indent guides for Python](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#python)|
 | [Better indent guides support for Pug/Jade](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#pugjade)|
+| [Show generated colors](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2526)|
 
 
 
@@ -40,6 +42,19 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
 Please check the latest screenshots [here](https://github.com/izhangzhihao/intellij-rainbow-brackets#screenshots).
 
 ## Change log
+
+<p>2023.2.8</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/186">F# support(requires Rider 2023.2 or above)</a></li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2526">View and save generated colors</a></li>
+            <li>Support config black list for color generator: Editor -> Color Scheme -> Rainbow Brackets -> Color generator black list</li>
+            <li>Now rainbow options are searchable in config panel and SearchEverywhere</li>
+            <li>Enhance the random color generator, now colors have a higher degree of differentiation from each other(Could be a new config in the future)</li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2630">Now you could check your license status here</a></li>
+        </ul>
+        <br/>
+
+
 
 <p>2023.2.7</p>
         <ul>
