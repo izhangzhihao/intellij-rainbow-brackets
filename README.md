@@ -130,20 +130,29 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ### Indent highlighting
 
+options:
+
+<img width="800" alt="image" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/08b2a707-176f-437d-852c-1052d5652d7f">
+
+* Focus mode
+
+<img width="800" alt="image" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/68f829c4-7c86-4b6b-b7f6-b68911c37097">
+
+
 * Only selected indent guide(free)
 
 highlighting indent guide line only when you select this indent line
-<img width="919" alt="image" src="https://user-images.githubusercontent.com/12044174/229687079-6b66e842-7d60-426e-9741-9685f8d078aa.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/12044174/229687079-6b66e842-7d60-426e-9741-9685f8d078aa.png">
 
 * Only current indent guide
 
 highlighting indent guide lines for current lines
-<img width="1108" alt="image" src="https://user-images.githubusercontent.com/12044174/198995710-a7956ae3-b008-41f0-a391-caf5a39cd8dd.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/12044174/198995710-a7956ae3-b008-41f0-a391-caf5a39cd8dd.png">
 
 * All indent guide related
 
 highlighting **all** indent guide lines for current lines
-<img width="825" alt="image" src="https://user-images.githubusercontent.com/12044174/198984655-aedcec69-58c3-465f-b06a-279fd35068bd.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/12044174/198984655-aedcec69-58c3-465f-b06a-279fd35068bd.png">
 
 ### Scope highlighting
 
