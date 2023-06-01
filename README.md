@@ -128,6 +128,10 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 <img width="640" alt="pug" src="https://user-images.githubusercontent.com/12044174/218252187-1d581616-1b4a-4654-8d97-5fe9e9a505cf.png">
 
+### YAML
+
+<img width="640" alt="pug" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/78a00e82-b098-4f09-bb8a-ac50e40417ba">
+
 ### Indent highlighting
 
 options:
