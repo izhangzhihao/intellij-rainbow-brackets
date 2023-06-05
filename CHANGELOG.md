@@ -43,6 +43,13 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2023.2.9</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2638">Rainbowify YAML tags</a></li>
+            <li>Performance improvements</li>
+        </ul>
+        <br/>
+
 <p>2023.2.8</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/186">F# support(Rainbow Brackets and variables, requires Rider 2023.2 or above)</a></li>
