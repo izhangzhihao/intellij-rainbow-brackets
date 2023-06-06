@@ -24,6 +24,7 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30 days tri
 | [Better indent guides for Python](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#python)|
 | [Better indent guides support for Pug/Jade](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#pugjade)|
 | [Show generated colors](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2526)|
+| [Rainbowify YAML tags](https://github.com/izhangzhihao/intellij-rainbow-brackets#yaml)|
 
 
 
