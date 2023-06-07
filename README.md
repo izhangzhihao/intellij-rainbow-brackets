@@ -130,6 +130,7 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ### YAML
 
+To disable rainbowify tags for yaml, please follow: https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2639#discussioncomment-6106439
 <img width="640" alt="pug" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/78a00e82-b098-4f09-bb8a-ac50e40417ba">
 
 ### Indent highlighting
