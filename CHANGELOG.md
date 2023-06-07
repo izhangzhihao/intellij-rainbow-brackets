@@ -41,10 +41,12 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
-<p>2023.2.9</p>
+<p>2023.2.11</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2638">Rainbowify YAML tags</a></li>
-            <li>Performance improvements</li>
+                    <li>Performance improvements</li>
+                    <li>Add option to disable rainbowify YAML tags</li>
+                    <li>Fix error when the YAML plugin disabled</li>
         </ul>
         <br/>
 
