@@ -36,9 +36,9 @@
         <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#indent-highlighting">Rainbowify indent guidelines</a></li>
         <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#scope-highlighting">Scope highlighting</a></li>
         <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#htmlxml">Rainbowify tag name for XML/HTML</a></li>
-        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#yaml">Rainbowify attribute name for YAML/JSON</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#yaml">Rainbowify property name for YAML/JSON</a></li>
         <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#customize-colors">Customize colors</a></li>
-        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#use-color-generator">Color generator</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#use-the-color-generator">Color generator</a></li>
         <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#javascript--typescript">JSX support</a></li>
         <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#python">Rainbowify Python keywords & indent guidelines</a></li>
         <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2643">Scope highlighting for Python</a></li>
@@ -95,13 +95,13 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 ### HTML/XML
 
-**NOTE: need turn on 'Rainbowify tag name' option**
+**NOTE: need to turn on the 'Rainbowify tag name' option**
 
 <img width="640" alt="HTML" src="https://user-images.githubusercontent.com/12044174/218252140-926fb1cc-5836-4e9e-9a23-5d0a4d956c3c.png">
 
 ### Javascript & Typescript
 
-**NOTE: need turn on 'Rainbowify tag name' option**
+**NOTE: need to turn on the 'Rainbowify tag name' option**
 
 <img width="640" alt="js" src="https://user-images.githubusercontent.com/12044174/218252159-06337dbb-ee7a-47a6-92f7-64e29f7419da.png">
 <img width="640" alt="ts" src="https://user-images.githubusercontent.com/12044174/218252164-1a0547a6-a423-4a07-aa80-5200a5660aa6.png">
@@ -157,7 +157,7 @@ highlighting **all** indent guide lines for current lines
 
 ### Scope highlighting
 
-**The highlight effects will not remove after release the shortcuts, but press `ESC` key can do this. You could also config `Press any key to remove the highlighting effect` in setting page.**
+**The highlight effects will not remove after releasing the shortcuts, but press the `ESC` key can do this. You could also config `Press any key to remove the highlighting effect` on the setting page.**
 
 <kbd>Ctrl + Button3</kbd>(Windows & Linux) or <kbd>Meta + Button3</kbd>(Mac):
 
@@ -188,31 +188,31 @@ NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)"
 
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > `Number of colors`: 5 or more
 
-And you can use the color generator and config you number of colors at the same time.
+And you can use the color generator and config your number of colors at the same time.
 
-NOTE: For default and darcula color scheme(`Editor -> Color Scheme -> Rainbow Brackets -> Scheme`) the color number is 10, for the other scheme the number is 5, if your number is bigger than the number, you can config them in the config file.
-If the color is not exist, we will use color generator to generator it for you.
+NOTE: For the default and Darcula color scheme(`Editor -> Color Scheme -> Rainbow Brackets -> Scheme`) the color number is 10, for the other scheme the number is 5, if your number is bigger than the number, you can config them in the config file.
+If the color does not exist, we will use the color generator to generate it for you.
 
-## Use color generator
+## Use the color generator
 
-If you didn't like the build-in colors, or want some new color but don't want to try out and pick colors. Please use color generator.
+If you didn't like the built-in colors or want some new colors but don't want to try out and pick colors. Please use the color generator.
 
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > <kbd>Use color generator</kbd>
 
-If you turn on this option, we will auto generate some colors for you.
+If you turn on this option, we will auto-generate some colors for you.
 
-### Advanced options of color generator
+### Advanced options for color generator
 
 <img width="749" alt="image" src="https://user-images.githubusercontent.com/12044174/202852094-2da6945b-598e-4def-ab0c-331abdd6d3f8.png">
 
-```hue``` – Controls the hue of the generated color. You can pass a string representing a color name: ```red```, ```orange```, ```yellow```, ```green```, ```blue```, ```purple```, ```pink``` and ```monochrome``` are currently supported. If you pass a  hexidecimal color string such as ```#00FFFF```, color generator will extract its hue value and use that to generate colors.
+```hue``` – Controls the hue of the generated color. You can pass a string representing a color name: ```red```, ```orange```, ```yellow```, ```green```, ```blue```, ```purple```, ```pink``` and ```monochrome``` are currently supported. If you pass a  hexidecimal color string such as ```#00FFFF```, the color generator will extract its hue value and use that to generate colors.
 
 ```luminosity``` – Controls the luminosity of the generated color. You can specify a string containing ```bright```, ```light``` or ```dark```.
 
 ## Config file path
 
-If you want to customize the advanced configuration, you could edit the config file then restart your IDE. 
-Config file path in `APP_CONFIG/rainbow_brackets.xml`. 
+If you want to customize the advanced configuration, you could edit the config file and then restart your IDE. 
+The config file path is in `APP_CONFIG/rainbow_brackets.xml`. 
 
 In MAC OS env maybe like `~/Library/Preferences/IntelliJIdea2020.2/options/rainbow_brackets.xml`.
 
@@ -231,11 +231,11 @@ var html = '<div><div><div>Hello</div></div></div>';
 ```
 
 This plugin will automatically override color scheme property "HTML_CODE" [cause our rainbow color been covered by intellij built-in functionality](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360000117450-My-HighlightVisitor-been-covered-by-intellij-built-in-functionality).
-You still could set `<option name="rainbowifyHTMLInsideJS" value="false" />` in config file to disable.
+You still could set `<option name="rainbowifyHTMLInsideJS" value="false" />` in the config file to disable.
 
 ## Kotlin function literal braces and arrow
 
-To enable rainbow brackets for multiple level lambda Kotlin code like this:
+To enable rainbow brackets for multiple-level lambda Kotlin code like this:
 
 ```kotlin
 event.throwable?.let { throwable ->
@@ -250,8 +250,8 @@ event.throwable?.let { throwable ->
 }
 ```
 
-This plugin will automatically override color scheme property "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color is being covered by kotlin plugin built-in functionality.
-You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow" value="false" />` in config file to disable.
+This plugin will automatically override the color scheme property "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color is being covered by the Kotlin plugin's built-in functionality.
+You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow" value="false" />` in the config file to disable.
 
 ## Disable rainbow brackets for specific languages
 
@@ -272,7 +272,7 @@ You can support us by the following actions:
 * Tell us your ideas
 * Become a sponsor by donating on [Open Collective](https://opencollective.com/intellij-rainbow-brackets)
 * Become a sponsor by donating with AliPay or WeChatPay
-* Don't want to use AliPay's mobile App? If you could read Chinese, please use [the official website](https://shenghuo.alipay.com/send/payment/fill.htm) to transfer your donation to my Alipay account(izhangzhihao@hotmail.com). Otherwise, you can try [the English version of Alipay](https://global.alipay.com/) to transfer your donation.
+* Don't want to use Alipay's mobile App? If you could read Chinese, please use [the official website](https://shenghuo.alipay.com/send/payment/fill.htm) to transfer your donation to my Alipay account(izhangzhihao@hotmail.com). Otherwise, you can try [the English version of Alipay](https://global.alipay.com/) to transfer your donation.
 
 <table>
   <tr>
