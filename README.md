@@ -120,6 +120,9 @@ For Mac - <kbd>IntelliJ IDEA</kbd> > <kbd>Preferences</kbd> > <kbd>Plugins</kbd>
 
 <img width="640" alt="python" src="https://user-images.githubusercontent.com/12044174/218252230-5e21ef7c-acc4-49be-80ff-8c8ed11538ad.png">
 
+<img width="640" alt="image" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/e6fc7fe6-7cb5-448f-87f2-5411038fe32c">
+
+
 ### Pug/Jade
 
 <img width="640" alt="pug" src="https://user-images.githubusercontent.com/12044174/218252187-1d581616-1b4a-4654-8d97-5fe9e9a505cf.png">
