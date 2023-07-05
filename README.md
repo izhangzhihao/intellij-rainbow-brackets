@@ -5,7 +5,7 @@
     </a>
 </div>
 <h1 align="center">Intellij rainbow brackets</h1>
-<p align="center">🌈Rainbow Brackets for IntelliJ based IDEs/Android Studio/HUAWEI DevEco Studio.</p>
+<p align="center">🌈Rainbow Brackets for IntelliJ-based IDEs/Android Studio/HUAWEI DevEco Studio.</p>
 
 <p align="center">
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/r/stars/10080?style=flat-square"></a>
@@ -17,24 +17,34 @@
 
 <br>
 
+# Table of contents
+
 - [Change log](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/CHANGELOG.md#change-log)
+- [Core Features](#core-features)
 - [Compatibility](#compatibility)
 - [Supported languages](#supported-languages)
-- [Author's choice](#authors-choice)
 - [Free features are Sponsored By CodeStream](#free-features-are-sponsored-by-codestream)
-- [Rainbow Brackets Lite](#rainbow-brackets-lite)
 - [Install](#install)
 - [Screenshots](#screenshots)
-- [Customize colors](#customize-colors)
-- [Use color generator](#use-color-generator)
 - [Config file path](#config-file-path)
-- [HTML code in js](#html-code-in-js)
-- [Kotlin function literal braces and arrow](#kotlin-function-literal-braces-and-arrow)
-- [Disable rainbow brackets for specific languages](#disable-rainbow-brackets-for-specific-languages)
-- [Support Us](#support-us)
-- [Backers](#backers)
-- [Sponsors](#sponsors)
-- [Acknowledgements](#acknowledgements)
+- [Rainbow Brackets Lite](#rainbow-brackets-lite)
+
+## Core features
+
+<li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#java">Rainbowify various types brackets(Round,Squiggly,Square,Angle)</a></li>
+        <li><a href="https://www.youtube.com/watch?v=8WRH59PQ5Dk">Rainbowify variables for more languages & config colors using color generator </a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#indent-highlighting">Rainbowify indent guidelines</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#scope-highlighting">Scope highlighting</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#htmlxml">Rainbowify tag name for XML/HTML</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#yaml">Rainbowify attribute name for YAML/JSON</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#customize-colors">Customize colors</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#use-color-generator">Color generator</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#javascript--typescript">JSX support</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#python">Rainbowify Python keywords & indent guidelines</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2643">Scope highlighting for Python</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2644">Current Block Highlighting</a></li>
+        <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#disable-rainbow-brackets-for-specific-languages">Block list support</a></li>
+        <br/>
 
 ## Compatibility
 
@@ -42,11 +52,7 @@ IntelliJ IDEA, PhpStorm, WebStorm, PyCharm, RubyMine, AppCode, CLion, Gogland, D
 
 ## Supported languages
 
-Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language, C#, F#, Dart, Pug/Jade, Bash, Vue.js, C# Razor Pages, GLSL(the OpenGL Shading Language), Go Template, C++, C, Solidity...
-
-## Author's choice
-
-Rainbow Brackets + One Dark Theme + Nyan Progress Bar + [Fira Code](https://github.com/tonsky/FiraCode) (Font)
+Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby, Elixir, Objective-C, PHP, HTML, XML, SQL, Apex language, C#, F#, Dart, Pug/Jade, Bash, Vue.js, C# Razor Pages, GLSL(the OpenGL Shading Language), Go Template, C++, C, Solidity...
 
 ## Free features are Sponsored By [CodeStream](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)
 
@@ -54,16 +60,6 @@ Rainbow Brackets + One Dark Theme + Nyan Progress Bar + [Fira Code](https://gith
 
 Eliminate context switching and costly distractions. Create and merge PRs and perform code reviews from inside your IDE while using jump-to-definition, your keybindings, and other IDE favorites. [Learn more](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner)!
 
-
-## Rainbow Brackets Lite
-
-This repo is using to compile a fully free version of our product for the community to use. This is because some users do not need the paid features and do not want to constantly update their software. An open-source, fully free, and stable version is a good option for these users.
-
-I believe this will benefit both the community and our team. The community will have access to a free version of our software, and our team will continue to receive support from those who appreciate and value the paid features.
-
-Please download the Lite version [here](https://plugins.jetbrains.com/plugin/20710).
-
-**NOTE: the lite version does NOT support C# lang and NOT support C++ in the Rider IDE**
 
 ## Install
 
@@ -226,9 +222,9 @@ In Linux env maybe like `~/.IntelliJIdea/config/options/rainbow_brackets.xml`.
 
 In Windows env maybe like `C:\Users\izhangzhihao\.IntelliJIdea2020.2\config\options\rainbow_brackets.xml`.
 
-## HTML code in js
+## JSX support
 
-To enable rainbow brackets for HTML inside js code like this:
+To enable rainbow brackets for JSX like this:
 
 ```javascript
 var html = '<div><div><div>Hello</div></div></div>';
@@ -328,6 +324,16 @@ Support this project by becoming a sponsor! 🌈 Your logo will show up here wit
 <a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/13/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/13/avatar.svg"></a>
 <a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/14/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/14/avatar.svg"></a>
 <a href="https://opencollective.com/intellij-rainbow-brackets/sponsor/15/website" target="_blank"><img src="https://opencollective.com/intellij-rainbow-brackets/sponsor/15/avatar.svg"></a>
+
+## Rainbow Brackets Lite
+
+This repo is used to compile a fully free version of our product for the community to use. This is because some users do not need the paid features and do not want to constantly update their software. An open-source, entirely free, and stable version is a good option for these users.
+
+I believe this will benefit both the community and our team. The community will have access to a free version of our software, and our team will continue to receive support from those who appreciate and value the paid features.
+
+Please download the Lite version [here](https://plugins.jetbrains.com/plugin/20710).
+
+**NOTE: the lite version does NOT support C# lang and NOT support C++ in the Rider IDE**
 
 ## Acknowledgements
 
