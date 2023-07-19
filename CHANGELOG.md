@@ -41,6 +41,14 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2023.3.2</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2644#discussioncomment-6459959">New option for Current Block Highlighting: Border Highlighting</a></li>
+            <li>Fix scope highlighting logic when click empty lines out of scope.</li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2640">Settings don't persist across IDE restarts</a></li>
+        </ul>
+        <br/>
+
 <p>2023.3.1</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2643">Support Scope Highlighting for Python</a></li>
