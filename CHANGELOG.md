@@ -43,6 +43,16 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2023.3.3</p>
+        <ul>
+            <li>Re-designed setting page, now options are well categorized and easy to find.</li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2653">Option to adjust effect of scope and border highlighting</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2647">Could not type Chinese in comments after set Current scope highlight option as Border</a></li>
+            <li>Add option to disable the Reader Mode(from IDE 231, the implementation from JB is weird and buggy and lacks of compatibility considerations.</li>
+            <li>Add more options to the setting page: Rainbowify JSX/Rainbowify Kotlin label/Rainbowify Kotlin function literal's braces and arrow</li>
+        </ul>
+        <br/>
+
 <p>2023.3.2</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2644#discussioncomment-6459959">New option for Current Block Highlighting: Border Highlighting</a></li>
