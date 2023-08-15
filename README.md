@@ -145,7 +145,7 @@ options:
 
 * Only selected indent guide(free)
 
-highlighting indent guide line only when you select this indent line
+highlighting indent guideline only when you select this indent line
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/12044174/229687079-6b66e842-7d60-426e-9741-9685f8d078aa.png">
 
 * Only current indent guide
@@ -189,7 +189,7 @@ NOTE: <kbd>Button3</kbd> means "Secondary Click (click or tap with two fingers)"
 
 ## Config the number of colors?
 
-<kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > `Number of colors`: 5 or more
+<kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > <kbd>Color</kbd> > `Number of colors`: 5 or more
 
 And you can use the color generator and config your number of colors at the same time.
 
@@ -200,7 +200,7 @@ If the color does not exist, we will use the color generator to generate it for 
 
 If you didn't like the built-in colors or want some new colors but don't want to try out and pick colors. Please use the color generator.
 
-<kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > <kbd>Use color generator</kbd>
+<kbd>Settings/Preferences</kbd> > <kbd>Rainbow Brackets</kbd> > <kbd>Color</kbd> > <kbd>Use color generator</kbd>
 
 If you turn on this option, we will auto-generate some colors for you.
 
@@ -234,7 +234,7 @@ var html = '<div><div><div>Hello</div></div></div>';
 ```
 
 This plugin will automatically override color scheme property "HTML_CODE" [cause our rainbow color been covered by intellij built-in functionality](https://intellij-support.jetbrains.com/hc/en-us/community/posts/360000117450-My-HighlightVisitor-been-covered-by-intellij-built-in-functionality).
-You still could set `<option name="rainbowifyHTMLInsideJS" value="false" />` in the config file to disable.
+You still could set <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > <kbd>Language Specific</kbd> > <kbd>Rainbowify JSX</kbd> in the config file to disable.
 
 ## Kotlin function literal braces and arrow
 
@@ -254,7 +254,7 @@ event.throwable?.let { throwable ->
 ```
 
 This plugin will automatically override the color scheme property "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW" cause our rainbow color is being covered by the Kotlin plugin's built-in functionality.
-You still could set `<option name="rainbowifyKotlinFunctionLiteralBracesAndArrow" value="false" />` in the config file to disable.
+You still could set <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Brackets</kbd> > <kbd>Language Specific</kbd> > <kbd>Rainbowify Kotlin function literal braces and arrow</kbd> in the config page to disable.
 
 ## Disable rainbow brackets for specific languages
 
