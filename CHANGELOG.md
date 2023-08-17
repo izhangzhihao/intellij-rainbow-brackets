@@ -12,6 +12,7 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30 days tri
 ## Paid features
 
 <ul dir="auto">
+<li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2653">Option to adjust effect of scope/border/restrain highlighting</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2643">Support Scope Highlighting for Python</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2644">Current Block Highlighting(experimental)</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#yaml">Rainbowify YAML tags</a></li>
@@ -24,8 +25,7 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30 days tri
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#customize-colors">Config up to 10 colors in config panel</a></li>
             <li>C# support(Rainbow Brackets and variables)</li>
             <li><a href='https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/186'>F# support(Rainbow Brackets and variables, requires Rider 2023.2 or above)</a></li>
-            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424#issuecomment-1377176193">C++ support in Rider IDE</a></li>
-</ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424#issuecomment-1377176193">C++ support in Rider IDE</a></li></ul>
 
 ## What effect on me?
 
