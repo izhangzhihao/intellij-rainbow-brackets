@@ -12,6 +12,7 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30 days tri
 ## Paid features
 
 <ul dir="auto">
+<li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#yaml">Highlighting indent guide-lines for YAML</a></li>
 <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2653">Option to adjust effect of scope/border/restrain highlighting</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2643">Support Scope Highlighting for Python</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2644">Current Block Highlighting(experimental)</a></li>
