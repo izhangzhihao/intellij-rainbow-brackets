@@ -44,6 +44,17 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2023.3.4</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2651">support rainbow indent at yaml file</a></li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2657">Add match-case highlighting for Python</a></li>
+            <li>Fix issue when switch highlighting current block options.</li>
+            <li>Option to adjust effect of restrain highlighting.</li>
+            <li>Option to keep code original colors in restrain highlighting.</li>
+        </ul>
+        <br/>
+
+
 <p>2023.3.3</p>
         <ul>
             <li>Re-designed setting page, now options are well categorized and easy to find.</li>
