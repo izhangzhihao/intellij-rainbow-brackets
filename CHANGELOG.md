@@ -44,6 +44,17 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2023.3.5</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2670">Automatically re-generate colors when Scheme changed and Color Generator enabled</a></li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2660">Show generated rainbow variables colors in the color scheme page</a></li>
+            <li>Option to re-generate colors for the Color Generator without restart the IDE.</li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2664">Cannot disable rainbowify for pug files</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2661">YAML tags don't get rainbowified</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2672">IDE freezes caused by color generator</a></li>
+        </ul>
+        <br/>
+
 <p>2023.3.4</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2651">support rainbow indent at yaml file</a></li>
