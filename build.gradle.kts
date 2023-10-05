@@ -13,7 +13,7 @@ val publishChannels: String by project
 plugins {
     id("org.jetbrains.intellij") version "1.9.0"
     id("com.adarshr.test-logger") version "3.2.0"
-    id("org.jetbrains.kotlin.jvm") version "1.7.20"
+    id("org.jetbrains.kotlin.jvm") version "1.8.21"
     id("idea")
 }
 
@@ -38,22 +38,22 @@ intellij {
         listOf(
             "java",
             "java-i18n",
-            "JavaScriptLanguage",
+            "JavaScript",
             "DatabaseTools",
-            "CSS",
+            "com.intellij.css",
             "platform-images",
             "Groovy",
             "properties",
             "yaml",
-            "org.jetbrains.kotlin:203-$kotlinVersion-release-IJ5981.133-1",
-            "org.intellij.scala:2020.3.21",
-            "Dart:203.5981.155",
-            "org.jetbrains.plugins.ruby:203.5981.155",
-            "com.jetbrains.php:203.5981.155",
-            "com.jetbrains.sh:203.5981.37",
-            "com.jetbrains.plugins.jade:203.5981.155",
-            "org.jetbrains.plugins.go-template:203.5981.155",
-            "Pythonid:203.5981.155",
+            "org.jetbrains.kotlin:223-$kotlinVersion-release-380-IJ8836.35",
+            "org.intellij.scala:2022.3.20",
+            "Dart:223.8950",
+            "org.jetbrains.plugins.ruby:223.8836.39",
+            "com.jetbrains.php:223.8836.42",
+            "com.jetbrains.sh:223.7571.125",
+            "com.jetbrains.plugins.jade:223.7571.117",
+            "org.jetbrains.plugins.go-template:223.7571.203",
+            "Pythonid:223.8836.41",
         )
     )
 }

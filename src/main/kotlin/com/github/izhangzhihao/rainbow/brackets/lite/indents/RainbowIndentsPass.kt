@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets.lite.indents
 
+import com.github.izhangzhihao.rainbow.brackets.lite.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.lite.settings.RainbowSettings
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.codeInsight.highlighting.BraceMatchingUtil
@@ -40,6 +41,8 @@ class RainbowIndentsPass internal constructor(
         private val myFile: PsiFile
 ) : TextEditorHighlightingPass(project, editor.document, false), DumbAware {
 
+    private val rangesWithRainbowInfo = mutableMapOf<TextRange, RainbowInfo?>()
+
     private val myEditor: EditorEx = editor as EditorEx
 
     @Volatile
@@ -62,7 +65,9 @@ class RainbowIndentsPass internal constructor(
             } else {
                 document.textLength
             }
-            ranges.add(TextRange(document.getLineStartOffset(descriptor.startLine), endOffset))
+            val textRange = TextRange(document.getLineStartOffset(descriptor.startLine), endOffset)
+            ranges.add(textRange)
+            rangesWithRainbowInfo[textRange] = RainbowIndentGuideRenderer.getRainbowInfo(this.myEditor, textRange)
         }
 
         Collections.sort(ranges, Segment.BY_START_OFFSET_THEN_END_OFFSET)
@@ -108,7 +113,7 @@ class RainbowIndentsPass internal constructor(
                 val cmp = compare(range, highlighter)
                 when {
                     cmp < 0 -> {
-                        newHighlighters.add(createHighlighter(mm, range))
+                        newHighlighters.add(createHighlighter(mm, range, this.rangesWithRainbowInfo))
                         curRange++
                     }
                     cmp > 0 -> {
@@ -134,7 +139,7 @@ class RainbowIndentsPass internal constructor(
         val startRangeIndex = curRange
         DocumentUtil.executeInBulk(document, myRanges.size > 10000) {
             for (i in startRangeIndex until myRanges.size) {
-                newHighlighters.add(createHighlighter(mm, myRanges[i]))
+                newHighlighters.add(createHighlighter(mm, myRanges[i], this.rangesWithRainbowInfo))
             }
         }
 
@@ -333,13 +338,11 @@ class RainbowIndentsPass internal constructor(
         private val INDENT_HIGHLIGHTERS_IN_EDITOR_KEY = Key.create<MutableList<RangeHighlighter>>("_INDENT_HIGHLIGHTERS_IN_EDITOR_KEY_")
         private val LAST_TIME_INDENTS_BUILT = Key.create<Long>("_LAST_TIME_INDENTS_BUILT_")
 
-        private val RENDERER = RainbowIndentGuideRenderer()
-
         private fun isRainbowIndentGuidesShown(): Boolean {
             return RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
         }
 
-        private fun createHighlighter(mm: MarkupModel, range: TextRange): RangeHighlighter {
+        private fun createHighlighter(mm: MarkupModel, range: TextRange, rangesWithRainbowInfo: MutableMap<TextRange, RainbowInfo?>): RangeHighlighter {
             return mm.addRangeHighlighter(
                     range.startOffset,
                     range.endOffset,
@@ -347,7 +350,7 @@ class RainbowIndentsPass internal constructor(
                     null,
                     HighlighterTargetArea.EXACT_RANGE
             ).apply {
-                customRenderer = RENDERER
+                customRenderer = RainbowIndentGuideRenderer(rangesWithRainbowInfo)
             }
         }
 

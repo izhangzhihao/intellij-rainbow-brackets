@@ -40,6 +40,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1.0</p>
+        <ul>
+            <li>Compatiable with 2023.3</li>
+        </ul>
         <p>1.0.1</p>
         <ul>
             <li>Bug fix and code refactor</li>
@@ -52,7 +56,7 @@
     </change-notes>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-    <idea-version since-build="203" until-build="222.*"/>
+    <idea-version since-build="223"/>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->

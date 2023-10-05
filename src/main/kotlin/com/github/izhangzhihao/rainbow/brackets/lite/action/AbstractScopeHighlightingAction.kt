@@ -8,6 +8,7 @@ import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.markup.RangeHighlighter
 import com.intellij.openapi.editor.textarea.TextComponentEditor
+import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.util.Key
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiElement
@@ -22,6 +23,10 @@ abstract class AbstractScopeHighlightingAction : AnAction() {
 
     final override fun update(e: AnActionEvent) {
         e.presentation.isEnabledAndVisible = e.editor.let { it != null && it !is TextComponentEditor }
+    }
+
+    override fun getActionUpdateThread(): ActionUpdateThread {
+        return ActionUpdateThread.BGT
     }
 
     final override fun actionPerformed(e: AnActionEvent) {
