@@ -19,7 +19,7 @@
 
 # Table of contents
 
-- [Change log](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/CHANGELOG.md#change-log)
+- [Change log](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2022.3/CHANGELOG.md#change-log)
 - [Core Features](#core-features)
 - [Compatibility](#compatibility)
 - [Supported languages](#supported-languages)
