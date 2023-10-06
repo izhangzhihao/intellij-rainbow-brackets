@@ -44,6 +44,13 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2023.3.6</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2673">Compatible with 2023.3: SlowOperation assertion in paintCustomRenderers</a></li>
+            <li>Fix the color generator in some cases.</li>
+        </ul>
+        <br/>
+
 <p>2023.3.5</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2670">Automatically re-generate colors when Scheme changed and Color Generator enabled</a></li>
