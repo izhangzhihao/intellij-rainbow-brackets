@@ -44,6 +44,13 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2023.3.7</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2677">Jinja2 Template support</a></li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2680">rainbow indent disappeared after editing code</a></li>
+        </ul>
+        <br/>
+
 <p>2023.3.6</p>
         <ul>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2673">Compatible with 2023.3: SlowOperation assertion in paintCustomRenderers</a></li>
