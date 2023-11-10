@@ -4,16 +4,17 @@ Since IntelliJ platform 2022.3, Rainbow Brackets has marked a "Freemium". Existi
 
 之前的功能仍然免费！只有新增加的高阶功能是付费的，不付费仍然可以使用。
 
-All features which are inside GitHub are free to use unless it needs lots of time to develop(e.g. Supporting new languages, Supporting old frameworks, etc.).
+All features that are inside GitHub are free to use unless they need lots of time to develop(e.g. Supporting new languages, Supporting old frameworks, etc.).
 Non-free features are flagged with [paid] inside the changelog.
-A license can be bought at JetBrains Marketplace. And everyone has a 30 days trial license. Please try it before you buy it.
+A license can be bought at JetBrains Marketplace. And everyone has a 30-day trial license. Please try it before you buy it.
 **If you already contributed to this project(by writing PR or financial contribution), you can get a free license by contacting me at izhangzhihao@hotmail.com**
 
 ## Paid features
 
 <ul dir="auto">
+<li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2677">Jinja2 Template support</a></li>
 <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#yaml">Highlighting indent guide-lines for YAML</a></li>
-<li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2653">Option to adjust effect of scope/border/restrain highlighting</a></li>
+<li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2653">Option to adjust the effect of scope/border/restrain highlighting</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2643">Support Scope Highlighting for Python</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2644">Current Block Highlighting(experimental)</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#yaml">Rainbowify YAML tags</a></li>
@@ -43,6 +44,13 @@ Please check out [our plans for paid plugin](https://github.com/izhangzhihao/int
 Please check the latest screenshots [here](https://github.com/izhangzhihao/intellij-rainbow-brackets#screenshots).
 
 ## Change log
+
+<p dir="auto">2023.3.8</p>
+                <ul dir="auto">
+                    <li>Fix C# support in Rider 2023.3 EAP</li>
+                    <li>Fix Jinja support in PyCharm/Python plugin 2023.3 EAP</li>
+                </ul>
+                <br/>
 
 <p>2023.3.7</p>
         <ul>
