@@ -1,14 +1,3 @@
-## What happened?
-
-Since IntelliJ platform 2022.3, Rainbow Brackets has marked a "Freemium". Existing features before version 2022.3.1 are still FREE.
-
-之前的功能仍然免费！只有新增加的高阶功能是付费的，不付费仍然可以使用。
-
-All features that are inside GitHub are free to use unless they need lots of time to develop(e.g. Supporting new languages, Supporting old frameworks, etc.).
-Non-free features are flagged with [paid] inside the changelog.
-A license can be bought at JetBrains Marketplace. And everyone has a 30-day trial license. Please try it before you buy it.
-**If you already contributed to this project(by writing PR or financial contribution), you can get a free license by contacting me at izhangzhihao@hotmail.com**
-
 ## Paid features
 
 <ul dir="auto">
@@ -29,24 +18,15 @@ A license can be bought at JetBrains Marketplace. And everyone has a 30-day tria
             <li><a href='https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/186'>F# support(Rainbow Brackets and variables, requires Rider 2023.2 or above)</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424#issuecomment-1377176193">C++ support in Rider IDE</a></li></ul>
 
-## What effect on me?
-
-If your daily features are not in the Paid features list, you don't need to worry about it.
-Otherwise, you can get a notification when you open a file that is not freely supported by this plugin.
-You can try to get a 30 days trial license, which has all same features as the paid license.
-
-## Future plans
-
-Please check out [our plans for paid plugin](https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2586).
-
 ## Screenshots
 
 Please check the latest screenshots [here](https://github.com/izhangzhihao/intellij-rainbow-brackets#screenshots).
 
 ## Change log
 
-<p dir="auto">2023.3.8</p>
+<p dir="auto">2023.3.9</p>
                 <ul dir="auto">
+                    <li>Add Clang/CPP/Objective-C related files support in Clion(Nova) 2023.3 EAP</li>
                     <li>Fix C# support in Rider 2023.3 EAP</li>
                     <li>Fix Jinja support in PyCharm/Python plugin 2023.3 EAP</li>
                 </ul>
