@@ -27,6 +27,7 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 <p dir="auto">2023.3.9</p>
                 <ul dir="auto">
                     <li>Add Clang/CPP/Objective-C related files support in Clion(Nova) 2023.3 EAP</li>
+                    <li>Fix Clang/CPP/Objective-C related files support in Rider</li>
                     <li>Fix C# support in Rider 2023.3 EAP</li>
                     <li>Fix Jinja support in PyCharm/Python plugin 2023.3 EAP</li>
                 </ul>
