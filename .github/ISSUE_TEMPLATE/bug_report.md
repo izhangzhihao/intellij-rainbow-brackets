@@ -1,58 +1,124 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: bug?
-assignees: ''
+name: Bug Report
+description: File a bug report
+labels: ["bug?"]
+body:
 
----
+  - type: input
+    id: lang
+    attributes:
+      label: Your programming languages
+      description: like Java, Python etc.
+    validations:
+       required: true
 
-Your issue may already be reported!
-Please search on the [issues](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues) and the [document](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md) and [discussions](https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions) before creating one.
+  - type: dropdown
+    id: user
+    attributes:
+      label: Free or paid?
+      options:
+        - Free users
+        - On trial
+        - Paid users
+        - Others
 
-## Please check
+  - type: textarea
+    id: exp
+    attributes:
+      label: Expected Behavior
+      description: what should happen
+    validations:
+      required: true
 
-- [ ] I already support this project.
-- [ ] I already paid for this plugin.
-- [ ] I'm on a trial of this plugin.
-- [ ] This issue/feature request is not reported before.
+  - type: textarea
+    id: act
+    attributes:
+      label: Current Behavior
+      description: what happens instead of the expected behavior
+    validations:
+      required: true
 
-## Your programming languages
+  - type: textarea
+    id: code
+    attributes:
+      label: Code snippet for reproduce
+      description: Please provide a sample code snippet for reproducing bugs.
+    validations:
+      required: true
 
-## Expected Behavior
-* If you're describing a bug, tell us what should happen
-* If you're suggesting a change/improvement, tell us how it should work
-
-## Current Behavior
-* If describing a bug, tell us what happens instead of the expected behavior
-* If suggesting a change/improvement, explain the difference from current behavior
-
-## Possible Solution
-Not obligatory, but suggest a fix/reason for the bug, or ideas how to implement the addition or change.
-Or what have you tried to resolve this issue.
-
-## Code snippet for reproduce (for bugs)
-Please provide code snippet for reproduce bugs.
-
-## Your Environment
-
-* Plugin version:
-* IDE & Operating System version, comment your env as below(go to "About IntelliJ IDEA" -> click the "copy" icon):
-* NOTE: If you are going to report a bug but WITHOUT your env information, your issue might be closed directly.
-
-```
-IntelliJ IDEA 2021.2 (Ultimate Edition)
-Build #IU-212.4746.92, built on July 27, 2021
-Licensed to IntelliJ Rainbow Brackets / Zhang Zhihao
-Subscription is active until February 3, 2022.
-For non-commercial open source development only.
-Runtime version: 11.0.11+9-b1504.13 x86_64
+  - type: textarea
+    id: env
+    attributes:
+      label: Your Environment
+      description: |
+IntelliJ IDEA 2023.3 Beta (Ultimate Edition)
+Build #IU-233.11799.6, built on November 9, 2023
+Runtime version: 17.0.9+7-b1087.3 x86_64
 VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o.
-macOS 11.4
+macOS 13.6.1
 GC: G1 Young Generation, G1 Old Generation
 Memory: 4096M
 Cores: 16
-Registry: ide.tooltip.initialDelay=900, ide.balloon.shadow.size=0, scala.erase.compiler.process.jdk.once=false
-Non-Bundled Plugins: com.intellij.properties.bundle.editor (212.4746.57), com.markskelton.one-dark-theme (5.3.0), lermitage.intellij.extra.icons (1.59.0.203), org.nik.presentation-assistant (1.0.9), kotest-plugin-intellij (1.1.36-IC-2021.1), Pythonid (212.4746.96), org.intellij.scala (2021.2.15), izhangzhihao.rainbow.brackets (6.19), com.intellij.bigdatatools (212.4037.55)
-Kotlin: 212-1.5.10-release-IJ4746.92
-```
+Metal Rendering is ON
+Registry:
+  ide.tooltip.initialDelay=900
+  ide.balloon.shadow.size=15
+  analyze.exceptions.on.the.fly=true
+  vcs.log.highlight.not.indexed=true
+  vcs.non.modal.post.commit.checks=false
+  ui.simplified=true
+  idea.true.smooth.scrolling.interpolation=true
+  ide.new.editor.tabs.vertical.borders=true
+  ide.error.reporter.group.reports=true
+  freeze.reporter.enabled=false
+  freeze.reporter.profiling=false
+  freeze.reporter.profiling.all.threads=false
+  search.everywhere.detect.slow.contributors=false
+  plugins.show.implementation.details=true
+  ide.project.frame.as.splash=true
+  ide.plugins.snapshot.on.unload.fail=true
+  ide.plugins.analyze.snapshot=false
+  ide.propagate.context=false
+  ide.experimental.ui=true
+  ea.enable.developers.list=false
+  ide.slow.operations.assertion=false
+  ide.slow.operations.assertion.action.update=false
+  ide.slow.operations.assertion.generic=false
+  ide.slow.operations.assertion.other=false
+  ide.show.plugins.in.editor=true
+  idea.ignore.disabled.plugins=true
+  scala.erase.compiler.process.jdk.once=false
+  database.introspection.mariadb.noGenExpr=false
+  database.introspection.mysql.dbe5060=false
+  diagrams.rendering.antialiasing=false
+  ide.images.show.chessboard=true
+Non-Bundled Plugins:
+  com.github.izhangzhihao.idefeaturesmanager (2023.3.4)
+  PsiViewer (233.2)
+  de.femtopedia.diffplugin (2.1.12)
+  com.github.copilot (1.4.0.3748)
+  lermitage.intellij.extratci (1.27.0)
+  com.github.izhangzhihao.intellijgooglesearch (0.0.2)
+  sandipchitale.select-in-vscode (1.0.5)
+  org.nik.presentation-assistant (1.0.10)
+  org.OverEngineer.InlineProblems (0.5.0)
+  String Manipulation (9.11.3)
+  Key Promoter X (2023.3.0)
+  GrepConsole (12.22.1-IJ2021.1)
+  com.virtuslab.git-machete (4.1.0)
+  Pythonid (233.11799.6)
+  izhangzhihao.rainbow.brackets (2023.3.9-233)
+  com.clutcher.comments_highlighter (2023.8.4)
+  com.intellij.bigdatatools.core (233.11799.6)
+  com.intellij.bigdatatools.kafka (233.11799.6)
+  com.intellij.bigdatatools.binary.files (233.11799.6)
+  com.github.dinbtechit.vscodetheme (1.10.7)
+  com.github.izhangzhihao.vscodepack (0.0.3)
+  com.mallowigi (94.1.0)
+  zielu.gittoolbox (500.0.22+222)
+  org.intellij.scala (2023.3.10)
+Kotlin: 233-1.9.0-release-358-IJ11799.6
+        
+        *This will be automatically formatted into code, so there is no need for backticks.*
+      render: shell
+    validations:
+      required: true
