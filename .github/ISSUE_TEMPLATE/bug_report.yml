@@ -6,7 +6,7 @@ body:
   - type: dropdown
     id: new
     attributes:
-      label: Have you checked the [issues](https://github.com/izhangzhihao/intellij-rainbow-brackets/issues) and [discussions](https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions) to ensure there are no duplicates?
+      label: Have you checked the issues and discussions to ensure there are no duplicates?
       options:
         - No
         - Yes
