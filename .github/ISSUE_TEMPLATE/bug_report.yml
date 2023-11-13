@@ -50,73 +50,73 @@ body:
     attributes:
       label: Your Environment
       description: |
-IntelliJ IDEA 2023.3 Beta (Ultimate Edition)
-Build #IU-233.11799.6, built on November 9, 2023
-Runtime version: 17.0.9+7-b1087.3 x86_64
-VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o.
-macOS 13.6.1
-GC: G1 Young Generation, G1 Old Generation
-Memory: 4096M
-Cores: 16
-Metal Rendering is ON
-Registry:
-  ide.tooltip.initialDelay=900
-  ide.balloon.shadow.size=15
-  analyze.exceptions.on.the.fly=true
-  vcs.log.highlight.not.indexed=true
-  vcs.non.modal.post.commit.checks=false
-  ui.simplified=true
-  idea.true.smooth.scrolling.interpolation=true
-  ide.new.editor.tabs.vertical.borders=true
-  ide.error.reporter.group.reports=true
-  freeze.reporter.enabled=false
-  freeze.reporter.profiling=false
-  freeze.reporter.profiling.all.threads=false
-  search.everywhere.detect.slow.contributors=false
-  plugins.show.implementation.details=true
-  ide.project.frame.as.splash=true
-  ide.plugins.snapshot.on.unload.fail=true
-  ide.plugins.analyze.snapshot=false
-  ide.propagate.context=false
-  ide.experimental.ui=true
-  ea.enable.developers.list=false
-  ide.slow.operations.assertion=false
-  ide.slow.operations.assertion.action.update=false
-  ide.slow.operations.assertion.generic=false
-  ide.slow.operations.assertion.other=false
-  ide.show.plugins.in.editor=true
-  idea.ignore.disabled.plugins=true
-  scala.erase.compiler.process.jdk.once=false
-  database.introspection.mariadb.noGenExpr=false
-  database.introspection.mysql.dbe5060=false
-  diagrams.rendering.antialiasing=false
-  ide.images.show.chessboard=true
-Non-Bundled Plugins:
-  com.github.izhangzhihao.idefeaturesmanager (2023.3.4)
-  PsiViewer (233.2)
-  de.femtopedia.diffplugin (2.1.12)
-  com.github.copilot (1.4.0.3748)
-  lermitage.intellij.extratci (1.27.0)
-  com.github.izhangzhihao.intellijgooglesearch (0.0.2)
-  sandipchitale.select-in-vscode (1.0.5)
-  org.nik.presentation-assistant (1.0.10)
-  org.OverEngineer.InlineProblems (0.5.0)
-  String Manipulation (9.11.3)
-  Key Promoter X (2023.3.0)
-  GrepConsole (12.22.1-IJ2021.1)
-  com.virtuslab.git-machete (4.1.0)
-  Pythonid (233.11799.6)
-  izhangzhihao.rainbow.brackets (2023.3.9-233)
-  com.clutcher.comments_highlighter (2023.8.4)
-  com.intellij.bigdatatools.core (233.11799.6)
-  com.intellij.bigdatatools.kafka (233.11799.6)
-  com.intellij.bigdatatools.binary.files (233.11799.6)
-  com.github.dinbtechit.vscodetheme (1.10.7)
-  com.github.izhangzhihao.vscodepack (0.0.3)
-  com.mallowigi (94.1.0)
-  zielu.gittoolbox (500.0.22+222)
-  org.intellij.scala (2023.3.10)
-Kotlin: 233-1.9.0-release-358-IJ11799.6
+        IntelliJ IDEA 2023.3 Beta (Ultimate Edition)
+        Build #IU-233.11799.6, built on November 9, 2023
+        Runtime version: 17.0.9+7-b1087.3 x86_64
+        VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o.
+        macOS 13.6.1
+        GC: G1 Young Generation, G1 Old Generation
+        Memory: 4096M
+        Cores: 16
+        Metal Rendering is ON
+        Registry:
+          ide.tooltip.initialDelay=900
+          ide.balloon.shadow.size=15
+          analyze.exceptions.on.the.fly=true
+          vcs.log.highlight.not.indexed=true
+          vcs.non.modal.post.commit.checks=false
+          ui.simplified=true
+          idea.true.smooth.scrolling.interpolation=true
+          ide.new.editor.tabs.vertical.borders=true
+          ide.error.reporter.group.reports=true
+          freeze.reporter.enabled=false
+          freeze.reporter.profiling=false
+          freeze.reporter.profiling.all.threads=false
+          search.everywhere.detect.slow.contributors=false
+          plugins.show.implementation.details=true
+          ide.project.frame.as.splash=true
+          ide.plugins.snapshot.on.unload.fail=true
+          ide.plugins.analyze.snapshot=false
+          ide.propagate.context=false
+          ide.experimental.ui=true
+          ea.enable.developers.list=false
+          ide.slow.operations.assertion=false
+          ide.slow.operations.assertion.action.update=false
+          ide.slow.operations.assertion.generic=false
+          ide.slow.operations.assertion.other=false
+          ide.show.plugins.in.editor=true
+          idea.ignore.disabled.plugins=true
+          scala.erase.compiler.process.jdk.once=false
+          database.introspection.mariadb.noGenExpr=false
+          database.introspection.mysql.dbe5060=false
+          diagrams.rendering.antialiasing=false
+          ide.images.show.chessboard=true
+        Non-Bundled Plugins:
+          com.github.izhangzhihao.idefeaturesmanager (2023.3.4)
+          PsiViewer (233.2)
+          de.femtopedia.diffplugin (2.1.12)
+          com.github.copilot (1.4.0.3748)
+          lermitage.intellij.extratci (1.27.0)
+          com.github.izhangzhihao.intellijgooglesearch (0.0.2)
+          sandipchitale.select-in-vscode (1.0.5)
+          org.nik.presentation-assistant (1.0.10)
+          org.OverEngineer.InlineProblems (0.5.0)
+          String Manipulation (9.11.3)
+          Key Promoter X (2023.3.0)
+          GrepConsole (12.22.1-IJ2021.1)
+          com.virtuslab.git-machete (4.1.0)
+          Pythonid (233.11799.6)
+          izhangzhihao.rainbow.brackets (2023.3.9-233)
+          com.clutcher.comments_highlighter (2023.8.4)
+          com.intellij.bigdatatools.core (233.11799.6)
+          com.intellij.bigdatatools.kafka (233.11799.6)
+          com.intellij.bigdatatools.binary.files (233.11799.6)
+          com.github.dinbtechit.vscodetheme (1.10.7)
+          com.github.izhangzhihao.vscodepack (0.0.3)
+          com.mallowigi (94.1.0)
+          zielu.gittoolbox (500.0.22+222)
+          org.intellij.scala (2023.3.10)
+          Kotlin: 233-1.9.0-release-358-IJ11799.6
         
         *This will be automatically formatted into code, so there is no need for backticks.*
       render: shell
