@@ -1,0 +1,56 @@
+name: Feature request
+description: Suggest an idea
+labels: ["feature request"]
+body:
+
+  - type: dropdown
+    id: new
+    attributes:
+      label: Have you checked the issues and discussions to ensure there are no duplicates?
+      options:
+        - 'No'
+        - 'Yes'
+    validations:
+       required: true
+
+  - type: input
+    id: lang
+    attributes:
+      label: Your programming languages
+      description: like Java, Python etc.
+    validations:
+       required: true
+
+  - type: dropdown
+    id: user
+    attributes:
+      label: Free or paid?
+      options:
+        - Free users
+        - On trial
+        - Paid users
+        - Others
+
+  - type: textarea
+    id: exp
+    attributes:
+      label: Expected Behavior
+      description: what should happen
+    validations:
+      required: true
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Code snippet for test
+      description: Please provide a sample code snippet.
+    validations:
+      required: true
+
+  - type: textarea
+    id: env
+    attributes:
+      label: Your Environment
+      description: Please Copy from your IDE's *About* page
+    validations:
+      required: true
