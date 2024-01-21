@@ -24,6 +24,20 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2024.2.0</p>
+        <ul>
+            <li>Fix an issue when the IDE is installed using Flatpak</li>
+        </ul>
+        <br/>
+
+        <p>2024.1.0</p>
+        <ul>
+            <li>Compatible with 2024.1 EAP</li>
+            <li>Fix Jinja support in Rider 2024.1 EAP</li>
+            <li>Support <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2652">Disable "What's new in Rainbow Brackets" via IDE configuration</a></li>
+        </ul>
+        <br/>
+
 <p dir="auto">2023.3.9</p>
                 <ul dir="auto">
                     <li>Add Clang/CPP/Objective-C related files support in Clion(Nova) 2023.3 EAP</li>
