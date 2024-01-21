@@ -30,7 +30,7 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
         </ul>
         <br/>
 
-        <p>2024.1.0</p>
+<p>2024.1.0</p>
         <ul>
             <li>Compatible with 2024.1 EAP</li>
             <li>Fix Jinja support in Rider 2024.1 EAP</li>
