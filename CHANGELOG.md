@@ -1,10 +1,10 @@
 ## Paid features
 
 <ul dir="auto">
+<li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2643">Support Scope Highlighting for Python/XML/HTML/Vue etc.</a></li>
 <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2677">Jinja2 Template support</a></li>
 <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2020.3/README.md#yaml">Highlighting indent guide-lines for YAML</a></li>
 <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2653">Option to adjust the effect of scope/border/restrain highlighting</a></li>
-            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2643">Support Scope Highlighting for Python</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2644">Current Block Highlighting(experimental)</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#yaml">Rainbowify YAML tags</a></li>
             <li><a href="https://user-images.githubusercontent.com/12044174/202852094-2da6945b-598e-4def-ab0c-331abdd6d3f8.png">Color generator for rainbow variables</a></li>
@@ -27,6 +27,8 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 <p>2024.2.0</p>
         <ul>
             <li>Fix an issue when the IDE is installed using Flatpak</li>
+                    <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2707">Jinja2 Mis-Paired Template Blocks</a></li>
+                    <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/discussions/2644">Advanced Scope Highlighting support for XML/HTML/Vue lang</a></li>
         </ul>
         <br/>
 
