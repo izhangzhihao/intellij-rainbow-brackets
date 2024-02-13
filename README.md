@@ -20,6 +20,7 @@
 # Table of contents
 
 - [Change log](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2022.3/CHANGELOG.md#change-log)
+- [Fleet Support](https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2022.3/Fleet.md)
 - [Core Features](#core-features)
 - [Compatibility](#compatibility)
 - [Supported languages](#supported-languages)
