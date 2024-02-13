@@ -1,3 +1,22 @@
+## Intro
+
+Basic features are available for Fleet IDE, https://plugins.jetbrains.com/plugin/23759-rainbow-brackets/
+If you think this plugin can help, consider donating at https://opencollective.com/intellij-rainbow-brackets/projects/fleet-support
+
+Here are some screenshots:
+
+<img width="867" alt="image" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/2ba7f3ed-f1f9-456c-837a-115f3ca94189">
+
+
+<img width="548" alt="image" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/a1019b99-271b-4851-81e7-39cebb42b01f">
+
+
+<img width="815" alt="image" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/28cb3b65-a595-46f7-9e46-52372dd2a888">
+
+
+<img width="930" alt="image" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/d86c0817-aeff-4e7e-8351-459102c344ed">
+
+
 ## Install Rainbow Brackets into your Fleet IDE and config it
 
 
@@ -16,7 +35,5 @@
 5. Choose your edited color theme(you may need to restart)
   <img width="809" alt="image" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/ff5ec052-478f-4654-a0fc-544c1eced1a1">
   <img width="855" alt="image" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/ef887365-5c41-40ec-a0f9-55fd7cdaa7b3">
-
-
 
 
