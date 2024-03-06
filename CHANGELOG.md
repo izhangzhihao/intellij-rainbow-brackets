@@ -24,6 +24,21 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p>2024.2.2</p>
+        <ul>
+            <li>🎉<a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2022.3/Fleet.md">Fleet Support</a></li>
+            <li>Compatible with 2024.1 EAP 6</li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2708">Make this plugin in-compatible with JetBrains Client / JetBrains Gateway(you only need this plugin installed on the HOST!)</a></li>
+            <li>Fix check logic of Scope Highlighting</li>
+        </ul>
+        <br/>
+
+<p>2024.2.1</p>
+        <ul>
+            <li>Fix an issue in community version of intellij</li>
+        </ul>
+        <br/>
+
 <p>2024.2.0</p>
         <ul>
             <li>Fix an issue when the IDE is installed using Flatpak</li>
