@@ -1,5 +1,3 @@
-## Note Fleet v1.32 is not supported yet, it will be available within two days.
-
 ## Intro
 
 Basic features are available for Fleet IDE, https://plugins.jetbrains.com/plugin/23759-rainbow-brackets/
