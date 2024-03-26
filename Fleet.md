@@ -19,7 +19,7 @@ Here are some screenshots:
 
 ## Install Rainbow Brackets into your Fleet IDE and config it
 
-0. Enable internal mode for Fleet: add "internalMode": true, into Fleet settings.json file
+1. Enable internal mode for Fleet: add "internalMode": true, into Fleet settings.json file
 
 <img width="368" alt="image" src="https://github.com/izhangzhihao/intellij-rainbow-brackets/assets/12044174/4e3037b8-7e3e-4854-b2ac-10c212018e80">
 
