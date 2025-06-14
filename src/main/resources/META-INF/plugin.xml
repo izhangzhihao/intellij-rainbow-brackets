@@ -1,35 +1,44 @@
-<idea-plugin require-restart="true">
-    <id>izhangzhihao.rainbow.brackets.lite</id>
-    <name>Rainbow Brackets Lite - Free and OpenSource</name>
+<idea-plugin>
+    <id>izhangzhihao.rainbow.brackets</id>
+    <name>Rainbow Brackets</name>
     <vendor email="izhangzhihao@hotmail.com" url="https://github.com/izhangzhihao">izhangzhihao</vendor>
 
     <description><![CDATA[
-        <strong>🌈Rainbow Brackets Lite for IntelliJ based IDEs/Android Studio/HUAWEI DevEco Studio</strong>
+        <strong>Rainbow Brackets / Rainbow Parentheses for IntelliJ based IDEs</strong>
+        <br/>
+
+        <b>Sponsors</b>
+        <br/>
+        <a href=https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner>
+            <img src=https://alt-images.codestream.com/codestream_logo_jbrainbowbrackets.png>
+        </a>
+        <br>Discussing code is now as easy as highlighting a block and typing a comment right from your IDE. Take the pain out of code reviews and improve code quality.
+        <a href=https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbrainbowbrackets&utm_medium=banner>Try it free!</a>
         <br/>
 
         <p>Supported languages:</p>
         <p>Java, Scala, Clojure, Kotlin, Python, Haskell, Agda, Rust, JavaScript, TypeScript, Erlang, Go, Groovy, Ruby,
-            Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language, Dart, Pug/Jade, Bash, Vue.js, GLSL(the OpenGL Shading Language), Go Template, C++, C...</p>
+            Elixir, ObjectiveC, PHP, HTML, XML, SQL, Apex language, C#, Dart ...</p>
         <br/>
-        <p>NOTE: If you need C# or C++ support in Rider IDE, these features are only available in the paid version. The Lite version does not include them. Upgrade to the paid version for full functionality</p>
+        <p>Author's choice：Rainbow Brackets + Material Theme UI(Oceanic theme) + Nyan Progress Bar + Fira Code(Font)</p>
         <br/>
         <p>
-            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/2020.2/screenshots/with-java.png"
+            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-java.png"
                  border="0" width="500" height="205" alt="with-java"/></p>
         <p>
-            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/2020.2/screenshots/with-material-theme-ui.png"
+            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-material-theme-ui.png"
                  border="0" width="500" height="167" alt="with-material-theme-ui.png"/></p>
         <p>
-            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/2020.2/screenshots/with-scala.png"
+            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-scala.png"
                  border="0" width="500" height="250" alt="with-scala"/></p>
         <p>
-            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/2020.2/screenshots/with-kotlin.png"
+            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-kotlin.png"
                  border="0" width="500" height="191" alt="with-kotlin"/></p>
         <p>
-            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/2020.2/screenshots/with-Clojure.png"
+            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-Clojure.png"
                  border="0" width="500" height="190" alt="with-Clojure.png"/></p>
         <p>
-            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/2020.2/screenshots/with-HTML.png"
+            <img src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/IC-2017.2/screenshots/with-HTML.png"
                  border="0" width="500" height="112" alt="with-HTML.png"/></p>
         <p>
             <img src="https://user-images.githubusercontent.com/10737066/40234968-46593fe2-5adb-11e8-8ea8-0026fad86ca9.gif"
@@ -40,67 +49,530 @@
         ]]></description>
 
     <change-notes><![CDATA[
-        <p>1.1.0</p>
+        <p>5.35</p>
         <ul>
-            <li>Compatiable with 2023.3</li>
+            <li>Final release of 2017.2 and Java 8! start from the next release, we will build against with 2020.1 and Java 11</li>
         </ul>
-        <p>1.0.1</p>
+        <br/>
+
+        <p>5.34</p>
         <ul>
-            <li>Bug fix and code refactor</li>
+            <li>Compatible with Material Theme UI Plugin</li>
+            <li>Fix typo</li>
         </ul>
-        <p>1.0.0</p>
+        <br/>
+
+        <p>5.33</p>
         <ul>
-            <li>Initial release for completely free lite version</li>
+            <li>Fix ArrayIndexOutOfBoundsException</li>
+        </ul>
+        <br/>
+
+        <p>5.32</p>
+        <ul>
+            <li>Feature #391: Support cycle color on all bracket types(new option `Cycle count on all bracket types`)</li>
+            <li>Fix ArrayIndexOutOfBoundsException</li>
+        </ul>
+        <br/>
+
+        <p>5.31</p>
+        <ul>
+            <li>#187 Feature: Ability to increase the number of colours in the IDE</li>
+            <li>#247 Feature: Add a button to apply the color code to all kind of brackets</li>
+            <li>#374 Feature: Add support for IntelliJ-Haskell</li>
+            <li>Fix #54: Disable rainbow for mxml files</li>
+            <li>Fix typo</li>
+        </ul>
+        <br/>
+
+        <p>5.30</p>
+        <ul>
+            <li>Rollback indent guides</li>
+        </ul>
+        <br/>
+
+        <p>5.29</p>
+        <ul>
+            <li>Compatible color schema with the latest version of material-theme-jetbrains</li>
+            <li>Fix some errors</li>
+        </ul>
+        <br/>
+
+        <p>5.28</p>
+        <ul>
+            <li>Improve error report</li>
+            <li>Fix some errors with Nginx plugin</li>
+        </ul>
+        <br/>
+
+        <p>5.27</p>
+        <ul>
+            <li>Improve rainbow indent guide lines</li>
+        </ul>
+        <br/>
+
+        <p>5.26</p>
+        <ul>
+            <li>Improve error report.</li>
+        </ul>
+        <br/>
+
+        <p>5.25</p>
+        <ul>
+            <li>Fix #259 Runtime error in rainbow indent guide lines.</li>
+        </ul>
+        <br/>
+
+        <p>5.24</p>
+        <ul>
+            <li>Fix #252 Runtime error in rainbow indent guide lines.</li>
+            <li>Fix #254 Nginx support is been disabled from now on.</li>
+            <li>Re-enable anonymous feedback</li>
+        </ul>
+        <br/>
+
+        <p>5.23</p>
+        <ul>
+            <li>#164 #251 New feature: Rainbow indent guide lines(experimental), Thanks https://github.com/YiiGuxing !</li>
+        </ul>
+        <br/>
+
+        <p>5.22</p>
+        <ul>
+            <li>Fix #243 #180, allow users custom matched brace by setting `overrideMatchedBraceAttributes = false`</li>
+        </ul>
+        <br/>
+
+        <p>5.21</p>
+        <ul>
+            <li>#65 [Scope Highlighting] now the effects will not been removed after shortcut released, users could press the key `ESC` to do this. There also have an option `Press any key to remove the highlighting effects`</li>
+            <li>Refactoring & Remove dead code</li>
+        </ul>
+        <br/>
+
+        <p>5.20</p>
+        <ul>
+            <li>#233 Option to not rainbowify brackets of the first level</li>
+            <li>#234 Color is displayed with wrong order in C# code</li>
+        </ul>
+        <br/>
+
+        <p>5.19</p>
+        <ul>
+            <li>Fix notification.</li>
+        </ul>
+        <br/>
+
+        <p>5.18</p>
+        <ul>
+            <li>Add notification for custom your own rainbow colors.</li>
+        </ul>
+        <br/>
+
+        <p>5.17</p>
+        <ul>
+            <li>More color options for squiggly brackets before cycle(#215).</li>
+            <li>NullPointerException in while analyse code(#216).</li>
+        </ul>
+        <br/>
+
+        <p>5.16</p>
+        <ul>
+            <li>Add shiny new icon.</li>
+        </ul>
+        <br/>
+
+        <p>5.15</p>
+        <ul>
+            <li>Fix support for kotlin scheme attribute "KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW".</li>
+        </ul>
+        <br/>
+
+        <p>5.14</p>
+        <ul>
+            <li>Remove deprecated API usages.</li>
+            <li>Refactoring.</li>
+            <li>Added Dart to the supported languages list(#205).</li>
+        </ul>
+        <br/>
+
+        <p>5.13</p>
+        <ul>
+            <li>Fix macro support of Clang(#198)</li>
+            <li>Remove red-variation colors from default configuration(#192)</li>
+        </ul>
+        <br/>
+
+        <p>5.12</p>
+        <ul>
+            <li>Intellij-rainbow-brackets now support C# language(#6)!</li>
+        </ul>
+        <br/>
+
+        <p>5.11</p>
+        <ul>
+            <li>Now you could disable rainbow brackets for specific languages, see more info <a
+                    href="https://github.com/izhangzhihao/intellij-rainbow-brackets#disable-rainbow-brackets-for-specific-languages">here</a>.
+            </li>
+        </ul>
+        <br/>
+
+        <p>5.10</p>
+        <ul>
+            <li>New color settings page!!! Thanks this PR(#179) from https://github.com/YiiGuxing.</li>
+            <li>See the new settings page in Settings/Preferences > Editor > Color Scheme > Rainbow Brackets.</li>
+        </ul>
+        <br/>
+
+        <p>5.9.1</p>
+        <ul>
+            <li>Fix wrong background color on a light theme of "MATCHED_BRACE_ATTRIBUTES"(#155).</li>
+        </ul>
+        <br/>
+
+        <p>5.9</p>
+        <ul>
+            <li>Rainbow Kotlin lambda expression arrow(#142).</li>
+            <li>Experimental feature: Highlight Kotlin label(#143).</li>
+            <li>Override "MATCHED_BRACE_ATTRIBUTES".</li>
+            <li>Improve configs & docs.</li>
+            <li>Cleanup temp code & deprecated code.</li>
+            <li>Remove anonymous feedback.</li>
+        </ul>
+        <br/>
+
+        <p>5.8.3</p>
+        <ul>
+            <li>Improve anonymous feedback</li>
+        </ul>
+        <br/>
+
+        <p>5.8.2</p>
+        <ul>
+            <li>Override kotlin plugin setting `KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW` to empty so that we could
+                rainbowify multiple level lambda expressions.
+            </li>
+        </ul>
+        <br/>
+
+        <p>5.8.1</p>
+        <ul>
+            <li>Fix #67: Can't find resource for bundle java.util.PropertyResourceBundle, key version</li>
+            <li>Improve anonymous feedback</li>
+        </ul>
+        <br/>
+
+        <p>5.8</p>
+        <ul>
+            <li>Feature #52 Flat out all text other than brackets on key (Alt + Button3) press. (via pull request#63)
+            </li>
+            <li>Feature #61 Change Highlight Current Scope Keymap to Ctrl + Button3 (Windows & Linux) or Meta+ Button3
+                (Mac) (via pull request#63)
+            </li>
+            <li>Add anonymous feedback support</li>
+        </ul>
+        <br/>
+
+        <p>5.7.1</p>
+        <ul>
+            <li>Fix #60 :Exception in v5.7</li>
+            <li>Experimental feature: Highlight current scope when Ctrl(Windows & Linux)/Meta(Mac) key pressed (feature
+                #37 / pull request#59)
+            </li>
+        </ul>
+        <br/>
+
+        <p>5.7</p>
+        <ul>
+            <li>Experimental feature: Highlight current scope when Ctrl(Windows & Linux)/Meta(Mac) key pressed (feature
+                #37 / pull request#59)
+            </li>
+        </ul>
+        <br/>
+
+        <p>5.6</p>
+        <ul>
+            <li>Performance improvement</li>
+        </ul>
+        <br/>
+
+        <p>5.5</p>
+        <ul>
+            <li>Fix #53 The closing brackets or keywords are not highlighted (Ruby & PHP)</li>
+        </ul>
+        <br/>
+
+        <p>5.4</p>
+        <ul>
+            <li>Fix #53 The closing brackets or keywords are not highlighted (Ruby & PHP)</li>
+        </ul>
+        <br/>
+
+        <p>5.3</p>
+        <ul>
+            <li>Improve angle bracket support for Groovy</li>
+        </ul>
+        <br/>
+
+        <p>5.2</p>
+        <ul>
+            <li>#48 Performance improvement</li>
+            <li>#49 Fix images size</li>
+        </ul>
+        <br/>
+
+        <p>5.1</p>
+        <ul>
+            <li>#39 Enable rainbow html in js</li>
+        </ul>
+        <br/>
+
+        <p>5.0</p>
+        <ul>
+            <li>Finally, intellij-rainbow-brackets released version 5.0 with all RC features & bug fix</li>
+            <li><b>Thanks for https://github.com/YiiGuxing, which helps move this plugin from `Annotator` to
+                `HighlightVisitor`!</b></li>
+            <li>Check more info at <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/pull/25">here</a>
+            </li>
+            <li>From 5.x series we didn't need specific implementations like java/scala/kotlin specific implementations
+                in 3.x series anymore!
+            </li>
+            <br/>
+            <li>#13 Add test for dart support & add `DartAngleBracketProvider` for support dart angle brackets</li>
+            <li>#18 where to customize brackets color? See the config guide in <a
+                    href="https://github.com/izhangzhihao/intellij-rainbow-brackets#Config-brackets-colors">here</a>
+            </li>
+            <li>Add test for #39</li>
+            <li>#38 Add support for JSX (React)</li>
+            <li>Fix #27 Settings no longer works</li>
+            <li>#30 Adjust color: remove red, purple from color palettes, add some material design color to color
+                palettes.
+            </li>
+            <li>#32 Add version info in setting page</li>
+            <li>#31 Fix 'Enablement of round brackets enables all but angle brackets'</li>
+            <li>#10 #2 Add setting to disable rainbow-ify brackets without content</li>
+            <li>Show update notification after plugin updated</li>
+            <li>Add a lot of tests</li>
+            <li>Convert all java code to kotlin</li>
+            <br/>
+            <li>And with much more features not documented in release notes.</li>
+            <li>NOTE: this version are build against with IU-2017.2.7, but verified by IC-2017.2</li>
+        </ul>
+        <br/>
+
+        <p>5.0-RC4</p>
+        <ul>
+            <li>#10 #2 Add setting to disable rainbow-ify brackets without content</li>
+            <li>Show update notification after plugin updated</li>
+            <li>Add a lot of tests</li>
+            <li>Convert all java code to kotlin</li>
+            <li>NOTE: this version are build against with IU-2017.2.7, but verified by IC-2017.2</li>
+        </ul>
+        <br/>
+
+        <p>5.0-RC3</p>
+        <ul>
+            <li>#32 Add version info in setting page</li>
+            <li>#31 Fix 'Enablement of round brackets enables all but angle brackets(#31)'</li>
+        </ul>
+        <br/>
+
+        <p>5.0-RC2</p>
+        <ul>
+            <li>#30 Adjust color: remove red, purple from color palettes, add some material design color to color
+                palettes.
+            </li>
+        </ul>
+        <br/>
+
+        <p>5.0-RC1</p>
+        <ul>
+            <li>Fix #27 Settings no longer works</li>
+        </ul>
+        <br/>
+
+        <p>5.0-RC0</p>
+        <ul>
+            <li>This is the first RC releases on 5.x series!</li>
+            <li><b>Thanks for https://github.com/YiiGuxing, which helps move this plugin from `Annotator` to
+                `HighlightVisitor`!</b></li>
+            <li>Check more info at https://github.com/izhangzhihao/intellij-rainbow-brackets/pull/25</li>
+            <li>This RC release has fantastic compatibility with previous release(3.x series).</li>
+            <li>From 5.x series we didn't need specific implementations like java/scala/kotlin specific implementations
+                in 3.x series anymore!
+            </li>
+            <li>And with much more features not documented in release notes.</li>
+        </ul>
+        <br/>
+
+        <p>3.1</p>
+        <ul>
+            <li>Add a specific implementation for PHP language</li>
+        </ul>
+        <br/>
+
+        <p>3.0</p>
+        <ul>
+            <li>Version 3.0 has been released, with all RC features & bug fix</li>
+            <li>Fix #23 Inconsistent colors</li>
+            <li>Fix #21 Wrong bracket colorization based on spaces</li>
+            <li>Fix #19 Kotlin expression inside string bug</li>
+            <li>Fix #12 Symbol less ">" is considered as a bracket even without leading "<"</li>
+            <li>Fix #11 Same level brackets should have same color</li>
+            <li>And much more!</li>
+            <li>Add specific implement for java/kotlin/scala/javascript</li>
+            <li>Add example to help people add specific implementation for specific language!</li>
+            <li>Check out README.md on github https://github.com/izhangzhihao/intellij-rainbow-brackets</li>
+        </ul>
+        <br/>
+
+        <p>3.0-RC5</p>
+        <ul>
+            <li>Adjust colors for default light theme. Thanks to https://github.com/YiiGuxing</li>
+        </ul>
+        <br/>
+
+        <p>3.0-RC4</p>
+        <ul>
+            <li>Add specific implement for java/kotlin/scala</li>
+            <li>So now in java/kotlin/scala same level brackets should have same color.</li>
+            <li>Fix: #19:Kotlin expression inside string bug</li>
+        </ul>
+        <br/>
+
+        <p>3.0-RC2</p>
+        <ul>
+            <li>Remove option for enable/disable rainbow for HTML/XML</li>
+        </ul>
+        <br/>
+
+        <p>3.0-RC1</p>
+        <ul>
+            <li>Add new setting page to control what/how to colorify:</li>
+            <li>1. Add option to Enable/disable rainbow</li>
+            <li>2. Add option to Enable rainbow for any unsupported languages</li>
+            <li>3. Add option to Enable/disable rainbow for HTML/XML</li>
+            <li>4. Add option to Enable/disable rainbow for round brackets</li>
+            <li>5. Add option to Enable/disable rainbow for squiggly brackets</li>
+            <li>6. Add option to Enable/disable rainbow for square brackets</li>
+            <li>7. Add option to Enable/disable rainbow for angle brackets</li>
+        </ul>
+        <br/>
+
+        <p>2.6</p>
+        <ul>
+            <li>Add support for salesforce apex language, thanks for https://github.com/onisuly</li>
+        </ul>
+        <br/>
+
+        <p>2.5</p>
+        <ul>
+            <li>Fix Rust support, thanks for https://github.com/fst3a</li>
+        </ul>
+        <br/>
+
+        <p>2.4</p>
+        <ul>
+            <li>Add support for SQL</li>
+        </ul>
+        <br/>
+
+        <p>2.3</p>
+        <ul>
+            <li>Add support for HTML/XML</li>
+        </ul>
+        <br/>
+
+        <p>2.2</p>
+        <ul>
+            <li>Add support for C#</li>
+        </ul>
+        <br/>
+
+        <p>2.1</p>
+        <ul>
+            <li>New identifiable colors</li>
+        </ul>
+        <br/>
+
+        <p>2.0</p>
+        <ul>
+            <li>Rainbowify brackets faster!</li>
+        </ul>
+        <br/>
+
+        <p>1.1</p>
+        <ul>
+            <li>Support IntelliJ IDEA based IDEs version 14 and above</li>
+        </ul>
+        <br/>
+
+        <p>1.0</p>
+        <ul>
+            <li>Initial release</li>
         </ul>
         ]]>
     </change-notes>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-    <idea-version since-build="223"/>
+    <idea-version since-build="172" until-build="193.*"/>
 
-    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
          on how to target different products -->
     <depends>com.intellij.modules.lang</depends>
     <depends optional="true" config-file="kotlin-brackets.xml">org.jetbrains.kotlin</depends>
     <depends optional="true" config-file="JSX.xml">JavaScript</depends>
     <depends optional="true" config-file="dart-brackets.xml">Dart</depends>
     <depends optional="true" config-file="groovy-brackets.xml">org.intellij.groovy</depends>
+    <depends optional="true" config-file="csharp-annotator.xml">com.intellij.modules.rider</depends>
     <depends optional="true" config-file="intellij-haskell-annotator.xml">intellij.haskell</depends>
-    <depends optional="true" config-file="oc-brackets.xml">com.intellij.modules.clion</depends>
-    <depends optional="true" config-file="sh-brackets.xml">com.jetbrains.sh</depends>
-    <depends optional="true" config-file="php-brackets.xml">com.jetbrains.php</depends>
-    <depends optional="true" config-file="go-template-brackets.xml">org.jetbrains.plugins.go-template</depends>
-    <depends optional="true" config-file="jade-rainbow-visitor.xml">com.jetbrains.plugins.jade</depends>
 
     <extensionPoints>
-        <extensionPoint name="bracePairProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">
+        <extensionPoint name="pairedBraceProvider" beanClass="com.intellij.lang.LanguageExtensionPoint">
             <with attribute="implementationClass"
-                  implements="com.github.izhangzhihao.rainbow.brackets.provider.BracePairProvider"/>
+                  implements="com.github.izhangzhihao.rainbow.brackets.provider.PairedBraceProvider"/>
         </extensionPoint>
     </extensionPoints>
 
     <extensions defaultExtensionNs="com.intellij">
-        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.lite.visitor.DefaultRainbowVisitor"/>
-        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.lite.visitor.XmlRainbowVisitor"/>
+        <!--test only-->
+        <!--<annotator language="JAVA" implementationClass="com.github.izhangzhihao.rainbow.brackets.annotator.RainbowAnnotator"/>-->
 
-        <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.lite.settings.RainbowConfigurable"/>
+        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.DefaultRainbowVisitor"/>
+        <highlightVisitor implementation="com.github.izhangzhihao.rainbow.brackets.visitor.XmlRainbowVisitor"/>
+
+        <applicationConfigurable instance="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable"/>
         <applicationService
-                serviceImplementation="com.github.izhangzhihao.rainbow.brackets.lite.settings.RainbowSettings"/>
+                serviceImplementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowSettings"/>
         <colorAndFontPanelFactory
-                implementation="com.github.izhangzhihao.rainbow.brackets.lite.settings.RainbowColorsPageFactory"/>
+                implementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowColorsPageFactory"/>
         <colorAndFontDescriptorProvider
-                implementation="com.github.izhangzhihao.rainbow.brackets.lite.settings.RainbowColorsPageFactory"/>
+                implementation="com.github.izhangzhihao.rainbow.brackets.settings.RainbowColorsPageFactory"/>
 
         <additionalTextAttributes scheme="Default" file="colorSchemes/rainbow-color-default.xml"/>
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/rainbow-color-default-darcula.xml"/>
-        <highlightingPassFactory implementation="com.github.izhangzhihao.rainbow.brackets.lite.indents.RainbowIndentsPassFactory"/>
-        <editorNotificationProvider implementation="com.github.izhangzhihao.rainbow.brackets.lite.RainbowifyBanner"/>
-        <editorNotificationProvider implementation="com.github.izhangzhihao.rainbow.brackets.lite.LiteBanner"/>
-        <notificationGroup id="Rainbow Brackets Lite Notification Group" displayType="STICKY_BALLOON"/>
+        <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.RainbowUpdateActivity"/>
+        <postStartupActivity implementation="com.github.izhangzhihao.rainbow.brackets.activity.CustomRainbowActivity"/>
     </extensions>
 
+    <application-components>
+        <!-- Add your application components here -->
+        <component>
+            <implementation-class>com.github.izhangzhihao.rainbow.brackets.component.RainbowComponent
+            </implementation-class>
+        </component>
+    </application-components>
+
+    <project-components>
+        <component>
+            <implementation-class>com.github.izhangzhihao.rainbow.brackets.indents.RainbowIndentsPassFactory
+            </implementation-class>
+            <skipForDefaultProject/>
+        </component>
+    </project-components>
+
     <actions>
-        <action class="com.github.izhangzhihao.rainbow.brackets.lite.action.ScopeHighlightingAction"
+        <action class="com.github.izhangzhihao.rainbow.brackets.action.ScopeHighlightingAction"
                 id="Rainbow.ScopeHighlightingAction"
                 text="Highlight Current Scope"
                 description="Highlight current scope.">
@@ -108,7 +580,7 @@
             <mouse-shortcut keymap="Mac OS X" keystroke="meta button3"/>
             <mouse-shortcut keymap="Mac OS X 10.5+" keystroke="meta button3"/>
         </action>
-        <action class="com.github.izhangzhihao.rainbow.brackets.lite.action.ScopeOutsideHighlightingRestrainAction"
+        <action class="com.github.izhangzhihao.rainbow.brackets.action.ScopeOutsideHighlightingRestrainAction"
                 id="Rainbow.ScopeOutsideHighlightingRestrainAction"
                 text="Restrain Scope Highlighting"
                 description="Restrain outside of current scope highlighting.">
