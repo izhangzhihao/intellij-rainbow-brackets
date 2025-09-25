@@ -168,7 +168,7 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
-<p>2025.3.5</p >
+<p>2025.3.5</p>
         <ul>
             <li>Compatible with 2025.3 EAP 1: fix Read access is allowed from inside read-action only</li>
             <li>[premium] Feature: Indent guide-lines highlighting for GDScript</li>
