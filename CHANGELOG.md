@@ -172,7 +172,7 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
         <ul>
             <li>Compatible with 2025.3 EAP 1: fix Read access is allowed from inside read-action only</li>
             <li>[premium] Feature: Indent guide-lines highlighting for GDScript</li>
-            <li>Fix: <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2850">Rider C++ Scope Highlighting uses wrong color</a ></li>
+            <li>Fix: <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2850">Rider C++ Scope Highlighting uses wrong color</a></li>
             <li>Improved the display logic for banner prompts.</li>
             <li>Adapt API usages to recent changes in the JB's editor design.</li>
             <li>Revised the Rainbow Variables setting page to provide clearer visibility of the effects of configuration changes, helping users avoid potential misconfigurations.</li>
