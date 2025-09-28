@@ -104,7 +104,7 @@
         <td>✅</td>
         <td>✨ Premium</td>
         <td>✨ <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2570">Premium</a></td>
-        <td>Support .shader .cginc .hlsl .cshtml etc.</td>
+        <td>Support .shader .cginc .hlsl .cshtml GDScript etc.</td>
       </tr>  
       <tr>  
         <td>F#</td>
