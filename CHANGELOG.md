@@ -176,6 +176,7 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
             <li>Improved the display logic for banner prompts.</li>
             <li>Adapt API usages to recent changes in the JB's editor design.</li>
             <li>Revised the Rainbow Variables setting page to provide clearer visibility of the effects of configuration changes, helping users avoid potential misconfigurations.</li>
+            <li>Compatible with DevEco Studio 6.0.0</li>
         </ul>
         <br/>
 
