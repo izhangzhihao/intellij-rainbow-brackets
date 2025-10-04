@@ -12,6 +12,8 @@
 <a href="https://plugins.jetbrains.com/embeddable/install/10080"><img src="https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/v/10080-rainbow-brackets.svg?style=flat-square&label=IntelliJ-based%20IDE"></a>
 <a href="https://plugins.jetbrains.com/plugin/23759-rainbow-brackets-for-fleet"><img src="https://img.shields.io/jetbrains/plugin/v/23759?style=flat-square&label=Fleet"></a>
+<a href="https://buymeacoffee.com/rainbowbrackets"><img src="https://raw.githubusercontent.com/pachadotdev/buymeacoffee-badges/main/bmc-yellow.svg"></a>
+<a href="https://discord.gg/upKwA9S3zH"><img alt="Discord" src="https://img.shields.io/discord/1292064358712610937?style=flat-square&label=Discord&color=5865F2"></a>
 </p>
 
 <br>
