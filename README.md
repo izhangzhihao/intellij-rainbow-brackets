@@ -8,10 +8,10 @@
 <p align="center">🌈Rainbow Brackets for IntelliJ-based IDEs/Android Studio/HUAWEI DevEco Studio And <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/blob/2022.3/Fleet.md">Fleet</a></p>
 
 <p align="center">
-<a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/r/stars/10080?style=flat-square" style="height: 35px;"></a>
-<a href="https://plugins.jetbrains.com/embeddable/install/10080"><img src="https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg?style=flat-square" style="height: 35px;"></a>
-<a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/v/10080-rainbow-brackets.svg?style=flat-square&label=IntelliJ-based%20IDE" style="height: 35px;"></a>
-<a href="https://plugins.jetbrains.com/plugin/23759-rainbow-brackets-for-fleet"><img src="https://img.shields.io/jetbrains/plugin/v/23759?style=flat-square&label=Fleet" style="height: 35px;"></a>
+<a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/r/stars/10080?style=flat-square" style="height: 30px;"></a>
+<a href="https://plugins.jetbrains.com/embeddable/install/10080"><img src="https://img.shields.io/jetbrains/plugin/d/10080-rainbow-brackets.svg?style=flat-square" style="height: 30px;"></a>
+<a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets"><img src="https://img.shields.io/jetbrains/plugin/v/10080-rainbow-brackets.svg?style=flat-square&label=IntelliJ-based%20IDE" style="height: 30px;"></a>
+<a href="https://plugins.jetbrains.com/plugin/23759-rainbow-brackets-for-fleet"><img src="https://img.shields.io/jetbrains/plugin/v/23759?style=flat-square&label=Fleet" style="height: 30px;"></a>
 <br/>
 <a href="https://www.buymeacoffee.com/rainbowbrackets" target="_blank" title="BuyMeACoffee">
     <img src="https://iili.io/JoQ1MeS.md.png" style="height: 35px;"/>
@@ -405,13 +405,13 @@ NOTE: You can use **name** of language or **extension** of file name(The names s
 
 You can support us by the following actions:
 
-* Buy a license [here](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets/pricing#tabs)
+* [Buy a license](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets/pricing#tabs)
 * Star this project
 * Share this plugin with your friends
 * Rate this plugin on [JetBrains plugin repository](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
 * Report bugs
 * Tell us your ideas
-* Buy Me a Coffee [here](buymeacoffee.com/rainbowbrackets)
+* [Buy Me a Coffee](https://buymeacoffee.com/rainbowbrackets)
 
 ## Rainbow Brackets Lite
 
