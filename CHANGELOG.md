@@ -93,7 +93,7 @@
         <td></td>
       </tr>
       <tr>  
-        <td>C++ (CLion Nova)</td>
+        <td>C++ (CLion Nova/IntelliJ 2025.3+)</td>
         <td><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424#issuecomment-1377176193">✨</a> <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424#issuecomment-1377176193">Premium in Rider</a></td>
         <td>✨<a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2762">Premium</a></td>
         <td>✨<a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2846">Premium</a></td>
@@ -160,13 +160,23 @@ Other Premium features:
     <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#customize-colors">Config up to 10 colors in config panel</a></li>
 </ul>
 
-<small>Other supported languages: Haskell, Agda, Erlang, Groovy, Ruby, Elixir, Objective-C, PHP, SQL, Apex language, Bash, C# Razor Pages, GLSL (the OpenGL Shading Language), Go Template, Solidity, MDX, FreeMarker, GDScript and more.</small>
+<small>Other supported languages: Haskell, Agda, Erlang, Groovy, Ruby, Elixir, Objective-C, PHP, SQL, Apex language, Bash, C# Razor Pages, GLSL (the OpenGL Shading Language), Go Template, Solidity, MDX, FreeMarker, GDScript, Svelte and more.</small>
 
 ## Screenshots
 
 Please check the latest screenshots [here](https://github.com/izhangzhihao/intellij-rainbow-brackets#screenshots).
 
 ## Change log
+
+
+<p>2025.3.6</p >
+        <ul>
+            <li>[premium] Svelte: <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2857">Add support for Svelte control flows</a></li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2858">Support settings Backup and Sync</a></li>
+            <li>[premium] Compatible with <a href="https://plugins.jetbrains.com/plugin/28804-c-c--language-support">C/C++ Language Support</a> on IntelliJ 2025.3+</li>
+            <li>Fix: <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2861">incorrectly disabled Semantic Highlighting on restart</a></li>
+        </ul>
+        <br/>
 
 <p>2025.3.5</p>
         <ul>
