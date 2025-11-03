@@ -169,7 +169,7 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 ## Change log
 
 
-<p>2025.3.6</p >
+<p>2025.3.6</p>
         <ul>
             <li>[premium] Svelte: <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2857">Add support for Svelte control flows</a></li>
             <li><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2858">Support settings Backup and Sync</a></li>
