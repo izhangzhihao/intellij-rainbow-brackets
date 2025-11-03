@@ -93,7 +93,7 @@
         <td></td>
       </tr>
       <tr>  
-        <td>C++ (CLion Nova/IntelliJ 2025.3+)</td>
+        <td>C++ (CLion Nova/<br>IntelliJ 2025.3+)</td>
         <td><a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424#issuecomment-1377176193">✨</a> <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/424#issuecomment-1377176193">Premium in Rider</a></td>
         <td>✨<a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2762">Premium</a></td>
         <td>✨<a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2846">Premium</a></td>
