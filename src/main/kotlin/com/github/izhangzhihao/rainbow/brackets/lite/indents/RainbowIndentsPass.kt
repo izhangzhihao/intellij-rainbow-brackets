@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.brackets.lite.indents
 
+import com.github.izhangzhihao.rainbow.brackets.lite.RainbowHighlighter
 import com.github.izhangzhihao.rainbow.brackets.lite.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.lite.settings.RainbowSettings
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
@@ -10,6 +11,8 @@ import com.intellij.lang.Language
 import com.intellij.lang.LanguageParserDefinitions
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.IndentGuideDescriptor
+import com.intellij.openapi.editor.event.CaretEvent
+import com.intellij.openapi.editor.event.CaretListener
 import com.intellij.openapi.editor.ex.EditorEx
 import com.intellij.openapi.editor.ex.util.EditorUtil
 import com.intellij.openapi.editor.markup.HighlighterTargetArea
@@ -42,6 +45,7 @@ class RainbowIndentsPass internal constructor(
 ) : TextEditorHighlightingPass(project, editor.document, false), DumbAware {
 
     private val rangesWithRainbowInfo = mutableMapOf<TextRange, RainbowInfo?>()
+    private val rainbowColorCacheByLevel = mutableMapOf<Int, RainbowInfo>()
 
     private val myEditor: EditorEx = editor as EditorEx
 
@@ -56,6 +60,7 @@ class RainbowIndentsPass internal constructor(
         if (stamp != null && stamp.toLong() == nowStamp()) return
 
         myDescriptors = buildDescriptors()
+        rangesWithRainbowInfo.clear()
 
         val ranges = ArrayList<TextRange>()
         for (descriptor in myDescriptors) {
@@ -67,7 +72,7 @@ class RainbowIndentsPass internal constructor(
             }
             val textRange = TextRange(document.getLineStartOffset(descriptor.startLine), endOffset)
             ranges.add(textRange)
-            rangesWithRainbowInfo[textRange] = RainbowIndentGuideRenderer.getRainbowInfo(this.myEditor, textRange)
+            rangesWithRainbowInfo[textRange] = getRainbowInfoByIndentLevel(descriptor.indentLevel)
         }
 
         Collections.sort(ranges, Segment.BY_START_OFFSET_THEN_END_OFFSET)
@@ -77,6 +82,9 @@ class RainbowIndentsPass internal constructor(
     private fun nowStamp(): Long = if (isRainbowIndentGuidesShown()) document.modificationStamp xor (EditorUtil.getTabSize(myEditor).toLong() shl 24) else -1
 
     override fun doApplyInformationToEditor() {
+        ensureCaretRepaintListenerInstalled()
+        RainbowIndentGuideRenderer.invalidateActiveGuideCache(myEditor)
+
         val stamp = myEditor.getUserData(LAST_TIME_INDENTS_BUILT)
         val nowStamp = nowStamp()
 
@@ -121,6 +129,9 @@ class RainbowIndentsPass internal constructor(
                         curHighlight++
                     }
                     else -> {
+                        // Highlighter can survive document edits with shifted offsets.
+                        // Refresh renderer to bind it to the latest rainbow info map.
+                        highlighter.customRenderer = RainbowIndentGuideRenderer(this.rangesWithRainbowInfo)
                         newHighlighters.add(highlighter)
                         curHighlight++
                         curRange++
@@ -145,6 +156,10 @@ class RainbowIndentsPass internal constructor(
 
         myEditor.putUserData(INDENT_HIGHLIGHTERS_IN_EDITOR_KEY, newHighlighters)
         myEditor.indentsModel.assumeIndents(myDescriptors)
+        // Re-invalidate after highlighters are swapped in to avoid stale active-guide cache
+        // computed against previous highlighter set during repaint races.
+        RainbowIndentGuideRenderer.invalidateActiveGuideCache(myEditor)
+        myEditor.contentComponent.repaint()
     }
 
     private fun buildDescriptors(): List<IndentGuideDescriptor> {
@@ -335,8 +350,9 @@ class RainbowIndentsPass internal constructor(
     }
 
     companion object {
-        private val INDENT_HIGHLIGHTERS_IN_EDITOR_KEY = Key.create<MutableList<RangeHighlighter>>("_INDENT_HIGHLIGHTERS_IN_EDITOR_KEY_")
+        internal val INDENT_HIGHLIGHTERS_IN_EDITOR_KEY = Key.create<MutableList<RangeHighlighter>>("_INDENT_HIGHLIGHTERS_IN_EDITOR_KEY_")
         private val LAST_TIME_INDENTS_BUILT = Key.create<Long>("_LAST_TIME_INDENTS_BUILT_")
+        private val CARET_REPAINT_LISTENER_INSTALLED = Key.create<Boolean>("_RB_INDENT_CARET_REPAINT_LISTENER_INSTALLED_")
 
         private fun isRainbowIndentGuidesShown(): Boolean {
             return RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
@@ -358,5 +374,27 @@ class RainbowIndentsPass internal constructor(
             val answer = r.startOffset - h.startOffset
             return if (answer != 0) answer else r.endOffset - h.endOffset
         }
+    }
+
+    private fun ensureCaretRepaintListenerInstalled() {
+        if (myEditor.getUserData(CARET_REPAINT_LISTENER_INSTALLED) == true) return
+        myEditor.caretModel.addCaretListener(object : CaretListener {
+            override fun caretPositionChanged(event: CaretEvent) {
+                RainbowIndentGuideRenderer.invalidateActiveGuideCache(myEditor)
+                myEditor.contentComponent.repaint()
+            }
+        })
+        myEditor.putUserData(CARET_REPAINT_LISTENER_INSTALLED, true)
+    }
+
+    private fun createFallbackRainbowInfo(level: Int): RainbowInfo {
+        val key = RainbowHighlighter.getRainbowColorByLevel(RainbowHighlighter.NAME_ROUND_BRACKETS, level)
+        val color = key?.let { myEditor.colorsScheme.getAttributes(it)?.foregroundColor ?: it.defaultAttributes?.foregroundColor }
+            ?: myEditor.colorsScheme.defaultForeground
+        return RainbowInfo(level, color)
+    }
+
+    private fun getRainbowInfoByIndentLevel(level: Int): RainbowInfo {
+        return rainbowColorCacheByLevel.getOrPut(level) { createFallbackRainbowInfo(level) }
     }
 }

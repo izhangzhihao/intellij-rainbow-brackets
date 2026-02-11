@@ -64,12 +64,7 @@ class RainbowIndentGuideRenderer(val rangesWithRainbowInfo: MutableMap<TextRange
 
         if (tailRegion != null && tailRegion === headerRegion) return
 
-        val guide = editor.indentsModel.caretIndentGuide
-        val selected = if (guide != null) {
-            val caretModel = editor.caretModel
-            val caretOffset = caretModel.offset
-            caretOffset in off until endOffset && caretModel.logicalPosition.column == indentColumn
-        } else false
+        val selected = isActiveGuide(editor, highlighter)
 
         val lineHeight = editor.getLineHeight()
         val start = editor.visualPositionToXY(startPosition)
@@ -254,6 +249,32 @@ class RainbowIndentGuideRenderer(val rangesWithRainbowInfo: MutableMap<TextRange
 
         private fun XmlTag.getEndTagStartLineNumber(document: Document): Int? =
             lastChild?.findPrevSibling(XML_END_TAG_START_CONDITION)?.let { document.lineNumber(it.startOffset) }
+
+        internal fun invalidateActiveGuideCache(editor: EditorEx) {
+            // no-op, active guide is calculated on demand
+        }
+
+        private fun isActiveGuide(editor: EditorEx, highlighter: RangeHighlighter): Boolean {
+            val caretOffset = editor.caretModel.offset
+            val highlighters = editor.getUserData(RainbowIndentsPass.INDENT_HIGHLIGHTERS_IN_EDITOR_KEY)
+            var active: RangeHighlighter? = null
+            if (highlighters != null) {
+                for (item in highlighters) {
+                    if (!item.isValid) continue
+                    if (caretOffset !in item.startOffset until item.endOffset) continue
+
+                    active = if (active == null ||
+                        (item.endOffset - item.startOffset) < (active.endOffset - active.startOffset) ||
+                        ((item.endOffset - item.startOffset) == (active.endOffset - active.startOffset) && item.startOffset > active.startOffset)
+                    ) {
+                        item
+                    } else {
+                        active
+                    }
+                }
+            }
+            return active === highlighter
+        }
 
     }
 }

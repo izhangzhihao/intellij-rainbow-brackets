@@ -8,3 +8,5 @@ build/
 *.iml
 .DS_Store
 out
+java_pid*
+.intellijPlatform/

@@ -22,8 +22,8 @@ private interface MemoizedCall<in F, out R> {
     operator fun invoke(f: F): R
 }
 
-private class MemoizedHandler<F, in K : MemoizedCall<F, R>, out R>(val f: F) {
-    private val m = Platform.newConcurrentMap<K, R>()
+private class MemoizedHandler<F, K : MemoizedCall<F, R>, R>(val f: F) {
+    val m = Platform.newConcurrentMap<K, R>()
     operator fun invoke(k: K): R = m[k] ?: run { m.putSafely(k, k(f)) }
 }
 

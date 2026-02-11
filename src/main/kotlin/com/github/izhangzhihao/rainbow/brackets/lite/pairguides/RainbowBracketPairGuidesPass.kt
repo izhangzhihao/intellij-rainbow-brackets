@@ -4,6 +4,8 @@ import com.github.izhangzhihao.rainbow.brackets.lite.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.lite.settings.RainbowSettings
 import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.openapi.editor.Editor
+import com.intellij.openapi.editor.event.CaretEvent
+import com.intellij.openapi.editor.event.CaretListener
 import com.intellij.openapi.editor.ex.EditorEx
 import com.intellij.openapi.editor.markup.HighlighterTargetArea
 import com.intellij.openapi.editor.markup.RangeHighlighter
@@ -64,6 +66,8 @@ class RainbowBracketPairGuidesPass internal constructor(
         val oldStamp = myEditor.getUserData(LAST_TIME_GUIDES_BUILT)
         if (oldStamp == nowStamp) return
         myEditor.putUserData(LAST_TIME_GUIDES_BUILT, nowStamp)
+        ensureCaretRepaintListenerInstalled()
+        RainbowBracketPairGuideRenderer.invalidateActivePairCache(myEditor)
 
         val oldHighlighters = myEditor.getUserData(BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY)
         if (oldHighlighters != null) {
@@ -99,11 +103,23 @@ class RainbowBracketPairGuidesPass internal constructor(
     }
 
     companion object {
-        private val BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY = Key.create<MutableList<RangeHighlighter>>("_BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY_")
+        internal val BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY = Key.create<MutableList<RangeHighlighter>>("_BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY_")
         private val LAST_TIME_GUIDES_BUILT = Key.create<Long>("_LAST_TIME_BRACKET_PAIR_GUIDES_BUILT_")
+        private val CARET_REPAINT_LISTENER_INSTALLED = Key.create<Boolean>("_RB_CARET_REPAINT_LISTENER_INSTALLED_")
 
         private fun isBracketPairGuidesShown(): Boolean {
             return RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
         }
+    }
+
+    private fun ensureCaretRepaintListenerInstalled() {
+        if (myEditor.getUserData(CARET_REPAINT_LISTENER_INSTALLED) == true) return
+        myEditor.caretModel.addCaretListener(object : CaretListener {
+            override fun caretPositionChanged(event: CaretEvent) {
+                RainbowBracketPairGuideRenderer.invalidateActivePairCache(myEditor)
+                myEditor.contentComponent.repaint()
+            }
+        })
+        myEditor.putUserData(CARET_REPAINT_LISTENER_INSTALLED, true)
     }
 }
