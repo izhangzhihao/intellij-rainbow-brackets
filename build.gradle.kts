@@ -11,7 +11,7 @@ val pluginVerifierIdeVersions: String by project
 val publishChannels: String by project
 
 plugins {
-    id("org.jetbrains.intellij.platform") version "2.7.2"
+    id("org.jetbrains.intellij") version "1.17.4"
     id("com.adarshr.test-logger") version "3.2.0"
     id("org.jetbrains.kotlin.jvm") version "1.8.21"
     id("idea")
@@ -93,8 +93,8 @@ dependencies {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 tasks.withType<KotlinCompile> {
