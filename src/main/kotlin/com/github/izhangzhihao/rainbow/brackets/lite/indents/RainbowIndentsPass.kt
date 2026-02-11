@@ -129,7 +129,7 @@ class RainbowIndentsPass internal constructor(
                 val cmp = compare(range, highlighter)
                 when {
                     cmp < 0 -> {
-                        newHighlighters.add(createHighlighter(mm, range, this.rangesWithRainbowInfo))
+                        newHighlighters.add(createHighlighter(mm, range, this.rangesWithRainbowInfo[range]))
                         curRange++
                     }
                     cmp > 0 -> {
@@ -138,8 +138,8 @@ class RainbowIndentsPass internal constructor(
                     }
                     else -> {
                         // Highlighter can survive document edits with shifted offsets.
-                        // Refresh renderer to bind it to the latest rainbow info map.
-                        highlighter.customRenderer = RainbowIndentGuideRenderer(this.rangesWithRainbowInfo)
+                        // Rebind renderer using the latest rainbow info for this range.
+                        highlighter.customRenderer = RainbowIndentGuideRenderer(this.rangesWithRainbowInfo[range])
                         newHighlighters.add(highlighter)
                         curHighlight++
                         curRange++
@@ -158,7 +158,8 @@ class RainbowIndentsPass internal constructor(
         val startRangeIndex = curRange
         DocumentUtil.executeInBulk(document, myRanges.size > 10000) {
             for (i in startRangeIndex until myRanges.size) {
-                newHighlighters.add(createHighlighter(mm, myRanges[i], this.rangesWithRainbowInfo))
+                val range = myRanges[i]
+                newHighlighters.add(createHighlighter(mm, range, this.rangesWithRainbowInfo[range]))
             }
         }
 
@@ -366,7 +367,7 @@ class RainbowIndentsPass internal constructor(
             return RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
         }
 
-        private fun createHighlighter(mm: MarkupModel, range: TextRange, rangesWithRainbowInfo: MutableMap<TextRange, RainbowInfo?>): RangeHighlighter {
+        private fun createHighlighter(mm: MarkupModel, range: TextRange, rainbowInfo: RainbowInfo?): RangeHighlighter {
             return mm.addRangeHighlighter(
                     range.startOffset,
                     range.endOffset,
@@ -374,7 +375,7 @@ class RainbowIndentsPass internal constructor(
                     null,
                     HighlighterTargetArea.EXACT_RANGE
             ).apply {
-                customRenderer = RainbowIndentGuideRenderer(rangesWithRainbowInfo)
+                customRenderer = RainbowIndentGuideRenderer(rainbowInfo)
             }
         }
 
@@ -404,9 +405,12 @@ class RainbowIndentsPass internal constructor(
         document.addDocumentListener(object : DocumentListener {
             override fun documentChanged(event: DocumentEvent) {
                 if (!isRainbowIndentGuidesShown()) return
-                if (!isIndentStructureChange(event)) return
-                val current = myEditor.getUserData(INDENT_STRUCTURE_STAMP_KEY) ?: 0L
-                myEditor.putUserData(INDENT_STRUCTURE_STAMP_KEY, current + 1L)
+                if (isIndentStructureChange(event)) {
+                    val current = myEditor.getUserData(INDENT_STRUCTURE_STAMP_KEY) ?: 0L
+                    myEditor.putUserData(INDENT_STRUCTURE_STAMP_KEY, current + 1L)
+                } else {
+                    repaintForNonStructuralEdit(event)
+                }
             }
         })
         myEditor.putUserData(DOC_STRUCTURE_LISTENER_INSTALLED, true)
@@ -439,6 +443,31 @@ class RainbowIndentsPass internal constructor(
     private fun repaintVisibleRegion() {
         val rect = myEditor.scrollingModel.visibleArea
         myEditor.contentComponent.repaint(rect.x, rect.y, rect.width, rect.height)
+    }
+
+    private fun repaintForNonStructuralEdit(event: DocumentEvent) {
+        // Keep repaint scope local for typing performance while preserving guide continuity.
+        val startOffset = event.offset.coerceIn(0, document.textLength)
+        val rawEndOffset = event.offset + maxOf(event.newLength, 1)
+        val endOffset = rawEndOffset.coerceIn(startOffset, document.textLength)
+        repaintOffsetsRange(startOffset, endOffset)
+
+        val oldActive = RainbowIndentGuideRenderer.peekActiveGuide(myEditor)
+        RainbowIndentGuideRenderer.invalidateActiveGuideCache(myEditor)
+        val newActive = RainbowIndentGuideRenderer.getActiveGuide(myEditor)
+        repaintGuide(oldActive)
+        repaintGuide(newActive)
+    }
+
+    private fun repaintOffsetsRange(startOffset: Int, endOffset: Int) {
+        val safeStart = startOffset.coerceIn(0, document.textLength)
+        val safeEnd = endOffset.coerceIn(safeStart, document.textLength)
+        val startLine = (document.getLineNumber(safeStart) - 1).coerceAtLeast(0)
+        val endLine = (document.getLineNumber(safeEnd) + 1).coerceAtMost(document.lineCount - 1)
+        val y1 = myEditor.logicalPositionToXY(com.intellij.openapi.editor.LogicalPosition(startLine, 0)).y
+        val y2 = myEditor.logicalPositionToXY(com.intellij.openapi.editor.LogicalPosition(endLine + 1, 0)).y
+        val height = (y2 - y1).coerceAtLeast(myEditor.lineHeight)
+        myEditor.contentComponent.repaint(0, y1, myEditor.contentComponent.width, height)
     }
 
     private fun createFallbackRainbowInfo(level: Int): RainbowInfo {

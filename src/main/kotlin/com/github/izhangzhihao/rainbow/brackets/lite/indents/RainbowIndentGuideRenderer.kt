@@ -29,11 +29,11 @@ import java.awt.Graphics2D
 /** From [com.intellij.codeInsight.daemon.impl.IndentGuideRenderer]
  *  Commit history : https://sourcegraph.com/github.com/JetBrains/intellij-community/-/blob/platform/lang-impl/src/com/intellij/codeInsight/daemon/impl/IndentGuideRenderer.java#tab=history
  * */
-class RainbowIndentGuideRenderer(val rangesWithRainbowInfo: MutableMap<TextRange, RainbowInfo?>): CustomHighlighterRenderer {
+class RainbowIndentGuideRenderer(private val rainbowInfo: RainbowInfo?): CustomHighlighterRenderer {
     override fun paint(editor: Editor, highlighter: RangeHighlighter, g: Graphics) {
         if (editor !is EditorEx) return
 
-        val rainbowInfo = rangesWithRainbowInfo.getOrDefault(highlighter.textRange, null) ?: return
+        val currentRainbowInfo = rainbowInfo ?: return
 
         val startOffset = highlighter.startOffset
         val doc = highlighter.document
@@ -87,10 +87,10 @@ class RainbowIndentGuideRenderer(val rangesWithRainbowInfo: MutableMap<TextRange
         if (start.y >= maxY) return
         val targetX = Math.max(0, start.x + EditorPainter.getIndentGuideShift(editor)).toDouble()
         g.color = if (selected) {
-            rainbowInfo.color
+            currentRainbowInfo.color
         } else {
             val defaultBackground = editor.colorsScheme.defaultBackground
-            rainbowInfo.color.alphaBlend(defaultBackground, 0.2f)
+            currentRainbowInfo.color.alphaBlend(defaultBackground, 0.2f)
         }
 
         // There is a possible case that indent line intersects soft wrap-introduced text. Example:

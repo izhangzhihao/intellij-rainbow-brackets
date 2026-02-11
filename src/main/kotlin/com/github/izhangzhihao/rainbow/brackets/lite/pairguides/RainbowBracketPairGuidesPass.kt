@@ -59,15 +59,11 @@ class RainbowBracketPairGuidesPass internal constructor(
                     val startOffset = rainbowInfo.startOffset
                     val endOffset = rainbowInfo.endOffset
                     if (startOffset >= 0 && endOffset > startOffset && endOffset <= document.textLength) {
-                        val endBracketOffset = (endOffset - 1).coerceAtLeast(startOffset)
-                        val startLine = document.getLineNumber(startOffset)
-                        val endLine = document.getLineNumber(endBracketOffset)
-                        // Align with VSCode-like pair guide behavior:
-                        // only keep multi-line bracket blocks.
-                        if (endLine > startLine) {
-                            val range = TextRange(startOffset, endOffset)
-                            uniqueRanges.putIfAbsent(range, rainbowInfo)
-                        }
+                        // Keep single-line pairs as well so that when user inserts a newline,
+                        // shifted highlighters can become visible immediately without waiting
+                        // for a full pair-guides rebuild.
+                        val range = TextRange(startOffset, endOffset)
+                        uniqueRanges.putIfAbsent(range, rainbowInfo)
                     }
                 }
                 super.visitElement(element)
@@ -192,7 +188,7 @@ class RainbowBracketPairGuidesPass internal constructor(
         private val BRACKET_STRUCTURE_STAMP_KEY = Key.create<Long>("_RB_BRACKET_GUIDES_STRUCTURE_STAMP_")
         private val STRUCTURE_DEBOUNCE_TIMER_KEY = Key.create<Timer>("_RB_BRACKET_STRUCTURE_DEBOUNCE_TIMER_")
         private const val BRACKET_STRUCTURE_CHARS = "()[]{}<>"
-        private const val STRUCTURE_DEBOUNCE_MS = 70
+        private const val STRUCTURE_DEBOUNCE_MS = 40
 
         private fun isBracketPairGuidesShown(): Boolean {
             return RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
@@ -242,8 +238,7 @@ class RainbowBracketPairGuidesPass internal constructor(
         myEditor.putUserData(BRACKET_STRUCTURE_STAMP_KEY, document.modificationStamp)
         val debounceTimer = Timer(STRUCTURE_DEBOUNCE_MS) {
             if (!isBracketPairGuidesShown()) return@Timer
-            val current = myEditor.getUserData(BRACKET_STRUCTURE_STAMP_KEY) ?: 0L
-            myEditor.putUserData(BRACKET_STRUCTURE_STAMP_KEY, current + 1L)
+            bumpStructureStamp()
         }.apply {
             isRepeats = false
         }
@@ -252,19 +247,47 @@ class RainbowBracketPairGuidesPass internal constructor(
             override fun documentChanged(event: DocumentEvent) {
                 if (!isBracketPairGuidesShown()) return
                 if (!isBracketStructureChange(event)) return
-                myEditor.getUserData(STRUCTURE_DEBOUNCE_TIMER_KEY)?.restart()
+                if (oldOrNewContainsNewline(event)) {
+                    // Newline is the most visible case for pair-guides (single-line -> multi-line).
+                    // Handle it eagerly to avoid delayed appearance while avoiding daemon restart flicker.
+                    myEditor.getUserData(STRUCTURE_DEBOUNCE_TIMER_KEY)?.stop()
+                    bumpStructureStamp()
+                    repaintCaretNeighborhood()
+                } else {
+                    myEditor.getUserData(STRUCTURE_DEBOUNCE_TIMER_KEY)?.restart()
+                }
             }
         })
         myEditor.putUserData(DOC_STRUCTURE_LISTENER_INSTALLED, true)
     }
 
     private fun isBracketStructureChange(event: DocumentEvent): Boolean {
+        if (oldOrNewContainsNewline(event)) return true
         val oldFragment = event.oldFragment
         val newFragment = event.newFragment
-        return oldFragment.contains('\n') ||
-            newFragment.contains('\n') ||
-            containsBracketToken(oldFragment) ||
+        return containsBracketToken(oldFragment) ||
             containsBracketToken(newFragment)
+    }
+
+    private fun oldOrNewContainsNewline(event: DocumentEvent): Boolean {
+        val oldFragment = event.oldFragment
+        val newFragment = event.newFragment
+        return oldFragment.contains('\n') || newFragment.contains('\n')
+    }
+
+    private fun bumpStructureStamp() {
+        val current = myEditor.getUserData(BRACKET_STRUCTURE_STAMP_KEY) ?: 0L
+        myEditor.putUserData(BRACKET_STRUCTURE_STAMP_KEY, current + 1L)
+    }
+
+    private fun repaintCaretNeighborhood() {
+        val caretOffset = myEditor.caretModel.offset.coerceIn(0, document.textLength)
+        val line = document.getLineNumber(caretOffset)
+        val startLine = (line - 1).coerceAtLeast(0)
+        val endLine = (line + 1).coerceAtMost(document.lineCount - 1)
+        val startOffset = document.getLineStartOffset(startLine)
+        val endOffset = document.getLineEndOffset(endLine)
+        repaintOffsetsRange(startOffset, endOffset)
     }
 
     private fun repaintGuide(highlighter: RangeHighlighter?) {
