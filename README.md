@@ -95,7 +95,7 @@
         <td>✅</td>
         <td>✨ <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2712">Premium</a></td>
         <td>✅ <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#htmlxml">Tag name highlighting</a></td>
-        <td></td>
+        <td>✨ <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2857#issuecomment-3375885844">Svelte control flows</a></td>
       </tr>
       <tr>  
         <td>Vue.js</td>
@@ -111,7 +111,7 @@
         <td>✅</td>
         <td>✨ Premium</td>
         <td>✨ <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2570">Premium</a></td>
-        <td>Support .shader .cginc .hlsl .cshtml GDScript etc.</td>
+        <td>✨ Support .shader .cginc .hlsl .cshtml GDScript etc.</td>
       </tr>  
       <tr>  
         <td>F#</td>
