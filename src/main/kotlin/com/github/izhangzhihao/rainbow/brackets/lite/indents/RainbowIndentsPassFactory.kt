@@ -15,8 +15,8 @@ class RainbowIndentsPassFactory :
     override fun registerHighlightingPassFactory(registrar: TextEditorHighlightingPassRegistrar, project: Project) {
         registrar.registerTextEditorHighlightingPass(
                 this,
-                TextEditorHighlightingPassRegistrar.Anchor.LAST,
-                Pass.LAST_PASS,
+                TextEditorHighlightingPassRegistrar.Anchor.BEFORE,
+                Pass.UPDATE_FOLDING,
                 false,
                 false
         )

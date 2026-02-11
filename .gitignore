@@ -10,3 +10,5 @@ build/
 out
 java_pid*
 .intellijPlatform/
+bin/
+*.log

@@ -6,7 +6,10 @@ import com.intellij.codeHighlighting.TextEditorHighlightingPass
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.event.CaretEvent
 import com.intellij.openapi.editor.event.CaretListener
+import com.intellij.openapi.editor.event.DocumentEvent
+import com.intellij.openapi.editor.event.DocumentListener
 import com.intellij.openapi.editor.ex.EditorEx
+import com.intellij.openapi.editor.markup.MarkupModel
 import com.intellij.openapi.editor.markup.HighlighterTargetArea
 import com.intellij.openapi.editor.markup.RangeHighlighter
 import com.intellij.openapi.progress.ProgressIndicator
@@ -19,7 +22,10 @@ import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiRecursiveElementWalkingVisitor
+import com.intellij.util.DocumentUtil
 import java.util.ArrayList
+import java.util.Comparator
+import javax.swing.Timer
 
 class RainbowBracketPairGuidesPass internal constructor(
     project: Project,
@@ -30,11 +36,17 @@ class RainbowBracketPairGuidesPass internal constructor(
     private val myEditor: EditorEx = editor as EditorEx
 
     @Volatile
-    private var myRangesWithRainbowInfo: List<Pair<TextRange, RainbowInfo>> = emptyList()
+    private var myRanges = emptyList<TextRange>()
+    private val myRainbowInfoByRange = mutableMapOf<TextRange, RainbowInfo>()
 
     override fun doCollectInformation(progress: ProgressIndicator) {
+        ensureDocumentStructureListenerInstalled()
+        val stamp = myEditor.getUserData(LAST_TIME_GUIDES_BUILT)
+        if (stamp != null && stamp.toLong() == nowStamp()) return
+
         if (!isBracketPairGuidesShown()) {
-            myRangesWithRainbowInfo = emptyList()
+            myRanges = emptyList()
+            myRainbowInfoByRange.clear()
             return
         }
 
@@ -47,68 +59,167 @@ class RainbowBracketPairGuidesPass internal constructor(
                     val startOffset = rainbowInfo.startOffset
                     val endOffset = rainbowInfo.endOffset
                     if (startOffset >= 0 && endOffset > startOffset && endOffset <= document.textLength) {
-                        val range = TextRange(startOffset, endOffset)
-                        uniqueRanges.putIfAbsent(range, rainbowInfo)
+                        val endBracketOffset = (endOffset - 1).coerceAtLeast(startOffset)
+                        val startLine = document.getLineNumber(startOffset)
+                        val endLine = document.getLineNumber(endBracketOffset)
+                        // Align with VSCode-like pair guide behavior:
+                        // only keep multi-line bracket blocks.
+                        if (endLine > startLine) {
+                            val range = TextRange(startOffset, endOffset)
+                            uniqueRanges.putIfAbsent(range, rainbowInfo)
+                        }
                     }
                 }
                 super.visitElement(element)
             }
         })
 
-        val sortedRanges = uniqueRanges.entries
-            .map { Pair(it.key, it.value) }
-            .sortedWith { a, b -> Segment.BY_START_OFFSET_THEN_END_OFFSET.compare(a.first, b.first) }
-        myRangesWithRainbowInfo = sortedRanges
+        val sortedRanges = uniqueRanges.keys.sortedWith(Segment.BY_START_OFFSET_THEN_END_OFFSET)
+        myRanges = sortedRanges
+        myRainbowInfoByRange.clear()
+        for (range in sortedRanges) {
+            myRainbowInfoByRange[range] = uniqueRanges.getValue(range)
+        }
     }
 
     override fun doApplyInformationToEditor() {
+        ensureDocumentStructureListenerInstalled()
+        ensureCaretRepaintListenerInstalled()
+
         val nowStamp = nowStamp()
         val oldStamp = myEditor.getUserData(LAST_TIME_GUIDES_BUILT)
         if (oldStamp == nowStamp) return
         myEditor.putUserData(LAST_TIME_GUIDES_BUILT, nowStamp)
-        ensureCaretRepaintListenerInstalled()
+
         RainbowBracketPairGuideRenderer.invalidateActivePairCache(myEditor)
 
         val oldHighlighters = myEditor.getUserData(BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY)
-        if (oldHighlighters != null) {
-            for (highlighter in oldHighlighters) {
-                highlighter.dispose()
+        if (nowStamp == -1L) {
+            if (oldHighlighters != null) {
+                for (highlighter in oldHighlighters) {
+                    highlighter.dispose()
+                }
+                oldHighlighters.clear()
             }
-            oldHighlighters.clear()
-        }
-
-        if (!isBracketPairGuidesShown()) {
             return
         }
 
-        val newHighlighters = ArrayList<RangeHighlighter>(myRangesWithRainbowInfo.size)
+        val newHighlighters = ArrayList<RangeHighlighter>(myRanges.size)
         val mm = myEditor.markupModel
-        for ((range, rainbowInfo) in myRangesWithRainbowInfo) {
-            val highlighter = mm.addRangeHighlighter(
-                range.startOffset,
-                range.endOffset,
-                0,
-                null,
-                HighlighterTargetArea.EXACT_RANGE
+        var curRange = 0
+        var dirtyStartOffset = Int.MAX_VALUE
+        var dirtyEndOffset = -1
+
+        fun markDirty(startOffset: Int, endOffset: Int) {
+            dirtyStartOffset = minOf(dirtyStartOffset, startOffset)
+            dirtyEndOffset = maxOf(dirtyEndOffset, endOffset)
+        }
+
+        if (oldHighlighters != null) {
+            oldHighlighters.sortWith(
+                Comparator.comparing { highlighter: RangeHighlighter -> !highlighter.isValid }
+                    .thenComparing(Segment.BY_START_OFFSET_THEN_END_OFFSET)
             )
-            highlighter.customRenderer = RainbowBracketPairGuideRenderer(rainbowInfo)
-            newHighlighters.add(highlighter)
+
+            var curHighlight = 0
+            while (curRange < myRanges.size && curHighlight < oldHighlighters.size) {
+                val range = myRanges[curRange]
+                val highlighter = oldHighlighters[curHighlight]
+                if (!highlighter.isValid) break
+
+                val cmp = compare(range, highlighter)
+                when {
+                    cmp < 0 -> {
+                        newHighlighters.add(createHighlighter(mm, range, myRainbowInfoByRange.getValue(range)))
+                        markDirty(range.startOffset, range.endOffset)
+                        curRange++
+                    }
+                    cmp > 0 -> {
+                        markDirty(highlighter.startOffset, highlighter.endOffset)
+                        highlighter.dispose()
+                        curHighlight++
+                    }
+                    else -> {
+                        val nextInfo = myRainbowInfoByRange.getValue(range)
+                        val currentRenderer = highlighter.customRenderer as? RainbowBracketPairGuideRenderer
+                        val unchanged = currentRenderer != null &&
+                            currentRenderer.rainbowInfo.level == nextInfo.level &&
+                            currentRenderer.rainbowInfo.color == nextInfo.color
+                        if (!unchanged) {
+                            highlighter.customRenderer = RainbowBracketPairGuideRenderer(nextInfo)
+                            markDirty(range.startOffset, range.endOffset)
+                        }
+                        newHighlighters.add(highlighter)
+                        curHighlight++
+                        curRange++
+                    }
+                }
+            }
+
+            while (curHighlight < oldHighlighters.size) {
+                val highlighter = oldHighlighters[curHighlight]
+                if (!highlighter.isValid) break
+                highlighter.dispose()
+                curHighlight++
+            }
+        }
+
+        val startRangeIndex = curRange
+        DocumentUtil.executeInBulk(document, myRanges.size > 10000) {
+            for (i in startRangeIndex until myRanges.size) {
+                val range = myRanges[i]
+                newHighlighters.add(createHighlighter(mm, range, myRainbowInfoByRange.getValue(range)))
+                markDirty(range.startOffset, range.endOffset)
+            }
         }
 
         myEditor.putUserData(BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY, newHighlighters)
+        if (dirtyEndOffset >= dirtyStartOffset) {
+            repaintOffsetsRange(dirtyStartOffset, dirtyEndOffset)
+        }
     }
 
     private fun nowStamp(): Long {
-        return if (isBracketPairGuidesShown()) document.modificationStamp else -1L
+        if (!isBracketPairGuidesShown()) return -1L
+        return myEditor.getUserData(BRACKET_STRUCTURE_STAMP_KEY) ?: document.modificationStamp
     }
 
     companion object {
         internal val BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY = Key.create<MutableList<RangeHighlighter>>("_BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY_")
         private val LAST_TIME_GUIDES_BUILT = Key.create<Long>("_LAST_TIME_BRACKET_PAIR_GUIDES_BUILT_")
         private val CARET_REPAINT_LISTENER_INSTALLED = Key.create<Boolean>("_RB_CARET_REPAINT_LISTENER_INSTALLED_")
+        private val DOC_STRUCTURE_LISTENER_INSTALLED = Key.create<Boolean>("_RB_BRACKET_GUIDES_DOC_STRUCTURE_LISTENER_INSTALLED_")
+        private val BRACKET_STRUCTURE_STAMP_KEY = Key.create<Long>("_RB_BRACKET_GUIDES_STRUCTURE_STAMP_")
+        private val STRUCTURE_DEBOUNCE_TIMER_KEY = Key.create<Timer>("_RB_BRACKET_STRUCTURE_DEBOUNCE_TIMER_")
+        private const val BRACKET_STRUCTURE_CHARS = "()[]{}<>"
+        private const val STRUCTURE_DEBOUNCE_MS = 70
 
         private fun isBracketPairGuidesShown(): Boolean {
             return RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
+        }
+
+        private fun createHighlighter(mm: MarkupModel, range: TextRange, rainbowInfo: RainbowInfo): RangeHighlighter {
+            return mm.addRangeHighlighter(
+                range.startOffset,
+                range.endOffset,
+                0,
+                null,
+                HighlighterTargetArea.EXACT_RANGE
+            ).apply {
+                customRenderer = RainbowBracketPairGuideRenderer(rainbowInfo)
+            }
+        }
+
+        private fun compare(range: TextRange, highlighter: RangeHighlighter): Int {
+            val answer = range.startOffset - highlighter.startOffset
+            return if (answer != 0) answer else range.endOffset - highlighter.endOffset
+        }
+
+        private fun containsBracketToken(fragment: CharSequence): Boolean {
+            for (char in fragment) {
+                if (BRACKET_STRUCTURE_CHARS.indexOf(char) >= 0) return true
+            }
+            return false
         }
     }
 
@@ -116,10 +227,65 @@ class RainbowBracketPairGuidesPass internal constructor(
         if (myEditor.getUserData(CARET_REPAINT_LISTENER_INSTALLED) == true) return
         myEditor.caretModel.addCaretListener(object : CaretListener {
             override fun caretPositionChanged(event: CaretEvent) {
+                val oldActive = RainbowBracketPairGuideRenderer.Companion.peekActivePair(myEditor)
                 RainbowBracketPairGuideRenderer.invalidateActivePairCache(myEditor)
-                myEditor.contentComponent.repaint()
+                val newActive = RainbowBracketPairGuideRenderer.Companion.getActivePair(myEditor)
+                repaintGuide(oldActive)
+                repaintGuide(newActive)
             }
         })
         myEditor.putUserData(CARET_REPAINT_LISTENER_INSTALLED, true)
+    }
+
+    private fun ensureDocumentStructureListenerInstalled() {
+        if (myEditor.getUserData(DOC_STRUCTURE_LISTENER_INSTALLED) == true) return
+        myEditor.putUserData(BRACKET_STRUCTURE_STAMP_KEY, document.modificationStamp)
+        val debounceTimer = Timer(STRUCTURE_DEBOUNCE_MS) {
+            if (!isBracketPairGuidesShown()) return@Timer
+            val current = myEditor.getUserData(BRACKET_STRUCTURE_STAMP_KEY) ?: 0L
+            myEditor.putUserData(BRACKET_STRUCTURE_STAMP_KEY, current + 1L)
+        }.apply {
+            isRepeats = false
+        }
+        myEditor.putUserData(STRUCTURE_DEBOUNCE_TIMER_KEY, debounceTimer)
+        document.addDocumentListener(object : DocumentListener {
+            override fun documentChanged(event: DocumentEvent) {
+                if (!isBracketPairGuidesShown()) return
+                if (!isBracketStructureChange(event)) return
+                myEditor.getUserData(STRUCTURE_DEBOUNCE_TIMER_KEY)?.restart()
+            }
+        })
+        myEditor.putUserData(DOC_STRUCTURE_LISTENER_INSTALLED, true)
+    }
+
+    private fun isBracketStructureChange(event: DocumentEvent): Boolean {
+        val oldFragment = event.oldFragment
+        val newFragment = event.newFragment
+        return oldFragment.contains('\n') ||
+            newFragment.contains('\n') ||
+            containsBracketToken(oldFragment) ||
+            containsBracketToken(newFragment)
+    }
+
+    private fun repaintGuide(highlighter: RangeHighlighter?) {
+        if (highlighter == null || !highlighter.isValid) return
+        val startLine = document.getLineNumber(highlighter.startOffset.coerceIn(0, document.textLength))
+        val endOffset = highlighter.endOffset.coerceIn(0, document.textLength)
+        val endLine = document.getLineNumber(endOffset)
+        val y1 = myEditor.logicalPositionToXY(com.intellij.openapi.editor.LogicalPosition(startLine, 0)).y
+        val y2 = myEditor.logicalPositionToXY(com.intellij.openapi.editor.LogicalPosition(endLine + 1, 0)).y
+        val height = (y2 - y1).coerceAtLeast(myEditor.lineHeight)
+        myEditor.contentComponent.repaint(0, y1, myEditor.contentComponent.width, height)
+    }
+
+    private fun repaintOffsetsRange(startOffset: Int, endOffset: Int) {
+        val safeStart = startOffset.coerceIn(0, document.textLength)
+        val safeEnd = endOffset.coerceIn(safeStart, document.textLength)
+        val startLine = document.getLineNumber(safeStart)
+        val endLine = document.getLineNumber(safeEnd)
+        val y1 = myEditor.logicalPositionToXY(com.intellij.openapi.editor.LogicalPosition(startLine, 0)).y
+        val y2 = myEditor.logicalPositionToXY(com.intellij.openapi.editor.LogicalPosition(endLine + 1, 0)).y
+        val height = (y2 - y1).coerceAtLeast(myEditor.lineHeight)
+        myEditor.contentComponent.repaint(0, y1, myEditor.contentComponent.width, height)
     }
 }

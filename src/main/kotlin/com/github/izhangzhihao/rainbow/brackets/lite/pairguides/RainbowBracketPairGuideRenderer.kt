@@ -4,17 +4,18 @@ import com.github.izhangzhihao.rainbow.brackets.lite.RainbowInfo
 import com.github.izhangzhihao.rainbow.brackets.lite.util.alphaBlend
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.ex.EditorEx
+import com.intellij.openapi.editor.ex.MarkupModelEx
 import com.intellij.openapi.editor.impl.view.EditorPainter
 import com.intellij.openapi.editor.markup.CustomHighlighterRenderer
 import com.intellij.openapi.editor.markup.RangeHighlighter
 import com.intellij.openapi.util.Key
-import com.intellij.openapi.util.TextRange
 import com.intellij.ui.paint.LinePainter2D
+import com.intellij.util.Processor
 import java.awt.Graphics
 import java.awt.Graphics2D
 
 class RainbowBracketPairGuideRenderer(
-    private val rainbowInfo: RainbowInfo
+    internal val rainbowInfo: RainbowInfo
 ) : CustomHighlighterRenderer {
     override fun paint(editor: Editor, highlighter: RangeHighlighter, g: Graphics) {
         if (editor !is EditorEx || g !is Graphics2D) return
@@ -43,9 +44,7 @@ class RainbowBracketPairGuideRenderer(
         val clip = g.clipBounds ?: return
         if (clip.y >= y2 || clip.y + clip.height <= y1) return
 
-        val currentRange = TextRange(startOffset, endOffset)
-        val activeRange = getActivePairRange(editor)
-        val isActivePair = activeRange == currentRange
+        val isActivePair = getActivePair(editor) === highlighter
         g.color = if (isActivePair) {
             rainbowInfo.color
         } else {
@@ -59,51 +58,84 @@ class RainbowBracketPairGuideRenderer(
         LinePainter2D.paint(g, x, y2, tailEndX, y2)
     }
 
-    private fun getActivePairRange(editor: EditorEx): TextRange? {
-        val caretOffset = editor.caretModel.offset
-        val cachedCaretOffset = editor.getUserData(LAST_ACTIVE_CARET_OFFSET)
-        if (cachedCaretOffset == caretOffset) {
-            return editor.getUserData(ACTIVE_PAIR_RANGE_KEY)
-        }
-
-        val highlighters = editor.getUserData(RainbowBracketPairGuidesPass.BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY)
-        var activeRange: TextRange? = null
-        val doc = editor.document
-        if (highlighters != null) {
-            for (item in highlighters) {
-                if (!item.isValid) continue
-                if (caretOffset !in item.startOffset..item.endOffset) continue
-
-                val candidate = TextRange(item.startOffset, item.endOffset)
-                val endBracketOffset = (candidate.endOffset - 1).coerceAtLeast(candidate.startOffset)
-                val startLine = doc.getLineNumber(candidate.startOffset)
-                val endLine = doc.getLineNumber(endBracketOffset)
-                // VSCode-like guides highlight the active multi-line bracket block,
-                // not single-line expression pairs.
-                if (endLine <= startLine) continue
-
-                activeRange = if (activeRange == null || candidate.length < activeRange.length ||
-                    (candidate.length == activeRange.length && candidate.startOffset > activeRange.startOffset)
-                ) {
-                    candidate
-                } else {
-                    activeRange
-                }
-            }
-        }
-
-        editor.putUserData(LAST_ACTIVE_CARET_OFFSET, caretOffset)
-        editor.putUserData(ACTIVE_PAIR_RANGE_KEY, activeRange)
-        return activeRange
-    }
-
     companion object {
         private val LAST_ACTIVE_CARET_OFFSET = Key.create<Int>("_RB_LAST_ACTIVE_CARET_OFFSET_")
-        private val ACTIVE_PAIR_RANGE_KEY = Key.create<TextRange>("_RB_ACTIVE_PAIR_RANGE_KEY_")
+        private val ACTIVE_PAIR_HIGHLIGHTER_KEY = Key.create<RangeHighlighter>("_RB_ACTIVE_PAIR_HIGHLIGHTER_KEY_")
 
         internal fun invalidateActivePairCache(editor: EditorEx) {
             editor.putUserData(LAST_ACTIVE_CARET_OFFSET, null)
-            editor.putUserData(ACTIVE_PAIR_RANGE_KEY, null)
+            editor.putUserData(ACTIVE_PAIR_HIGHLIGHTER_KEY, null)
+        }
+
+        internal fun peekActivePair(editor: EditorEx): RangeHighlighter? {
+            return editor.getUserData(ACTIVE_PAIR_HIGHLIGHTER_KEY)
+        }
+
+        internal fun getActivePair(editor: EditorEx): RangeHighlighter? {
+            val caretOffset = editor.caretModel.offset
+            val cachedCaretOffset = editor.getUserData(LAST_ACTIVE_CARET_OFFSET)
+            val cachedHighlighter = editor.getUserData(ACTIVE_PAIR_HIGHLIGHTER_KEY)
+            if (cachedCaretOffset == caretOffset) {
+                if (cachedHighlighter?.isValid == true) {
+                    return cachedHighlighter
+                }
+            }
+
+            var activeHighlighter: RangeHighlighter? = null
+            val doc = editor.document
+            val textLength = doc.textLength
+            if (textLength > 0) {
+                val queryStart = caretOffset.coerceIn(0, textLength - 1)
+                val queryEnd = (queryStart + 1).coerceAtMost(textLength)
+                val markupModel = editor.markupModel as? MarkupModelEx
+                if (markupModel != null) {
+                    markupModel.processRangeHighlightersOverlappingWith(queryStart, queryEnd, Processor { item ->
+                        if (!item.isValid) return@Processor true
+                        if (item.customRenderer !is RainbowBracketPairGuideRenderer) return@Processor true
+                        if (caretOffset !in item.startOffset until item.endOffset) return@Processor true
+
+                        val endBracketOffset = (item.endOffset - 1).coerceAtLeast(item.startOffset)
+                        val startLine = doc.getLineNumber(item.startOffset)
+                        val endLine = doc.getLineNumber(endBracketOffset)
+                        if (endLine <= startLine) return@Processor true
+
+                        activeHighlighter = chooseBetterActive(activeHighlighter, item)
+                        true
+                    })
+                } else {
+                    val highlighters = editor.getUserData(RainbowBracketPairGuidesPass.BRACKET_PAIR_HIGHLIGHTERS_IN_EDITOR_KEY)
+                    if (highlighters != null) {
+                        for (item in highlighters) {
+                            if (!item.isValid) continue
+                            if (caretOffset !in item.startOffset until item.endOffset) continue
+
+                            val endBracketOffset = (item.endOffset - 1).coerceAtLeast(item.startOffset)
+                            val startLine = doc.getLineNumber(item.startOffset)
+                            val endLine = doc.getLineNumber(endBracketOffset)
+                            if (endLine <= startLine) continue
+
+                            activeHighlighter = chooseBetterActive(activeHighlighter, item)
+                        }
+                    }
+                }
+            }
+
+            editor.putUserData(LAST_ACTIVE_CARET_OFFSET, caretOffset)
+            editor.putUserData(ACTIVE_PAIR_HIGHLIGHTER_KEY, activeHighlighter)
+            return activeHighlighter
+        }
+
+        private fun chooseBetterActive(current: RangeHighlighter?, candidate: RangeHighlighter): RangeHighlighter {
+            if (current == null) return candidate
+            val candidateLength = candidate.endOffset - candidate.startOffset
+            val currentLength = current.endOffset - current.startOffset
+            return if (candidateLength < currentLength ||
+                (candidateLength == currentLength && candidate.startOffset > current.startOffset)
+            ) {
+                candidate
+            } else {
+                current
+            }
         }
     }
 }

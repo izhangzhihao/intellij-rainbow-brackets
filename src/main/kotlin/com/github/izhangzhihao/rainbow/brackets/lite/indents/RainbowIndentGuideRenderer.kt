@@ -12,6 +12,7 @@ import com.intellij.openapi.editor.impl.view.VisualLinesIterator
 import com.intellij.openapi.editor.markup.CustomHighlighterRenderer
 import com.intellij.openapi.editor.markup.RangeHighlighter
 import com.intellij.openapi.util.Condition
+import com.intellij.openapi.util.Key
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager
 import com.intellij.psi.util.PsiTreeUtil
@@ -251,11 +252,26 @@ class RainbowIndentGuideRenderer(val rangesWithRainbowInfo: MutableMap<TextRange
             lastChild?.findPrevSibling(XML_END_TAG_START_CONDITION)?.let { document.lineNumber(it.startOffset) }
 
         internal fun invalidateActiveGuideCache(editor: EditorEx) {
-            // no-op, active guide is calculated on demand
+            editor.putUserData(ACTIVE_GUIDE_KEY, null)
+            editor.putUserData(ACTIVE_GUIDE_CARET_OFFSET, null)
         }
 
         private fun isActiveGuide(editor: EditorEx, highlighter: RangeHighlighter): Boolean {
+            return getActiveGuide(editor) === highlighter
+        }
+
+        internal fun peekActiveGuide(editor: EditorEx): RangeHighlighter? {
+            return editor.getUserData(ACTIVE_GUIDE_KEY)
+        }
+
+        internal fun getActiveGuide(editor: EditorEx): RangeHighlighter? {
             val caretOffset = editor.caretModel.offset
+            val cachedCaret = editor.getUserData(ACTIVE_GUIDE_CARET_OFFSET)
+            val cachedActive = editor.getUserData(ACTIVE_GUIDE_KEY)
+            if (cachedCaret == caretOffset && cachedActive?.isValid == true) {
+                return cachedActive
+            }
+
             val highlighters = editor.getUserData(RainbowIndentsPass.INDENT_HIGHLIGHTERS_IN_EDITOR_KEY)
             var active: RangeHighlighter? = null
             if (highlighters != null) {
@@ -273,8 +289,13 @@ class RainbowIndentGuideRenderer(val rangesWithRainbowInfo: MutableMap<TextRange
                     }
                 }
             }
-            return active === highlighter
+            editor.putUserData(ACTIVE_GUIDE_KEY, active)
+            editor.putUserData(ACTIVE_GUIDE_CARET_OFFSET, caretOffset)
+            return active
         }
+
+        private val ACTIVE_GUIDE_KEY = Key.create<RangeHighlighter>("_RB_ACTIVE_GUIDE_KEY_")
+        private val ACTIVE_GUIDE_CARET_OFFSET = Key.create<Int>("_RB_ACTIVE_GUIDE_CARET_OFFSET_")
 
     }
 }

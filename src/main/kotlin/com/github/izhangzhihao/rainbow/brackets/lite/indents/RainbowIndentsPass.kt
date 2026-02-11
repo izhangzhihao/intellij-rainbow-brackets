@@ -13,6 +13,8 @@ import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.IndentGuideDescriptor
 import com.intellij.openapi.editor.event.CaretEvent
 import com.intellij.openapi.editor.event.CaretListener
+import com.intellij.openapi.editor.event.DocumentEvent
+import com.intellij.openapi.editor.event.DocumentListener
 import com.intellij.openapi.editor.ex.EditorEx
 import com.intellij.openapi.editor.ex.util.EditorUtil
 import com.intellij.openapi.editor.markup.HighlighterTargetArea
@@ -56,6 +58,7 @@ class RainbowIndentsPass internal constructor(
     private var myDescriptors = emptyList<IndentGuideDescriptor>()
 
     override fun doCollectInformation(progress: ProgressIndicator) {
+        ensureDocumentStructureListenerInstalled()
         val stamp = myEditor.getUserData(LAST_TIME_INDENTS_BUILT)
         if (stamp != null && stamp.toLong() == nowStamp()) return
 
@@ -79,11 +82,15 @@ class RainbowIndentsPass internal constructor(
         myRanges = ranges
     }
 
-    private fun nowStamp(): Long = if (isRainbowIndentGuidesShown()) document.modificationStamp xor (EditorUtil.getTabSize(myEditor).toLong() shl 24) else -1
+    private fun nowStamp(): Long {
+        if (!isRainbowIndentGuidesShown()) return -1
+        val structureStamp = myEditor.getUserData(INDENT_STRUCTURE_STAMP_KEY) ?: document.modificationStamp
+        return structureStamp xor (EditorUtil.getTabSize(myEditor).toLong() shl 24)
+    }
 
     override fun doApplyInformationToEditor() {
+        ensureDocumentStructureListenerInstalled()
         ensureCaretRepaintListenerInstalled()
-        RainbowIndentGuideRenderer.invalidateActiveGuideCache(myEditor)
 
         val stamp = myEditor.getUserData(LAST_TIME_INDENTS_BUILT)
         val nowStamp = nowStamp()
@@ -100,6 +107,7 @@ class RainbowIndentsPass internal constructor(
                 }
                 oldHighlighters.clear()
             }
+            RainbowIndentGuideRenderer.invalidateActiveGuideCache(myEditor)
             return
         }
 
@@ -156,10 +164,8 @@ class RainbowIndentsPass internal constructor(
 
         myEditor.putUserData(INDENT_HIGHLIGHTERS_IN_EDITOR_KEY, newHighlighters)
         myEditor.indentsModel.assumeIndents(myDescriptors)
-        // Re-invalidate after highlighters are swapped in to avoid stale active-guide cache
-        // computed against previous highlighter set during repaint races.
         RainbowIndentGuideRenderer.invalidateActiveGuideCache(myEditor)
-        myEditor.contentComponent.repaint()
+        repaintVisibleRegion()
     }
 
     private fun buildDescriptors(): List<IndentGuideDescriptor> {
@@ -353,6 +359,8 @@ class RainbowIndentsPass internal constructor(
         internal val INDENT_HIGHLIGHTERS_IN_EDITOR_KEY = Key.create<MutableList<RangeHighlighter>>("_INDENT_HIGHLIGHTERS_IN_EDITOR_KEY_")
         private val LAST_TIME_INDENTS_BUILT = Key.create<Long>("_LAST_TIME_INDENTS_BUILT_")
         private val CARET_REPAINT_LISTENER_INSTALLED = Key.create<Boolean>("_RB_INDENT_CARET_REPAINT_LISTENER_INSTALLED_")
+        private val DOC_STRUCTURE_LISTENER_INSTALLED = Key.create<Boolean>("_RB_INDENT_DOC_STRUCTURE_LISTENER_INSTALLED_")
+        private val INDENT_STRUCTURE_STAMP_KEY = Key.create<Long>("_RB_INDENT_STRUCTURE_STAMP_")
 
         private fun isRainbowIndentGuidesShown(): Boolean {
             return RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
@@ -380,11 +388,57 @@ class RainbowIndentsPass internal constructor(
         if (myEditor.getUserData(CARET_REPAINT_LISTENER_INSTALLED) == true) return
         myEditor.caretModel.addCaretListener(object : CaretListener {
             override fun caretPositionChanged(event: CaretEvent) {
+                val oldActive = RainbowIndentGuideRenderer.peekActiveGuide(myEditor)
                 RainbowIndentGuideRenderer.invalidateActiveGuideCache(myEditor)
-                myEditor.contentComponent.repaint()
+                val newActive = RainbowIndentGuideRenderer.getActiveGuide(myEditor)
+                repaintGuide(oldActive)
+                repaintGuide(newActive)
             }
         })
         myEditor.putUserData(CARET_REPAINT_LISTENER_INSTALLED, true)
+    }
+
+    private fun ensureDocumentStructureListenerInstalled() {
+        if (myEditor.getUserData(DOC_STRUCTURE_LISTENER_INSTALLED) == true) return
+        myEditor.putUserData(INDENT_STRUCTURE_STAMP_KEY, document.modificationStamp)
+        document.addDocumentListener(object : DocumentListener {
+            override fun documentChanged(event: DocumentEvent) {
+                if (!isRainbowIndentGuidesShown()) return
+                if (!isIndentStructureChange(event)) return
+                val current = myEditor.getUserData(INDENT_STRUCTURE_STAMP_KEY) ?: 0L
+                myEditor.putUserData(INDENT_STRUCTURE_STAMP_KEY, current + 1L)
+            }
+        })
+        myEditor.putUserData(DOC_STRUCTURE_LISTENER_INSTALLED, true)
+    }
+
+    private fun isIndentStructureChange(event: DocumentEvent): Boolean {
+        val oldFragment = event.oldFragment
+        val newFragment = event.newFragment
+        if (oldFragment.contains('\n') || newFragment.contains('\n')) return true
+
+        val line = document.getLineNumber(event.offset.coerceAtMost(document.textLength))
+        val lineStart = document.getLineStartOffset(line)
+        val lineEnd = document.getLineEndOffset(line)
+        val firstNonWs = CharArrayUtil.shiftForward(document.charsSequence, lineStart, lineEnd, " \t")
+        // Editing in leading whitespace can change indent guides.
+        return event.offset <= firstNonWs
+    }
+
+    private fun repaintGuide(highlighter: RangeHighlighter?) {
+        if (highlighter == null || !highlighter.isValid) return
+        val startLine = document.getLineNumber(highlighter.startOffset.coerceIn(0, document.textLength))
+        val endOffset = highlighter.endOffset.coerceIn(0, document.textLength)
+        val endLine = document.getLineNumber(endOffset)
+        val y1 = myEditor.logicalPositionToXY(com.intellij.openapi.editor.LogicalPosition(startLine, 0)).y
+        val y2 = myEditor.logicalPositionToXY(com.intellij.openapi.editor.LogicalPosition(endLine + 1, 0)).y
+        val height = (y2 - y1).coerceAtLeast(myEditor.lineHeight)
+        myEditor.contentComponent.repaint(0, y1, myEditor.contentComponent.width, height)
+    }
+
+    private fun repaintVisibleRegion() {
+        val rect = myEditor.scrollingModel.visibleArea
+        myEditor.contentComponent.repaint(rect.x, rect.y, rect.width, rect.height)
     }
 
     private fun createFallbackRainbowInfo(level: Int): RainbowInfo {
