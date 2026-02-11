@@ -58,7 +58,7 @@
         <td>✅</td>
         <td>✨ <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2712">Premium</a></td>
         <td>✅ <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets#htmlxml">Tag name highlighting</a></td>
-        <td></td>
+        <td>✨ <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2857#issuecomment-3375885844">Svelte control flows</a></td>
       </tr>
       <tr>  
         <td>Vue.js</td>
@@ -74,7 +74,7 @@
         <td>✅</td>
         <td>✨ Premium</td>
         <td>✨ <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2570">Premium</a></td>
-        <td>Support .shader .cginc .hlsl .cshtml GDScript etc.</td>
+        <td>✨ Support .shader .cginc .hlsl .cshtml GDScript etc.</td>
       </tr>  
       <tr>  
         <td>F#</td>
@@ -168,6 +168,14 @@ Please check the latest screenshots [here](https://github.com/izhangzhihao/intel
 
 ## Change log
 
+<p >2025.3.7</p>
+                <ul dir="auto">
+                    <li>[premium] Erlang: <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2863">Add support for the Erlang language</a></li>
+                    <li>Fix: <a href="https://github.com/izhangzhihao/intellij-rainbow-brackets/issues/2866">Error when starting IDEA</a></li>
+                    <li>Feat: The license status page will refresh automatically if the license component is not yet initialized.</li>
+                    <li>Fix: Color Scheme display issue</li>
+                </ul>
+                <br/>
 
 <p>2025.3.6</p>
         <ul>
