@@ -17,20 +17,23 @@ TERMS AND CONDITIONS
 
 1. PERMISSIONS - WHAT YOU CAN DO
 
-The Developer (izhangzhihao) grants you a non-exclusive, non-transferable license to:
+The Developer (izhangzhihao) grants you a FREE, non-exclusive, non-transferable license to:
 
 a) Install and use the Rainbow Brackets plugin ("Plugin") for your personal use
-b) Install and use the Plugin for your internal business purposes  
+b) Install and use the Plugin for your internal business purposes
 c) Use the FREE features and functionality of the Plugin without limitations
 d) Install the Plugin on multiple computers you own or control
 
 FREE FEATURES: Basic bracket colorization, core syntax highlighting, and other 
 features marked as "Free" in the official documentation and marketplace listing.
 
-PREMIUM FEATURES: Advanced features (such as certain language-specific enhancements, 
-advanced indent highlighting modes, and other features marked as "Premium" or "✨") 
-require a valid paid license purchased through the official JetBrains Marketplace 
-or other authorized channels.
+PREMIUM FEATURES: Advanced features (such as language-specific enhancements for 
+C#, F#, Python indent highlighting, C++ in CLion Nova/Rider, and other features 
+marked as "Premium" or "✨" in the plugin's Features Matrix and official 
+documentation) require a valid paid license purchased through the official 
+JetBrains Marketplace or other authorized channels. See the Features Matrix at 
+https://github.com/izhangzhihao/intellij-rainbow-brackets#features-matrix for 
+the complete list of premium features.
 
 This grant of rights allows normal users to install and use the Plugin's free 
 features through the JetBrains Marketplace or other official distribution channels 
