@@ -362,9 +362,17 @@ class RainbowIndentsPass internal constructor(
         private val CARET_REPAINT_LISTENER_INSTALLED = Key.create<Boolean>("_RB_INDENT_CARET_REPAINT_LISTENER_INSTALLED_")
         private val DOC_STRUCTURE_LISTENER_INSTALLED = Key.create<Boolean>("_RB_INDENT_DOC_STRUCTURE_LISTENER_INSTALLED_")
         private val INDENT_STRUCTURE_STAMP_KEY = Key.create<Long>("_RB_INDENT_STRUCTURE_STAMP_")
+        private const val INDENT_STRUCTURE_CHARS = "{}"
 
         private fun isRainbowIndentGuidesShown(): Boolean {
             return RainbowSettings.instance.isRainbowEnabled && RainbowSettings.instance.isShowRainbowIndentGuides
+        }
+
+        private fun containsIndentStructureChars(fragment: CharSequence): Boolean {
+            for (char in fragment) {
+                if (INDENT_STRUCTURE_CHARS.indexOf(char) >= 0) return true
+            }
+            return false
         }
 
         private fun createHighlighter(mm: MarkupModel, range: TextRange, rainbowInfo: RainbowInfo?): RangeHighlighter {
@@ -420,6 +428,7 @@ class RainbowIndentsPass internal constructor(
         val oldFragment = event.oldFragment
         val newFragment = event.newFragment
         if (oldFragment.contains('\n') || newFragment.contains('\n')) return true
+        if (containsIndentStructureChars(oldFragment) || containsIndentStructureChars(newFragment)) return true
 
         val line = document.getLineNumber(event.offset.coerceAtMost(document.textLength))
         val lineStart = document.getLineStartOffset(line)
