@@ -6,8 +6,9 @@ All rights reserved.
 
 ================================================================================
 SUMMARY FOR USERS:
-✓ You CAN freely install and use this plugin for personal or business purposes
-✓ You CAN use all features of the plugin without restrictions
+✓ You CAN freely install and use the FREE features for personal or business purposes
+✓ Premium features require a paid license from the official marketplace
+✗ You CANNOT crack, bypass, or circumvent license validation mechanisms
 ✗ You CANNOT modify, redistribute, or create derivative works
 ✗ You CANNOT use the "Rainbow Brackets" name for your own plugins
 ================================================================================
@@ -16,42 +17,58 @@ TERMS AND CONDITIONS
 
 1. PERMISSIONS - WHAT YOU CAN DO
 
-The Developer (izhangzhihao) grants you a FREE, non-exclusive, non-transferable 
-license to:
+The Developer (izhangzhihao) grants you a non-exclusive, non-transferable license to:
 
 a) Install and use the Rainbow Brackets plugin ("Plugin") for your personal use
-b) Install and use the Plugin for your internal business purposes
-c) Use all features and functionality of the Plugin without limitations
+b) Install and use the Plugin for your internal business purposes  
+c) Use the FREE features and functionality of the Plugin without limitations
 d) Install the Plugin on multiple computers you own or control
 
-This grant of rights allows normal users to install and use the Plugin freely 
-through the JetBrains Marketplace or other official distribution channels without 
-any fees or additional permissions for basic usage.
+FREE FEATURES: Basic bracket colorization, core syntax highlighting, and other 
+features marked as "Free" in the official documentation and marketplace listing.
+
+PREMIUM FEATURES: Advanced features (such as certain language-specific enhancements, 
+advanced indent highlighting modes, and other features marked as "Premium" or "✨") 
+require a valid paid license purchased through the official JetBrains Marketplace 
+or other authorized channels.
+
+This grant of rights allows normal users to install and use the Plugin's free 
+features through the JetBrains Marketplace or other official distribution channels 
+without any fees or additional permissions.
 
 2. RESTRICTIONS
 
 You may NOT:
 
-a) Modify, reverse-engineer, decompile, or disassemble the Plugin in whole or 
+a) Crack, bypass, disable, or circumvent any license validation, authentication, 
+   or protection mechanisms in the Plugin.
+
+b) Use, distribute, or promote any cracked, pirated, or unauthorized versions 
+   of the Plugin or tools designed to crack or bypass license validation.
+
+c) Access or use Premium features without a valid paid license obtained through 
+   official channels.
+
+d) Modify, reverse-engineer, decompile, or disassemble the Plugin in whole or 
    in part, unless otherwise expressly authorized in writing by the Developer.
 
-b) Create any derivative works from the Plugin, unless otherwise expressly 
+e) Create any derivative works from the Plugin, unless otherwise expressly 
    authorized in writing by the Developer.
 
-c) Sublicense any rights to the Plugin, unless otherwise expressly authorized 
+f) Sublicense any rights to the Plugin, unless otherwise expressly authorized 
    in writing by the Developer.
 
-d) Use the name "Rainbow Brackets" to release a modified version to any 
+g) Use the name "Rainbow Brackets" to release a modified version to any 
    marketplace or distribution platform.
 
-e) Use the name "Rainbow Brackets" for your plugin's promotion, marketing, 
+h) Use the name "Rainbow Brackets" for your plugin's promotion, marketing, 
    or any other commercial purposes without express written permission from 
    the Developer.
 
-f) Remove or alter any copyright notices, trademarks, or other proprietary 
+i) Remove or alter any copyright notices, trademarks, or other proprietary 
    rights notices contained in or on the Plugin.
 
-g) Distribute, publish, or otherwise make the Plugin available to any third 
+j) Distribute, publish, or otherwise make the Plugin available to any third 
    party except as part of a permitted installation.
 
 3. OWNERSHIP
