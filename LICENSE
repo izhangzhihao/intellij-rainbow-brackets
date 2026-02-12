@@ -1,0 +1,130 @@
+RAINBOW BRACKETS PROPRIETARY LICENSE
+
+Copyright (c) 2018-present izhangzhihao
+
+All rights reserved.
+
+================================================================================
+SUMMARY FOR USERS:
+✓ You CAN freely install and use the FREE features for personal or business purposes
+✓ Premium features require a paid license from the JetBrains marketplace
+✗ You CANNOT crack, bypass, or circumvent license validation mechanisms
+✗ You CANNOT modify, redistribute, or create derivative works
+✗ You CANNOT use the "Rainbow Brackets" name for your own plugins
+================================================================================
+
+TERMS AND CONDITIONS
+
+1. PERMISSIONS - WHAT YOU CAN DO
+
+The Developer (izhangzhihao) grants you a FREE, non-exclusive, non-transferable license to:
+
+a) Install and use the Rainbow Brackets plugin ("Plugin") for your personal use
+b) Install and use the Plugin for your internal business purposes
+c) Use the FREE features and functionality of the Plugin without limitations
+d) Install the Plugin on multiple computers you own or control
+
+FREE FEATURES: Basic bracket colorization, core syntax highlighting, and other 
+features marked as "Free" in the official documentation and marketplace listing.
+
+PREMIUM FEATURES: Advanced features (such as language-specific enhancements for 
+C#, F#, Python indent highlighting, C++ in CLion Nova/Rider, and other features 
+marked as "Premium" or "✨" in the plugin's Features Matrix and official 
+documentation) require a valid paid license purchased through the official 
+JetBrains Marketplace or other authorized channels. See the Features Matrix at 
+https://github.com/izhangzhihao/intellij-rainbow-brackets#features-matrix for 
+the complete list of premium features.
+
+This grant of rights allows normal users to install and use the Plugin's free 
+features through the JetBrains Marketplace or other official distribution channels 
+without any fees or additional permissions.
+
+2. RESTRICTIONS
+
+You may NOT:
+
+a) Crack, bypass, disable, or circumvent any license validation, authentication, 
+   or protection mechanisms in the Plugin.
+
+b) Use, distribute, or promote any cracked, pirated, or unauthorized versions 
+   of the Plugin or tools designed to crack or bypass license validation.
+
+c) Access or use Premium features without a valid paid license obtained through 
+   official channels.
+
+d) Modify, reverse-engineer, decompile, or disassemble the Plugin in whole or 
+   in part, unless otherwise expressly authorized in writing by the Developer.
+
+e) Create any derivative works from the Plugin, unless otherwise expressly 
+   authorized in writing by the Developer.
+
+f) Sublicense any rights to the Plugin, unless otherwise expressly authorized 
+   in writing by the Developer.
+
+g) Use the name "Rainbow Brackets" to release a modified version to any 
+   marketplace or distribution platform.
+
+h) Use the name "Rainbow Brackets" for your plugin's promotion, marketing, 
+   or any other commercial purposes without express written permission from 
+   the Developer.
+
+i) Remove or alter any copyright notices, trademarks, or other proprietary 
+   rights notices contained in or on the Plugin.
+
+j) Distribute, publish, or otherwise make the Plugin available to any third 
+   party except as part of a permitted installation.
+
+3. OWNERSHIP
+
+The Plugin is licensed, not sold. The Developer retains all right, title, and 
+interest in and to the Plugin, including all intellectual property rights 
+therein. This License does not grant you any rights to trademarks, service 
+marks, or trade names of the Developer.
+
+4. TERMINATION
+
+This License is effective until terminated. Your rights under this License 
+will terminate automatically without notice from the Developer if you fail to 
+comply with any term(s) of this License. Upon termination, you must cease all 
+use of the Plugin and destroy all copies, full or partial, of the Plugin.
+
+5. DISCLAIMER OF WARRANTY
+
+THE PLUGIN IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS 
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. THE 
+DEVELOPER DOES NOT WARRANT THAT THE PLUGIN WILL MEET YOUR REQUIREMENTS OR 
+THAT THE OPERATION OF THE PLUGIN WILL BE UNINTERRUPTED OR ERROR-FREE.
+
+6. LIMITATION OF LIABILITY
+
+IN NO EVENT SHALL THE DEVELOPER BE LIABLE FOR ANY SPECIAL, INCIDENTAL, 
+INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, 
+DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS 
+INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR 
+INABILITY TO USE THE PLUGIN, EVEN IF THE DEVELOPER HAS BEEN ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGES.
+
+7. GOVERNING LAW
+
+This License shall be governed by and construed in accordance with the laws 
+of the jurisdiction in which the Developer resides, without regard to its 
+conflict of law provisions.
+
+8. ENTIRE AGREEMENT
+
+This License constitutes the entire agreement between you and the Developer 
+regarding the Plugin and supersedes all prior or contemporaneous understandings 
+regarding such subject matter.
+
+9. CONTACT
+
+For permissions, questions, or licensing inquiries, please contact:
+Email: izhangzhihao@hotmail.com
+GitHub: https://github.com/izhangzhihao
+
+---
+
+BY INSTALLING, COPYING, OR OTHERWISE USING THE PLUGIN, YOU AGREE TO BE BOUND 
+BY THE TERMS OF THIS LICENSE. IF YOU DO NOT AGREE TO THE TERMS OF THIS LICENSE, 
+DO NOT INSTALL OR USE THE PLUGIN.
